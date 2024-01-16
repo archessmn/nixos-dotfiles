@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+sudo rm /etc/nixos/configuration.nix
+
+sudo cp nixos/configuration.nix /etc/nixos/
+
+
+sudo nixos-rebuild switch

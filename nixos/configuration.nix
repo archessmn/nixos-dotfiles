@@ -63,6 +63,10 @@ in
   # Enable Docker
   virtualisation.docker.enable = true;
 
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-25.9.0"
+  ];
+
   users.users.max = {
     isNormalUser = true;
     description = "Max Moir";

@@ -124,9 +124,9 @@
     enable = true;
   };
 
-  home.file.".config/nvim".source = "/home/max/nixos-dotfiles/.config/nvim";
+  home.file.".config/nvim".source = "${flakeDir}.config/nvim";
   home.file.".config/nvim".recursive = true;
 
-  home.file.".config/pylint".source = "/home/max/nixos-dotfiles/.config/pylint";
+  home.file.".config/pylint".source = "${flakeDir}.config/pylint";
   home.file.".config/pylint".recursive = true;
 }

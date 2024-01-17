@@ -52,7 +52,7 @@
             inherit username; inherit hostname; inherit gitUsername;
             inherit gitEmail; inherit theLocale; inherit theTimezone;
         };
-	    modules = [ ./thethnker/configuration.nix
+	    modules = [ ./thethinker/configuration.nix
           home-manager.nixosModules.home-manager {
 	        home-manager.extraSpecialArgs = { inherit username; 
                 inherit gitUsername; inherit gitEmail; inherit inputs;

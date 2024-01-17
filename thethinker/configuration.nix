@@ -35,7 +35,7 @@ in
     magicOrExtension = ''\x7fELF....AI\x02'';
   };
 
-  networking.hostName = "pavilion-nixos"; # Define your hostname.
+  networking.hostName = "thethinker"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   networking.networkmanager.enable = true;
@@ -59,8 +59,6 @@ in
 
 
   console.keyMap = "uk";
-
-  boot.initrd.kernelModules = [ "amdgpu" ];
 
   hardware.opengl.driSupport = true;
 
@@ -100,6 +98,31 @@ in
     curl
   ];
 
+  specialisation = { 
+    nvidia.configuration = { 
+      # Nvidia Configuration 
+      services.xserver.videoDrivers = [ "nvidia" ]; 
+      hardware.opengl.enable = true; 
+  
+      # Optionally, you may need to select the appropriate driver version for your specific GPU. 
+      hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable; 
+   
+      # nvidia-drm.modeset=1 is required for some wayland compositors, e.g. sway 
+      hardware.nvidia.modesetting.enable = true; 
+   
+      hardware.nvidia.prime = { 
+        sync.enable = true; 
+   
+        # Bus ID of the NVIDIA GPU. You can find it using lspci, either under 3D or VGA 
+        nvidiaBusId = "PCI:06:00:0"; 
+  
+        # Bus ID of the Intel GPU. You can find it using lspci, either under 3D or VGA 
+        intelBusId = "PCI:00:02:0"; 
+      };
+    };
+  };
+
+
   services.udev.packages = with pkgs; [
     gnome.gnome-settings-daemon
     via
@@ -128,7 +151,6 @@ in
 
   services.xserver = {
     enable = true;
-    videoDrivers = [ "amdgpu" ];
     displayManager.gdm.enable = true;
     desktopManager.gnome.enable = true;
   };

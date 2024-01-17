@@ -46,7 +46,7 @@
 	      }
 	    ];
       };
-    };
+    
       thethinker = nixpkgs.lib.nixosSystem {
 	    specialArgs = { inherit system; inherit inputs; 
             inherit username; inherit hostname; inherit gitUsername;
@@ -64,7 +64,7 @@
 	      }
 	    ];
       };
-
+    };
   };
 
 

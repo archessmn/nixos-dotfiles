@@ -103,8 +103,8 @@
     dotDir = ".config/zsh";
     shellAliases = {
       cat = "bat";
-      nixconfig = "export EDITOR=nvim && sudoedit /etc/nixos/configuration.nix";
-      rebuild = "sudo nixos-rebuild switch";
+      nixconfig = "cd ~/nixos-dotfiles/";
+      rebuild = "cd ~/nixos-dotfiles/ && ./deploy";
     };
     enableVteIntegration = true;
     oh-my-zsh = {

@@ -2,3 +2,6 @@
 
 
 sudo nixos-rebuild switch --flake .#$(hostname -f)
+
+# TODO Push to git branch when deploying
+# https://medium.com/@wujido20/handling-flags-in-bash-scripts-4b06b4d0ed04

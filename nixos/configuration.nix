@@ -3,7 +3,9 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 # Just testing something
 
-{ config, pkgs, ... }:
+{ inputs, config, pkgs, username,
+  hostname, gitUsername, theLocale,
+  theTimezone, ... }:
 
 let
   unstable = import
@@ -16,7 +18,7 @@ in
   imports =
     [
       ./hardware-configuration.nix
-      <home-manager/nixos>
+      # <home-manager/nixos>
     ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -38,21 +40,23 @@ in
 
   networking.networkmanager.enable = true;
 
-  time.timeZone = "Europe/London";
+  time.timeZone = "${theTimezone}";
 
-  i18n.defaultLocale = "en_GB.UTF-8";
+  # Select internationalisation properties
+  i18n.defaultLocale = "${theLocale}";
 
   i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_GB.UTF-8";
-    LC_IDENTIFICATION = "en_GB.UTF-8";
-    LC_MEASUREMENT = "en_GB.UTF-8";
-    LC_MONETARY = "en_GB.UTF-8";
-    LC_NAME = "en_GB.UTF-8";
-    LC_NUMERIC = "en_GB.UTF-8";
-    LC_PAPER = "en_GB.UTF-8";
-    LC_TELEPHONE = "en_GB.UTF-8";
-    LC_TIME = "en_GB.UTF-8";
+    LC_ADDRESS = "${theLocale}";
+    LC_IDENTIFICATION = "${theLocale}";
+    LC_MEASUREMENT = "${theLocale}";
+    LC_MONETARY = "${theLocale}";
+    LC_NAME = "${theLocale}";
+    LC_NUMERIC = "${theLocale}";
+    LC_PAPER = "${theLocale}";
+    LC_TELEPHONE = "${theLocale}";
+    LC_TIME = "${theLocale}";
   };
+
 
   console.keyMap = "uk";
 
@@ -67,9 +71,9 @@ in
     "electron-25.9.0"
   ];
 
-  users.users.max = {
+  users.users."${username}" = {
     isNormalUser = true;
-    description = "Max Moir";
+    description = "${gitUsername}";
     extraGroups = [ "networkmanager" "wheel" "docker" ];
     ignoreShellProgramCheck = true;
     shell = pkgs.zsh;
@@ -80,140 +84,20 @@ in
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
 
-  home-manager.users.max = { pkgs, ... }: {
-    # environment.variable.EDITOR = "nvim";
-    fonts.fontconfig.enable = true;
-    home.packages = [
-      # Programming things
-      pkgs.rustc
-      pkgs.cargo
-      pkgs.gccgo13
+  # home-manager.users.max = { pkgs, ... }: {
+  #   # environment.variable.EDITOR = "nvim";
+  #   fonts.fontconfig.enable = true;
+    
 
-      # Terminal shit
-      pkgs.git
-      pkgs.gh
-      pkgs.vimPlugins.nvim-treesitter
-      pkgs.vimPlugins.nvim-treesitter-parsers.nix
-      pkgs.kitty
-      pkgs.rio
-      pkgs.walk
-      pkgs.bat
-      pkgs.neofetch
-      pkgs.fzf
-
-      # Communications
-      pkgs.slack
-      pkgs.discord
-      pkgs.element-desktop
-      pkgs.whatsapp-for-linux
-
-      # Desktop stuff
-      pkgs.anytype
-      pkgs.spotify
-      pkgs.via
-      pkgs.obsidian
-      pkgs.bitwarden
-      pkgs.dropbox
-      pkgs.vlc
-      pkgs.gnomeExtensions.appindicator
-      pkgs.gnomeExtensions.topicons-plus
-      # with pkgs.gnomeExtensions; [
-      #   appindicator
-      #   topicons-plus
-      # ];
-
-      # Gaming
-      pkgs.lutris
-      pkgs.steam
-      pkgs.thunderbird
-      pkgs.prismlauncher
-
-      # Remote stuff
-      pkgs.moonlight-qt
-      pkgs.parsec-bin
-      pkgs.virt-viewer
-      pkgs.termius
-
-      # Fonts
-      (pkgs.nerdfonts.override { fonts = [ "FiraMono" ]; })
-    ];
-    programs.neovim = {
-      enable = true;
-      defaultEditor = true;
-    };
-    programs.vscode = {
-      enable = true;
-      package = pkgs.vscode.fhsWithPackages (ps: with ps; [ 
-        rustup
-        rustc
-        cargo
-        cargo-generate
-        cargo-watch
-        cargo-nextest
-        cargo-flamegraph
-        zlib
-        openssl.dev
-        pkg-config
-        gccgo13
-        cmake
-        gdb
-        git
-        just
-        python3
-        nodejs
-      ]);
-    };
-    programs.eza = {
-      enable = true;
-      enableAliases = true;
-      extraOptions = [
-        "--group-directories-first"
-        "--header"
-      ];
-      icons = true;
-    };
-    programs.zsh = {
-      enable = true;
-      dotDir = ".config/zsh";
-      shellAliases = {
-        cat = "bat";
-	nixconfig = "export EDITOR=nvim && sudoedit /etc/nixos/configuration.nix";
-	rebuild = "sudo nixos-rebuild switch";
-      };
-      enableVteIntegration = true;
-      oh-my-zsh = {
-        enable = true;
-	plugins = [
-	  "genpass"
-        ];
-	theme = "robbyrussell";
-      };
-    };
-    programs.kitty = {
-      enable = true;
-      font.package = (pkgs.nerdfonts.override { fonts = [ "FiraMono" ]; });
-      font.name = "FiraMono Nerd Font";
-    };
-    programs.rio = {
-      enable = true;
-    };
-
-    home.file.".config/nvim".source = "/home/max/nixos-dotfiles/.config/nvim";
-    home.file.".config/nvim".recursive = true;
- 
-    home.file.".config/pylint".source = "/home/max/nixos-dotfiles/.config/pylint";
-    home.file.".config/pylint".recursive = true;
-
-    home.stateVersion = "23.05";
-  };
+  #   home.stateVersion = "23.05";
+  # };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     vim 
     wget
-    # gnomeExtensions.appindicator
-    # gnomeExtensions.topicons-plus
+    curl
   ];
 
   services.udev.packages = with pkgs; [
@@ -237,7 +121,7 @@ in
    '';
   };
 
-  system.stateVersion = "23.05";
+  system.stateVersion = "23.11";
 
   programs.firefox.enable = true;
   programs.steam.enable = true;

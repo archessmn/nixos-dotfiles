@@ -40,6 +40,21 @@ in
 
   networking.networkmanager.enable = true;
 
+  networking.firewall = {
+    logReversePathDrops = true;
+    extraCommands = ''
+      ip46tables -t mangle -I nixos-fw-rpfilter -p udp -m udp --sport 51820 -j RETURN
+      ip46tables -t mangle -I nixos-fw-rpfilter -p udp -m udp --dport 51820 -j RETURN
+    '';
+    extraStopCommands = ''
+      ip46tables -t mangle -D nixos-fw-rpfilter -p udp -m udp --sport 51820 -j RETURN || true
+      ip46tables -t mangle -D nixos-fw-rpfilter -p udp -m udp --dport 51820 -j RETURN || true
+    '';
+  };
+
+
+
+
   time.timeZone = "${theTimezone}";
 
   # Select internationalisation properties
@@ -104,16 +119,6 @@ in
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
 
-  # home-manager.users.max = { pkgs, ... }: {
-  #   # environment.variable.EDITOR = "nvim";
-  #   fonts.fontconfig.enable = true;
-    
-
-  #   home.stateVersion = "23.05";
-  # };
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
     vim 
     wget
@@ -128,18 +133,6 @@ in
   ];
 
   # services.openssh.enable = true;
-
-  networking.firewall = {
-   logReversePathDrops = true;
-   extraCommands = ''
-     ip46tables -t mangle -I nixos-fw-rpfilter -p udp -m udp --sport 51820 -j RETURN
-     ip46tables -t mangle -I nixos-fw-rpfilter -p udp -m udp --dport 51820 -j RETURN
-   '';
-   extraStopCommands = ''
-     ip46tables -t mangle -D nixos-fw-rpfilter -p udp -m udp --sport 51820 -j RETURN || true
-     ip46tables -t mangle -D nixos-fw-rpfilter -p udp -m udp --dport 51820 -j RETURN || true
-   '';
-  };
 
   system.stateVersion = "23.11";
 

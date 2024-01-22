@@ -9,6 +9,11 @@
 
   fonts.fontconfig.enable = true;
 
+  dconf = {
+    enable = true;
+    settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
+  };
+
   home.packages = [
     # Programming things
     pkgs.rustc
@@ -39,7 +44,7 @@
     pkgs.via
     pkgs.obsidian
     pkgs.bitwarden
-    pkgs.dropbox
+    # pkgs.dropbox
     pkgs.vlc
     pkgs.gnomeExtensions.appindicator
     pkgs.gnomeExtensions.topicons-plus

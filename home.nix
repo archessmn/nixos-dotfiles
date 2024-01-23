@@ -9,6 +9,11 @@
 
   imports = [
     ./config/home/vscode.nix
+    ./config/home/neovim.nix
+    ./config/home/kitty.nix
+    ./config/home/zsh.nix
+    ./config/home/eza.nix
+    
   ];
 
   fonts.fontconfig.enable = true;
@@ -72,47 +77,6 @@
     # Fonts
     (pkgs.nerdfonts.override { fonts = [ "FiraMono" ]; })
   ];
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-  };
-  programs.eza = {
-    enable = true;
-    enableAliases = true;
-    extraOptions = [
-      "--group-directories-first"
-      "--header"
-    ];
-    icons = true;
-  };
-  programs.zsh = {
-    enable = true;
-    dotDir = ".config/zsh";
-    shellAliases = {
-      cat = "bat";
-      nixconfig = "cd ~/nixos-dotfiles/";
-      rebuild = "cd ~/nixos-dotfiles/ && ./deploy";
-    };
-    enableVteIntegration = true;
-    oh-my-zsh = {
-      enable = true;
-      plugins = [
-        "genpass"
-            ];
-      theme = "robbyrussell";
-    };
-  };
-  programs.kitty = {
-    enable = true;
-    font.package = (pkgs.nerdfonts.override { fonts = [ "FiraMono" ]; });
-    font.name = "FiraMono Nerd Font";
-  };
-  programs.rio = {
-    enable = true;
-  };
-
-  home.file.".config/nvim".source = ./config/nvim;
-  home.file.".config/nvim".recursive = true;
 
   home.file.".config/pylint".source = ./config/pylint;
   home.file.".config/pylint".recursive = true;

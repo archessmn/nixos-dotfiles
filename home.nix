@@ -13,15 +13,10 @@
     ./config/home/kitty.nix
     ./config/home/zsh.nix
     ./config/home/eza.nix
-    
+    ./config/home/dconf.nix
   ];
 
   fonts.fontconfig.enable = true;
-
-  dconf = {
-    enable = true;
-    settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
-  };
 
   home.packages = [
     # Programming things

@@ -57,6 +57,10 @@
     pkgs.vlc
     pkgs.gnomeExtensions.appindicator
     pkgs.gnomeExtensions.topicons-plus
+    pkgs.gnomeExtensions.blur-my-shell
+    pkgs.gnomeExtensions.color-picker
+    pkgs.gnomeExtensions.media-controls
+    pkgs.gnomeExtensions.vitals
     # with pkgs.gnomeExtensions; [
     #   appindicator
     #   topicons-plus

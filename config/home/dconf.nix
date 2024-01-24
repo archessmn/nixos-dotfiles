@@ -1,14 +1,15 @@
-{ config, pkgs, inputs, username,
+{ lib, config, pkgs, inputs, username,
   gitUsername, gitEmail,
   browser, flakeDir, ... }:
 
+with lib.hm.gvariant;
 {
   dconf = {
     enable = true;
     settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
     settings."org/gnome/shell/extensions/blur-my-shell" = {
       brightness = 0.64;
-      color = "(0.356, 0.0542, 0.397, 0.233)";
+      color = (mkTuple [0.356 0.054 0.397 0.233]);
       hacks-level = 3;
       noise-amount = 0.2;
       noise-lightness = 0.69;

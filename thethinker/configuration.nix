@@ -96,6 +96,7 @@ in
     vim 
     wget
     curl
+    gnomeExtensions.screen-rotate
   ];
 
   specialisation = { 

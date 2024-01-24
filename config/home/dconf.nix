@@ -24,5 +24,12 @@ with lib.hm.gvariant;
       sigma = 6;
       whitelist = ["kitty"];
     };
+    settings."org/gnome/shell/extensions/blur-my-shell/overview" = {
+      blur = true;
+      style-components = 3;
+    };
+    settings."org/gnome/shell/extensions/blur-my-shell/panel" = {
+      override-background = true;
+    }; 
   };
 }

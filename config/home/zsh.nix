@@ -8,6 +8,7 @@
     dotDir = ".config/zsh";
     shellAliases = {
       cat = "bat";
+      bonk = "clear";
       nixconfig = "cd ~/nixos-dotfiles/";
       rebuild = "cd ~/nixos-dotfiles/ && ./deploy";
     };

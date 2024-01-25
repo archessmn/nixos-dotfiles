@@ -8,12 +8,13 @@
   home.stateVersion = "23.11";
 
   imports = [
-    ./config/home/vscode.nix
-    ./config/home/neovim.nix
-    ./config/home/kitty.nix
-    ./config/home/zsh.nix
-    ./config/home/eza.nix
     ./config/home/dconf.nix
+    ./config/home/eza.nix
+    ./config/home/kitty.nix
+    ./config/home/neovim.nix
+    ./config/home/rio.nix
+    ./config/home/vscode.nix
+    ./config/home/zsh.nix
   ];
 
   fonts.fontconfig.enable = true;

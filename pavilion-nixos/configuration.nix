@@ -52,7 +52,7 @@ in
     '';
   };
 
-
+  services.tailscale.enable = true;
 
 
   time.timeZone = "${theTimezone}";

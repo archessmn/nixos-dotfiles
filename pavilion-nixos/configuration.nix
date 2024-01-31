@@ -123,6 +123,7 @@ in
     vim 
     wget
     curl
+    libimobiledevice
   ];
 
   services.udev.packages = with pkgs; [
@@ -158,6 +159,8 @@ in
     enable = true;
     pulse.enable = true;
   };
+
+  services.usbmuxd.enable = true;
 
   hardware.bluetooth = {
     enable = true;

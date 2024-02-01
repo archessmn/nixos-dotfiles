@@ -51,12 +51,15 @@
     pkgs.bitwarden
     # pkgs.dropbox
     pkgs.vlc
+    pkgs.helvum
     pkgs.gnomeExtensions.appindicator
     pkgs.gnomeExtensions.topicons-plus
     pkgs.gnomeExtensions.blur-my-shell
     pkgs.gnomeExtensions.color-picker
     pkgs.gnomeExtensions.media-controls
     pkgs.gnomeExtensions.vitals
+    pkgs.gnomeExtensions.gsconnect
+    pkgs.gnomeExtensions.quick-settings-tweaker
     # with pkgs.gnomeExtensions; [
     #   appindicator
     #   topicons-plus

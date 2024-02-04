@@ -124,6 +124,7 @@ in
     wget
     curl
     libimobiledevice
+    wineWowPackages.full
   ];
 
   services.udev.packages = with pkgs; [

@@ -1,0 +1,4 @@
+uri = "https://idm.archess.mn"
+verify_ca = true
+verify_hostnames = true
+

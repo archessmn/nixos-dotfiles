@@ -10,6 +10,7 @@
   imports = [
     ./config/home/dconf.nix
     ./config/home/eza.nix
+    ./config/home/kanidm.nix
     ./config/home/kitty.nix
     ./config/home/neovim.nix
     ./config/home/rio.nix
@@ -43,12 +44,15 @@
     pkgs.element-desktop
     pkgs.whatsapp-for-linux
 
+    # Security stuff
+    pkgs.kanidm
+    pkgs.bitwarden
+
     # Desktop stuff
     pkgs.anytype
     pkgs.spotify
     pkgs.via
     pkgs.obsidian
-    pkgs.bitwarden
     # pkgs.dropbox
     pkgs.vlc
     pkgs.helvum

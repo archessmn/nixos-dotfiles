@@ -25,6 +25,7 @@
     pkgs.rustc
     pkgs.cargo
     pkgs.gccgo13
+    pkgs.jetbrains.idea-ultimate
 
     # Terminal shit
     pkgs.git
@@ -53,6 +54,7 @@
     pkgs.spotify
     pkgs.via
     pkgs.obsidian
+
     # pkgs.dropbox
     pkgs.vlc
     pkgs.helvum

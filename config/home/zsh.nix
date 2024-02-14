@@ -6,6 +6,7 @@
   imports = [
     ./shell/eza.nix
     ./shell/fzf.nix
+    ./shell/zoxide.nix
   ];
   
   programs.zsh = {

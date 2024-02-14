@@ -9,7 +9,6 @@
 
   imports = [
     ./config/home/dconf.nix
-    ./config/home/eza.nix
     ./config/home/kanidm.nix
     ./config/home/kitty.nix
     ./config/home/neovim.nix
@@ -26,6 +25,7 @@
     pkgs.cargo
     pkgs.gccgo13
     pkgs.jetbrains.idea-ultimate
+    pkgs.jflap
 
     # Terminal shit
     pkgs.git
@@ -37,7 +37,6 @@
     pkgs.walk
     pkgs.bat
     pkgs.neofetch
-    pkgs.fzf
 
     # Communications
     pkgs.slack

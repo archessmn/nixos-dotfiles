@@ -3,6 +3,11 @@
   browser, flakeDir, ... }:
 
 {
+  imports = [
+    ./shell/eza.nix
+    ./shell/fzf.nix
+  ];
+  
   programs.zsh = {
     enable = true;
     dotDir = ".config/zsh";

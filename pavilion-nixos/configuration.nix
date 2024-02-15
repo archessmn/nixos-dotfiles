@@ -3,6 +3,8 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 # Just testing something
 
+flake-overlays:
+
 { inputs, config, pkgs, username,
   hostname, gitUsername, theLocale,
   theTimezone, ... }:
@@ -22,6 +24,8 @@ in
     ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  nixpkgs.overlays = [] ++ flake-overlays;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -125,6 +129,7 @@ in
     curl
     libimobiledevice
     wineWowPackages.full
+    xilinx-ise
   ];
 
   services.udev.packages = with pkgs; [
@@ -132,6 +137,7 @@ in
     via
     moonlight-qt
     parsec-bin
+    xilinx-udev-rules
   ];
 
   # services.openssh.enable = true;

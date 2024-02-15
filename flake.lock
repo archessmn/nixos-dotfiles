@@ -21,6 +21,26 @@
         "type": "github"
       }
     },
+    "nix-fpga-tools": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1708034670,
+        "narHash": "sha256-9QNRQwGurJrImZKC/Er9cnmBf7sFa03zgPtv/MA+7RM=",
+        "owner": "archessmn",
+        "repo": "nix-fpga-tools",
+        "rev": "324b787f29eba7d6cea5a2457bbeede97fc1b96c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "archessmn",
+        "repo": "nix-fpga-tools",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1705331948,
@@ -40,6 +60,7 @@
     "root": {
       "inputs": {
         "home-manager": "home-manager",
+        "nix-fpga-tools": "nix-fpga-tools",
         "nixpkgs": "nixpkgs"
       }
     }

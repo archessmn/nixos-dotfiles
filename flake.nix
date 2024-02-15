@@ -5,9 +5,13 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
     home-manager.url = "github:nix-community/home-manager/release-23.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    nix-fpga-tools = {
+      url = "github:archessmn/nix-fpga-tools";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, ... }:
+  outputs = inputs@{ nixpkgs, home-manager, nix-fpga-tools, ... }:
   let
     system = "x86_64-linux";
 
@@ -27,6 +31,10 @@
 	  allowUnfree = true;
       };
     };
+
+    flake-overlays = [
+      nix-fpga-tools.overlay
+    ];
   in {
     nixosConfigurations = {
       pavilion-nixos = nixpkgs.lib.nixosSystem {
@@ -34,7 +42,7 @@
             inherit username; inherit hostname; inherit gitUsername;
             inherit gitEmail; inherit theLocale; inherit theTimezone;
         };
-	    modules = [ ./pavilion-nixos/configuration.nix
+	    modules = [ (import ./pavilion-nixos/configuration.nix flake-overlays)
           home-manager.nixosModules.home-manager {
 	        home-manager.extraSpecialArgs = { inherit username; 
                 inherit gitUsername; inherit gitEmail; inherit inputs;

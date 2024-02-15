@@ -6,7 +6,8 @@
     home-manager.url = "github:nix-community/home-manager/release-23.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nix-fpga-tools = {
-      url = "github:benpye/nix-fpga-tools";
+      url = "github:archessmn/nix-fpga-tools";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 

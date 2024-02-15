@@ -21,7 +21,40 @@
         "type": "github"
       }
     },
+    "nix-fpga-tools": {
+      "inputs": {
+        "nixpkgs": "nixpkgs"
+      },
+      "locked": {
+        "lastModified": 1642361702,
+        "narHash": "sha256-2pWYshtIK4semuBuYGs6jTuLPvbxI452kE/+DeoppKA=",
+        "owner": "benpye",
+        "repo": "nix-fpga-tools",
+        "rev": "9d90f2a29d8beac2388f0a213f8b06f81577f778",
+        "type": "github"
+      },
+      "original": {
+        "owner": "benpye",
+        "repo": "nix-fpga-tools",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
+      "locked": {
+        "lastModified": 1640798027,
+        "narHash": "sha256-1e7bsxWJW0ugkA95AMGL3Da9sHugkz+J4kfYB9fTWZc=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "8588b14a397e045692d0a87192810b6dddf53003",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "ref": "release-21.11",
+        "type": "indirect"
+      }
+    },
+    "nixpkgs_2": {
       "locked": {
         "lastModified": 1705331948,
         "narHash": "sha256-qjQXfvrAT1/RKDFAMdl8Hw3m4tLVvMCc8fMqzJv0pP4=",
@@ -40,7 +73,8 @@
     "root": {
       "inputs": {
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs"
+        "nix-fpga-tools": "nix-fpga-tools",
+        "nixpkgs": "nixpkgs_2"
       }
     }
   },

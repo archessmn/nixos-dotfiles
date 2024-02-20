@@ -129,7 +129,7 @@ in
     curl
     libimobiledevice
     wineWowPackages.full
-    xilinx-ise
+    # xilinx-ise
   ];
 
   services.udev.packages = with pkgs; [
@@ -137,7 +137,7 @@ in
     via
     moonlight-qt
     parsec-bin
-    xilinx-udev-rules
+    # xilinx-udev-rules
   ];
 
   # services.openssh.enable = true;

@@ -7,11 +7,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1705476964,
-        "narHash": "sha256-W5OK1fnj4qdn1HWOlxV2S3YiUvfaVjQM5ldWVpGV1fs=",
+        "lastModified": 1706981411,
+        "narHash": "sha256-cLbLPTL1CDmETVh4p0nQtvoF+FSEjsnJTFpTxhXywhQ=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "85c3b600f660abd86e94cbcd1c46733943197a07",
+        "rev": "652fda4ca6dafeb090943422c34ae9145787af37",
         "type": "github"
       },
       "original": {
@@ -21,33 +21,13 @@
         "type": "github"
       }
     },
-    "nix-fpga-tools": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1708034670,
-        "narHash": "sha256-9QNRQwGurJrImZKC/Er9cnmBf7sFa03zgPtv/MA+7RM=",
-        "owner": "archessmn",
-        "repo": "nix-fpga-tools",
-        "rev": "324b787f29eba7d6cea5a2457bbeede97fc1b96c",
-        "type": "github"
-      },
-      "original": {
-        "owner": "archessmn",
-        "repo": "nix-fpga-tools",
-        "type": "github"
-      }
-    },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1705331948,
-        "narHash": "sha256-qjQXfvrAT1/RKDFAMdl8Hw3m4tLVvMCc8fMqzJv0pP4=",
+        "lastModified": 1707978831,
+        "narHash": "sha256-UblFdWQ2MMZNzD9C/w8+7RjAJ2QIbebbzHUniQ/a44o=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "b8dd8be3c790215716e7c12b247f45ca525867e2",
+        "rev": "c68a9fc85c2cb3a313be6ff40511635544dde8da",
         "type": "github"
       },
       "original": {
@@ -60,7 +40,6 @@
     "root": {
       "inputs": {
         "home-manager": "home-manager",
-        "nix-fpga-tools": "nix-fpga-tools",
         "nixpkgs": "nixpkgs"
       }
     }

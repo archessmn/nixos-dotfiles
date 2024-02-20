@@ -23,8 +23,13 @@
     # Programming things
     pkgs.rustc
     pkgs.cargo
+    pkgs.nodejs
+    pkgs.bun
     pkgs.gccgo13
     pkgs.jetbrains.idea-ultimate
+    pkgs.jdk8
+    # pkgs.jdk11
+    # pkgs.jdk17
     pkgs.jflap
 
     # Terminal shit
@@ -85,6 +90,12 @@
     # Fonts
     (pkgs.nerdfonts.override { fonts = [ "FiraMono" ]; })
   ];
+
+  programs.direnv = {
+    enable = true;
+    enableZshIntegration = true; # see note on other shells below
+    nix-direnv.enable = true;
+  };
 
   home.file.".config/pylint".source = ./config/pylint;
   home.file.".config/pylint".recursive = true;

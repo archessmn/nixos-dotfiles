@@ -22,6 +22,10 @@
       just
       python3
       nodejs
+
+      jdk8
+      jdk11
+      jdk17
     ]);
   };
 

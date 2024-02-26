@@ -39,7 +39,7 @@ in
     magicOrExtension = ''\x7fELF....AI\x02'';
   };
 
-  networking.hostName = "pavilion-nixos"; # Define your hostname.
+  networking.hostName = "adrasteia"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   networking.networkmanager.enable = true;
@@ -152,7 +152,11 @@ in
     videoDrivers = [ "amdgpu" ];
     displayManager.gdm.enable = true;
     desktopManager.gnome.enable = true;
+    # displayManager.sddm.enable = true;
+    # desktopManager.plasma5.enable = true;
   };
+
+  programs.ssh.askPassword = pkgs.lib.mkForce "${pkgs.gnome.seahorse.out}/libexec/seahorse/ssh-askpass";
 
   programs.hyprland = {
     enable = true;

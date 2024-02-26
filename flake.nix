@@ -37,12 +37,12 @@
     ];
   in {
     nixosConfigurations = {
-      pavilion-nixos = nixpkgs.lib.nixosSystem {
+      adrasteia = nixpkgs.lib.nixosSystem {
 	    specialArgs = { inherit system; inherit inputs; 
             inherit username; inherit hostname; inherit gitUsername;
             inherit gitEmail; inherit theLocale; inherit theTimezone;
         };
-	    modules = [ (import ./pavilion-nixos/configuration.nix flake-overlays)
+	    modules = [ (import ./adrasteia/configuration.nix flake-overlays)
           home-manager.nixosModules.home-manager {
 	        home-manager.extraSpecialArgs = { inherit username; 
                 inherit gitUsername; inherit gitEmail; inherit inputs;

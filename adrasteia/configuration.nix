@@ -129,6 +129,7 @@ in
     curl
     libimobiledevice
     wineWowPackages.full
+    openrgb
     # xilinx-ise
   ];
 
@@ -137,6 +138,7 @@ in
     via
     moonlight-qt
     parsec-bin
+    openrgb
     # xilinx-udev-rules
   ];
 

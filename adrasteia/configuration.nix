@@ -184,4 +184,15 @@ in
       };
     };
   };
+
+  virtualisation.oci-containers = {
+    backend = "docker";
+    containers = {
+      companion = {
+        autoStart = true;
+        image = "ghcr.io/bitfocus/companion/companion:latest";
+        ports = ["8000:8000"];
+      };
+    };
+  };
 }

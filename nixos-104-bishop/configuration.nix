@@ -23,7 +23,7 @@
     }];
   }];
 
-  networking.hostName = "nixos-103-bishop"; # Define your hostname.
+  networking.hostName = "nixos-104-bishop"; # Define your hostname.
   
   # Enable networking
   networking.networkmanager.enable = true;
@@ -71,6 +71,8 @@
   environment.systemPackages = with pkgs; [
     vim
     git
+    curl
+    wget
   ];
 
    # List services that you want to enable:

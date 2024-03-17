@@ -129,6 +129,7 @@ in
     curl
     libimobiledevice
     wineWowPackages.full
+    openrgb
     # xilinx-ise
   ];
 
@@ -137,6 +138,7 @@ in
     via
     moonlight-qt
     parsec-bin
+    openrgb
     # xilinx-udev-rules
   ];
 
@@ -179,6 +181,17 @@ in
     settings = {
       General = {
         Experimental = true;
+      };
+    };
+  };
+
+  virtualisation.oci-containers = {
+    backend = "docker";
+    containers = {
+      companion = {
+        autoStart = true;
+        image = "ghcr.io/bitfocus/companion/companion:latest";
+        ports = ["8000:8000"];
       };
     };
   };

@@ -24,6 +24,7 @@
     pkgs.rustc
     pkgs.cargo
     pkgs.nodejs
+    pkgs.nodePackages.npm
     pkgs.bun
     pkgs.gccgo13
     pkgs.jetbrains.idea-ultimate

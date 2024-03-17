@@ -22,6 +22,7 @@
       just
       python3
       nodejs
+      nodePackages.npm
 
       jdk8
       jdk11

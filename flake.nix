@@ -38,40 +38,68 @@
   in {
     nixosConfigurations = {
       adrasteia = nixpkgs.lib.nixosSystem {
-	    specialArgs = { inherit system; inherit inputs; 
-            inherit username; inherit hostname; inherit gitUsername;
-            inherit gitEmail; inherit theLocale; inherit theTimezone;
+        specialArgs = { inherit system; inherit inputs; 
+          inherit username; inherit hostname; inherit gitUsername;
+          inherit gitEmail; inherit theLocale; inherit theTimezone;
         };
-	    modules = [ (import ./adrasteia/configuration.nix flake-overlays)
+        modules = [ (import ./adrasteia/configuration.nix flake-overlays)
           home-manager.nixosModules.home-manager {
-	        home-manager.extraSpecialArgs = { inherit username; 
-                inherit gitUsername; inherit gitEmail; inherit inputs;
-                inherit browser; inherit flakeDir;
+            home-manager.extraSpecialArgs = { inherit username; 
+              inherit gitUsername; inherit gitEmail; inherit inputs;
+              inherit browser; inherit flakeDir;
             };
-	        home-manager.useGlobalPkgs = true;
-	        home-manager.useUserPackages = true;
-	        home-manager.users.${username} = import ./home.nix;
-	      }
-	    ];
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.${username} = import ./home.nix;
+          }
+        ];
       };
     
       thethinker = nixpkgs.lib.nixosSystem {
-	    specialArgs = { inherit system; inherit inputs; 
-            inherit username; inherit hostname; inherit gitUsername;
-            inherit gitEmail; inherit theLocale; inherit theTimezone;
+        specialArgs = { inherit system; inherit inputs; 
+          inherit username; inherit hostname; inherit gitUsername;
+          inherit gitEmail; inherit theLocale; inherit theTimezone;
         };
-	    modules = [ ./thethinker/configuration.nix
+	modules = [ ./thethinker/configuration.nix
           home-manager.nixosModules.home-manager {
-	        home-manager.extraSpecialArgs = { inherit username; 
-                inherit gitUsername; inherit gitEmail; inherit inputs;
-                inherit browser; inherit flakeDir;
-            };
-	        home-manager.useGlobalPkgs = true;
-	        home-manager.useUserPackages = true;
-	        home-manager.users.${username} = import ./home.nix;
-	      }
-	    ];
+          home-manager.extraSpecialArgs = { inherit username; 
+            inherit gitUsername; inherit gitEmail; inherit inputs;
+            inherit browser; inherit flakeDir;
+          };
+          home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.${username} = import ./home.nix;
+          }
+	];
       };
+
+      exampleIso = nixpkgs.lib.nixosSystem {
+	      system = "x86_64-linux";
+        modules = [
+          "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
+          ({ pkgs, ... }: {
+            environment.systemPackages = [ pkgs.vim ];
+          })
+          ./iso/configuration.nix
+        ];
+      };
+
+      # TODO: Have a look at implementing a similar script to below
+      # https://discourse.nixos.org/t/deploy-nixos-configurations-on-other-machines/22940/6
+      nixos-103-bishop = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./nixos-103-bishop/configuration.nix
+        ];
+      };
+
+      nixos-104-bishop = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./nixos-104-bishop/configuration.nix
+        ];
+      };
+
     };
   };
 

@@ -22,6 +22,7 @@ in
     ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.trusted-users = ["max"];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -34,6 +35,15 @@ in
     mask = ''\xff\xff\xff\xff\x00\x00\x00\x00\xff\xff\xff'';
     magicOrExtension = ''\x7fELF....AI\x02'';
   };
+
+  security.sudo.extraRules = [{
+    users = ["max"];
+    runAs = "ALL:ALL";
+    commands = [{
+      command = "ALL";
+      options = ["NOPASSWD"];
+    }];
+  }];
 
   networking.hostName = "thethinker"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -75,6 +85,7 @@ in
     extraGroups = [ "networkmanager" "wheel" "docker" ];
     ignoreShellProgramCheck = true;
     shell = pkgs.zsh;
+    openssh.authorizedKeys.keyFiles = [ "/home/${username}/.ssh.authorized_keys" ];
   };
 
   nixpkgs.config.allowUnfree = true;
@@ -133,7 +144,13 @@ in
     parsec-bin
   ];
 
-  # services.openssh.enable = true;
+  services.openssh = {
+    enable = true;
+    settings.PasswordAuthentication = false;
+    settings.KbdIntercativeAuthentication = 
+  };
+
+  services.tailscale.enable = true;
 
   networking.firewall = {
    logReversePathDrops = true;

@@ -85,7 +85,7 @@ in
     extraGroups = [ "networkmanager" "wheel" "docker" ];
     ignoreShellProgramCheck = true;
     shell = pkgs.zsh;
-    openssh.authorizedKeys.keyFiles = [ "/home/${username}/.ssh.authorized_keys" ];
+    openssh.authorizedKeys.keyFiles = [ "/home/${username}/.ssh/authorized_keys" ];
   };
 
   nixpkgs.config.allowUnfree = true;
@@ -147,7 +147,7 @@ in
   services.openssh = {
     enable = true;
     settings.PasswordAuthentication = false;
-    settings.KbdIntercativeAuthentication = false; 
+    settings.KbdInteractiveAuthentication = false; 
   };
 
   services.tailscale.enable = true;

@@ -59,6 +59,7 @@
     pkgs.spotify
     pkgs.via
     pkgs.obsidian
+    pkgs.x32edit
 
     # pkgs.dropbox
     pkgs.vlc

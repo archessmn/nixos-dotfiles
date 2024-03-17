@@ -8,7 +8,7 @@
       ../bishop-shared/nomad-server.nix
     ];
 
-  networking.hostName = "nixos-104-bishop"; # Define your hostname.
+  networking.hostName = "nixos-105-bishop"; # Define your hostname.
 
   system.stateVersion = "23.11";
 }

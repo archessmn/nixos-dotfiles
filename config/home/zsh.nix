@@ -35,4 +35,9 @@
     enable = true;
     enableZshIntegration = true;
   };
+
+  programs.navi = {
+    enable = true;
+    enableZshIntegration = true;
+  };
 }

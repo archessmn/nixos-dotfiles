@@ -60,17 +60,17 @@
           inherit username; inherit hostname; inherit gitUsername;
           inherit gitEmail; inherit theLocale; inherit theTimezone;
         };
-	modules = [ ./thethinker/configuration.nix
+	      modules = [ ./thethinker/configuration.nix
           home-manager.nixosModules.home-manager {
-          home-manager.extraSpecialArgs = { inherit username; 
-            inherit gitUsername; inherit gitEmail; inherit inputs;
-            inherit browser; inherit flakeDir;
-          };
-          home-manager.useGlobalPkgs = true;
+            home-manager.extraSpecialArgs = { inherit username; 
+              inherit gitUsername; inherit gitEmail; inherit inputs;
+              inherit browser; inherit flakeDir;
+            };
+            home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.${username} = import ./home.nix;
           }
-	];
+	      ];
       };
 
       slowpoke = nixpkgs.lib.nixosSystem {
@@ -119,6 +119,19 @@
         ];
       };
 
+      nixos-105-bishop = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./nixos-105-bishop/configuration.nix
+        ];
+      };
+
+      nixos-200-bishop = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./nixos-200-bishop/configuration.nix
+        ];
+      };
     };
   };
 

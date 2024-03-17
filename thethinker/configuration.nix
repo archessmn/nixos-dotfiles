@@ -147,7 +147,7 @@ in
   services.openssh = {
     enable = true;
     settings.PasswordAuthentication = false;
-    settings.KbdIntercativeAuthentication = 
+    settings.KbdIntercativeAuthentication = false; 
   };
 
   services.tailscale.enable = true;

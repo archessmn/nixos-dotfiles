@@ -97,6 +97,8 @@ in
     wget
     curl
     gnomeExtensions.screen-rotate
+
+    tailscale
   ];
 
   specialisation = { 

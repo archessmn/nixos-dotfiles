@@ -73,6 +73,25 @@
 	];
       };
 
+      slowpoke = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit system; inherit inputs; 
+          inherit username; inherit hostname; inherit gitUsername;
+          inherit gitEmail; inherit theLocale; inherit theTimezone;
+        };
+	modules = [ ./slowpoke/configuration.nix
+          home-manager.nixosModules.home-manager {
+          home-manager.extraSpecialArgs = { inherit username; 
+            inherit gitUsername; inherit gitEmail; inherit inputs;
+            inherit browser; inherit flakeDir;
+          };
+          home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.${username} = import ./home.nix;
+          }
+	];
+      };
+
+
       exampleIso = nixpkgs.lib.nixosSystem {
 	      system = "x86_64-linux";
         modules = [

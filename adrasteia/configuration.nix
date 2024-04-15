@@ -7,14 +7,14 @@ flake-overlays:
 
 { inputs, config, pkgs, username,
   hostname, gitUsername, theLocale,
-  theTimezone, ... }:
+  theTimezone, unstablePkgs, ... }:
 
-let
-  unstable = import
-    (builtins.fetchTarball https://github.com/nixos/nixpkgs/tarball/master)
-    # reuse the current configuration
-    { config = config.nixpkgs.config; };
-in
+#let
+#  unstable = import
+#    (builtins.fetchTarball https://github.com/nixos/nixpkgs/tarball/master)
+#    # reuse the current configuration
+#    { config = config.nixpkgs.config; };
+#in
 
 {
   imports =
@@ -54,6 +54,8 @@ in
       ip46tables -t mangle -D nixos-fw-rpfilter -p udp -m udp --sport 51820 -j RETURN || true
       ip46tables -t mangle -D nixos-fw-rpfilter -p udp -m udp --dport 51820 -j RETURN || true
     '';
+
+    allowedUDPPorts = [69];
   };
 
   services.tailscale.enable = true;
@@ -123,15 +125,19 @@ in
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
 
-  environment.systemPackages = with pkgs; [
-    vim 
-    wget
-    curl
-    libimobiledevice
-    wineWowPackages.full
-    openrgb
-    # xilinx-ise
+  environment.systemPackages = [
+    pkgs.vim 
+    pkgs.wget
+    pkgs.curl
+    pkgs.libimobiledevice
+    pkgs.wineWowPackages.full
+    pkgs.openrgb
+    unstablePkgs.kanidm
   ];
+
+  #environment.systemPackages = with unstable; [
+  #  kanidm
+  #];
 
   services.udev.packages = with pkgs; [
     gnome.gnome-settings-daemon

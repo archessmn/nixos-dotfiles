@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, username,
+{ config, pkgs, unstablePkgs, inputs, username,
   gitUsername, gitEmail,
   browser, flakeDir, ... }:
 
@@ -51,7 +51,7 @@
     pkgs.whatsapp-for-linux
 
     # Security stuff
-    pkgs.kanidm
+    unstablePkgs.kanidm
     pkgs.bitwarden
 
     # Desktop stuff
@@ -59,6 +59,7 @@
     pkgs.spotify
     pkgs.via
     pkgs.obsidian
+    pkgs.x32edit
 
     # pkgs.dropbox
     pkgs.vlc

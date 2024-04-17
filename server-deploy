@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+nixos-rebuild switch --flake .#nixos-103-bishop --target-host nixos-103-bishop --build-host nixos-103-bishop --use-remote-sudo --impure
+nixos-rebuild switch --flake .#nixos-104-bishop --target-host nixos-104-bishop --build-host nixos-104-bishop --use-remote-sudo --impure
+nixos-rebuild switch --flake .#nixos-105-bishop --target-host nixos-105-bishop --build-host nixos-105-bishop --use-remote-sudo --impure
+
+# TODO Push to git branch when deploying
+# https://medium.com/@wujido20/handling-flags-in-bash-scripts-4b06b4d0ed04

@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+    unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager/release-23.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     # nix-fpga-tools = {
@@ -11,7 +12,7 @@
     # };
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, ... }:
+  outputs = inputs@{ nixpkgs, unstable, home-manager, ... }:
   let
     system = "x86_64-linux";
 
@@ -32,6 +33,13 @@
       };
     };
 
+    unstablePkgs = import unstable {
+      inherit system;
+      config ={
+        allowUnfree = true;
+      };
+    };
+
     flake-overlays = [
       # nix-fpga-tools.overlay
     ];
@@ -41,12 +49,13 @@
         specialArgs = { inherit system; inherit inputs; 
           inherit username; inherit hostname; inherit gitUsername;
           inherit gitEmail; inherit theLocale; inherit theTimezone;
+          inherit unstablePkgs;
         };
         modules = [ (import ./adrasteia/configuration.nix flake-overlays)
           home-manager.nixosModules.home-manager {
             home-manager.extraSpecialArgs = { inherit username; 
               inherit gitUsername; inherit gitEmail; inherit inputs;
-              inherit browser; inherit flakeDir;
+              inherit browser; inherit flakeDir; inherit unstablePkgs;
             };
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
@@ -60,13 +69,13 @@
           inherit username; inherit hostname; inherit gitUsername;
           inherit gitEmail; inherit theLocale; inherit theTimezone;
         };
-	modules = [ ./thethinker/configuration.nix
+	      modules = [ ./thethinker/configuration.nix
           home-manager.nixosModules.home-manager {
-          home-manager.extraSpecialArgs = { inherit username; 
-            inherit gitUsername; inherit gitEmail; inherit inputs;
-            inherit browser; inherit flakeDir;
-          };
-          home-manager.useGlobalPkgs = true;
+            home-manager.extraSpecialArgs = { inherit username; 
+              inherit gitUsername; inherit gitEmail; inherit inputs;
+              inherit browser; inherit flakeDir;
+            };
+            home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.${username} = import ./home.nix;
           }
@@ -137,6 +146,19 @@
         ];
       };
 
+      nixos-105-bishop = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./nixos-105-bishop/configuration.nix
+        ];
+      };
+
+      nixos-200-bishop = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./nixos-200-bishop/configuration.nix
+        ];
+      };
     };
   };
 

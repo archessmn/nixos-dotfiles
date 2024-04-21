@@ -21,6 +21,7 @@ in
     [
       ./hardware-configuration.nix
       # <home-manager/nixos>
+      ../config/home/sunshine.nix
     ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -54,10 +55,14 @@ in
       ip46tables -t mangle -D nixos-fw-rpfilter -p udp -m udp --sport 51820 -j RETURN || true
       ip46tables -t mangle -D nixos-fw-rpfilter -p udp -m udp --dport 51820 -j RETURN || true
     '';
+    allowedTCPPorts = [ 47984 47989 47990 48010 ];
+    allowedUDPPortRanges = [
+      { from = 47998; to = 48000; }
+      #{ from = 8000; to = 8010; }
+    ];
   };
 
   services.tailscale.enable = true;
-
 
   time.timeZone = "${theTimezone}";
 
@@ -139,6 +144,8 @@ in
     libimobiledevice
     wineWowPackages.full
     openrgb
+
+    sunshine
     # xilinx-ise
   ];
 
@@ -148,8 +155,14 @@ in
     moonlight-qt
     parsec-bin
     openrgb
+    sunshine
     # xilinx-udev-rules
   ];
+
+  programs.sunshine.enable = true;
+
+  services.avahi.publish.enable = true;
+  services.avahi.publish.userServices = true;
 
   # services.openssh.enable = true;
 

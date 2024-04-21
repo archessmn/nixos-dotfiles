@@ -6,6 +6,7 @@
       ./hardware-configuration.nix
       ../bishop-shared/default.nix
       ../bishop-shared/nomad-server.nix
+      ../bishop-shared/consul.nix
     ];
 
   networking.hostName = "nixos-104-bishop"; # Define your hostname.

@@ -7,7 +7,7 @@ flake-overlays:
 
 { inputs, config, pkgs, username,
   hostname, gitUsername, theLocale,
-  theTimezone, ... }:
+  theTimezone, unstablePkgs, ... }:
 
 let
   unstable = import
@@ -78,7 +78,7 @@ in
 
   console.keyMap = "uk";
 
-  boot.initrd.kernelModules = [ "amdgpu" ];
+  # boot.initrd.kernelModules = [ "amdgpu" ];
 
   services.power-profiles-daemon.enable = false;
   services.tlp = {
@@ -105,7 +105,12 @@ in
     enable = true;
     driSupport = true;
     driSupport32Bit = true;
+    extraPackages = [ pkgs.libvdpau-va-gl ];
   };
+
+  environment.variables.VDPAU_DRIVER = "va_gl";
+  environment.variables.LIBVA_DRIVER_NAME = "nvidia";
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   # Enable Docker
   virtualisation.docker.enable = true;

@@ -13,6 +13,12 @@
           "nixos-105-bishop:4647"
         ];
       };
+      bind_addr = "{{ GetInterfaceIP \"tailscale0\" }}";
+      advertise = {
+        http = "{{ GetInterfaceIP \"tailscale0\" }}";
+        rpc = "{{ GetInterfaceIP \"tailscale0\" }}";
+        serf = "{{ GetInterfaceIP \"tailscale0\" }}";
+      };
     };
   };
 }

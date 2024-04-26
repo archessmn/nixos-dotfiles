@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+scp -r ./bishop-shared/.ssl nixos-103-bishop:~/
+scp -r ./bishop-shared/.ssl nixos-104-bishop:~/
+scp -r ./bishop-shared/.ssl nixos-105-bishop:~/
+scp -r ./bishop-shared/.ssl nixos-200-bishop:~/
+
+ssh nixos-103-bishop "sudo rm -r /var/lib/vault/.ssl && sudo mv ~/.ssl /var/lib/vault && sudo chown -R vault /var/lib/vault/.ssl"
+ssh nixos-104-bishop "sudo rm -r /var/lib/vault/.ssl && sudo mv ~/.ssl /var/lib/vault && sudo chown -R vault /var/lib/vault/.ssl"
+ssh nixos-105-bishop "sudo rm -r /var/lib/vault/.ssl && sudo mv ~/.ssl /var/lib/vault && sudo chown -R vault /var/lib/vault/.ssl"
+ssh nixos-200-bishop "sudo rm -r /var/lib/vault/.ssl && sudo mv ~/.ssl /var/lib/vault && sudo chown -R vault /var/lib/vault/.ssl"

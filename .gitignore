@@ -1,3 +1,4 @@
 ignore/
 result/
 result
+bishop-shared/.ssl/*

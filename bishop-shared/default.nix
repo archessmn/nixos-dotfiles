@@ -81,6 +81,8 @@
     git
     curl
     wget
+
+    vault
   ];
 
   # List services that you want to enable:

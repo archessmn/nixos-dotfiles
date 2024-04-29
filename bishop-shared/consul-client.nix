@@ -1,6 +1,10 @@
 { config, lib, pkgs, ... }:
 
 {
+  imports = [
+    ./consul/shared.nix
+  ];
+
   services.consul = {
     enable = true;
 

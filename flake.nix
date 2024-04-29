@@ -125,7 +125,7 @@
         modules = [
           "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
           ({ pkgs, ... }: {
-            environment.systemPackages = [ pkgs.vim ];
+            environment.systemPackages = [ pkgs.vim pkgs.neofetch ];
           })
           ./iso/configuration.nix
         ];

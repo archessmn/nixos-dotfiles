@@ -118,6 +118,7 @@ flake-overlays:
     extraGroups = [ "networkmanager" "wheel" "docker" ];
     ignoreShellProgramCheck = true;
     shell = pkgs.zsh;
+    openssh.authorizedKeys.keyFiles = [ /home/max/.ssh/authorized_keys ];
   };
 
   nixpkgs.config.allowUnfree = true;
@@ -148,7 +149,11 @@ flake-overlays:
     # xilinx-udev-rules
   ];
 
-  # services.openssh.enable = true;
+  services.openssh = {
+    enable = true;
+    settings.PasswordAuthentication = false;
+    settings.KbdInteractiveAuthentication = false;
+  };
 
   system.stateVersion = "23.11";
 

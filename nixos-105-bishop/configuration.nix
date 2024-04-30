@@ -8,6 +8,7 @@
       ../bishop-shared/nomad-server.nix
       ../bishop-shared/consul.nix
       ../bishop-shared/vault.nix
+      ../bishop-shared/patroni.nix
     ];
 
   networking.hostName = "nixos-105-bishop"; # Define your hostname.

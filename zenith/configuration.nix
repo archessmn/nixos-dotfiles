@@ -145,6 +145,8 @@ in
     wineWowPackages.full
     openrgb
 
+    davinci-resolve
+
     sunshine
     # xilinx-ise
   ];

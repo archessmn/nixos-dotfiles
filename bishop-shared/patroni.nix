@@ -3,7 +3,7 @@
 {
   services.patroni = {
     enable = true;
-    scope = "dc0";
+    scope = "dc0-postgres";
     name = config.networking.hostName;
     postgresqlPackage = pkgs.postgresql_14;
     nodeIp = "${config.networking.hostName}.tail76d77.ts.net";

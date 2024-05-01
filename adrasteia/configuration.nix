@@ -58,7 +58,10 @@ flake-overlays:
     allowedUDPPorts = [69];
   };
 
-  services.tailscale.enable = true;
+  services.tailscale = {
+    enable = true;
+    package = unstablePkgs.tailscale;
+  };
 
 
   time.timeZone = "${theTimezone}";

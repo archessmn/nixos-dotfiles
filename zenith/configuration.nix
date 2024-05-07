@@ -120,6 +120,9 @@ in
   # Enable Docker
   virtualisation.docker.enable = true;
 
+  virtualisation.virtualbox.host.enable = true;
+  users.extraGroups.vboxusers.members = [ "max" ];
+
   nixpkgs.config.permittedInsecurePackages = [
     "electron-25.9.0"
   ];
@@ -127,7 +130,7 @@ in
   users.users."${username}" = {
     isNormalUser = true;
     description = "${gitUsername}";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "vboxusers" ];
     ignoreShellProgramCheck = true;
     shell = pkgs.zsh;
   };
@@ -146,6 +149,8 @@ in
     openrgb
 
     sunshine
+
+    # virtualbox
     # xilinx-ise
   ];
 
@@ -156,6 +161,8 @@ in
     parsec-bin
     openrgb
     sunshine
+
+    # virtualbox
     # xilinx-udev-rules
   ];
 

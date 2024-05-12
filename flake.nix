@@ -134,6 +134,7 @@
       # TODO: Have a look at implementing a similar script to below
       # https://discourse.nixos.org/t/deploy-nixos-configurations-on-other-machines/22940/6
       nixos-103-bishop = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit unstablePkgs;};
         system = "x86_64-linux";
         modules = [
           ./nixos-103-bishop/configuration.nix
@@ -141,6 +142,7 @@
       };
 
       nixos-104-bishop = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit unstablePkgs;};
         system = "x86_64-linux";
         modules = [
           ./nixos-104-bishop/configuration.nix
@@ -148,6 +150,7 @@
       };
 
       nixos-105-bishop = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit unstablePkgs;};
         system = "x86_64-linux";
         modules = [
           ./nixos-105-bishop/configuration.nix
@@ -155,6 +158,7 @@
       };
 
       nixos-200-bishop = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit unstablePkgs;};
         system = "x86_64-linux";
         modules = [
           ./nixos-200-bishop/configuration.nix

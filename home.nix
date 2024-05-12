@@ -43,6 +43,8 @@
     pkgs.walk
     pkgs.bat
     pkgs.neofetch
+    pkgs.htop
+    pkgs.btop
 
     # Communications
     pkgs.slack

@@ -1,8 +1,9 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, unstablePkgs, ... }:
 
 {
   networking.firewall.allowedTCPPortRanges = [{ from = 20000; to = 32000; }];
   services.nomad = {
+    package = unstablePkgs.nomad;
     enable = true;
     dropPrivileges = false;
     settings = {
@@ -20,6 +21,12 @@
         http = "{{ GetInterfaceIP \"tailscale0\" }}";
         rpc = "{{ GetInterfaceIP \"tailscale0\" }}";
         serf = "{{ GetInterfaceIP \"tailscale0\" }}";
+      };
+
+      vault = {
+        enabled = true;
+
+        address = "http://active.vault.service.consul:8200";
       };
     };
   };

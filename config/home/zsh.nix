@@ -4,6 +4,7 @@
 
 {
   imports = [
+    ./shell/atuin.nix
     ./shell/eza.nix
     ./shell/fzf.nix
     ./shell/thefuck.nix

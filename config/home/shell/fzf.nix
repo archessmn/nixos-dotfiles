@@ -4,7 +4,7 @@
 
 {
   programs.fzf = {
-    enable = true;
+    enable = false;
     enableZshIntegration = true;
   };
 }

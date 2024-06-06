@@ -28,9 +28,10 @@
     pkgs.bun
     pkgs.gccgo13
     pkgs.jetbrains.idea-ultimate
-    pkgs.jdk8
+    # pkgs.jdk8
     # pkgs.jdk11
     # pkgs.jdk17
+    pkgs.jdk21
     pkgs.jflap
 
     # Terminal shit

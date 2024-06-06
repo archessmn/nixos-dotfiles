@@ -136,6 +136,8 @@ flake-overlays:
     pkgs.libimobiledevice
     pkgs.wineWowPackages.full
     pkgs.openrgb
+    pkgs.arduino
+
     unstablePkgs.kanidm
   ];
 
@@ -149,6 +151,7 @@ flake-overlays:
     moonlight-qt
     parsec-bin
     openrgb
+    arduino
     # xilinx-udev-rules
   ];
 

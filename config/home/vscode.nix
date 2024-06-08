@@ -24,7 +24,7 @@
       nodejs
       nodePackages.npm
 
-      jdk8
+      # jdk8
       jdk11
       jdk17
     ]);

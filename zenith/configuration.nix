@@ -133,6 +133,7 @@ in
     extraGroups = [ "networkmanager" "wheel" "docker" "vboxusers" ];
     ignoreShellProgramCheck = true;
     shell = pkgs.zsh;
+    openssh.authorizedKeys.keyFiles = [ /home/max/.ssh/authorized_keys ];
   };
 
   nixpkgs.config.allowUnfree = true;
@@ -171,7 +172,11 @@ in
   services.avahi.publish.enable = true;
   services.avahi.publish.userServices = true;
 
-  # services.openssh.enable = true;
+  services.openssh = {
+    enable = true;
+    settings.PasswordAuthentication = false;
+    settings.KbdInteractiveAuthentication = false;
+  };
 
   system.stateVersion = "23.11";
 

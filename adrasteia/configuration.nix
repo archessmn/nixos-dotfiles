@@ -191,7 +191,7 @@ flake-overlays:
     pulse.enable = true;
     alsa = {
       enable = true;
-      support32bit = true;
+      support32Bit = true;
     };
     jack.enable = true;
   };

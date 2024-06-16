@@ -187,7 +187,13 @@ flake-overlays:
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
+    audio.enable = true;
     pulse.enable = true;
+    alsa = {
+      enable = true;
+      support32bit = true;
+    };
+    jack.enable = true;
   };
 
   services.usbmuxd.enable = true;

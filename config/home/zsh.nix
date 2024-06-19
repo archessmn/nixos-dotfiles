@@ -7,6 +7,7 @@
     ./shell/atuin.nix
     ./shell/eza.nix
     ./shell/fzf.nix
+    ./shell/starship.nix
     ./shell/thefuck.nix
     ./shell/zoxide.nix
   ];
@@ -32,9 +33,9 @@
     # };
   };
 
-  programs.starship = {
-    enable = true;
-  };
+  # programs.starship = {
+  #   enable = true;
+  # };
 
   programs.thefuck = {
     enable = true;

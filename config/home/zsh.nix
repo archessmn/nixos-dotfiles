@@ -23,13 +23,17 @@
       rebuild = "cd ~/nixos-dotfiles/ && ./deploy";
     };
     enableVteIntegration = true;
-    oh-my-zsh = {
-      enable = true;
-      plugins = [
-        "genpass"
-            ];
-      theme = "robbyrussell";
-    };
+    # oh-my-zsh = {
+    #   enable = true;
+    #   plugins = [
+    #     "genpass"
+    #         ];
+    #   theme = "robbyrussell";
+    # };
+  };
+
+  programs.starship = {
+    enable = true;
   };
 
   programs.thefuck = {

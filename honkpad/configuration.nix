@@ -45,7 +45,7 @@ in
     }];
   }];
 
-  networking.hostName = "thethinker"; # Define your hostname.
+  networking.hostName = "honkpad"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   networking.networkmanager.enable = true;
@@ -197,4 +197,8 @@ in
       };
     };
   };
+
+  services.fprintd.enable = true;
+  services.fprintd.tod.enable = true;
+  services.fprintd.tod.driver = pkgs.libfprint-2-tod1-vfs0090;
 }

@@ -36,7 +36,7 @@
           {
             libfprint = prev.libfprint.overrideAttrs (old: {
               src = builtins.fetchGit {
-                url = "https://git.archess.mn/archessmn/libfprint.git";
+                url = "https://gitlab.freedesktop.org/depau/libfprint.git";
                 ref = "elanmoc2";
                 # rev = "f4439ce96b2938fea8d4f42223d7faea05bd4048";
               };

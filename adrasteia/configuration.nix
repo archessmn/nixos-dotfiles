@@ -218,4 +218,6 @@ flake-overlays:
   #    };
   #  };
   #};
+
+  services.fprintd.enable = true;
 }

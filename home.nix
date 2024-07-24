@@ -46,6 +46,7 @@
     pkgs.neofetch
     pkgs.htop
     pkgs.btop
+    pkgs.sl
 
     # Communications
     pkgs.slack

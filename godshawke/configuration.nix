@@ -90,6 +90,9 @@ flake-overlays:
   # Enable Docker
   virtualisation.docker.enable = true;
 
+  virtualisation.virtualbox.host.enable = true;
+  users.extraGroups.vboxusers.members = [ "archessmn" ];
+
   nixpkgs.config.permittedInsecurePackages = [
     "electron-25.9.0"
   ];

@@ -20,6 +20,7 @@ flake-overlays:
   imports =
     [
       ./hardware-configuration.nix
+      ../../common/generic-desktop.nix
       # <home-manager/nixos>
     ];
 
@@ -42,8 +43,6 @@ flake-overlays:
   networking.hostName = "adrasteia"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
-  networking.networkmanager.enable = true;
-
   networking.firewall = {
     logReversePathDrops = true;
     extraCommands = ''
@@ -57,31 +56,6 @@ flake-overlays:
 
     allowedUDPPorts = [69];
   };
-
-  services.tailscale = {
-    enable = true;
-    package = unstablePkgs.tailscale;
-  };
-
-
-  time.timeZone = "${theTimezone}";
-
-  # Select internationalisation properties
-  i18n.defaultLocale = "${theLocale}";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "${theLocale}";
-    LC_IDENTIFICATION = "${theLocale}";
-    LC_MEASUREMENT = "${theLocale}";
-    LC_MONETARY = "${theLocale}";
-    LC_NAME = "${theLocale}";
-    LC_NUMERIC = "${theLocale}";
-    LC_PAPER = "${theLocale}";
-    LC_TELEPHONE = "${theLocale}";
-    LC_TIME = "${theLocale}";
-  };
-
-  console.keyMap = "uk";
 
   boot.initrd.kernelModules = [ "amdgpu" ];
 
@@ -155,12 +129,6 @@ flake-overlays:
     # xilinx-udev-rules
   ];
 
-  services.openssh = {
-    enable = true;
-    settings.PasswordAuthentication = false;
-    settings.KbdInteractiveAuthentication = false;
-  };
-
   system.stateVersion = "23.11";
 
   programs.firefox.enable = true;
@@ -171,8 +139,6 @@ flake-overlays:
     videoDrivers = [ "amdgpu" ];
     displayManager.gdm.enable = true;
     desktopManager.gnome.enable = true;
-    # displayManager.sddm.enable = true;
-    # desktopManager.plasma5.enable = true;
   };
 
   programs.ssh.askPassword = pkgs.lib.mkForce "${pkgs.gnome.seahorse.out}/libexec/seahorse/ssh-askpass";
@@ -182,31 +148,31 @@ flake-overlays:
     xwayland.enable = true;
   };
 
-  sound.enable = true;
-  hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    audio.enable = true;
-    pulse.enable = true;
-    alsa = {
-      enable = true;
-      support32Bit = true;
-    };
-    jack.enable = true;
-  };
+  # sound.enable = true;
+  # hardware.pulseaudio.enable = false;
+  # security.rtkit.enable = true;
+  # services.pipewire = {
+  #   enable = true;
+  #   audio.enable = true;
+  #   pulse.enable = true;
+  #   alsa = {
+  #     enable = true;
+  #     support32Bit = true;
+  #   };
+  #   jack.enable = true;
+  # };
 
-  services.usbmuxd.enable = true;
+  # services.usbmuxd.enable = true;
 
-  hardware.bluetooth = {
-    enable = true;
-    powerOnBoot = true;
-    settings = {
-      General = {
-        Experimental = true;
-      };
-    };
-  };
+  # hardware.bluetooth = {
+  #   enable = true;
+  #   powerOnBoot = true;
+  #   settings = {
+  #     General = {
+  #       Experimental = true;
+  #     };
+  #   };
+  # };
 
   #virtualisation.oci-containers = {
   #  backend = "docker";

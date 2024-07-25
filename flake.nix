@@ -19,8 +19,8 @@
     # User Variables
     hostname = "archessmn-default";
     username = "max";
-    gitUsername = "Max Moir";
-    gitEmail = "max.moir@icloud.com";
+    gitUsername = "Mia Moir";
+    gitEmail = "me@archess.mn";
     theLocale = "en_GB.UTF-8";
     theTimezone = "Europe/London";
     browser = "firefox";
@@ -72,7 +72,7 @@
           inherit gitEmail; inherit theLocale; inherit theTimezone;
           inherit unstablePkgs;
         };
-        modules = [ (import ./adrasteia/configuration.nix flake-overlays)
+        modules = [ (import ./hosts/adrasteia/configuration.nix flake-overlays)
           home-manager.nixosModules.home-manager {
             home-manager.extraSpecialArgs = { inherit username; 
               inherit gitUsername; inherit gitEmail; inherit inputs;

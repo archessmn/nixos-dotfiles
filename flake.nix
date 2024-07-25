@@ -91,7 +91,7 @@
           inherit gitEmail; inherit theLocale; inherit theTimezone;
           inherit unstablePkgs;
         };
-	      modules = [ ./honkpad/configuration.nix
+        modules = [ ./hosts/honkpad/configuration.nix
           home-manager.nixosModules.home-manager {
             home-manager.extraSpecialArgs = { inherit username; 
               inherit gitUsername; inherit gitEmail; inherit inputs;

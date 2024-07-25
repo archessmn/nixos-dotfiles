@@ -147,17 +147,17 @@
           inherit gitEmail; inherit theLocale; inherit theTimezone;
           inherit unstablePkgs;
         };
-	modules = [ (import ./godshawke/configuration.nix flake-overlays)
+	      modules = [ (import ./hosts/godshawke/configuration.nix flake-overlays)
           home-manager.nixosModules.home-manager {
-          home-manager.extraSpecialArgs = { username = "archessmn";
-            inherit gitUsername; inherit gitEmail; inherit inputs;
-            inherit browser; inherit flakeDir; inherit unstablePkgs;
-          };
-          home-manager.useGlobalPkgs = true;
+            home-manager.extraSpecialArgs = { username = "archessmn";
+              inherit gitUsername; inherit gitEmail; inherit inputs;
+              inherit browser; inherit flakeDir; inherit unstablePkgs;
+            };
+            home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users."archessmn" = import ./home.nix;
           }
-	];
+	      ];
       };
 
 

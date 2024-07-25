@@ -20,11 +20,13 @@ flake-overlays:
   imports =
     [
       ./hardware-configuration.nix
-      ../../common/generic-desktop.nix
+      ../../modules/default
       # <home-manager/nixos>
     ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  desktop.testing.enable = true;
 
   nixpkgs.overlays = [] ++ flake-overlays;
 

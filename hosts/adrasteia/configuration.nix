@@ -121,7 +121,7 @@ flake-overlays:
     extraGroups = [ "networkmanager" "wheel" "docker" ];
     ignoreShellProgramCheck = true;
     shell = pkgs.zsh;
-    openssh.authorizedKeys.keyFiles = [ /home/max/.ssh/authorized_keys ];
+    openssh.authorizedKeys.keyFiles = [ ../../config/ssh/authorized_keys ];
   };
 
   nixpkgs.config.allowUnfree = true;

@@ -97,6 +97,19 @@
     (pkgs.nerdfonts.override { fonts = [ "FiraMono" ]; })
   ];
 
+  programs.git = {
+    enable = true;
+
+    userEmail = gitEmail;
+    userName  = gitUsername;
+
+    extraConfig = {
+      commit.gpgsign = true;
+      gpg.format = "ssh";
+      user.signingkey = "~/.ssh/id_ed25519";
+    };
+  };
+
   programs.direnv = {
     enable = true;
     enableZshIntegration = true; # see note on other shells below

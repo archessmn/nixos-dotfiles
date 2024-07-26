@@ -24,8 +24,6 @@ flake-overlays:
       # <home-manager/nixos>
     ];
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
   desktop.testing = {
     enable = true;
     graphics.brand = "amd";
@@ -78,7 +76,7 @@ flake-overlays:
   };
 
   environment.systemPackages = [
-    pkgs.vim 
+    pkgs.vim
     pkgs.wget
     pkgs.curl
     pkgs.libimobiledevice

@@ -34,6 +34,8 @@
     pkgs.jdk21
     pkgs.jflap
 
+    pkgs.zed-editor
+
     # Terminal shit
     pkgs.git
     pkgs.gh

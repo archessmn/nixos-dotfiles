@@ -13,6 +13,11 @@ in {
       type = types.bool;
       default = true;
     };
+
+    fprintd = mkOption {
+      type = types.bool;
+      default = false;
+    };
   };
 
   config = mkIf cfg.doHardware {
@@ -29,5 +34,7 @@ in {
     };
 
     services.usbmuxd.enable = true;
+
+    services.fprintd.enable = cfg.fprintd;
   };
 }

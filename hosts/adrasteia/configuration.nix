@@ -27,6 +27,9 @@ flake-overlays:
   desktop.testing = {
     enable = true;
     graphics.brand = "amd";
+    docker = true;
+    virtualBox = true;
+    fprintd = true;
   };
 
   nixpkgs.overlays = [] ++ flake-overlays;
@@ -59,9 +62,6 @@ flake-overlays:
     };
   };
 
-  # Enable Docker
-  virtualisation.docker.enable = true;
-
   nixpkgs.config.permittedInsecurePackages = [
     "electron-25.9.0"
   ];
@@ -69,7 +69,7 @@ flake-overlays:
   users.users."${username}" = {
     isNormalUser = true;
     description = "${gitUsername}";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = [ "networkmanager" "wheel" ];
     ignoreShellProgramCheck = true;
     shell = pkgs.zsh;
     openssh.authorizedKeys.keyFiles = [ ../../config/ssh/authorized_keys ];
@@ -94,10 +94,7 @@ flake-overlays:
     parsec-bin
     openrgb
     arduino
-    # xilinx-udev-rules
   ];
 
   system.stateVersion = "23.11";
-
-  services.fprintd.enable = true;
 }

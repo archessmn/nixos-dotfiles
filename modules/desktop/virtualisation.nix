@@ -3,16 +3,6 @@ with lib;
 let
   cfg = config.desktop.testing;
 in {
-
-  imports = [
-    ./graphics.nix
-    ./hardware.nix
-    ./locale.nix
-    ./networking.nix
-    ./sound.nix
-    ./virtualisation.nix
-  ];
-
   options.desktop.testing = {
     docker = mkOption {
       type = types.bool;

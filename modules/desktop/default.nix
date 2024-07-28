@@ -10,6 +10,7 @@ in {
     ./locale.nix
     ./networking.nix
     ./sound.nix
+    ./virtualisation.nix
   ];
 
   options.desktop.testing = {

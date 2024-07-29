@@ -9,6 +9,7 @@
     ./shell/fzf.nix
     ./shell/starship.nix
     ./shell/thefuck.nix
+    ./shell/yazi.nix
     ./shell/zoxide.nix
   ];
  

@@ -1,6 +1,6 @@
 { config, pkgs, unstablePkgs, inputs, username,
   gitUsername, gitEmail,
-  browser, flakeDir, ... }:
+  browser, flakeDir, fsh, ... }:
 
 {
   home.username = "${username}";
@@ -8,6 +8,7 @@
   home.stateVersion = "23.11";
 
   imports = [
+    fsh.homeModules.fsh
     ./config/home/dconf.nix
     ./config/home/kanidm.nix
     ./config/home/kitty.nix

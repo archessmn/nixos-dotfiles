@@ -25,18 +25,16 @@
       rebuild = "cd ~/nixos-dotfiles/ && ./deploy";
     };
     enableVteIntegration = true;
-    # oh-my-zsh = {
-    #   enable = true;
-    #   plugins = [
-    #     "genpass"
-    #         ];
-    #   theme = "robbyrussell";
-    # };
-  };
 
-  # programs.starship = {
-  #   enable = true;
-  # };
+    defaultKeymap = "emacs";
+
+    initExtra = ''
+      bindkey "^[[1;5C" forward-word 
+      bindkey "^[[1;5D" backward-word
+      bindkey "^[[H"    beginning-of-line
+      bindkey "^[[F"    end-of-line
+    '';
+  };
 
   programs.thefuck = {
     enable = true;

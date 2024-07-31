@@ -4,16 +4,28 @@
 
 {
   imports = [
-    ./shell/atuin.nix
-    ./shell/eza.nix
-    ./shell/fzf.nix
+    ./atuin.nix
+    ./eza.nix
+    ./fzf.nix
     # ./shell/starship.nix
-    ./shell/thefuck.nix
-    ./shell/yazi.nix
-    ./shell/zoxide.nix
+    ./thefuck.nix
+    ./yazi.nix
+    ./zoxide.nix
   ];
 
-  programs.fish.enable = true;
+  programs.fish = {
+    enable = true;
+
+    shellAliases = {
+      y = "yazi";
+      # cd = "z";
+      # cdi = "zi";
+      cat = "bat";
+      bonk = "clear";
+      nixconfig = "cd ~/nixos-dotfiles/";
+      rebuild = "cd ~/nixos-dotfiles/ && ./deploy";
+    };
+  };
   programs.fsh.enable = true;
  
   # programs.zsh = {
@@ -42,10 +54,12 @@
   programs.thefuck = {
     enable = true;
     enableZshIntegration = true;
+    enableFishIntegration = true;
   };
 
   programs.navi = {
     enable = true;
     enableZshIntegration = true;
+    enableFishIntegration = true;
   };
 }

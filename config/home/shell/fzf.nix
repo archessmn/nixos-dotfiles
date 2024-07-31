@@ -6,5 +6,6 @@
   programs.fzf = {
     enable = false;
     enableZshIntegration = true;
+    enableFishIntegration = true;
   };
 }

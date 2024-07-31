@@ -14,8 +14,8 @@
     ./config/home/kitty.nix
     ./config/home/neovim.nix
     ./config/home/rio.nix
+    ./config/home/shell
     ./config/home/vscode.nix
-    ./config/home/zsh.nix
   ];
 
   fonts.fontconfig.enable = true;

@@ -11,5 +11,6 @@
       sync_address = "https://atuin.archess.mn";
     };
     enableZshIntegration = true;
+    enableFishIntegration = true;
   };
 }

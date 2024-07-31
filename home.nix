@@ -1,6 +1,6 @@
 { config, pkgs, unstablePkgs, inputs, username,
   gitUsername, gitEmail,
-  browser, flakeDir, ... }:
+  browser, flakeDir, fsh, ... }:
 
 {
   home.username = "${username}";
@@ -8,13 +8,14 @@
   home.stateVersion = "23.11";
 
   imports = [
+    fsh.homeModules.fsh
     ./config/home/dconf.nix
     ./config/home/kanidm.nix
     ./config/home/kitty.nix
     ./config/home/neovim.nix
     ./config/home/rio.nix
+    ./config/home/shell
     ./config/home/vscode.nix
-    ./config/home/zsh.nix
   ];
 
   fonts.fontconfig.enable = true;

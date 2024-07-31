@@ -3,8 +3,6 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 # Just testing something
 
-flake-overlays:
-
 { inputs, config, pkgs,
   hostname, gitUsername, theLocale,
   theTimezone, unstablePkgs, ... }:
@@ -29,8 +27,6 @@ flake-overlays:
     graphics.brand = "amd";
   };
 
-  nixpkgs.overlays = [] ++ flake-overlays;
-
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -43,12 +39,14 @@ flake-overlays:
   virtualisation.virtualbox.host.enable = true;
   users.extraGroups.vboxusers.members = [ "archessmn" ];
 
+  programs.fish.enable = true;
+
   users.users."archessmn" = {
     isNormalUser = true;
     description = "${gitUsername}";
     extraGroups = [ "networkmanager" "wheel" "docker" ];
     ignoreShellProgramCheck = true;
-    shell = pkgs.zsh;
+    shell = pkgs.fish;
     openssh.authorizedKeys.keyFiles = [ ../../config/ssh/authorized_keys ];
   };
 

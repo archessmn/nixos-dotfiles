@@ -6,13 +6,19 @@
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager/release-24.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    fsh = {
+      url = "github:ashhhleyyy/fsh";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # nix-fpga-tools = {
     #   url = "github:archessmn/nix-fpga-tools";
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
   };
 
-  outputs = inputs@{ nixpkgs, unstable, home-manager, ... }:
+  outputs = inputs@{ nixpkgs, unstable, home-manager, fsh, ... }:
   let
     system = "x86_64-linux";
 
@@ -32,6 +38,7 @@
 	      allowUnfree = true;
       };
       overlays = [
+        fsh.overlays.default
         (final: prev:
           {
             libfprint = prev.libfprint.overrideAttrs (old: {
@@ -147,11 +154,12 @@
           inherit gitEmail; inherit theLocale; inherit theTimezone;
           inherit unstablePkgs;
         };
-	      modules = [ (import ./hosts/godshawke/configuration.nix flake-overlays)
+	      modules = [ ./hosts/godshawke/configuration.nix
           home-manager.nixosModules.home-manager {
-            home-manager.extraSpecialArgs = { username = "archessmn";
+            home-manager.extraSpecialArgs = { inherit pkgs; username = "archessmn";
               inherit gitUsername; inherit gitEmail; inherit inputs;
               inherit browser; inherit flakeDir; inherit unstablePkgs;
+              inherit fsh;
             };
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;

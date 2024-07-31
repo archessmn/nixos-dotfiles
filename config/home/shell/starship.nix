@@ -4,7 +4,7 @@
 
 {
   programs.starship = {
-    enable = true;
+    enable = false;
     settings = {
       directory = {
         truncation_length = 2;

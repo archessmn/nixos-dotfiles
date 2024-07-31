@@ -24,7 +24,7 @@
 
     # User Variables
     hostname = "archessmn-default";
-    username = "max";
+    username = "archessmn";
     gitUsername = "Mia Moir";
     gitEmail = "me@archess.mn";
     theLocale = "en_GB.UTF-8";
@@ -81,7 +81,7 @@
         };
         modules = [ (import ./hosts/adrasteia/configuration.nix flake-overlays)
           home-manager.nixosModules.home-manager {
-            home-manager.extraSpecialArgs = { inherit username; 
+            home-manager.extraSpecialArgs = { inherit pkgs; inherit username; 
               inherit gitUsername; inherit gitEmail; inherit inputs;
               inherit browser; inherit flakeDir; inherit unstablePkgs;
             };
@@ -94,76 +94,76 @@
     
       honkpad = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit system; inherit inputs; 
-          inherit username; inherit hostname; inherit gitUsername;
+          username = "max"; inherit hostname; inherit gitUsername;
           inherit gitEmail; inherit theLocale; inherit theTimezone;
           inherit unstablePkgs;
         };
         modules = [ ./hosts/honkpad/configuration.nix
           home-manager.nixosModules.home-manager {
-            home-manager.extraSpecialArgs = { inherit username; 
+            home-manager.extraSpecialArgs = { username = "max"; 
               inherit gitUsername; inherit gitEmail; inherit inputs;
               inherit browser; inherit flakeDir; inherit unstablePkgs;
             };
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.${username} = import ./home.nix;
+            home-manager.users."max" = import ./home.nix;
           }
 	];
       };      
 
       zenith = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit system; inherit inputs; 
-          inherit username; inherit hostname; inherit gitUsername;
+          username = "max"; inherit hostname; inherit gitUsername;
           inherit gitEmail; inherit theLocale; inherit theTimezone;
           inherit unstablePkgs;
         };
         modules = [ (import ./zenith/configuration.nix flake-overlays)
           home-manager.nixosModules.home-manager {
-            home-manager.extraSpecialArgs = { inherit username; 
+            home-manager.extraSpecialArgs = { username = "max"; 
               inherit gitUsername; inherit gitEmail; inherit inputs;
               inherit browser; inherit flakeDir; inherit unstablePkgs;
             };
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.${username} = import ./home.nix;
+            home-manager.users."max" = import ./home.nix;
           }
         ];
       };
 
       slowpoke = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit system; inherit inputs; 
-          inherit username; inherit hostname; inherit gitUsername;
+          username = "max"; inherit hostname; inherit gitUsername;
           inherit gitEmail; inherit theLocale; inherit theTimezone;
         };
 	modules = [ ./slowpoke/configuration.nix
           home-manager.nixosModules.home-manager {
-          home-manager.extraSpecialArgs = { inherit username; 
+          home-manager.extraSpecialArgs = { username = "max"; 
             inherit gitUsername; inherit gitEmail; inherit inputs;
             inherit browser; inherit flakeDir;
           };
           home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.${username} = import ./home.nix;
+            home-manager.users."max" = import ./home.nix;
           }
 	];
       };
 
       godshawke = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit system; inherit inputs; 
-           inherit hostname; inherit gitUsername; username = "archessmn";
+           inherit hostname; inherit gitUsername; inherit username;
           inherit gitEmail; inherit theLocale; inherit theTimezone;
           inherit unstablePkgs;
         };
 	      modules = [ ./hosts/godshawke/configuration.nix
           home-manager.nixosModules.home-manager {
-            home-manager.extraSpecialArgs = { inherit pkgs; username = "archessmn";
+            home-manager.extraSpecialArgs = { inherit pkgs; inherit username;
               inherit gitUsername; inherit gitEmail; inherit inputs;
               inherit browser; inherit flakeDir; inherit unstablePkgs;
               inherit fsh;
             };
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users."archessmn" = import ./home.nix;
+            home-manager.users.${username} = import ./home.nix;
           }
 	      ];
       };

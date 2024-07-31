@@ -108,7 +108,7 @@
             home-manager.useUserPackages = true;
             home-manager.users."max" = import ./home.nix;
           }
-	];
+        ];
       };      
 
       zenith = nixpkgs.lib.nixosSystem {
@@ -135,22 +135,22 @@
           username = "max"; inherit hostname; inherit gitUsername;
           inherit gitEmail; inherit theLocale; inherit theTimezone;
         };
-	modules = [ ./slowpoke/configuration.nix
+	      modules = [ ./slowpoke/configuration.nix
           home-manager.nixosModules.home-manager {
-          home-manager.extraSpecialArgs = { username = "max"; 
-            inherit gitUsername; inherit gitEmail; inherit inputs;
-            inherit browser; inherit flakeDir;
-          };
-          home-manager.useGlobalPkgs = true;
+            home-manager.extraSpecialArgs = { username = "max"; 
+              inherit gitUsername; inherit gitEmail; inherit inputs;
+              inherit browser; inherit flakeDir;
+            };
+            home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users."max" = import ./home.nix;
           }
-	];
+        ];
       };
 
       godshawke = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit system; inherit inputs; 
-           inherit hostname; inherit gitUsername; inherit username;
+          inherit hostname; inherit gitUsername; inherit username;
           inherit gitEmail; inherit theLocale; inherit theTimezone;
           inherit unstablePkgs;
         };
@@ -211,8 +211,4 @@
       };
     };
   };
-
-
-
-
 }

@@ -79,11 +79,12 @@
           inherit gitEmail; inherit theLocale; inherit theTimezone;
           inherit unstablePkgs;
         };
-        modules = [ (import ./hosts/adrasteia/configuration.nix flake-overlays)
+        modules = [ ./hosts/adrasteia/configuration.nix
           home-manager.nixosModules.home-manager {
             home-manager.extraSpecialArgs = { inherit pkgs; inherit username; 
               inherit gitUsername; inherit gitEmail; inherit inputs;
               inherit browser; inherit flakeDir; inherit unstablePkgs;
+              inherit fsh;
             };
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;

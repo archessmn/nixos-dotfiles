@@ -101,7 +101,7 @@
   ];
 
   home.file.".ssh/allowed_signers".text = 
-    "${gitEmail} ${builtins.readFile /home/max/.ssh/id_ed25519.pub}";
+    "${gitEmail} ${builtins.readFile /home/${username}/.ssh/id_ed25519.pub}";
 
   programs.git = {
     enable = true;

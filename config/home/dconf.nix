@@ -134,5 +134,10 @@ with lib.hm.gvariant;
       display-all-workspaces = false;
       grouping-mode = "never";
     };
+
+    # Active Screen Edges
+    settings."org/gnome/mutter" = {
+      edge-tiling = true;
+    };
   };
 }

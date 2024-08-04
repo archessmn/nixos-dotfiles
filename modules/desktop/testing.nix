@@ -1,8 +1,9 @@
-{ lib, config, pkgs, unstablePkgs, ...}:
+{ lib, config, pkgs, unstablePkgs, ... }:
 with lib;
 let
   cfg = config.desktop.testing;
-in {
+in
+{
   options.desktop.testing = {
     enable = mkEnableOption "Testing Modules";
     enableOtherThing = {

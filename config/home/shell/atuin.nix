@@ -1,6 +1,13 @@
-{ config, pkgs, inputs, username,
-  gitUsername, gitEmail,
-  browser, flakeDir, ... }:
+{ config
+, pkgs
+, inputs
+, username
+, gitUsername
+, gitEmail
+, browser
+, flakeDir
+, ...
+}:
 
 {
   programs.atuin = {

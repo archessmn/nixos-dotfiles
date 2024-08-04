@@ -1,6 +1,13 @@
-{ config, pkgs, inputs, username,
-  gitUsername, gitEmail,
-  browser, flakeDir, ... }:
+{ config
+, pkgs
+, inputs
+, username
+, gitUsername
+, gitEmail
+, browser
+, flakeDir
+, ...
+}:
 
 {
   imports = [
@@ -27,7 +34,7 @@
     };
   };
   programs.fsh.enable = true;
- 
+
   # programs.zsh = {
   #   enable = true;
   #   dotDir = ".config/zsh";

@@ -1,8 +1,9 @@
-{ lib, config, pkgs, unstablePkgs, theLocale, theTimezone, username, ...}:
+{ lib, config, pkgs, unstablePkgs, theLocale, theTimezone, username, ... }:
 with lib;
 let
   cfg = config.desktop.testing;
-in {
+in
+{
   options.desktop.testing = {
     docker = mkOption {
       type = types.bool;

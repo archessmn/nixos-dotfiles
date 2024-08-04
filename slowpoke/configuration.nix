@@ -3,9 +3,16 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 # Just testing something
 
-{ inputs, config, pkgs, username,
-  hostname, gitUsername, theLocale,
-  theTimezone, ... }:
+{ inputs
+, config
+, pkgs
+, username
+, hostname
+, gitUsername
+, theLocale
+, theTimezone
+, ...
+}:
 
 let
   unstable = import
@@ -22,7 +29,7 @@ in
     ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  nix.settings.trusted-users = ["max"];
+  nix.settings.trusted-users = [ "max" ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -37,11 +44,11 @@ in
   };
 
   security.sudo.extraRules = [{
-    users = ["max"];
+    users = [ "max" ];
     runAs = "ALL:ALL";
     commands = [{
       command = "ALL";
-      options = ["NOPASSWD"];
+      options = [ "NOPASSWD" ];
     }];
   }];
 
@@ -89,14 +96,14 @@ in
   };
 
   nixpkgs.config.allowUnfree = true;
-  
+
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
 
   # home-manager.users.max = { pkgs, ... }: {
   #   # environment.variable.EDITOR = "nvim";
   #   fonts.fontconfig.enable = true;
-    
+
 
   #   home.stateVersion = "23.05";
   # };
@@ -104,7 +111,7 @@ in
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    vim 
+    vim
     wget
     curl
     gnomeExtensions.screen-rotate
@@ -122,21 +129,21 @@ in
   services.openssh = {
     enable = true;
     settings.PasswordAuthentication = false;
-    settings.KbdInteractiveAuthentication = false; 
+    settings.KbdInteractiveAuthentication = false;
   };
 
   services.tailscale.enable = true;
 
   networking.firewall = {
-   logReversePathDrops = true;
-   extraCommands = ''
-     ip46tables -t mangle -I nixos-fw-rpfilter -p udp -m udp --sport 51820 -j RETURN
-     ip46tables -t mangle -I nixos-fw-rpfilter -p udp -m udp --dport 51820 -j RETURN
-   '';
-   extraStopCommands = ''
-     ip46tables -t mangle -D nixos-fw-rpfilter -p udp -m udp --sport 51820 -j RETURN || true
-     ip46tables -t mangle -D nixos-fw-rpfilter -p udp -m udp --dport 51820 -j RETURN || true
-   '';
+    logReversePathDrops = true;
+    extraCommands = ''
+      ip46tables -t mangle -I nixos-fw-rpfilter -p udp -m udp --sport 51820 -j RETURN
+      ip46tables -t mangle -I nixos-fw-rpfilter -p udp -m udp --dport 51820 -j RETURN
+    '';
+    extraStopCommands = ''
+      ip46tables -t mangle -D nixos-fw-rpfilter -p udp -m udp --sport 51820 -j RETURN || true
+      ip46tables -t mangle -D nixos-fw-rpfilter -p udp -m udp --dport 51820 -j RETURN || true
+    '';
   };
 
   system.stateVersion = "23.11";

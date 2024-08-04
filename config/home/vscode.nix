@@ -1,10 +1,17 @@
-{ config, pkgs, inputs, username,
-  gitUsername, gitEmail,
-  browser, flakeDir, ... }:
+{ config
+, pkgs
+, inputs
+, username
+, gitUsername
+, gitEmail
+, browser
+, flakeDir
+, ...
+}:
 {
   programs.vscode = {
     enable = true;
-    package = pkgs.vscode.fhsWithPackages (ps: with ps; [ 
+    package = pkgs.vscode.fhsWithPackages (ps: with ps; [
       rustup
       rustc
       cargo

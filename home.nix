@@ -1,6 +1,15 @@
-{ config, pkgs, unstablePkgs, inputs, username,
-  gitUsername, gitEmail,
-  browser, flakeDir, fsh, ... }:
+{ config
+, pkgs
+, unstablePkgs
+, inputs
+, username
+, gitUsername
+, gitEmail
+, browser
+, flakeDir
+, fsh
+, ...
+}:
 
 {
   home.username = "${username}";
@@ -100,14 +109,14 @@
     (pkgs.nerdfonts.override { fonts = [ "FiraMono" ]; })
   ];
 
-  home.file.".ssh/allowed_signers".text = 
+  home.file.".ssh/allowed_signers".text =
     "${gitEmail} ${builtins.readFile /home/${username}/.ssh/id_ed25519.pub}";
 
   programs.git = {
     enable = true;
 
     userEmail = gitEmail;
-    userName  = gitUsername;
+    userName = gitUsername;
 
     extraConfig = {
       commit.gpgsign = true;

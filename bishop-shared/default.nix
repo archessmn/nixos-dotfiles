@@ -6,14 +6,14 @@
   boot.loader.grub.useOSProber = true;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  nix.settings.trusted-users = ["max"];
+  nix.settings.trusted-users = [ "max" ];
 
   security.sudo.extraRules = [{
-    users = ["max"];
+    users = [ "max" ];
     runAs = "ALL:ALL";
     commands = [{
       command = "ALL";
-      options = ["NOPASSWD"];
+      options = [ "NOPASSWD" ];
     }];
   }];
 
@@ -24,7 +24,7 @@
         4646
         4647
         4648
-        
+
         8200
         8201
 
@@ -68,7 +68,7 @@
     isNormalUser = true;
     description = "Max Moir";
     extraGroups = [ "networkmanager" "wheel" "docker" ];
-    packages = with pkgs; [];
+    packages = with pkgs; [ ];
     openssh.authorizedKeys.keyFiles = [ /home/max/.ssh/authorized_keys ];
   };
 

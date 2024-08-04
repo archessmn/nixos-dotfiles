@@ -1,8 +1,9 @@
-{ lib, config, pkgs, unstablePkgs, theLocale, theTimezone, ...}:
+{ lib, config, pkgs, unstablePkgs, theLocale, theTimezone, ... }:
 with lib;
 let
   cfg = config.desktop.testing;
-in {
+in
+{
   options.desktop.testing = {
     graphics = {
       brand = mkOption {
@@ -40,12 +41,14 @@ in {
         powerManagement.finegrained = false;
         open = false;
         nvidiaSettings = true;
-        package = let 
-          rcu_patch = pkgs.fetchpatch {
-            url = "https://github.com/gentoo/gentoo/raw/c64caf53/x11-drivers/nvidia-drivers/files/nvidia-drivers-470.223.02-gpl-pfn_valid.patch";
-            hash = "sha256-eZiQQp2S/asE7MfGvfe6dA/kdCvek9SYa/FFGp24dVg=";
-          };
-          in config.boot.kernelPackages.nvidiaPackages.mkDriver {
+        package =
+          let
+            rcu_patch = pkgs.fetchpatch {
+              url = "https://github.com/gentoo/gentoo/raw/c64caf53/x11-drivers/nvidia-drivers/files/nvidia-drivers-470.223.02-gpl-pfn_valid.patch";
+              hash = "sha256-eZiQQp2S/asE7MfGvfe6dA/kdCvek9SYa/FFGp24dVg=";
+            };
+          in
+          config.boot.kernelPackages.nvidiaPackages.mkDriver {
             version = "535.154.05";
             sha256_64bit = "sha256-fpUGXKprgt6SYRDxSCemGXLrEsIA6GOinp+0eGbqqJg=";
             sha256_aarch64 = "sha256-G0/GiObf/BZMkzzET8HQjdIcvCSqB1uhsinro2HLK9k=";

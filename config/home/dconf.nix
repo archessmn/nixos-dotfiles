@@ -1,6 +1,14 @@
-{ lib, config, pkgs, inputs, username,
-  gitUsername, gitEmail,
-  browser, flakeDir, ... }:
+{ lib
+, config
+, pkgs
+, inputs
+, username
+, gitUsername
+, gitEmail
+, browser
+, flakeDir
+, ...
+}:
 
 with lib.hm.gvariant;
 {
@@ -42,12 +50,12 @@ with lib.hm.gvariant;
 
     # Keybindings
     settings."org/gnome/desktop/wm/keybindings" = {
-      panel-run-dialog = ["<Super>R"];
-      switch-applications = ["<Super>Tab"];
-      switch-applications-backward = ["<Shift><Super>Tab"];
-      switch-windows = ["<Alt>Tab"];
-      switch-windows-backward = ["<Alt><Shift>Tab"];
-      toggle-fullscreen = ["F11"];
+      panel-run-dialog = [ "<Super>R" ];
+      switch-applications = [ "<Super>Tab" ];
+      switch-applications-backward = [ "<Shift><Super>Tab" ];
+      switch-windows = [ "<Alt>Tab" ];
+      switch-windows-backward = [ "<Alt><Shift>Tab" ];
+      toggle-fullscreen = [ "F11" ];
     };
 
     settings."org/gnome/desktop/wm/preferences" = {
@@ -58,20 +66,20 @@ with lib.hm.gvariant;
     # Blur My Shell
     settings."org/gnome/shell/extensions/blur-my-shell" = {
       brightness = 0.64;
-      color = (mkTuple [0.356 0.054 0.397 0.233]);
+      color = (mkTuple [ 0.356 0.054 0.397 0.233 ]);
       hacks-level = 3;
       noise-amount = 0.2;
       noise-lightness = 0.69;
       sigma = 45;
     };
     settings."org/gnome/shell/extensions/blur-my-shell/applications" = {
-      blacklist = ["Plank"];
+      blacklist = [ "Plank" ];
       blur-on-overview = false;
       brightness = 0.8;
       enable-all = false;
       opacity = 230;
       sigma = 6;
-      whitelist = ["kitty"];
+      whitelist = [ "kitty" ];
     };
     settings."org/gnome/shell/extensions/blur-my-shell/overview" = {
       blur = true;
@@ -96,14 +104,14 @@ with lib.hm.gvariant;
       extension-position = "right";
       hide-media-notification = true;
       max-widget-width = 200;
-      mouse-actions = ["toggle_info" "toggle_menu" "raise" "none" "none" "none" "none" "none"];
+      mouse-actions = [ "toggle_info" "toggle_menu" "raise" "none" "none" "none" "none" "none" ];
       scroll-track-label = true;
       show-player-icon = false;
       show-seek-back = false;
       show-seek-forward = false;
       show-seperators = false;
       show-sources-menu = false;
-      track-label = ["track" "-" "artist"];
+      track-label = [ "track" "-" "artist" ];
     };
 
     # Vitals
@@ -111,7 +119,7 @@ with lib.hm.gvariant;
       alphabetize = true;
       hide-icons = false;
       hide-zeros = false;
-      hot-sensors = ["_processor_usage_" "_processor_frequency_" "__temperature_avg__" "_memory_usage_"];
+      hot-sensors = [ "_processor_usage_" "_processor_frequency_" "__temperature_avg__" "_memory_usage_" ];
       menu-centered = false;
       position-in-panel = 0;
       show-battery = false;

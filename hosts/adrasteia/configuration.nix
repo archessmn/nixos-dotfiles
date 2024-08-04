@@ -3,9 +3,17 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 # Just testing something
 
-{ inputs, config, pkgs, username,
-  hostname, gitUsername, theLocale,
-  theTimezone, unstablePkgs, ... }:
+{ inputs
+, config
+, pkgs
+, username
+, hostname
+, gitUsername
+, theLocale
+, theTimezone
+, unstablePkgs
+, ...
+}:
 
 #let
 #  unstable = import

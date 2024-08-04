@@ -3,9 +3,16 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 # Just testing something
 
-{ inputs, config, pkgs,
-  hostname, gitUsername, theLocale,
-  theTimezone, unstablePkgs, ... }:
+{ inputs
+, config
+, pkgs
+, hostname
+, gitUsername
+, theLocale
+, theTimezone
+, unstablePkgs
+, ...
+}:
 
 #let
 #  unstable = import
@@ -51,7 +58,7 @@
   };
 
   environment.systemPackages = [
-    pkgs.vim 
+    pkgs.vim
     pkgs.wget
     pkgs.curl
     pkgs.libimobiledevice

@@ -1,8 +1,9 @@
-{ lib, config, pkgs, unstablePkgs, theLocale, theTimezone, ...}:
+{ lib, config, pkgs, unstablePkgs, theLocale, theTimezone, ... }:
 with lib;
 let
   cfg = config.desktop.testing;
-in {
+in
+{
   options.desktop.testing = {
     tailscale = mkOption {
       type = types.bool;
@@ -56,7 +57,7 @@ in {
         '';
       })
       (mkIf cfg.openFirewall.tftp {
-        allowedUDPPorts = [69];
+        allowedUDPPorts = [ 69 ];
       })
     ];
   };

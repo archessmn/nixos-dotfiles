@@ -1,8 +1,9 @@
-{ lib, config, pkgs, unstablePkgs, theLocale, theTimezone, ...}:
+{ lib, config, pkgs, unstablePkgs, theLocale, theTimezone, ... }:
 with lib;
 let
   cfg = config.desktop.testing;
-in {
+in
+{
   options.desktop.testing = {
     doSound = mkOption {
       type = types.bool;

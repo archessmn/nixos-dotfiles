@@ -23,6 +23,8 @@
       python3
       nodejs
       nodePackages.npm
+      nixd
+      nixpkgs-fmt
 
       # jdk8
       jdk11

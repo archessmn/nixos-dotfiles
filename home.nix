@@ -1,4 +1,5 @@
 { config
+, lib
 , pkgs
 , unstablePkgs
 , inputs
@@ -11,6 +12,12 @@
 , ...
 }:
 
+let
+  inherit (lib) concatMapStrings getAttr attrNames;
+
+  keys = import ./config/ssh/keys.nix;
+  user = (import ./users.nix).${username};
+in
 {
   home.username = "${username}";
   home.homeDirectory = "/home/${username}";
@@ -88,10 +95,6 @@
     pkgs.gnomeExtensions.vitals
     pkgs.gnomeExtensions.gsconnect
     pkgs.gnomeExtensions.quick-settings-tweaker
-    # with pkgs.gnomeExtensions; [
-    #   appindicator
-    #   topicons-plus
-    # ];
 
     # Gaming
     pkgs.lutris
@@ -109,14 +112,13 @@
     (pkgs.nerdfonts.override { fonts = [ "FiraMono" ]; })
   ];
 
-  home.file.".ssh/allowed_signers".text =
-    "${gitEmail} ${builtins.readFile /home/${username}/.ssh/id_ed25519.pub}";
+  home.file.".ssh/allowed_signers".text = concatMapStrings (key: "${user.email} ${key}\n") (map (key: getAttr key keys) (attrNames keys));
 
   programs.git = {
     enable = true;
 
-    userEmail = gitEmail;
-    userName = gitUsername;
+    userEmail = user.email;
+    userName = user.fullName;
 
     extraConfig = {
       commit.gpgsign = true;

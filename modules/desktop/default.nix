@@ -1,7 +1,7 @@
 { lib, config, pkgs, unstablePkgs, theLocale, theTimezone, username, ... }:
 with lib;
 let
-  cfg = config.desktop.testing;
+  cfg = config.archessmn.desktop;
 in
 {
 
@@ -14,7 +14,7 @@ in
     ./virtualisation.nix
   ];
 
-  options.desktop.testing = {
+  options.archessmn.desktop = {
     enable = mkEnableOption "Testing Modules";
 
     hyprland = mkOption {

@@ -113,6 +113,23 @@
         "type": "github"
       }
     },
+    "libfprint": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1712514488,
+        "narHash": "sha256-aLvt04SPjeqsGMWh4hpwGJnrV2zWWMPUePiysM6921g=",
+        "ref": "elanmoc2",
+        "rev": "f4439ce96b2938fea8d4f42223d7faea05bd4048",
+        "revCount": 1726,
+        "type": "git",
+        "url": "https://gitlab.freedesktop.org/depau/libfprint"
+      },
+      "original": {
+        "ref": "elanmoc2",
+        "type": "git",
+        "url": "https://gitlab.freedesktop.org/depau/libfprint"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1722372011,
@@ -133,6 +150,7 @@
       "inputs": {
         "fsh": "fsh",
         "home-manager": "home-manager",
+        "libfprint": "libfprint",
         "nixpkgs": "nixpkgs",
         "unstable": "unstable"
       }

@@ -1,41 +1,36 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-# Just testing something
-
 { inputs
 , config
+, lib
 , pkgs
 , username
 , hostname
 , gitUsername
-, theLocale
-, theTimezone
 , unstablePkgs
 , ...
 }:
 
-#let
-#  unstable = import
-#    (builtins.fetchTarball https://github.com/nixos/nixpkgs/tarball/master)
-#    # reuse the current configuration
-#    { config = config.nixpkgs.config; };
-#in
-
+let
+  keys = import ../../config/ssh/keys.nix;
+  inherit (lib) getAttr attrNames;
+  users = import ../../users.nix;
+in
 {
   imports =
     [
       ./hardware-configuration.nix
       ../../modules/desktop
-      # <home-manager/nixos>
     ];
 
-  desktop.testing = {
+  archessmn.desktop = {
     enable = true;
     graphics.brand = "amd";
     docker = true;
     virtualBox = true;
     fprintd = true;
+  };
+
+  archessmn.home = {
+    enable = true;
   };
 
   # Bootloader.
@@ -74,11 +69,11 @@
 
   users.users."${username}" = {
     isNormalUser = true;
-    description = "${gitUsername}";
+    description = users.archessmn.fullName;
     extraGroups = [ "networkmanager" "wheel" ];
     ignoreShellProgramCheck = true;
     shell = pkgs.fish;
-    openssh.authorizedKeys.keyFiles = [ ../../config/ssh/authorized_keys ];
+    openssh.authorizedKeys.keys = (map (key: getAttr key keys) (attrNames keys));
   };
 
   environment.systemPackages = [

@@ -7,18 +7,18 @@
     home-manager.url = "github:nix-community/home-manager/release-24.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    libfprint = {
+      url = "git+https://gitlab.freedesktop.org/depau/libfprint?ref=elanmoc2";
+      flake = false;
+    };
+
     fsh = {
       url = "github:ashhhleyyy/fsh";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # nix-fpga-tools = {
-    #   url = "github:archessmn/nix-fpga-tools";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
   };
 
-  outputs = inputs@{ nixpkgs, unstable, home-manager, fsh, ... }:
+  outputs = inputs@{ nixpkgs, unstable, home-manager, libfprint, fsh, ... }:
     let
       system = "x86_64-linux";
 
@@ -30,7 +30,7 @@
       theLocale = "en_GB.UTF-8";
       theTimezone = "Europe/London";
       browser = "firefox";
-      flakeDir = "/home/max/nixos-dotfiles/";
+      flakeDir = "/home/archessmn/nixos-dotfiles/";
 
       pkgs = import nixpkgs {
         inherit system;
@@ -38,28 +38,8 @@
           allowUnfree = true;
         };
         overlays = [
+          (import ./config/libfprint.nix libfprint)
           fsh.overlays.default
-          (final: prev:
-            {
-              libfprint = prev.libfprint.overrideAttrs (old: {
-                src = builtins.fetchGit {
-                  url = "https://gitlab.freedesktop.org/depau/libfprint.git";
-                  ref = "elanmoc2";
-                  # rev = "f4439ce96b2938fea8d4f42223d7faea05bd4048";
-                };
-              });
-
-              fprintd = prev.fprintd.overrideAttrs (old: {
-                mesonCheckFlags = [
-                  # PAM related checks are timing out
-                  "--no-suite"
-                  "fprintd:TestPamFprintd"
-                  # Tests FPrintdManagerPreStartTests.test_manager_get_no_default_device & FPrintdManagerPreStartTests.test_manager_get_no_devices are failing
-                  "--no-suite"
-                  "fprintd:FPrintdManagerPreStartTests"
-                ];
-              });
-            })
         ];
       };
 
@@ -70,27 +50,24 @@
         };
       };
 
-      flake-overlays = [
-        # nix-fpga-tools.overlay
-      ];
+      flake-overlays = [ ];
     in
     {
       nixosConfigurations = {
         adrasteia = nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit pkgs; inherit system; inherit inputs;
-            inherit username; inherit hostname; inherit gitUsername;
-            inherit gitEmail; inherit theLocale; inherit theTimezone;
-            inherit unstablePkgs;
+            inherit username; inherit unstablePkgs;
           };
           modules = [
             ./hosts/adrasteia/configuration.nix
+            ./modules/home
             home-manager.nixosModules.home-manager
             {
               home-manager.extraSpecialArgs = {
                 inherit pkgs; inherit username;
-                inherit gitUsername; inherit gitEmail; inherit inputs;
-                inherit browser; inherit flakeDir; inherit unstablePkgs;
+                inherit inputs;
+                inherit unstablePkgs;
                 inherit fsh;
               };
               home-manager.useGlobalPkgs = true;

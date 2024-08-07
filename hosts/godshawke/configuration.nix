@@ -29,7 +29,7 @@
       # <home-manager/nixos>
     ];
 
-  desktop.testing = {
+  archessmn.desktop = {
     enable = true;
     graphics.brand = "amd";
   };

@@ -1,10 +1,10 @@
 { lib, config, pkgs, unstablePkgs, theLocale, theTimezone, ... }:
 with lib;
 let
-  cfg = config.desktop.testing;
+  cfg = config.archessmn.desktop;
 in
 {
-  options.desktop.testing = {
+  options.archessmn.desktop = {
     tailscale = mkOption {
       type = types.bool;
       default = true;

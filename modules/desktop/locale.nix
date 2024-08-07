@@ -1,10 +1,11 @@
-{ lib, config, pkgs, unstablePkgs, theLocale, theTimezone, ... }:
+{ lib, config, pkgs, unstablePkgs, ... }:
 with lib;
 let
-  cfg = config.desktop.testing;
+  cfg = config.archessmn.desktop;
+  userLocale = (import ../../users.nix).archessmn.localisation;
 in
 {
-  options.desktop.testing = {
+  options.archessmn.desktop = {
     defaultLocale = mkOption {
       type = types.bool;
       default = true;
@@ -14,18 +15,18 @@ in
   config = mkIf cfg.defaultLocale {
     # Locale stuff
 
-    time.timeZone = "${theTimezone}";
-    i18n.defaultLocale = "${theLocale}";
+    time.timeZone = "${userLocale.timezone}";
+    i18n.defaultLocale = "${userLocale.locale}";
     i18n.extraLocaleSettings = {
-      LC_ADDRESS = "${theLocale}";
-      LC_IDENTIFICATION = "${theLocale}";
-      LC_MEASUREMENT = "${theLocale}";
-      LC_MONETARY = "${theLocale}";
-      LC_NAME = "${theLocale}";
-      LC_NUMERIC = "${theLocale}";
-      LC_PAPER = "${theLocale}";
-      LC_TELEPHONE = "${theLocale}";
-      LC_TIME = "${theLocale}";
+      LC_ADDRESS = "${userLocale.locale}";
+      LC_IDENTIFICATION = "${userLocale.locale}";
+      LC_MEASUREMENT = "${userLocale.locale}";
+      LC_MONETARY = "${userLocale.locale}";
+      LC_NAME = "${userLocale.locale}";
+      LC_NUMERIC = "${userLocale.locale}";
+      LC_PAPER = "${userLocale.locale}";
+      LC_TELEPHONE = "${userLocale.locale}";
+      LC_TIME = "${userLocale.locale}";
     };
 
     console.keyMap = "uk";

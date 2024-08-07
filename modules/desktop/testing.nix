@@ -1,10 +1,10 @@
 { lib, config, pkgs, unstablePkgs, ... }:
 with lib;
 let
-  cfg = config.desktop.testing;
+  cfg = config.archessmn.desktop;
 in
 {
-  options.desktop.testing = {
+  options.archessmn.desktop = {
     enable = mkEnableOption "Testing Modules";
     enableOtherThing = {
       yep = mkOption {

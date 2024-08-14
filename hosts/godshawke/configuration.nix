@@ -23,6 +23,7 @@
       enable = true;
       interface = "enp3s0";
     };
+    security.kanidm.client.enable = true;
   };
 
   networking.hostName = "godshawke"; # Define your hostname.

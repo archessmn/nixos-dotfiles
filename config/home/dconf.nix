@@ -1,12 +1,6 @@
 { lib
 , config
 , pkgs
-, inputs
-, username
-, gitUsername
-, gitEmail
-, browser
-, flakeDir
 , ...
 }:
 

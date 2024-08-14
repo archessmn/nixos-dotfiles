@@ -1,17 +1,17 @@
 { lib, config, pkgs, unstablePkgs, theLocale, theTimezone, ... }:
 with lib;
 let
-  cfg = config.desktop.testing;
+  cfg = config.archessmn.desktop;
 in
 {
-  options.desktop.testing = {
+  options.archessmn.desktop = {
     doSound = mkOption {
       type = types.bool;
       default = true;
     };
   };
 
-  config = mkIf cfg.doHardware {
+  config = mkIf cfg.doSound {
     # Sound stuff
     sound.enable = true;
 

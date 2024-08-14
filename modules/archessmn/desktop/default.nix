@@ -1,4 +1,4 @@
-{ lib, config, pkgs, unstablePkgs, theLocale, theTimezone, username, ... }:
+{ lib, config, pkgs, unstablePkgs, username, ... }:
 with lib;
 let
   cfg = config.archessmn.desktop;
@@ -6,10 +6,6 @@ in
 {
 
   imports = [
-    ./graphics.nix
-    ./hardware.nix
-    ./locale.nix
-    ./networking.nix
     ./sound.nix
     ./virtualisation.nix
   ];
@@ -24,17 +20,9 @@ in
   };
 
   config = mkIf cfg.enable {
-    nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
     nixpkgs.config.permittedInsecurePackages = [
       "electron-25.9.0"
     ];
-
-    nixpkgs.config.allowUnfree = true;
-
-    home-manager.useGlobalPkgs = true;
-    home-manager.useUserPackages = true;
-
 
     programs.firefox.enable = true;
     programs.steam.enable = true;
@@ -52,5 +40,23 @@ in
       enable = true;
       xwayland.enable = true;
     };
+
+    services.usbmuxd.enable = true;
+
+    users.users.${username}.extraGroups = [ "gamemode" ];
+
+
+    environment.systemPackages = [
+      pkgs.libimobiledevice
+      pkgs.wineWowPackages.full
+
+      unstablePkgs.kanidm
+    ];
+
+    services.udev.packages = with pkgs; [
+      gnome.gnome-settings-daemon
+      via
+      moonlight-qt
+    ];
   };
 }

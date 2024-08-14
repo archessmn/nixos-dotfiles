@@ -11,7 +11,7 @@ in
     };
   };
 
-  config = mkIf cfg.doHardware {
+  config = mkIf cfg.doSound {
     # Sound stuff
     sound.enable = true;
 

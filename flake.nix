@@ -61,11 +61,12 @@
           };
           modules = [
             ./hosts/adrasteia/configuration.nix
-            ./modules/home
+            ./modules/archessmn
             home-manager.nixosModules.home-manager
             {
               home-manager.extraSpecialArgs = {
-                inherit pkgs; inherit username;
+                inherit pkgs;
+                inherit username;
                 inherit inputs;
                 inherit unstablePkgs;
                 inherit fsh;
@@ -147,25 +148,29 @@
 
         godshawke = nixpkgs.lib.nixosSystem {
           specialArgs = {
-            inherit system; inherit inputs;
-            inherit hostname; inherit gitUsername; inherit username;
-            inherit gitEmail; inherit theLocale; inherit theTimezone;
+            inherit pkgs;
+            inherit system;
+            inherit inputs;
+            inherit username;
             inherit unstablePkgs;
+            inherit fsh;
           };
           modules = [
             ./hosts/godshawke/configuration.nix
+            ./modules/archessmn
             home-manager.nixosModules.home-manager
-            {
-              home-manager.extraSpecialArgs = {
-                inherit pkgs; inherit username;
-                inherit gitUsername; inherit gitEmail; inherit inputs;
-                inherit browser; inherit flakeDir; inherit unstablePkgs;
-                inherit fsh;
-              };
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.${username} = import ./home.nix;
-            }
+            # {
+            #   home-manager.extraSpecialArgs = {
+            #     inherit pkgs;
+            #     inherit username;
+            #     inherit inputs;
+            #     inherit unstablePkgs;
+            #     inherit fsh;
+            #   };
+            #   home-manager.useGlobalPkgs = true;
+            #   home-manager.useUserPackages = true;
+            #   home-manager.users.${username} = import ./home.nix;
+            # }
           ];
         };
 

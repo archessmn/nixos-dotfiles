@@ -24,7 +24,7 @@ in
   home.stateVersion = "23.11";
 
   imports = [
-    fsh.homeModules.fsh
+    # fsh.homeModules.fsh
     ./config/home/dconf.nix
     ./config/home/kanidm.nix
     ./config/home/kitty.nix

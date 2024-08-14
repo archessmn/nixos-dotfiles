@@ -5,11 +5,6 @@ let
 in
 {
   options.archessmn.desktop = {
-    docker = mkOption {
-      type = types.bool;
-      default = false;
-    };
-
     virtualBox = mkOption {
       type = types.bool;
       default = false;
@@ -17,11 +12,6 @@ in
   };
 
   config = mkMerge [
-    (mkIf cfg.docker {
-      virtualisation.docker.enable = true;
-
-      users.users."${username}".extraGroups = [ "docker" ];
-    })
     (mkIf cfg.virtualBox {
       virtualisation.virtualbox.host.enable = true;
       users.extraGroups.vboxusers.members = [ "${username}" ];

@@ -1,10 +1,10 @@
 { lib, config, pkgs, unstablePkgs, theLocale, theTimezone, ... }:
 with lib;
 let
-  cfg = config.archessmn.desktop;
+  cfg = config.archessmn.system;
 in
 {
-  options.archessmn.desktop = {
+  options.archessmn.system = {
     graphics = {
       brand = mkOption {
         type = types.enum [ "nvidia" "amd" ];

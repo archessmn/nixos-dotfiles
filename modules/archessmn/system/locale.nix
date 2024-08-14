@@ -2,7 +2,7 @@
 with lib;
 let
   cfg = config.archessmn.desktop;
-  userLocale = (import ../../users.nix).archessmn.localisation;
+  userLocale = (import ../../../users.nix).archessmn.localisation;
 in
 {
   options.archessmn.desktop = {

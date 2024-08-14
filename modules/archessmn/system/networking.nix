@@ -1,10 +1,10 @@
 { lib, config, pkgs, unstablePkgs, theLocale, theTimezone, ... }:
 with lib;
 let
-  cfg = config.archessmn.desktop;
+  cfg = config.archessmn.system;
 in
 {
-  options.archessmn.desktop = {
+  options.archessmn.system = {
     tailscale = mkOption {
       type = types.bool;
       default = true;
@@ -13,6 +13,18 @@ in
     ssh = mkOption {
       type = types.bool;
       default = true;
+    };
+
+    wakeonlan = {
+      enable = mkOption {
+        type = types.bool;
+        default = false;
+      };
+
+      interface = mkOption {
+        type = types.str;
+        default = "";
+      };
     };
 
     openFirewall = {
@@ -43,6 +55,8 @@ in
       enable = true;
       package = unstablePkgs.tailscale;
     };
+
+    networking.interfaces.${cfg.wakeonlan.interface}.wakeOnLan.enable = cfg.wakeonlan.enable;
 
     networking.firewall = mkMerge [
       (mkIf cfg.openFirewall.wireguard {

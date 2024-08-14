@@ -3,8 +3,6 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 # Just testing something
 
-flake-overlays:
-
 { inputs
 , config
 , pkgs
@@ -33,8 +31,6 @@ in
     ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-  nixpkgs.overlays = [ ] ++ flake-overlays;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;

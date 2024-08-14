@@ -3,99 +3,31 @@
 , lib
 , pkgs
 , username
-, hostname
-, gitUsername
 , unstablePkgs
 , ...
 }:
 
-let
-  keys = import ../../config/ssh/keys.nix;
-  inherit (lib) getAttr attrNames;
-  users = import ../../users.nix;
-in
 {
   imports =
     [
       ./hardware-configuration.nix
-      ../../modules/desktop
     ];
 
-  archessmn.desktop = {
-    enable = true;
-    graphics.brand = "amd";
-    docker = true;
-    virtualBox = true;
-    fprintd = true;
-  };
+  archessmn = {
+    desktop = {
+      enable = true;
+      virtualBox = true;
+    };
 
-  archessmn.home = {
-    enable = true;
-  };
-
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
-  networking.hostName = "adrasteia"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  services.power-profiles-daemon.enable = false;
-  services.tlp = {
-    enable = true;
-    settings = {
-      CPU_SCALING_GOVERNOR_ON_AC = "performance";
-      CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
-
-      CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
-      CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
-
-      CPU_MIN_PERF_ON_AC = 0;
-      CPU_MAX_PERF_ON_AC = 100;
-      CPU_MIN_PERF_ON_BAT = 0;
-      CPU_MAX_PERF_ON_BAT = 40;
-
-      #Optional helps save long term battery health
-      START_CHARGE_THRESH_BAT0 = 80; # 40 and bellow it starts to charge
-      STOP_CHARGE_THRESH_BAT0 = 90; # 80 and above it stops charging
+    system = {
+      battery.tlp.enable = true;
+      bootloader = "systemd";
+      fprintd = true;
+      graphics.brand = "amd";
     };
   };
 
-  nixpkgs.config.permittedInsecurePackages = [
-    "electron-25.9.0"
-  ];
-
-  programs.fish.enable = true;
-
-  users.users."${username}" = {
-    isNormalUser = true;
-    description = users.archessmn.fullName;
-    extraGroups = [ "networkmanager" "wheel" ];
-    ignoreShellProgramCheck = true;
-    shell = pkgs.fish;
-    openssh.authorizedKeys.keys = (map (key: getAttr key keys) (attrNames keys));
-  };
-
-  environment.systemPackages = [
-    pkgs.vim
-    pkgs.wget
-    pkgs.curl
-    pkgs.libimobiledevice
-    pkgs.wineWowPackages.full
-    pkgs.openrgb
-    pkgs.arduino
-
-    unstablePkgs.kanidm
-  ];
-
-  services.udev.packages = with pkgs; [
-    gnome.gnome-settings-daemon
-    via
-    moonlight-qt
-    parsec-bin
-    openrgb
-    arduino
-  ];
+  networking.hostName = "adrasteia"; # Define your hostname.
 
   system.stateVersion = "23.11";
 }

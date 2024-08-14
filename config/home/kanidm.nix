@@ -10,5 +10,5 @@
 }:
 
 {
-  home.file.".config/kanidm".source = ../kanidm;
+  home.file.".config/kanidm".source = ../../modules/archessmn/home/home-manager/files/kanidm;
 }

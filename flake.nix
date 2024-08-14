@@ -159,18 +159,6 @@
             ./hosts/godshawke/configuration.nix
             ./modules/archessmn
             home-manager.nixosModules.home-manager
-            # {
-            #   home-manager.extraSpecialArgs = {
-            #     inherit pkgs;
-            #     inherit username;
-            #     inherit inputs;
-            #     inherit unstablePkgs;
-            #     inherit fsh;
-            #   };
-            #   home-manager.useGlobalPkgs = true;
-            #   home-manager.useUserPackages = true;
-            #   home-manager.users.${username} = import ./home.nix;
-            # }
           ];
         };
 

@@ -24,7 +24,7 @@ in
   config.home-manager.users.${username} = mkIf cfg.enable {
     fonts.fontconfig.enable = true;
 
-    home.file.".config/kanidm".source = ../files/kanidm;
+    # home.file.".config/kanidm".source = ../files/kanidm;
 
     home.packages = [
       # Editors
@@ -45,7 +45,7 @@ in
       pkgs.whatsapp-for-linux
 
       # Security stuff
-      unstablePkgs.kanidm
+      # unstablePkgs.kanidm
       pkgs.bitwarden
 
       # Desktop stuff

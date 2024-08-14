@@ -5,6 +5,7 @@ let
 in
 {
   imports = [
+    ./kanidm.nix
     ./sudo.nix
   ];
 }

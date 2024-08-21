@@ -9,6 +9,7 @@ in
     ./atuin.nix
     ./eza.nix
     ./fzf.nix
+    ./neovim.nix
     ./thefuck.nix
     ./yazi.nix
     ./zoxide.nix

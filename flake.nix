@@ -103,24 +103,17 @@
 
         zenith = nixpkgs.lib.nixosSystem {
           specialArgs = {
-            inherit system; inherit inputs;
-            username = "max"; inherit hostname; inherit gitUsername;
-            inherit gitEmail; inherit theLocale; inherit theTimezone;
+            inherit pkgs;
+            inherit system;
+            inherit inputs;
+            inherit username;
             inherit unstablePkgs;
+            inherit fsh;
           };
           modules = [
-            (import ./zenith/configuration.nix flake-overlays)
+            ./hosts/zenith/configuration.nix
+            ./modules/archessmn
             home-manager.nixosModules.home-manager
-            {
-              home-manager.extraSpecialArgs = {
-                username = "max";
-                inherit gitUsername; inherit gitEmail; inherit inputs;
-                inherit browser; inherit flakeDir; inherit unstablePkgs;
-              };
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users."max" = import ./home.nix;
-            }
           ];
         };
 

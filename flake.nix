@@ -56,25 +56,17 @@
       nixosConfigurations = {
         adrasteia = nixpkgs.lib.nixosSystem {
           specialArgs = {
-            inherit pkgs; inherit system; inherit inputs;
-            inherit username; inherit unstablePkgs;
+            inherit pkgs;
+            inherit system;
+            inherit inputs;
+            inherit username;
+            inherit unstablePkgs;
+            inherit fsh;
           };
           modules = [
             ./hosts/adrasteia/configuration.nix
             ./modules/archessmn
             home-manager.nixosModules.home-manager
-            {
-              home-manager.extraSpecialArgs = {
-                inherit pkgs;
-                inherit username;
-                inherit inputs;
-                inherit unstablePkgs;
-                inherit fsh;
-              };
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.${username} = import ./home.nix;
-            }
           ];
         };
 

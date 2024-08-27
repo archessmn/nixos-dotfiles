@@ -1,8 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-# Just testing something
-
 { inputs
 , config
 , pkgs
@@ -33,7 +28,7 @@
     security.kanidm.client.enable = true;
   };
 
-  networking.hostName = "zenith"; # Define your hostname.
+  networking.hostName = "zenith";
 
   system.stateVersion = "23.11";
 }

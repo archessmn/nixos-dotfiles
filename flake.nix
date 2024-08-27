@@ -51,18 +51,20 @@
       };
 
       flake-overlays = [ ];
+
+      sharedArgs = {
+        inherit pkgs;
+        inherit system;
+        inherit inputs;
+        inherit username;
+        inherit unstablePkgs;
+        inherit fsh;
+      };
     in
     {
       nixosConfigurations = {
         adrasteia = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit pkgs;
-            inherit system;
-            inherit inputs;
-            inherit username;
-            inherit unstablePkgs;
-            inherit fsh;
-          };
+          specialArgs = sharedArgs;
           modules = [
             ./hosts/adrasteia/configuration.nix
             ./modules/archessmn
@@ -94,14 +96,7 @@
         };
 
         zenith = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit pkgs;
-            inherit system;
-            inherit inputs;
-            inherit username;
-            inherit unstablePkgs;
-            inherit fsh;
-          };
+          specialArgs = sharedArgs;
           modules = [
             ./hosts/zenith/configuration.nix
             ./modules/archessmn
@@ -132,14 +127,7 @@
         };
 
         godshawke = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit pkgs;
-            inherit system;
-            inherit inputs;
-            inherit username;
-            inherit unstablePkgs;
-            inherit fsh;
-          };
+          specialArgs = sharedArgs;
           modules = [
             ./hosts/godshawke/configuration.nix
             ./modules/archessmn

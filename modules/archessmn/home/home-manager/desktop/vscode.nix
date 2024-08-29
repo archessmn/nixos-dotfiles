@@ -20,6 +20,7 @@ in
         rustup
         rustc
         cargo
+        rust-analyzer
         cargo-generate
         cargo-watch
         cargo-nextest

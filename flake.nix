@@ -13,7 +13,7 @@
     };
 
     fsh = {
-      url = "github:ashhhleyyy/fsh";
+      url = "github:archessmn/fsh?ref=shell-levels";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

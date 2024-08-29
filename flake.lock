@@ -79,15 +79,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1699840060,
-        "narHash": "sha256-YH1G94QcoXmPjZ3C+iUjoh7wtRO46OqBHma/fjywr8Y=",
-        "owner": "ashhhleyyy",
+        "lastModified": 1724894310,
+        "narHash": "sha256-yH3RpMyyShdhh5EgBnMp+g5rXka30Uz5RA6Xa46JRvE=",
+        "owner": "archessmn",
         "repo": "fsh",
-        "rev": "82bc7477ace17762775a309de004ffe8a308c399",
+        "rev": "8a3e3bf33c24add7e93760e237d20583ceb7effe",
         "type": "github"
       },
       "original": {
-        "owner": "ashhhleyyy",
+        "owner": "archessmn",
+        "ref": "shell-levels",
         "repo": "fsh",
         "type": "github"
       }

@@ -18,6 +18,8 @@
     virtualBox = true;
   };
 
+  archessmn.home.home-manager.desktop.hyperion.enable = true;
+
   archessmn.system = {
     bootloader = "systemd";
     graphics.brand = "nvidia";

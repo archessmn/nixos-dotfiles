@@ -29,7 +29,7 @@ in
     users.users.${username} = {
       isNormalUser = true;
       description = users.${username}.fullName;
-      extraGroups = [ "networkmanager" "wheel" ];
+      extraGroups = [ "networkmanager" "wheel" "dialout" ];
       hashedPassword = "$y$j9T$B5ed95B4bkDU59CaypqDn0$ej48gzEYheqfaoZ3l4Iu07/kdAC8dJqBEBHZKTmuPyC";
       ignoreShellProgramCheck = true;
       shell = pkgs.fish;

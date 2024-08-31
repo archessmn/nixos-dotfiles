@@ -11,6 +11,7 @@ in
     ./gaming.nix
     ./git.nix
     ./gnome.nix
+    ./hyperion.nix
     ./vscode.nix
   ];
 
@@ -56,6 +57,7 @@ in
       pkgs.x32edit
       pkgs.vlc
       pkgs.helvum
+      pkgs.chromium
 
       # Remote stuff
       pkgs.moonlight-qt

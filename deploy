@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-host=$(hostname -f)
+host=$(hostname -s)
 impure=""
 
 while getopts "ih:" flag; do

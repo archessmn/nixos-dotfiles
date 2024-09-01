@@ -23,13 +23,14 @@ in
     home.packages = [
       # Gnome stuff
       pkgs.gnomeExtensions.appindicator
-      pkgs.gnomeExtensions.topicons-plus
       pkgs.gnomeExtensions.blur-my-shell
       pkgs.gnomeExtensions.color-picker
-      pkgs.gnomeExtensions.media-controls
-      pkgs.gnomeExtensions.vitals
       pkgs.gnomeExtensions.gsconnect
+      pkgs.gnomeExtensions.home-assistant-extension
+      pkgs.gnomeExtensions.media-controls
       pkgs.gnomeExtensions.quick-settings-tweaker
+      pkgs.gnomeExtensions.topicons-plus
+      pkgs.gnomeExtensions.vitals
     ];
 
     dconf = mkIf cfg.dconf.enable {

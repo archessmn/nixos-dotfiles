@@ -18,7 +18,10 @@
     virtualBox = true;
   };
 
-  archessmn.home.home-manager.desktop.hyperion.enable = true;
+  archessmn.home.home-manager.desktop.hyperion = {
+    enable = true;
+    firewall.json-server.open = true;
+  };
 
   archessmn.system = {
     bootloader = "systemd";

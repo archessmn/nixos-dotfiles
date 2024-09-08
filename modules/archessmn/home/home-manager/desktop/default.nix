@@ -42,6 +42,7 @@ in
       # Communications
       pkgs.slack
       pkgs.discord
+      pkgs.vesktop
       pkgs.element-desktop
       pkgs.whatsapp-for-linux
 

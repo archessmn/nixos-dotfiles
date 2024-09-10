@@ -19,6 +19,10 @@
       virtualBox = true;
     };
 
+    home.home-manager.desktop = {
+      activate-linux.enable = true;
+    };
+
     system = {
       battery.tlp.enable = true;
       bootloader = "systemd";

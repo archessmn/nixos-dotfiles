@@ -18,9 +18,13 @@
     virtualBox = true;
   };
 
-  archessmn.home.home-manager.desktop.hyperion = {
-    enable = true;
-    firewall.json-server.open = true;
+  archessmn.home.home-manager.desktop = {
+    hyperion = {
+      enable = true;
+      firewall.json-server.open = true;
+    };
+
+    activate-linux.enable = true;
   };
 
   archessmn.system = {

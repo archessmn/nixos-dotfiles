@@ -8,6 +8,7 @@ in
 {
   imports = [
     ./terminals
+    ./activate-linux.nix
     ./gaming.nix
     ./git.nix
     ./gnome.nix

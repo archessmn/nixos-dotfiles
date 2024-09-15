@@ -7,7 +7,7 @@ in
   options.archessmn.system = {
     graphics = {
       brand = mkOption {
-        type = types.enum [ "nvidia" "amd" ];
+        type = types.enum [ "nvidia" "amd" "nvidia-special" ];
       };
     };
   };
@@ -57,6 +57,33 @@ in
             persistencedSha256 = "sha256-d0Q3Lk80JqkS1B54Mahu2yY/WocOqFFbZVBh+ToGhaE=";
             patches = [ rcu_patch ];
           };
+      };
+    })
+
+    # Nvidia specialisation for honkpad
+    (mkIf (cfg.graphics.brand == "nvidia-special") {
+      specialisation = {
+        nvidia.configuration = {
+          # Nvidia Configuration 
+          services.xserver.videoDrivers = [ "nvidia" ];
+          hardware.opengl.enable = true;
+
+          # Optionally, you may need to select the appropriate driver version for your specific GPU. 
+          hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
+
+          # nvidia-drm.modeset=1 is required for some wayland compositors, e.g. sway 
+          hardware.nvidia.modesetting.enable = true;
+
+          hardware.nvidia.prime = {
+            sync.enable = true;
+
+            # Bus ID of the NVIDIA GPU. You can find it using lspci, either under 3D or VGA 
+            nvidiaBusId = "PCI:06:00:0";
+
+            # Bus ID of the Intel GPU. You can find it using lspci, either under 3D or VGA 
+            intelBusId = "PCI:00:02:0";
+          };
+        };
       };
     })
   ];

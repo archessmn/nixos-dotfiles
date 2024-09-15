@@ -26,7 +26,7 @@
     system = {
       battery.tlp.enable = true;
       bootloader = "systemd";
-      fprintd = true;
+      fprintd.enable = true;
       graphics.brand = "amd";
     };
   };

@@ -21,6 +21,7 @@
 
     home.home-manager.desktop = {
       activate-linux.enable = true;
+      gnome.gsconnect.enable = true;
     };
 
     system = {

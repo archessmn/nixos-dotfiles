@@ -24,7 +24,7 @@
       firewall.json-server.open = true;
     };
 
-    activate-linux.enable = true;
+    activate-linux.enable = false;
   };
 
   archessmn.system = {

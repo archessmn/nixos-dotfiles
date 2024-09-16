@@ -24,6 +24,8 @@
       firewall.json-server.open = true;
     };
 
+    gnome.gsconnect.enable = true;
+
     activate-linux.enable = false;
   };
 

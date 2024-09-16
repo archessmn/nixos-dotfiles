@@ -56,7 +56,7 @@ in
       package = unstablePkgs.tailscale;
     };
 
-    networking.interfaces.${cfg.wakeonlan.interface}.wakeOnLan.enable = cfg.wakeonlan.enable;
+    networking.interfaces = mkIf cfg.wakeonlan.enable { ${cfg.wakeonlan.interface}.wakeOnLan.enable = cfg.wakeonlan.enable; };
 
     networking.firewall = mkMerge [
       (mkIf cfg.openFirewall.wireguard {

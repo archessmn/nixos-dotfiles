@@ -42,8 +42,10 @@ in
 
       # Communications
       pkgs.slack
+      pkgs.beeper
       pkgs.discord
       pkgs.vesktop
+      pkgs.signal-desktop
       pkgs.element-desktop
       pkgs.whatsapp-for-linux
 

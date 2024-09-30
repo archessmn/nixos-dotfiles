@@ -16,9 +16,19 @@
       url = "github:archessmn/fsh?ref=shell-levels";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    minegrub-theme.url = "github:Lxtharia/minegrub-theme";
   };
 
-  outputs = inputs@{ nixpkgs, unstable, home-manager, libfprint, fsh, ... }:
+  outputs =
+    inputs@{ nixpkgs
+    , unstable
+    , home-manager
+    , libfprint
+    , fsh
+    , minegrub-theme
+    , ...
+    }:
     let
       system = "x86_64-linux";
 
@@ -69,6 +79,7 @@
             ./hosts/adrasteia/configuration.nix
             ./modules/archessmn
             home-manager.nixosModules.home-manager
+            inputs.minegrub-theme.nixosModules.default
           ];
         };
 

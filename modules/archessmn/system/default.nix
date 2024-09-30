@@ -57,6 +57,12 @@ in
           grub = {
             efiSupport = true;
             device = "nodev";
+            minegrub-theme = {
+              enable = true;
+              splash = "100% flakes!";
+              background = "background_options/1.8  - [Classic Minecraft].png";
+              boot-options-count = 4;
+            };
           };
         };
       })

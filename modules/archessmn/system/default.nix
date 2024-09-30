@@ -47,5 +47,18 @@ in
         boot.loader.systemd-boot.enable = true;
         boot.loader.efi.canTouchEfiVariables = true;
       })
+    (mkIf (cfg.bootloader == "grub")
+      {
+        boot.loader = {
+          efi = {
+            canTouchEfiVariables = true;
+            efiSysMountPoint = "/boot/efi";
+          };
+          grub = {
+            efiSupport = true;
+            device = "nodev";
+          };
+        };
+      })
   ];
 }

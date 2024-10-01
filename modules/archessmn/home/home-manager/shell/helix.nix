@@ -2,11 +2,11 @@
 with lib;
 let
   shellEnabled = config.archessmn.home.home-manager.shell.enable;
-  cfg = config.archessmn.home.home-manager.shell.neovim;
+  cfg = config.archessmn.home.home-manager.shell.helix;
 in
 
 {
-  options.archessmn.home.home-manager.shell.neovim = {
+  options.archessmn.home.home-manager.shell.helix = {
     enable = mkOption {
       type = types.bool;
       default = shellEnabled;
@@ -14,11 +14,9 @@ in
   };
 
   config.home-manager.users.${username} = mkIf cfg.enable {
-    programs.neovim = {
+    programs.helix = {
       enable = true;
+      defaultEditor = true;
     };
-
-    home.file.".config/nvim".source = ../files/nvim;
-    home.file.".config/nvim".recursive = true;
   };
 }

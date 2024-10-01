@@ -51,7 +51,7 @@ in
     pkgs.jdk21
     pkgs.jflap
 
-    pkgs.zed-editor
+    unstablePkgs.zed-editor
 
     # Terminal shit
     pkgs.git

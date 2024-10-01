@@ -31,7 +31,6 @@ in
     home.packages = [
       # Editors
       pkgs.jetbrains.idea-ultimate
-      pkgs.zed-editor
 
       # Assorted shite
       pkgs.jflap

@@ -101,6 +101,17 @@
           ];
         };
 
+        av-imposter = nixpkgs.lib.nixosSystem {
+          specialArgs = sharedArgs;
+          modules = [
+            ./hosts/av-imposter/configuration.nix
+            ./modules/archessmn
+            home-manager.nixosModules.home-manager
+            inputs.minegrub-theme.nixosModules.default
+          ];
+        };
+
+
         slowpoke = nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit system; inherit inputs;

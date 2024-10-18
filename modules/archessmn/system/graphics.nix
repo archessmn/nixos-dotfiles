@@ -7,7 +7,7 @@ in
   options.archessmn.system = {
     graphics = {
       brand = mkOption {
-        type = types.enum [ "nvidia" "amd" "nvidia-special" ];
+        type = types.enum [ "nvidia" "amd" "nvidia-special" "intel-old" ];
       };
     };
   };
@@ -86,5 +86,15 @@ in
         };
       };
     })
+
+    (mkIf (cfg.graphics.brand == "av-imposter") {
+      hardware.opengl = {
+        enable = true;
+        extraPackages = [
+          pkgs.intel-media-sdk
+        ];
+      };
+    })
+
   ];
 }

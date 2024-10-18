@@ -1,7 +1,6 @@
 { lib, config, pkgs, unstablePkgs, username, ... }:
 with lib;
 let
-  # inherit (lib.hm.gvariant) mkTuple;
   desktopEnabled = config.archessmn.desktop.enable;
   cfg = config.archessmn.home.home-manager.desktop.gnome;
 in
@@ -31,7 +30,7 @@ in
       package = pkgs.gnomeExtensions.gsconnect;
     };
 
-    home-manager.users.${username} = {
+    home-manager.users.${username} = { lib, ... }: {
       home.packages = [
         # Gnome stuff
         pkgs.gnomeExtensions.appindicator
@@ -97,6 +96,10 @@ in
           toggle-fullscreen = [ "F11" ];
         };
 
+        settings."org/gnome/desktop/input-sources" = {
+          sources = [ (lib.hm.gvariant.mkTuple [ "xkb" "gb" ]) ];
+        };
+
         settings."org/gnome/desktop/wm/preferences" = {
           button-layout = "appmenu:minimize,maximize,close";
           visual-bell = false;
@@ -104,14 +107,13 @@ in
 
         # Blur My Shell
         settings."org/gnome/shell/extensions/blur-my-shell" = {
-          brightness = 0.64;
-          # At some point I need to fix this, but I'm doing this a weird way and can't be bothered right now
-          # color = (mkTuple [ 0.356 0.054 0.397 0.233 ]);
+          brightness = 0.69;
           hacks-level = 3;
           noise-amount = 0.2;
           noise-lightness = 0.69;
           sigma = 45;
         };
+
         settings."org/gnome/shell/extensions/blur-my-shell/applications" = {
           blacklist = [ "Plank" ];
           blur-on-overview = false;
@@ -121,10 +123,12 @@ in
           sigma = 6;
           whitelist = [ "kitty" ];
         };
+
         settings."org/gnome/shell/extensions/blur-my-shell/overview" = {
           blur = true;
           style-components = 3;
         };
+
         settings."org/gnome/shell/extensions/blur-my-shell/panel" = {
           override-background = true;
         };

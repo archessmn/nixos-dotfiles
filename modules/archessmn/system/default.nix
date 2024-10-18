@@ -22,6 +22,12 @@ in
     bootloader = mkOption {
       type = types.enum [ "systemd" "grub" ];
     };
+
+    efiPath = mkOption {
+      type = types.enum [ "/boot/efi" "/boot" ];
+      default = "/boot";
+    };
+
   };
 
   config = mkMerge [
@@ -52,7 +58,7 @@ in
         boot.loader = {
           efi = {
             canTouchEfiVariables = true;
-            efiSysMountPoint = "/boot/efi";
+            efiSysMountPoint = cfg.efiPath;
           };
           grub = {
             efiSupport = true;

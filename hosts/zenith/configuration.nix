@@ -30,7 +30,8 @@
   };
 
   archessmn.system = {
-    bootloader = "systemd";
+    bootloader = "grub";
+    efiPath = "/boot/efi";
     graphics.brand = "nvidia";
     wakeonlan = {
       enable = true;

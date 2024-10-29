@@ -98,6 +98,7 @@
             ./hosts/zenith/configuration.nix
             ./modules/archessmn
             home-manager.nixosModules.home-manager
+            inputs.minegrub-theme.nixosModules.default
           ];
         };
 

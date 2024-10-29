@@ -72,8 +72,8 @@ in
       pkgs.sl
 
       # Programming things
-      pkgs.rustc
-      pkgs.cargo
+      unstablePkgs.rustc
+      unstablePkgs.cargo
       pkgs.nodejs
       pkgs.nodePackages.npm
       pkgs.yarn

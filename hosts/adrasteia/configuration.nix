@@ -27,6 +27,7 @@
     system = {
       battery.tlp.enable = true;
       bootloader = "grub";
+      efiPath = "/boot/efi";
       fprintd.enable = true;
       graphics.brand = "amd";
     };

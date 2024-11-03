@@ -74,6 +74,7 @@ in
       # Programming things
       unstablePkgs.rustc
       unstablePkgs.cargo
+      unstablePkgs.rustlings
       pkgs.nodejs
       pkgs.nodePackages.npm
       pkgs.yarn

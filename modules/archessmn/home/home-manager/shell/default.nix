@@ -35,7 +35,18 @@ in
         bonk = "clear";
         nixconfig = "cd ~/nixos-dotfiles/";
         rebuild = "cd ~/nixos-dotfiles/ && ./deploy";
+        please = "sudo";
       };
+
+      interactiveShellInit = "
+        function \"gogogadget\"
+          nix run nixpkgs#$argv
+        end
+
+        function \"go go gadget\"
+          nix run nixpkgs#$argv
+        end
+      ";
     };
 
     programs.fsh.enable = mkDefault true;
@@ -79,7 +90,7 @@ in
       pkgs.nodePackages.npm
       pkgs.yarn
       pkgs.bun
-      pkgs.gccgo13
+      # pkgs.gccgo13
       pkgs.jdk21
     ];
   };

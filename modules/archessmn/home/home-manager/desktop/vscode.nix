@@ -28,7 +28,7 @@ in
         zlib
         openssl.dev
         pkg-config
-        gccgo13
+        # gccgo13
         cmake
         gdb
         git

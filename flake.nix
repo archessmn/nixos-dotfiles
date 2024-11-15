@@ -112,6 +112,16 @@
           ];
         };
 
+        nostromo = nixpkgs.lib.nixosSystem {
+          specialArgs = sharedArgs;
+          modules = [
+            ./hosts/nostromo/configuration.nix
+            ./modules/archessmn
+            home-manager.nixosModules.home-manager
+            inputs.minegrub-theme.nixosModules.default
+          ];
+        };
+
 
         slowpoke = nixpkgs.lib.nixosSystem {
           specialArgs = {

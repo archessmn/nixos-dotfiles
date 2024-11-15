@@ -7,7 +7,7 @@ in
   options.archessmn.system = {
     graphics = {
       brand = mkOption {
-        type = types.enum [ "nvidia" "amd" "nvidia-special" "intel-old" ];
+        type = types.enum [ "nvidia" "amd" "nvidia-special" "intel" "intel-old" ];
       };
     };
   };
@@ -84,6 +84,15 @@ in
             intelBusId = "PCI:00:02:0";
           };
         };
+      };
+    })
+
+    (mkIf (cfg.graphics.brand == "intel") {
+      hardware.opengl = {
+        enable = true;
+        extraPackages = [
+          pkgs.onevpl-intel-gpu
+        ];
       };
     })
 

@@ -29,6 +29,7 @@
       bootloader = "grub";
       efiPath = "/boot/efi";
       graphics.brand = "intel";
+      thinkpad.enable = true;
     };
   };
 

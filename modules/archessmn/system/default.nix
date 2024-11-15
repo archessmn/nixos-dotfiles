@@ -13,6 +13,7 @@ in
     ./locale.nix
     ./networking.nix
     ./power.nix
+    ./thinkpad.nix
     ./virtualisation.nix
   ];
 

@@ -10,6 +10,8 @@ in
 
   config = mkIf cfg.enable {
     # https://github.com/NixOS/nixpkgs/issues/19022
+    # https://forum.manjaro.org/t/temporary-fix-for-non-working-trackpoint-on-lenovo-thinkpad-l13-g2/46509
+    # echo - n "elantech" | sudo tee /sys/bus/serio/devices/serio1/protocol
 
     services.libinput.enable = true;
 

@@ -14,6 +14,8 @@
       ./hardware-configuration.nix
     ];
 
+  boot.blacklistedKernelModules = [ "elan_i2c" ];
+
   archessmn = {
     desktop = {
       enable = true;
@@ -31,6 +33,30 @@
       graphics.brand = "intel";
       thinkpad.enable = true;
     };
+  };
+
+  security.sudo.extraRules = [{
+    users = [ "${username}" ];
+    runAs = "ALL:ALL";
+    commands = [{
+      command = "/run/current-system/sw/bin/systemctl restart unfuck-trackpad.service";
+      options = [ "NOPASSWD" ];
+    }];
+  }];
+
+  home-manager.users.${username}.programs.fish.shellAliases = {
+    unfuck-trackpad = "sudo systemctl restart unfuck-trackpad.service";
+  };
+
+  systemd.services.unfuck-trackpad = {
+    enable = true;
+    description = "Unfucks the trackpad";
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "/bin/sh -c '/run/current-system/sw/bin/echo -n \"elantech\" | /run/current-system/sw/bin/tee /sys/bus/serio/devices/serio1/protocol'";
+      RemainAfterExit = "yes";
+    };
+    wantedBy = [ "multi-user.target" ];
   };
 
   networking.hostName = "nostromo"; # Define your hostname.

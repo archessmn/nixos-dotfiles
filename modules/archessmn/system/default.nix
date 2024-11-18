@@ -1,4 +1,4 @@
-{ lib, config, pkgs, unstablePkgs, theLocale, theTimezone, username, ... }:
+{ lib, config, pkgs, unstablePkgs, username, flakeDir, ... }:
 with lib;
 let
   cfg = config.archessmn.system;
@@ -12,6 +12,7 @@ in
     ./graphics.nix
     ./locale.nix
     ./networking.nix
+    ./nh.nix
     ./power.nix
     ./thinkpad.nix
     ./virtualisation.nix

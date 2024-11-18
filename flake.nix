@@ -69,6 +69,7 @@
         inherit username;
         inherit unstablePkgs;
         inherit fsh;
+        inherit flakeDir;
       };
     in
     {

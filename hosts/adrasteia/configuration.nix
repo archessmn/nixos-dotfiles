@@ -30,6 +30,7 @@
       efiPath = "/boot/efi";
       fprintd.enable = true;
       graphics.brand = "amd";
+      security.kanidm.client.enable = true;
     };
   };
 

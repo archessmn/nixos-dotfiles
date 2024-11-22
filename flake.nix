@@ -171,7 +171,9 @@
           modules = [
             ./hosts/godshawke/configuration.nix
             ./modules/archessmn
+            ./roles/family-pc.nix
             home-manager.nixosModules.home-manager
+            inputs.minegrub-theme.nixosModules.default
           ];
         };
 

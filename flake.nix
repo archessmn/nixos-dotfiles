@@ -17,6 +17,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     minegrub-theme.url = "github:Lxtharia/minegrub-theme";
   };
 
@@ -27,6 +32,7 @@
     , libfprint
     , fsh
     , minegrub-theme
+    , agenix
     , ...
     }:
     let
@@ -70,6 +76,7 @@
         inherit unstablePkgs;
         inherit fsh;
         inherit flakeDir;
+        inherit agenix;
       };
     in
     {
@@ -122,6 +129,19 @@
             inputs.minegrub-theme.nixosModules.default
           ];
         };
+
+        tsuro = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = sharedArgs;
+          modules = [
+            ./hosts/tsuro/configuration.nix
+            ./modules/archessmn
+            home-manager.nixosModules.home-manager
+            inputs.minegrub-theme.nixosModules.default
+            agenix.nixosModules.default
+          ];
+        };
+
 
 
         slowpoke = nixpkgs.lib.nixosSystem {

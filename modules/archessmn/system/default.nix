@@ -19,10 +19,13 @@ in
   ];
 
   options.archessmn.system = {
-    enable = mkEnableOption "Testing Modules";
+    enable = mkOption {
+      type = types.bool;
+      default = true;
+    };
 
     bootloader = mkOption {
-      type = types.enum [ "systemd" "grub" ];
+      type = types.enum [ "systemd" "grub" "hardware-defined" ];
     };
 
     efiPath = mkOption {
@@ -47,6 +50,8 @@ in
         pkgs.curl
         pkgs.git
       ];
+
+      environment.enableAllTerminfo = true;
     })
     (mkIf
       (cfg.bootloader
@@ -64,7 +69,7 @@ in
           };
           grub = {
             efiSupport = true;
-            device = "nodev";
+            device = lib.mkDefault "nodev";
             minegrub-theme = {
               enable = true;
               splash = "100% flakes!";

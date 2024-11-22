@@ -9,6 +9,11 @@ in
       type = types.bool;
       default = true;
     };
+
+    podman = mkOption {
+      type = types.bool;
+      default = false;
+    };
   };
 
   config = mkMerge [
@@ -17,5 +22,16 @@ in
 
       users.users.${username}.extraGroups = [ "docker" ];
     })
+
+    (mkIf cfg.podman {
+      virtualisation.podman = {
+        enable = true;
+
+        dockerCompat = true;
+
+        defaultNetwork.settings.dns_enabled = true;
+      };
+    })
+
   ];
 }

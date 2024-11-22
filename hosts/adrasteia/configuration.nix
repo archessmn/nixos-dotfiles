@@ -31,6 +31,7 @@
       fprintd.enable = true;
       graphics.brand = "amd";
       security.kanidm.client.enable = true;
+      security.agenix.enable = true;
     };
   };
 

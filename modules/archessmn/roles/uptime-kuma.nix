@@ -23,7 +23,7 @@ in
     virtualisation.oci-containers.containers.uptime-kuma = {
       autoStart = true;
 
-      image = "louislam/uptime-kuma:latest";
+      image = "louislam/uptime-kuma:1.23.15";
 
       ports = [
         "3001:3001"

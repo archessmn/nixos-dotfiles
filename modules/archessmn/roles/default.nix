@@ -8,6 +8,7 @@ in
   imports = [
     ./traefik.nix
     ./uptime-kuma.nix
+    ./vaultwarden.nix
   ];
 
   options.archessmn.roles = { };

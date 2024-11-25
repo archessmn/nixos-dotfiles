@@ -8,4 +8,5 @@ in
 {
   "traefik_cloudflare.env.age".publicKeys = [ archessmn tsuro ];
   "traefik_kanidm.env.age".publicKeys = [ archessmn tsuro ];
+  "vaultwarden.env.age".publicKeys = [ archessmn tsuro ];
 }

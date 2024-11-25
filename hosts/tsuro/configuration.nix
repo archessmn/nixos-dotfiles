@@ -25,6 +25,7 @@
     roles = {
       traefik.enable = true;
       uptime-kuma.enable = true;
+      vaultwarden.enable = true;
     };
   };
 
@@ -32,6 +33,7 @@
   # Include Agenix Secrets
   age.secrets.traefik_cloudflare_env.file = ../../secrets/traefik_cloudflare.env.age;
   age.secrets.traefik_kanidm_env.file = ../../secrets/traefik_kanidm.env.age;
+  age.secrets.vaultwarden_env.file = ../../secrets/vaultwarden.env.age;
 
 
   networking.hostName = "tsuro";

@@ -24,6 +24,7 @@
 
     roles = {
       traefik.enable = true;
+      uptime-kuma.enable = true;
     };
   };
 

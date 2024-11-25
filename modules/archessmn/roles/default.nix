@@ -7,6 +7,7 @@ in
 
   imports = [
     ./traefik.nix
+    ./uptime-kuma.nix
   ];
 
   options.archessmn.roles = { };

@@ -47,6 +47,7 @@ in
           };
           websecure = {
             address = ":443";
+            asDefault = true;
             http = {
               tls.certresolver = "acmeresolver";
             };

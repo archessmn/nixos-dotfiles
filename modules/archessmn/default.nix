@@ -1,4 +1,4 @@
-{ lib, config, pkgs, unstablePkgs, username, fsh, ... }:
+{ lib, config, pkgs, unstablePkgs, username, fsh, flakeDir, ... }:
 with lib;
 let
   cfg = config.archessmn;
@@ -7,6 +7,7 @@ in
   imports = [
     ./desktop
     ./home
+    ./roles
     ./system
   ];
 

@@ -1,4 +1,4 @@
-{ lib, config, pkgs, unstablePkgs, theLocale, theTimezone, username, ... }:
+{ lib, config, pkgs, unstablePkgs, username, flakeDir, ... }:
 with lib;
 let
   cfg = config.archessmn.system;
@@ -12,15 +12,20 @@ in
     ./graphics.nix
     ./locale.nix
     ./networking.nix
+    ./nh.nix
     ./power.nix
+    ./thinkpad.nix
     ./virtualisation.nix
   ];
 
   options.archessmn.system = {
-    enable = mkEnableOption "Testing Modules";
+    enable = mkOption {
+      type = types.bool;
+      default = true;
+    };
 
     bootloader = mkOption {
-      type = types.enum [ "systemd" "grub" ];
+      type = types.enum [ "systemd" "grub" "hardware-defined" ];
     };
 
     efiPath = mkOption {
@@ -45,6 +50,8 @@ in
         pkgs.curl
         pkgs.git
       ];
+
+      environment.enableAllTerminfo = true;
     })
     (mkIf
       (cfg.bootloader
@@ -62,7 +69,7 @@ in
           };
           grub = {
             efiSupport = true;
-            device = "nodev";
+            device = lib.mkDefault "nodev";
             minegrub-theme = {
               enable = true;
               splash = "100% flakes!";

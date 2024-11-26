@@ -1,18 +1,23 @@
 { lib, config, pkgs, unstablePkgs, theLocale, theTimezone, ... }:
 with lib;
 let
+  desktopEnabled = config.archessmn.desktop.enable;
   cfg = config.archessmn.system;
 in
 {
   options.archessmn.system = {
     graphics = {
+      enable = mkOption {
+        type = types.bool;
+        default = desktopEnabled;
+      };
       brand = mkOption {
-        type = types.enum [ "nvidia" "amd" "nvidia-special" "intel-old" ];
+        type = types.enum [ "nvidia" "amd" "nvidia-special" "intel" "intel-old" ];
       };
     };
   };
 
-  config = mkMerge [
+  config = mkIf cfg.graphics.enable (mkMerge [
     # AMD Specific stuff
     (mkIf (cfg.graphics.brand == "amd") {
       hardware.opengl.driSupport = true;
@@ -88,6 +93,15 @@ in
       };
     })
 
+    (mkIf (cfg.graphics.brand == "intel") {
+      hardware.opengl = {
+        enable = true;
+        extraPackages = [
+          pkgs.onevpl-intel-gpu
+        ];
+      };
+    })
+
     (mkIf (cfg.graphics.brand == "av-imposter") {
       hardware.opengl = {
         enable = true;
@@ -97,5 +111,5 @@ in
       };
     })
 
-  ];
+  ]);
 }

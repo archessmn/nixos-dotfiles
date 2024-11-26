@@ -7,7 +7,7 @@ in
   options.archessmn.desktop = {
     doSound = mkOption {
       type = types.bool;
-      default = true;
+      default = cfg.enable;
     };
   };
 

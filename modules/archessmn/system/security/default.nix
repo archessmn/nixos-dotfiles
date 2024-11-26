@@ -5,6 +5,7 @@ let
 in
 {
   imports = [
+    ./agenix.nix
     ./kanidm.nix
     ./sudo.nix
   ];

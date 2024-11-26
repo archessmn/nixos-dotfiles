@@ -27,6 +27,7 @@ in
     programs.firefox.enable = true;
     programs.steam.enable = true;
 
+    programs.wireshark.enable = true;
 
     services.xserver = {
       enable = true;

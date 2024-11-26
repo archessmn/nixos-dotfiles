@@ -27,8 +27,11 @@
     system = {
       battery.tlp.enable = true;
       bootloader = "grub";
+      efiPath = "/boot/efi";
       fprintd.enable = true;
       graphics.brand = "amd";
+      security.kanidm.client.enable = true;
+      security.agenix.enable = true;
     };
   };
 

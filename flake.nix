@@ -17,6 +17,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     minegrub-theme.url = "github:Lxtharia/minegrub-theme";
   };
 
@@ -27,6 +32,7 @@
     , libfprint
     , fsh
     , minegrub-theme
+    , agenix
     , ...
     }:
     let
@@ -69,6 +75,8 @@
         inherit username;
         inherit unstablePkgs;
         inherit fsh;
+        inherit flakeDir;
+        inherit agenix;
       };
     in
     {
@@ -112,11 +120,34 @@
           ];
         };
 
+        nostromo = nixpkgs.lib.nixosSystem {
+          specialArgs = sharedArgs;
+          modules = [
+            ./hosts/nostromo/configuration.nix
+            ./modules/archessmn
+            home-manager.nixosModules.home-manager
+            inputs.minegrub-theme.nixosModules.default
+          ];
+        };
 
+        tsuro = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = sharedArgs;
+          modules = [
+            ./hosts/tsuro/configuration.nix
+            ./modules/archessmn
+            home-manager.nixosModules.home-manager
+            inputs.minegrub-theme.nixosModules.default
+            agenix.nixosModules.default
+          ];
+        };
+
+
+        # Needs moving to new username
         slowpoke = nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit system; inherit inputs;
-            username = "max"; inherit hostname; inherit gitUsername;
+            inherit hostname; inherit gitUsername;
             inherit gitEmail; inherit theLocale; inherit theTimezone;
           };
           modules = [
@@ -130,7 +161,6 @@
               };
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users."max" = import ./home.nix;
             }
           ];
         };
@@ -140,7 +170,9 @@
           modules = [
             ./hosts/godshawke/configuration.nix
             ./modules/archessmn
+            ./roles/family-pc.nix
             home-manager.nixosModules.home-manager
+            inputs.minegrub-theme.nixosModules.default
           ];
         };
 

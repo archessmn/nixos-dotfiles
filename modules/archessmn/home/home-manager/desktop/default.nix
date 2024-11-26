@@ -34,6 +34,7 @@ in
 
       # Assorted shite
       pkgs.jflap
+      pkgs.wireshark
 
       # Terminal emulators
       pkgs.kitty

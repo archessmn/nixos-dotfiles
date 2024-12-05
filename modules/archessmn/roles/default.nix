@@ -6,6 +6,7 @@ in
 {
 
   imports = [
+    ./consul
     ./traefik.nix
     ./uptime-kuma.nix
     ./vaultwarden.nix

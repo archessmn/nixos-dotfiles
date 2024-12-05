@@ -55,6 +55,11 @@ in
         };
         providers = {
           docker = { };
+          consul = {
+            endpoints = [
+              "127.0.0.1:8500"
+            ];
+          };
         };
 
         certificatesResolvers = {

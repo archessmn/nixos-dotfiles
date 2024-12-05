@@ -26,6 +26,10 @@
       traefik.enable = true;
       uptime-kuma.enable = true;
       vaultwarden.enable = true;
+      consul = {
+        client.enable = true;
+        server.enable = true;
+      };
     };
   };
 

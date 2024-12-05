@@ -20,7 +20,6 @@ in
   config = mkIf cfg.graphics.enable (mkMerge [
     # AMD Specific stuff
     (mkIf (cfg.graphics.brand == "amd") {
-      hardware.opengl.driSupport = true;
       boot.initrd.kernelModules = [ "amdgpu" ];
       services.xserver.videoDrivers = [ "amdgpu" ];
     })
@@ -29,7 +28,6 @@ in
     (mkIf (cfg.graphics.brand == "nvidia") {
       hardware.opengl = {
         enable = true;
-        driSupport = true;
         driSupport32Bit = true;
         extraPackages = [ pkgs.libvdpau-va-gl ];
       };

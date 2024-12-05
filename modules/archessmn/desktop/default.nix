@@ -35,7 +35,7 @@ in
       desktopManager.gnome.enable = true;
     };
 
-    programs.ssh.askPassword = pkgs.lib.mkForce "${pkgs.gnome.seahorse.out}/libexec/seahorse/ssh-askpass";
+    programs.ssh.askPassword = pkgs.lib.mkForce "${pkgs.seahorse.out}/libexec/seahorse/ssh-askpass";
 
     programs.hyprland = mkIf cfg.hyprland {
       enable = true;
@@ -55,7 +55,7 @@ in
     ];
 
     services.udev.packages = with pkgs; [
-      gnome.gnome-settings-daemon
+      gnome-settings-daemon
       via
       moonlight-qt
     ];

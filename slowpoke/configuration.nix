@@ -120,7 +120,7 @@ in
   ];
 
   services.udev.packages = with pkgs; [
-    gnome.gnome-settings-daemon
+    gnome-settings-daemon
     via
     moonlight-qt
     parsec-bin

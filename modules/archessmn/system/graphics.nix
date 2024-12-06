@@ -26,9 +26,9 @@ in
 
     # NVIDIA Specific stuff
     (mkIf (cfg.graphics.brand == "nvidia") {
-      hardware.opengl = {
+      hardware.graphics = {
         enable = true;
-        driSupport32Bit = true;
+        enable32Bit = true;
         extraPackages = [ pkgs.libvdpau-va-gl ];
       };
 

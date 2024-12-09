@@ -33,6 +33,27 @@
     };
   };
 
+  # Manually set IPv6 Address
+  networking = {
+    interfaces = {
+      ens18.ipv4.addresses = [{
+        address = "185.213.25.136";
+        prefixLength = 24;
+      }];
+      ens18.ipv6.addresses = [{
+        address = "2a02:c206:2228:4949:0000:0000:0000:0001";
+        prefixLength = 64;
+      }];
+    };
+    defaultGateway = {
+      address = "185.213.25.1";
+      interface = "ens18";
+    };
+    defaultGateway6 = {
+      address = "fe80::1";
+      interface = "ens18";
+    };
+  };
 
   # Include Agenix Secrets
   age.secrets.traefik_cloudflare_env.file = ../../secrets/traefik_cloudflare.env.age;

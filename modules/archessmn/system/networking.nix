@@ -1,13 +1,20 @@
-{ lib, config, pkgs, unstablePkgs, theLocale, theTimezone, ... }:
+{ lib, config, pkgs, unstablePkgs, username, ... }:
 with lib;
 let
   cfg = config.archessmn.system;
 in
 {
   options.archessmn.system = {
-    tailscale = mkOption {
-      type = types.bool;
-      default = true;
+    tailscale = {
+      enable = mkOption {
+        type = types.bool;
+        default = true;
+      };
+
+      routingFeatures = mkOption {
+        type = types.str;
+        default = "client";
+      };
     };
 
     ssh = mkOption {
@@ -51,9 +58,13 @@ in
       settings.KbdInteractiveAuthentication = false;
     };
 
-    services.tailscale = mkIf cfg.tailscale {
+    services.tailscale = mkIf cfg.tailscale.enable {
       enable = true;
       package = unstablePkgs.tailscale;
+      useRoutingFeatures = cfg.tailscale.routingFeatures;
+      extraUpFlags = [
+        "--operator=${username}"
+      ];
     };
 
     networking.interfaces = mkIf cfg.wakeonlan.enable { ${cfg.wakeonlan.interface}.wakeOnLan.enable = cfg.wakeonlan.enable; };

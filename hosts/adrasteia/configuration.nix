@@ -13,6 +13,11 @@
       ./hardware-configuration.nix
     ];
 
+  boot.supportedFilesystems = [ "ntfs" ];
+  boot.loader.grub.useOSProber = true;
+
+  networking.firewall.allowedUDPPorts = [ 8004 ];
+
   archessmn = {
     desktop = {
       enable = true;
@@ -33,6 +38,11 @@
       security.kanidm.client.enable = true;
       security.agenix.enable = true;
     };
+  };
+
+  programs.winbox = {
+    enable = true;
+    openFirewall = true;
   };
 
   networking.hostName = "adrasteia"; # Define your hostname.

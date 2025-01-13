@@ -14,14 +14,12 @@
     ];
 
   archessmn = {
-    desktop = {
-      enable = true;
-    };
-
     system = {
       bootloader = "grub";
       efiPath = "/boot/efi";
       graphics.brand = "intel-old";
+
+      tailscale.advertiseExitNode = true;
     };
   };
 

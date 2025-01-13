@@ -63,6 +63,8 @@ in
       pkgs.helvum
       pkgs.chromium
 
+      pkgs.libresprite
+
       # Remote stuff
       pkgs.moonlight-qt
       pkgs.parsec-bin

@@ -13,7 +13,12 @@ in
 
       routingFeatures = mkOption {
         type = types.str;
-        default = "client";
+        default = if cfg.tailscale.advertiseExitNode then "server" else "client";
+      };
+
+      advertiseExitNode = mkOption {
+        type = types.bool;
+        default = false;
       };
     };
 
@@ -64,6 +69,9 @@ in
       useRoutingFeatures = cfg.tailscale.routingFeatures;
       extraUpFlags = [
         "--operator=${username}"
+      ];
+      extraSetFlags = mkIf cfg.tailscale.advertiseExitNode [
+        "--advertise-exit-node"
       ];
     };
 

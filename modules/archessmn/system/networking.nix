@@ -20,6 +20,11 @@ in
         type = types.bool;
         default = false;
       };
+
+      advertiseRoutes = mkOption {
+        type = types.string;
+        default = "";
+      };
     };
 
     ssh = mkOption {
@@ -67,11 +72,10 @@ in
       enable = true;
       package = unstablePkgs.tailscale;
       useRoutingFeatures = cfg.tailscale.routingFeatures;
-      extraUpFlags = [
-        "--operator=${username}"
-      ];
       extraSetFlags = mkIf cfg.tailscale.advertiseExitNode [
+        "--operator=${username}"
         "--advertise-exit-node"
+        "--advertise-routes=\"${cfg.tailscale.advertiseRoutes}\""
       ];
     };
 

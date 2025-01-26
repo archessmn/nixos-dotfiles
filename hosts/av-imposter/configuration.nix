@@ -20,10 +20,9 @@
       graphics.brand = "intel-old";
 
       tailscale.advertiseExitNode = true;
+      tailscale.advertiseRoutes = "10.0.3.0/24";
     };
   };
-
-  services.tailscale.extraUpFlags = "--advertise-routes=10.0.3.0/24";
 
   networking.hostName = "av-imposter"; # Define your hostname.
 

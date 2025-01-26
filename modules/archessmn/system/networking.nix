@@ -22,7 +22,7 @@ in
       };
 
       advertiseRoutes = mkOption {
-        type = types.string;
+        type = types.str;
         default = "";
       };
     };
@@ -75,7 +75,7 @@ in
       extraSetFlags = mkIf cfg.tailscale.advertiseExitNode [
         "--operator=${username}"
         "--advertise-exit-node"
-        "--advertise-routes=\"${cfg.tailscale.advertiseRoutes}\""
+        "--advertise-routes=${cfg.tailscale.advertiseRoutes}"
       ];
     };
 

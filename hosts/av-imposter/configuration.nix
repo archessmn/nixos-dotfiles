@@ -23,6 +23,8 @@
     };
   };
 
+  services.tailscale.extraUpFlags = "--advertise-routes=10.0.3.0/24";
+
   networking.hostName = "av-imposter"; # Define your hostname.
 
   system.stateVersion = "23.11";

@@ -49,7 +49,11 @@ in
         pkgs.wget
         pkgs.curl
         pkgs.git
+
+        (pkgs.nerdfonts.override { fonts = [ "FiraMono" ]; })
       ];
+
+      console.font = "FiraMono Nerd Font";
 
       environment.enableAllTerminfo = true;
     })

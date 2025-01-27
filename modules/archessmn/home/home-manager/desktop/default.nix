@@ -33,6 +33,7 @@ in
       pkgs.jetbrains.idea-ultimate
 
       # Assorted shite
+      pkgs.nixfmt-rfc-style
       pkgs.jflap
       pkgs.wireshark
 

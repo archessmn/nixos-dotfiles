@@ -38,6 +38,10 @@
       security.kanidm.client.enable = true;
       security.agenix.enable = true;
     };
+
+    roles = {
+      consul.client.enable = true;
+    };
   };
 
   programs.winbox = {

@@ -69,12 +69,6 @@ in
         pkgs.git
       ];
 
-      fonts.packages = [
-        (pkgs.nerdfonts.override { fonts = [ "FiraMono" ]; })
-      ];
-
-      console.font = "FiraMono Nerd Font";
-
       environment.enableAllTerminfo = true;
     })
     (mkIf (cfg.bootloader == "systemd") {

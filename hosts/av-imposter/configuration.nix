@@ -1,17 +1,17 @@
-{ inputs
-, config
-, lib
-, pkgs
-, username
-, unstablePkgs
-, ...
+{
+  inputs,
+  config,
+  lib,
+  pkgs,
+  username,
+  unstablePkgs,
+  ...
 }:
 
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    ./hardware-configuration.nix
+  ];
 
   archessmn = {
     system = {

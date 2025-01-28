@@ -14,6 +14,12 @@
   ];
 
   archessmn = {
+    roles = {
+      consul = {
+        server.enable = true;
+        client.enable = true;
+      };
+    };
     system = {
       bootloader = "grub";
       efiPath = "/boot/efi";

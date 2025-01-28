@@ -40,6 +40,10 @@
     security.kanidm.client.enable = true;
   };
 
+  archessmn.roles = {
+    consul.client.enable = true;
+  };
+
   networking.hostName = "zenith";
 
   system.stateVersion = "23.11";

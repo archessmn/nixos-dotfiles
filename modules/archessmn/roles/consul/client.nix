@@ -7,7 +7,7 @@ in
   options.archessmn.roles.consul.client = {
     enable = mkOption {
       type = types.bool;
-      default = false;
+      default = config.archessmn.roles.consul.server.enable;
     };
   };
 
@@ -23,10 +23,14 @@ in
 
         addresses = {
           http = "0.0.0.0";
+          dns = "127.0.0.1";
         };
 
         retry_join = [
           "localhost"
+          "av-imposter.wahoo-monster.ts.net"
+          "temjin.wahoo-monster.ts.net"
+          "tsuro.wahoo-monster.ts.net"
         ];
 
         advertise_addr = "{{ GetInterfaceIP \"tailscale0\" }}";

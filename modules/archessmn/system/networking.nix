@@ -1,4 +1,11 @@
-{ lib, config, pkgs, unstablePkgs, username, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  unstablePkgs,
+  username,
+  ...
+}:
 with lib;
 let
   cfg = config.archessmn.system;
@@ -72,14 +79,22 @@ in
       enable = true;
       package = unstablePkgs.tailscale;
       useRoutingFeatures = cfg.tailscale.routingFeatures;
-      extraSetFlags = mkIf cfg.tailscale.advertiseExitNode [
-        "--operator=${username}"
-        "--advertise-exit-node"
-        "--advertise-routes=${cfg.tailscale.advertiseRoutes}"
-      ];
+      extraSetFlags = (
+        mkMerge [
+          ([
+            "--operator=${username}"
+          ])
+          (mkIf cfg.tailscale.advertiseExitNode [
+            "--advertise-exit-node"
+            "--advertise-routes=${cfg.tailscale.advertiseRoutes}"
+          ])
+        ]
+      );
     };
 
-    networking.interfaces = mkIf cfg.wakeonlan.enable { ${cfg.wakeonlan.interface}.wakeOnLan.enable = cfg.wakeonlan.enable; };
+    networking.interfaces = mkIf cfg.wakeonlan.enable {
+      ${cfg.wakeonlan.interface}.wakeOnLan.enable = cfg.wakeonlan.enable;
+    };
 
     networking.firewall = mkMerge [
       (mkIf cfg.openFirewall.wireguard {

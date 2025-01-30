@@ -20,7 +20,7 @@ in
 
       routingFeatures = mkOption {
         type = types.str;
-        default = if cfg.tailscale.advertiseExitNode then "server" else "client";
+        default = if cfg.tailscale.advertiseExitNode then "both" else "client";
       };
 
       advertiseExitNode = mkOption {

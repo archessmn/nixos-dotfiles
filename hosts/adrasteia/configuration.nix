@@ -1,17 +1,17 @@
-{ inputs
-, config
-, lib
-, pkgs
-, username
-, unstablePkgs
-, ...
+{
+  inputs,
+  config,
+  lib,
+  pkgs,
+  username,
+  unstablePkgs,
+  ...
 }:
 
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    ./hardware-configuration.nix
+  ];
 
   boot.supportedFilesystems = [ "ntfs" ];
   boot.loader.grub.useOSProber = true;
@@ -46,6 +46,7 @@
 
   programs.winbox = {
     enable = true;
+    package = pkgs.winbox4;
     openFirewall = true;
   };
 

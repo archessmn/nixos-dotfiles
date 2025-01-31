@@ -224,6 +224,7 @@ in
           # Active Screen Edges
           settings."org/gnome/mutter" = {
             edge-tiling = true;
+            experimental-features = "['scale-monitor-framebuffer']";
           };
         };
       };

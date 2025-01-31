@@ -22,6 +22,8 @@
     desktop = {
       enable = true;
       virtualBox = true;
+      isDevMachine = true;
+      isCommsMachine = true;
     };
 
     home.home-manager.desktop = {

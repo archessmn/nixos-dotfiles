@@ -1,4 +1,11 @@
-{ lib, config, pkgs, unstablePkgs, username, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  unstablePkgs,
+  username,
+  ...
+}:
 with lib;
 let
   cfg = config.archessmn.desktop;
@@ -12,6 +19,16 @@ in
 
   options.archessmn.desktop = {
     enable = mkEnableOption "Testing Modules";
+
+    isDevMachine = mkOption {
+      type = types.bool;
+      default = false;
+    };
+
+    isCommsMachine = mkOption {
+      type = types.bool;
+      default = false;
+    };
 
     hyprland = mkOption {
       type = types.bool;
@@ -45,7 +62,6 @@ in
     services.usbmuxd.enable = true;
 
     users.users.${username}.extraGroups = [ "gamemode" ];
-
 
     environment.systemPackages = [
       pkgs.libimobiledevice

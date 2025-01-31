@@ -1,17 +1,17 @@
-{ inputs
-, config
-, lib
-, pkgs
-, username
-, unstablePkgs
-, ...
+{
+  inputs,
+  config,
+  lib,
+  pkgs,
+  username,
+  unstablePkgs,
+  ...
 }:
 
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    ./hardware-configuration.nix
+  ];
 
   boot.supportedFilesystems = [ "ntfs" ];
   boot.loader.grub.useOSProber = true;
@@ -22,6 +22,8 @@
     desktop = {
       enable = true;
       virtualBox = true;
+      isDevMachine = true;
+      isCommsMachine = true;
     };
 
     home.home-manager.desktop = {
@@ -46,6 +48,7 @@
 
   programs.winbox = {
     enable = true;
+    package = pkgs.winbox4;
     openFirewall = true;
   };
 

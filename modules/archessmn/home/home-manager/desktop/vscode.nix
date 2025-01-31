@@ -1,4 +1,11 @@
-{ lib, config, pkgs, unstablePkgs, username, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  unstablePkgs,
+  username,
+  ...
+}:
 with lib;
 let
   desktopEnabled = config.archessmn.desktop.enable;
@@ -16,33 +23,29 @@ in
   config.home-manager.users.${username} = mkIf cfg.enable {
     programs.vscode = {
       enable = true;
-      package = pkgs.vscode.fhsWithPackages (ps: with ps; [
-        rustup
-        rustc
-        cargo
-        rust-analyzer
-        cargo-generate
-        cargo-watch
-        cargo-nextest
-        cargo-flamegraph
-        zlib
-        openssl.dev
-        pkg-config
-        # gccgo13
-        cmake
-        gdb
-        git
-        just
-        python3
-        nodejs
-        nodePackages.npm
-        nixd
-        nixpkgs-fmt
+      # package = pkgs.vscode.fhsWithPackages (
+      #   ps: with ps; [
+      #     rustup
+      #     rustc
+      #     cargo
+      #     openssl.dev
+      #     pkg-config
+      #     # gccgo13
+      #     cmake
+      #     gdb
+      #     git
+      #     just
+      #     python3
+      #     nodejs
+      #     nodePackages.npm
+      #     nixd
+      #     nixfmt-rfc-style
 
-        # jdk8
-        jdk11
-        jdk17
-      ]);
+      #     # jdk8
+      #     jdk11
+      #     jdk17
+      #   ]
+      # );
     };
 
   };

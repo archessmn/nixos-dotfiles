@@ -1,21 +1,23 @@
-{ inputs
-, config
-, pkgs
-, username
-, hostname
-, unstablePkgs
-, ...
+{
+  inputs,
+  config,
+  pkgs,
+  username,
+  hostname,
+  unstablePkgs,
+  ...
 }:
 
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    ./hardware-configuration.nix
+  ];
 
   archessmn.desktop = {
     enable = true;
     virtualBox = true;
+    isDevMachine = true;
+    isCommsMachine = true;
   };
 
   archessmn.home.home-manager.desktop = {

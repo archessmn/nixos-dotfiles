@@ -1,10 +1,11 @@
-{ inputs
-, config
-, lib
-, pkgs
-, username
-, unstablePkgs
-, ...
+{
+  inputs,
+  config,
+  lib,
+  pkgs,
+  username,
+  unstablePkgs,
+  ...
 }:
 
 {
@@ -20,6 +21,7 @@
     system = {
       bootloader = "hardware-defined";
       docker = true;
+      tailscale.advertiseExitNode = true;
     };
 
     roles = {
@@ -44,13 +46,20 @@
       #   address = "185.213.25.136";
       #   prefixLength = 24;
       # }];
-      ens18.ipv6.addresses = [{
-        address = "2a02:c206:2228:4949:0000:0000:0000:0001";
-        prefixLength = 64;
-      }];
+      ens18.ipv6.addresses = [
+        {
+          address = "2a02:c206:2228:4949:0000:0000:0000:0001";
+          prefixLength = 64;
+        }
+      ];
     };
 
-    nameservers = [ "161.97.189.51" "161.97.189.52" "2a02:c206:5028::1:53" "2a02:c206:5028::2:53" ];
+    nameservers = [
+      "161.97.189.51"
+      "161.97.189.52"
+      "2a02:c206:5028::1:53"
+      "2a02:c206:5028::2:53"
+    ];
 
     # defaultGateway = {
     #   address = "185.213.25.1";
@@ -68,7 +77,6 @@
   age.secrets.traefik_cloudflare_env.file = ../../secrets/traefik_cloudflare.env.age;
   age.secrets.traefik_kanidm_env.file = ../../secrets/traefik_kanidm.env.age;
   age.secrets.vaultwarden_env.file = ../../secrets/vaultwarden.env.age;
-
 
   networking.hostName = "tsuro";
 

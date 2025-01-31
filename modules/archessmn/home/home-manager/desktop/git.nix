@@ -1,4 +1,11 @@
-{ lib, config, pkgs, unstablePkgs, username, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  unstablePkgs,
+  username,
+  ...
+}:
 with lib;
 let
   desktopEnabled = config.archessmn.desktop.enable;
@@ -17,7 +24,9 @@ in
   };
 
   config.home-manager.users.${username} = mkIf cfg.enable {
-    home.file.".ssh/allowed_signers".text = concatMapStrings (key: "${user.email} ${key}\n") (map (key: getAttr key keys) (attrNames keys));
+    home.file.".ssh/allowed_signers".text = concatMapStrings (key: "${user.email} ${key}\n") (
+      map (key: getAttr key keys) (attrNames keys)
+    );
 
     programs.git = {
       enable = true;
@@ -26,6 +35,7 @@ in
       userName = user.fullName;
 
       extraConfig = {
+        init.defaultBranch = "main";
         commit.gpgsign = true;
         gpg.format = "ssh";
         gpg.ssh.allowedSignersFile = "~/.ssh/allowed_signers";

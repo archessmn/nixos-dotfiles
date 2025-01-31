@@ -1,17 +1,17 @@
-{ inputs
-, config
-, pkgs
-, username
-, hostname
-, ...
+{
+  inputs,
+  config,
+  pkgs,
+  username,
+  hostname,
+  ...
 }:
 
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-    ];
-  
+  imports = [
+    ./hardware-configuration.nix
+  ];
+
   archessmn = {
     desktop = {
       enable = true;
@@ -23,7 +23,8 @@
 
     system = {
       battery.tlp.enable = true;
-      bootloader = "systemd";
+      bootloader = "grub";
+      efiPath = "/boot/efi";
       fprintd = {
         enable = true;
         tod = {
@@ -34,6 +35,11 @@
       graphics.brand = "nvidia-special";
     };
   };
+
+  boot.loader.grub.enableCryptodisk = true;
+
+  boot.initrd.luks.devices.cryptroot.device =
+    "/dev/disk/by-uuid/72ad0d21-cfeb-4ca3-83ff-1a9788014a00";
 
   networking.hostName = "honkpad"; # Define your hostname.
 

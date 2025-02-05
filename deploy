@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+host=$(hostname -s)
+impure=""
+
+while getopts "ih:" flag; do
+  case $flag in
+    h)
+    host=$OPTARG
+    ;;
+    i)
+    impure="--impure"
+    ;;
+  esac
+done
+
+# echo $host
+
+sudo nixos-rebuild switch --flake .#$host $impure
+
+# TODO Push to git branch when deploying
+# https://medium.com/@wujido20/handling-flags-in-bash-scripts-4b06b4d0ed04

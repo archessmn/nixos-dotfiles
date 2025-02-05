@@ -1,0 +1,28 @@
+{ lib, config, pkgs, unstablePkgs, username, ... }:
+with lib;
+let
+  shellEnabled = config.archessmn.home.home-manager.shell.enable;
+  cfg = config.archessmn.home.home-manager.shell.atuin;
+in
+
+{
+  options.archessmn.home.home-manager.shell.atuin = {
+    enable = mkOption {
+      type = types.bool;
+      default = shellEnabled;
+    };
+  };
+
+  config.home-manager.users.${username} = mkIf cfg.enable {
+    programs.atuin = {
+      enable = true;
+      settings = {
+        auto_sync = true;
+        sync_frequency = "1m";
+        sync_address = "https://atuin.archess.mn";
+      };
+      enableZshIntegration = true;
+      enableFishIntegration = true;
+    };
+  };
+}

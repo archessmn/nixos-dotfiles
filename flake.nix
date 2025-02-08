@@ -60,7 +60,7 @@
         ];
       };
 
-      unstablePkgs = import unstable {
+      unstable-pkgs = import unstable {
         inherit system;
         config = {
           allowUnfree = true;
@@ -74,7 +74,7 @@
         inherit system;
         inherit inputs;
         inherit username;
-        inherit unstablePkgs;
+        inherit unstable-pkgs;
         inherit fsh;
         inherit flakeDir;
         inherit agenix;

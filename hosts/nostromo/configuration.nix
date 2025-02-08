@@ -1,18 +1,18 @@
-{ inputs
-, config
-, lib
-, pkgs
-, username
-, unstablePkgs
-, ...
+{
+  inputs,
+  config,
+  lib,
+  pkgs,
+  username,
+  unstable-pkgs,
+  ...
 }:
 
 {
-  imports =
-    [
-      # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   boot.blacklistedKernelModules = [ "elan_i2c" ];
 
@@ -35,14 +35,18 @@
     };
   };
 
-  security.sudo.extraRules = [{
-    users = [ "${username}" ];
-    runAs = "ALL:ALL";
-    commands = [{
-      command = "/run/current-system/sw/bin/systemctl restart unfuck-trackpad.service";
-      options = [ "NOPASSWD" ];
-    }];
-  }];
+  security.sudo.extraRules = [
+    {
+      users = [ "${username}" ];
+      runAs = "ALL:ALL";
+      commands = [
+        {
+          command = "/run/current-system/sw/bin/systemctl restart unfuck-trackpad.service";
+          options = [ "NOPASSWD" ];
+        }
+      ];
+    }
+  ];
 
   home-manager.users.${username}.programs.fish.shellAliases = {
     unfuck-trackpad = "sudo systemctl restart unfuck-trackpad.service";
@@ -64,4 +68,3 @@
   system.stateVersion = "24.05"; # Did you read the comment?
 
 }
-

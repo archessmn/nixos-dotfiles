@@ -1,4 +1,11 @@
-{ lib, config, pkgs, unstablePkgs, username, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  unstable-pkgs,
+  username,
+  ...
+}:
 with lib;
 let
   desktopEnabled = config.archessmn.desktop.enable;

@@ -1,15 +1,16 @@
-{ config
-, lib
-, pkgs
-, unstablePkgs
-, inputs
-, username
-, gitUsername
-, gitEmail
-, browser
-, flakeDir
-, fsh
-, ...
+{
+  config,
+  lib,
+  pkgs,
+  unstable-pkgs,
+  inputs,
+  username,
+  gitUsername,
+  gitEmail,
+  browser,
+  flakeDir,
+  fsh,
+  ...
 }:
 
 let
@@ -51,7 +52,7 @@ in
     pkgs.jdk21
     pkgs.jflap
 
-    unstablePkgs.zed-editor
+    unstable-pkgs.zed-editor
 
     # Terminal shit
     pkgs.git
@@ -74,7 +75,7 @@ in
     pkgs.whatsapp-for-linux
 
     # Security stuff
-    unstablePkgs.kanidm
+    unstable-pkgs.kanidm
     pkgs.bitwarden
 
     # Desktop stuff
@@ -112,7 +113,9 @@ in
     (pkgs.nerdfonts.override { fonts = [ "FiraMono" ]; })
   ];
 
-  home.file.".ssh/allowed_signers".text = concatMapStrings (key: "${user.email} ${key}\n") (map (key: getAttr key keys) (attrNames keys));
+  home.file.".ssh/allowed_signers".text = concatMapStrings (key: "${user.email} ${key}\n") (
+    map (key: getAttr key keys) (attrNames keys)
+  );
 
   programs.git = {
     enable = true;

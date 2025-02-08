@@ -2,7 +2,7 @@
   lib,
   config,
   pkgs,
-  unstablePkgs,
+  unstable-pkgs,
   username,
   ...
 }:
@@ -67,7 +67,7 @@ in
       pkgs.libimobiledevice
       pkgs.wineWowPackages.full
 
-      unstablePkgs.kanidm
+      unstable-pkgs.kanidm
     ];
 
     services.udev.packages = with pkgs; [

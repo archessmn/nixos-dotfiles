@@ -1,4 +1,12 @@
-{ lib, config, pkgs, unstablePkgs, username, agenix, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  unstable-pkgs,
+  username,
+  agenix,
+  ...
+}:
 with lib;
 let
   cfg = config.archessmn.system.security.agenix;

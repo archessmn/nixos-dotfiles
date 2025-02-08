@@ -1,4 +1,11 @@
-{ lib, config, pkgs, unstablePkgs, fsh, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  unstable-pkgs,
+  fsh,
+  ...
+}:
 with lib;
 let
   cfg = config.family-pc;

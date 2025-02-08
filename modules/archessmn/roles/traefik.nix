@@ -1,4 +1,11 @@
-{ lib, config, pkgs, unstablePkgs, username, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  unstable-pkgs,
+  username,
+  ...
+}:
 with lib;
 let
   cfg = config.archessmn.roles.traefik;
@@ -13,7 +20,10 @@ in
 
   config = mkIf cfg.enable {
 
-    networking.firewall.allowedTCPPorts = [ 80 443 ];
+    networking.firewall.allowedTCPPorts = [
+      80
+      443
+    ];
 
     systemd.tmpfiles.rules = [
       "d /opt/traefik 1700 traefik traefik"
@@ -24,7 +34,6 @@ in
 
     services.traefik = {
       enable = true;
-
 
       dataDir = "/opt/traefik";
 
@@ -104,7 +113,11 @@ in
                     ClientSecretEnv = "OIDC_KANIDM_CLIENT_SECRET";
                     # UsePkce = true;
                   };
-                  Scopes = [ "openid" "profile" "email" ];
+                  Scopes = [
+                    "openid"
+                    "profile"
+                    "email"
+                  ];
                   Headers = {
                     MapClaims = [
                       {

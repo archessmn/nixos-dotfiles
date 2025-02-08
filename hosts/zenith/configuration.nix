@@ -4,7 +4,7 @@
   pkgs,
   username,
   hostname,
-  unstablePkgs,
+  unstable-pkgs,
   ...
 }:
 

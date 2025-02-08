@@ -4,7 +4,7 @@
   lib,
   pkgs,
   username,
-  unstablePkgs,
+  unstable-pkgs,
   ...
 }:
 
@@ -32,6 +32,8 @@
         client.enable = true;
         server.enable = true;
       };
+
+      beszel.hub.enable = true;
     };
   };
 

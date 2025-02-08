@@ -1,4 +1,11 @@
-{ lib, config, pkgs, unstablePkgs, username, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  unstable-pkgs,
+  username,
+  ...
+}:
 with lib;
 let
   cfg = config.archessmn.home.home-manager.shell;
@@ -83,9 +90,9 @@ in
       pkgs.sl
 
       # Programming things
-      unstablePkgs.rustc
-      unstablePkgs.cargo
-      unstablePkgs.rustlings
+      unstable-pkgs.rustc
+      unstable-pkgs.cargo
+      unstable-pkgs.rustlings
       pkgs.nodejs
       pkgs.nodePackages.npm
       pkgs.yarn

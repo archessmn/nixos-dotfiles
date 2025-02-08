@@ -2,7 +2,7 @@
   lib,
   config,
   pkgs,
-  unstablePkgs,
+  unstable-pkgs,
   username,
   ...
 }:
@@ -88,7 +88,7 @@ in
 
     services.tailscale = mkIf cfg.tailscale.enable {
       enable = true;
-      package = unstablePkgs.tailscale;
+      package = unstable-pkgs.tailscale;
       useRoutingFeatures = cfg.tailscale.routingFeatures;
       extraSetFlags = (
         mkMerge [

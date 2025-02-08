@@ -1,4 +1,13 @@
-{ lib, config, pkgs, unstablePkgs, username, fsh, flakeDir, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  unstable-pkgs,
+  username,
+  fsh,
+  flakeDir,
+  ...
+}:
 with lib;
 let
   cfg = config.archessmn;

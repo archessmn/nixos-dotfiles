@@ -1,4 +1,11 @@
-{ lib, config, pkgs, unstablePkgs, username, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  unstable-pkgs,
+  username,
+  ...
+}:
 with lib;
 let
   cfg = config.archessmn;
@@ -12,14 +19,18 @@ in
   };
 
   config = mkIf cfg.system.security.sudoNoPasswd {
-    security.sudo.extraRules = [{
-      users = [ "${username}" ];
-      runAs = "ALL:ALL";
-      commands = [{
-        command = "ALL";
-        options = [ "NOPASSWD" ];
-      }];
-    }];
+    security.sudo.extraRules = [
+      {
+        users = [ "${username}" ];
+        runAs = "ALL:ALL";
+        commands = [
+          {
+            command = "ALL";
+            options = [ "NOPASSWD" ];
+          }
+        ];
+      }
+    ];
 
   };
 }

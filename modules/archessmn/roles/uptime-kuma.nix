@@ -1,4 +1,11 @@
-{ lib, config, pkgs, unstablePkgs, username, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  unstable-pkgs,
+  username,
+  ...
+}:
 with lib;
 let
   cfg = config.archessmn.roles.uptime-kuma;
@@ -16,7 +23,6 @@ in
     systemd.tmpfiles.rules = [
       "d /opt/uptime-kuma 1766 root root"
     ];
-
 
     virtualisation.oci-containers.backend = "docker";
 

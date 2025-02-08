@@ -1,4 +1,13 @@
-{ lib, config, pkgs, unstablePkgs, theLocale, theTimezone, username, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  unstable-pkgs,
+  theLocale,
+  theTimezone,
+  username,
+  ...
+}:
 with lib;
 let
   cfg = config.archessmn.desktop;

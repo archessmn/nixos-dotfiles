@@ -1,4 +1,12 @@
-{ lib, config, pkgs, unstablePkgs, username, fsh, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  unstable-pkgs,
+  username,
+  fsh,
+  ...
+}:
 with lib;
 let
   keys = import ../../../config/ssh/keys.nix;
@@ -29,7 +37,12 @@ in
     users.users.${username} = {
       isNormalUser = true;
       description = users.${username}.fullName;
-      extraGroups = [ "networkmanager" "wheel" "dialout" "wireshark" ];
+      extraGroups = [
+        "networkmanager"
+        "wheel"
+        "dialout"
+        "wireshark"
+      ];
       hashedPassword = "$y$j9T$B5ed95B4bkDU59CaypqDn0$ej48gzEYheqfaoZ3l4Iu07/kdAC8dJqBEBHZKTmuPyC";
       ignoreShellProgramCheck = true;
       shell = pkgs.fish;

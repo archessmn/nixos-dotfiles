@@ -1,15 +1,15 @@
-{ inputs
-, config
-, pkgs
-, unstablePkgs
-, ...
+{
+  inputs,
+  config,
+  pkgs,
+  unstable-pkgs,
+  ...
 }:
 
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    ./hardware-configuration.nix
+  ];
 
   archessmn.desktop = {
     enable = true;

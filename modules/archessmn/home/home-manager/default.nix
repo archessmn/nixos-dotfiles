@@ -1,4 +1,12 @@
-{ lib, config, pkgs, unstablePkgs, username, fsh, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  unstable-pkgs,
+  username,
+  fsh,
+  ...
+}:
 with lib;
 let
   keys = import ../../../config/ssh/keys.nix;
@@ -23,7 +31,7 @@ in
     # extraSpecialArgs = {
     #   inherit pkgs;
     #   inherit username;
-    #   inherit unstablePkgs;
+    #   inherit unstable-pkgs;
     #   inherit fsh;
     # };
     useGlobalPkgs = true;

@@ -8,12 +8,14 @@
 }:
 with lib;
 let
-  cfg = config.archessmn;
+  cfg = config.archessmn.roles.beszel;
 in
 {
   imports = [
-    ./agenix.nix
-    ./kanidm.nix
-    ./sudo.nix
+    ./hub.nix
   ];
+
+  config = mkIf (cfg.hub.enable) {
+
+  };
 }

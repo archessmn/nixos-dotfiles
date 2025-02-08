@@ -4,7 +4,7 @@
   lib,
   pkgs,
   username,
-  unstablePkgs,
+  unstable-pkgs,
   ...
 }:
 

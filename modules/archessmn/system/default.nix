@@ -2,7 +2,7 @@
   lib,
   config,
   pkgs,
-  unstablePkgs,
+  unstable-pkgs,
   username,
   flakeDir,
   ...

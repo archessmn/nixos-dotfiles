@@ -1,4 +1,12 @@
-{ lib, config, pkgs, unstablePkgs, theLocale, theTimezone, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  unstable-pkgs,
+  theLocale,
+  theTimezone,
+  ...
+}:
 with lib;
 let
   desktopEnabled = config.archessmn.desktop.enable;
@@ -12,7 +20,13 @@ in
         default = desktopEnabled;
       };
       brand = mkOption {
-        type = types.enum [ "nvidia" "amd" "nvidia-special" "intel" "intel-old" ];
+        type = types.enum [
+          "nvidia"
+          "amd"
+          "nvidia-special"
+          "intel"
+          "intel-old"
+        ];
       };
     };
   };
@@ -68,14 +82,14 @@ in
     (mkIf (cfg.graphics.brand == "nvidia-special") {
       specialisation = {
         nvidia.configuration = {
-          # Nvidia Configuration 
+          # Nvidia Configuration
           services.xserver.videoDrivers = [ "nvidia" ];
           hardware.graphics.enable = true;
 
-          # Optionally, you may need to select the appropriate driver version for your specific GPU. 
+          # Optionally, you may need to select the appropriate driver version for your specific GPU.
           hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
 
-          # nvidia-drm.modeset=1 is required for some wayland compositors, e.g. sway 
+          # nvidia-drm.modeset=1 is required for some wayland compositors, e.g. sway
           hardware.nvidia.modesetting.enable = true;
 
           hardware.nvidia.open = true;
@@ -83,10 +97,10 @@ in
           hardware.nvidia.prime = {
             sync.enable = true;
 
-            # Bus ID of the NVIDIA GPU. You can find it using lspci, either under 3D or VGA 
+            # Bus ID of the NVIDIA GPU. You can find it using lspci, either under 3D or VGA
             nvidiaBusId = "PCI:06:00:0";
 
-            # Bus ID of the Intel GPU. You can find it using lspci, either under 3D or VGA 
+            # Bus ID of the Intel GPU. You can find it using lspci, either under 3D or VGA
             intelBusId = "PCI:00:02:0";
           };
         };

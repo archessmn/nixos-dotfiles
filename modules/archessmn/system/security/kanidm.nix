@@ -1,4 +1,11 @@
-{ lib, config, pkgs, unstablePkgs, username, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  unstable-pkgs,
+  username,
+  ...
+}:
 with lib;
 let
   cfg = config.archessmn.system.security.kanidm;
@@ -13,7 +20,7 @@ in
 
   config = mkIf cfg.client.enable {
     services.kanidm = {
-      package = unstablePkgs.kanidm;
+      package = unstable-pkgs.kanidm;
 
       enableClient = true;
 

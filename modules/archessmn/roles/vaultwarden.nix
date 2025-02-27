@@ -29,7 +29,7 @@ in
     virtualisation.oci-containers.containers.vaultwarden = {
       autoStart = true;
 
-      image = "vaultwarden/server:1.32.5";
+      image = "vaultwarden/server:1.33.2";
 
       ports = [
         "7003:80"

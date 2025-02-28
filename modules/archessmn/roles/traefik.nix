@@ -41,10 +41,16 @@ in
         api = {
           insecure = true;
         };
+
         log = {
           filePath = "/opt/traefik/traefik.log";
           # level = "DEBUG";
         };
+
+        serversTransport = {
+          insecureSkipVerify = true;
+        };
+
         entryPoints = {
           web = {
             address = ":80";
@@ -62,6 +68,7 @@ in
             };
           };
         };
+
         providers = {
           docker = { };
           consul = {

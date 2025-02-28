@@ -33,6 +33,8 @@
         server.enable = true;
       };
 
+      kanidm.server.enable = true;
+
       beszel.hub.enable = true;
     };
   };

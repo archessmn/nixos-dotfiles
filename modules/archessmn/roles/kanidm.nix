@@ -32,7 +32,7 @@ in
       image = "kanidm/server:1.5.0";
 
       ports = [
-        "7004:80"
+        "7004:8443"
       ];
 
       volumes = [
@@ -45,6 +45,8 @@ in
 
       labels = {
         "traefik.http.routers.kanidm.rule" = "Host(`idm.archess.mn`)";
+        "traefik.http.services.kanidm.loadbalancer.server.port" = "8443";
+        "traefik.http.services.kanidm.loadbalancer.server.scheme" = "https";
       };
     };
   };

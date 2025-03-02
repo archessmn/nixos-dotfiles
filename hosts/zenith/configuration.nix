@@ -13,6 +13,9 @@
     ./hardware-configuration.nix
   ];
 
+  boot.loader.grub.enable = true;
+  boot.loader.grub.device = "/dev/sda";
+
   archessmn.desktop = {
     enable = true;
     virtualBox = true;
@@ -32,13 +35,12 @@
   };
 
   archessmn.system = {
-    bootloader = "grub";
-    efiPath = "/boot/efi";
+    bootloader = "hardware-defined";
     graphics.brand = "nvidia";
-    wakeonlan = {
-      enable = true;
-      interface = "enp68s0";
-    };
+    # wakeonlan = {
+    #   enable = true;
+    #   interface = "enp68s0";
+    # };
     security.kanidm.client.enable = true;
     security.agenix.enable = true;
   };

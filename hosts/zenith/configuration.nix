@@ -41,8 +41,10 @@
     #   enable = true;
     #   interface = "enp68s0";
     # };
-    security.kanidm.client.enable = true;
-    security.agenix.enable = true;
+    security = {
+      kanidm.client.enable = true;
+      agenix.enable = true;
+    };
   };
 
   archessmn.roles = {

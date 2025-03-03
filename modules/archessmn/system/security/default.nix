@@ -15,5 +15,6 @@ in
     ./agenix.nix
     ./kanidm.nix
     ./sudo.nix
+    ./yubikey.nix
   ];
 }

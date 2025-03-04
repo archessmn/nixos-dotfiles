@@ -28,9 +28,8 @@ in
 
           server_join = {
             retry_join = [
-              "nixos-103-bishop:4648"
-              "nixos-104-bishop:4648"
-              "nixos-105-bishop:4648"
+              "localhost:4648"
+              "av-imposter.wahoo-monster.ts.net:4648"
             ];
           };
         };

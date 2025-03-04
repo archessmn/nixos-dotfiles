@@ -36,7 +36,9 @@ in
 
         consul = {
           tags = [
+            "traefik.enable=true"
             "traefik.http.routers.nomad.rule=Host(`nomad.tsuro.infra.archess.mn`)"
+            "traefik.http.services.nomad.loadbalancer.server.port=4646"
           ];
         };
 

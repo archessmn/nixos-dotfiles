@@ -24,7 +24,7 @@ in
         server = {
           enabled = true;
           # bootstrap_expect = 3;
-          bootstrap_expect = 1;
+          bootstrap_expect = 3;
 
           server_join = {
             retry_join = [

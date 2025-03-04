@@ -15,6 +15,7 @@ in
   imports = [
     ./beszel
     ./consul
+    ./nomad
     ./kanidm.nix
     ./traefik.nix
     ./uptime-kuma.nix

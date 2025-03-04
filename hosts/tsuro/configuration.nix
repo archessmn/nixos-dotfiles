@@ -32,6 +32,9 @@
         client.enable = true;
         server.enable = true;
       };
+      nomad = {
+        server.enable = true;
+      };
 
       kanidm.server.enable = true;
 

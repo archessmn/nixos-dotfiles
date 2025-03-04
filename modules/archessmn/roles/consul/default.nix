@@ -23,6 +23,10 @@ in
         DNS=127.0.0.1:8600
         DNSSEC=false
         Domains=~consul
+
+        [Resolve]
+        DNSStubListener=yes
+        DNSStubListenerExtra=172.31.0.1
       '';
     };
   };

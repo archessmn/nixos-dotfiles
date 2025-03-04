@@ -1,0 +1,44 @@
+{
+  lib,
+  config,
+  pkgs,
+  unstable-pkgs,
+  username,
+  ...
+}:
+with lib;
+let
+  cfg = config.archessmn.roles.nomad.server;
+in
+{
+  options.archessmn.roles.nomad.server = {
+    enable = mkOption {
+      type = types.bool;
+      default = false;
+    };
+  };
+
+  config = mkIf cfg.enable {
+    services.nomad = {
+      settings = {
+        server = {
+          enabled = true;
+          # bootstrap_expect = 3;
+          bootstrap_expect = 1;
+
+          server_join = {
+            retry_join = [
+              "nixos-103-bishop:4648"
+              "nixos-104-bishop:4648"
+              "nixos-105-bishop:4648"
+            ];
+          };
+        };
+
+        vault = {
+          create_from_role = "nomad-server";
+        };
+      };
+    };
+  };
+}

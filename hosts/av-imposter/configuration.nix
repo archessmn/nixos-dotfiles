@@ -19,6 +19,9 @@
         server.enable = true;
         client.enable = true;
       };
+      nomad = {
+        server.enable = true;
+      };
     };
     system = {
       bootloader = "grub";

@@ -1,4 +1,10 @@
-{ lib, config, pkgs, username, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  username,
+  ...
+}:
 with lib;
 let
   cfg = config.archessmn.system;
@@ -18,7 +24,20 @@ in
 
   config = mkMerge [
     (mkIf cfg.docker {
-      virtualisation.docker.enable = true;
+      virtualisation.docker = {
+        enable = true;
+
+        daemon.settings = {
+          default-address-pools = [
+            {
+              base = "172.31.0.0/16";
+              size = 16;
+            }
+          ];
+
+          dns = [ "172.31.0.1" ];
+        };
+      };
 
       users.users.${username}.extraGroups = [ "docker" ];
     })

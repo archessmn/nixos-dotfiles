@@ -24,6 +24,8 @@ in
 
   config = mkMerge [
     (mkIf cfg.docker {
+      networking.firewall.trustedInterfaces = [ "docker0" ];
+
       virtualisation.docker = {
         enable = true;
 

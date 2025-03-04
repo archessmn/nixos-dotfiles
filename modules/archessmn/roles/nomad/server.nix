@@ -34,6 +34,12 @@ in
           };
         };
 
+        consul = {
+          tags = [
+            "traefik.http.routers.nomad.rule=Host(`nomad.tsuro.infra.archess.mn`)"
+          ];
+        };
+
         vault = {
           create_from_role = "nomad-server";
         };

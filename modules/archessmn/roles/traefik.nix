@@ -76,7 +76,9 @@ in
               "127.0.0.1:8500"
             ];
           };
-          consulCatalog = { };
+          consulCatalog = {
+            exposedByDefault = false;
+          };
         };
 
         certificatesResolvers = {

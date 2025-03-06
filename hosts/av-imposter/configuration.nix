@@ -21,6 +21,7 @@
       };
       nomad = {
         server.enable = true;
+        client.enable = true;
       };
     };
     system = {

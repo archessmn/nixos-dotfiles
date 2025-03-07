@@ -36,11 +36,22 @@
         server.enable = true;
       };
 
+      patroni.enable = true;
+
       kanidm.server.enable = true;
+
+      keycloak.enable = true;
 
       beszel.hub.enable = true;
     };
   };
+
+  services.consul.extraConfig.recursors = [
+    "161.97.189.51"
+    "161.97.189.52"
+    "2a02:c206:5028::1:53"
+    "2a02:c206:5028::2:53"
+  ];
 
   # Manually set IPv6 Address
   networking = {
@@ -61,12 +72,12 @@
       ];
     };
 
-    nameservers = [
-      "161.97.189.51"
-      "161.97.189.52"
-      "2a02:c206:5028::1:53"
-      "2a02:c206:5028::2:53"
-    ];
+    # nameservers = [
+    #   "161.97.189.51"
+    #   "161.97.189.52"
+    #   "2a02:c206:5028::1:53"
+    #   "2a02:c206:5028::2:53"
+    # ];
 
     # defaultGateway = {
     #   address = "185.213.25.1";

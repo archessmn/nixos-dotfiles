@@ -17,6 +17,8 @@ in
     ./consul
     ./nomad
     ./kanidm.nix
+    ./keycloak.nix
+    ./patroni.nix
     ./traefik.nix
     ./uptime-kuma.nix
     ./vaultwarden.nix

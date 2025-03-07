@@ -32,6 +32,11 @@ in
         type = types.str;
         default = "";
       };
+
+      trustInterface = mkOption {
+        type = types.bool;
+        default = true;
+      };
     };
 
     ssh = {
@@ -121,6 +126,9 @@ in
       })
       (mkIf cfg.openFirewall.tftp {
         allowedUDPPorts = [ 69 ];
+      })
+      (mkIf cfg.tailscale.trustInterface {
+        trustedInterfaces = [ "tailscale0" ];
       })
     ];
 

@@ -25,7 +25,10 @@
       interface = "enp3s0";
     };
     security.kanidm.client.enable = true;
+    security.agenix.enable = true;
   };
+
+  archessmn.roles.keycloak.enable = false;
 
   networking.hostName = "godshawke"; # Define your hostname.
 

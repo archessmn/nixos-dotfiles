@@ -16,6 +16,7 @@ in
     ./beszel
     ./consul
     ./nomad
+    ./family-pc.nix
     ./kanidm.nix
     ./keycloak.nix
     ./patroni.nix

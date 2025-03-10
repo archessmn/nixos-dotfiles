@@ -30,6 +30,8 @@
 
   archessmn.roles.keycloak.enable = false;
 
+  archessmn.roles.family-pc.enable = true;
+
   networking.hostName = "godshawke"; # Define your hostname.
 
   system.stateVersion = "24.05";

@@ -8,14 +8,18 @@
 }:
 with lib;
 let
-  cfg = config.family-pc;
-  users = import ../users.nix;
+  cfg = config.archessmn.roles.family-pc;
   username = "hous";
 in
 {
-  imports = [ ];
+  options.archessmn.roles.family-pc = {
+    enable = mkOption {
+      type = types.bool;
+      default = false;
+    };
+  };
 
-  config = {
+  config = mkIf cfg.enable {
     programs.fish.enable = true;
 
     users.users.hous = {

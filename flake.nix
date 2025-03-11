@@ -4,8 +4,11 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    home-manager.url = "github:nix-community/home-manager/release-24.11";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    home-manager = {
+      url = "github:nix-community/home-manager/release-24.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     libfprint = {
       url = "git+https://gitlab.freedesktop.org/depau/libfprint?ref=elanmoc2";
@@ -42,13 +45,7 @@
       system = "x86_64-linux";
 
       # User Variables
-      hostname = "archessmn-default";
       username = "archessmn";
-      gitUsername = "Mia Moir";
-      gitEmail = "me@archess.mn";
-      theLocale = "en_GB.UTF-8";
-      theTimezone = "Europe/London";
-      browser = "firefox";
       flakeDir = "/home/archessmn/nixos-dotfiles/";
 
       pkgs = import nixpkgs {
@@ -68,8 +65,6 @@
           allowUnfree = true;
         };
       };
-
-      flake-overlays = [ ];
 
       sharedArgs = {
         inherit pkgs;

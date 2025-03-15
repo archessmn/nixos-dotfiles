@@ -62,7 +62,10 @@ in
 
         dconf = mkIf cfg.dconf.enable {
           enable = true;
-          settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
+          settings."org/gnome/desktop/interface" = {
+            color-scheme = "prefer-dark";
+            show-battery-percentage = true;
+          };
 
           # Enabled extensions
           settings."org/gnome/shell" = {
@@ -94,6 +97,9 @@ in
               "org.gnome.Nautilus.desktop"
               "kitty.desktop"
               "org.prismlauncher.PrismLauncher.desktop"
+              "code.desktop"
+              "slack.desktop"
+              "discord.desktop"
             ];
           };
 

@@ -35,7 +35,7 @@ in
           default-address-pools = [
             {
               base = "172.31.0.0/16";
-              size = 16;
+              size = 29;
             }
           ];
 

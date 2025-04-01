@@ -33,6 +33,45 @@ in
   config.home-manager.users.${username} = mkIf cfg.enable {
     fonts.fontconfig.enable = true;
 
+    xdg.desktopEntries = {
+      jellyfin = {
+        name = "Jellyfin";
+        exec = "firefox https://media.moir.xyz";
+        categories = [
+          "Application"
+        ];
+      };
+      jellyseerr = {
+        name = "Jellyseerr";
+        genericName = "Request";
+        exec = "firefox https://request.moir.xyz";
+        categories = [
+          "Application"
+        ];
+      };
+      sonarr = {
+        name = "Sonarr";
+        exec = "firefox https://sonarr.moir.xyz";
+        categories = [
+          "Application"
+        ];
+      };
+      radarr = {
+        name = "Radarr";
+        exec = "firefox https://radarr.moir.xyz";
+        categories = [
+          "Application"
+        ];
+      };
+      x32edit = {
+        name = "X32 Edit";
+        exec = "${pkgs.x32edit}";
+        categories = [
+          "Application"
+        ];
+      };
+    };
+
     home.packages =
       with pkgs;
       (mkMerge [

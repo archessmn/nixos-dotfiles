@@ -46,6 +46,13 @@
     };
   };
 
+  # services.unifi = {
+  #   enable = true;
+  #   openFirewall = true;
+  #   mongodbPackage = pkgs.mongodb-ce;
+  #   unifiPackage = unstable-pkgs.unifi;
+  # };
+
   programs.winbox = {
     enable = true;
     package = pkgs.winbox4;

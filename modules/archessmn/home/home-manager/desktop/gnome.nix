@@ -40,18 +40,19 @@ in
     home-manager.users.${username} =
       { lib, ... }:
       {
-        home.packages = [
+        home.packages = with pkgs.gnomeExtensions; [
           # Gnome stuff
-          pkgs.gnomeExtensions.appindicator
-          pkgs.gnomeExtensions.blur-my-shell
-          pkgs.gnomeExtensions.color-picker
-          pkgs.gnomeExtensions.gsconnect
-          pkgs.gnomeExtensions.home-assistant-extension
-          pkgs.gnomeExtensions.media-controls
-          pkgs.gnomeExtensions.quick-settings-tweaker
-          pkgs.gnomeExtensions.topicons-plus
-          pkgs.gnomeExtensions.vitals
-          pkgs.gnomeExtensions.tailscale-qs
+          appindicator
+          blur-my-shell
+          color-picker
+          gsconnect
+          home-assistant-extension
+          media-controls
+          quick-settings-tweaker
+          steal-my-focus-window
+          topicons-plus
+          vitals
+          tailscale-qs
         ];
 
         services.kdeconnect = mkIf cfg.gsconnect.enable {

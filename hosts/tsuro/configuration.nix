@@ -3,6 +3,7 @@
   config,
   lib,
   pkgs,
+  system,
   username,
   unstable-pkgs,
   ...
@@ -12,6 +13,8 @@
   imports = [
     ./hardware-configuration.nix
   ];
+
+  nixpkgs.hostPlatform = system;
 
   archessmn = {
     desktop = {

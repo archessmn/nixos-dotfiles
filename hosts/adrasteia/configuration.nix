@@ -46,6 +46,10 @@
     };
   };
 
+  home-manager.users.${username}.home.packages = with pkgs; [
+    obs-studio
+  ];
+
   # services.unifi = {
   #   enable = true;
   #   openFirewall = true;

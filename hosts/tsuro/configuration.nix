@@ -99,6 +99,14 @@
   age.secrets.traefik_kanidm_env.file = ../../secrets/traefik_kanidm.env.age;
   age.secrets.vaultwarden_env.file = ../../secrets/vaultwarden.env.age;
 
+  services.murmur = {
+    enable = true;
+    openFirewall = true;
+    welcometext = "Roses Media Mumble Server";
+    registerName = "rosesmedia";
+    registerHostname = "mumble.roses.media";
+  };
+
   networking.hostName = "tsuro";
 
   boot.tmp.cleanOnBoot = true;

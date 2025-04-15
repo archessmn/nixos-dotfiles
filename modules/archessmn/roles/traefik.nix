@@ -91,6 +91,16 @@ in
               };
             };
           };
+
+          http-acmeresolver = {
+            acme = {
+              email = "archessmn@gmail.com";
+              storage = "/opt/traefik/http-acme.json";
+              httpChallenge = {
+                entryPoint = "web";
+              };
+            };
+          };
         };
 
         experimental = {

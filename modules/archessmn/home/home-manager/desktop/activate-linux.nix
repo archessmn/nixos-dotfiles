@@ -24,19 +24,14 @@ in
   config = mkIf cfg.enable {
     home-manager.users.${username} = {
       home.packages = [
-        pkgs.activate-linux
+        pkgs.gnomeExtensions.activate_gnome
       ];
 
-      systemd.user.services.activate-linux = {
-        Unit = {
-          Description = "Systemd service for activate-linux";
-          Requires = [ "graphical-session.target" ];
-        };
-        Service = {
-          Type = "simple";
-          ExecStart = "${pkgs.activate-linux}/bin/activate-linux";
-        };
-        Install.WantedBy = [ "gnome-session.target" ];
+      dconf.settings."org/gnome/shell/extensions/activate_gnome" = {
+        size-l1 = 26.0;
+        size-l2 = 16.0;
+        text-l1 = "Activate NixOS";
+        text-l2 = "Go to Settings to activate NixOS.";
       };
     };
   };

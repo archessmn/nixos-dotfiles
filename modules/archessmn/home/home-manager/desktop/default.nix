@@ -84,12 +84,13 @@ in
         ])
         (mkIf config.archessmn.desktop.isCommsMachine [
           # Communications
-          slack
           beeper
           discord
-          vesktop
-          signal-desktop
           element-desktop
+          mumble
+          signal-desktop
+          slack
+          vesktop
         ])
         [
           # Assorted shite

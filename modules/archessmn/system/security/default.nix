@@ -14,6 +14,7 @@ in
   imports = [
     ./agenix.nix
     ./kanidm.nix
+    ./ops.nix
     ./sudo.nix
     ./yubikey.nix
   ];

@@ -88,15 +88,14 @@ in
       pkgs.htop
       pkgs.btop
       pkgs.sl
+      pkgs.dysk
+      pkgs.dig
+      pkgs.minicom
 
       # Programming things
       unstable-pkgs.rustc
       unstable-pkgs.cargo
       unstable-pkgs.rustlings
-      pkgs.nodejs
-      pkgs.nodePackages.npm
-      pkgs.yarn
-      pkgs.bun
       # pkgs.gccgo13
       pkgs.jdk21
     ];

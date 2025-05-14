@@ -50,6 +50,10 @@
     obs-studio
   ];
 
+  services.globalprotect = {
+    enable = true;
+  };
+
   # services.unifi = {
   #   enable = true;
   #   openFirewall = true;

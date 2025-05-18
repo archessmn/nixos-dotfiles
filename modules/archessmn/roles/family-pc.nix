@@ -10,6 +10,7 @@ with lib;
 let
   cfg = config.archessmn.roles.family-pc;
   username = "hous";
+  users = import ../../../users.nix;
 in
 {
   options.archessmn.roles.family-pc = {

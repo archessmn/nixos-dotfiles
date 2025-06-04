@@ -112,7 +112,7 @@ in
           parsec-bin
 
           # Fonts
-          (pkgs.nerdfonts.override { fonts = [ "FiraMono" ]; })
+          pkgs.nerd-fonts.fira-mono
         ]
       ]);
   };

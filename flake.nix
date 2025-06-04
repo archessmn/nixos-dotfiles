@@ -2,11 +2,11 @@
   description = "A very basic flake";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.11";
+      url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -48,13 +48,17 @@
       username = "archessmn";
       flakeDir = "/home/archessmn/nixos-dotfiles/";
 
-      pkgs = import nixpkgs {
+      stable-pkgs = import nixpkgs {
         inherit system;
         config = {
           allowUnfree = true;
         };
         overlays = [
-          (import ./config/libfprint.nix libfprint)
+          (import ./config/libfprint.nix {
+            inherit nixpkgs;
+            inherit libfprint;
+            system = system;
+          })
           fsh.overlays.default
         ];
       };
@@ -67,7 +71,7 @@
       };
 
       sharedArgs = {
-        inherit pkgs;
+        inherit stable-pkgs;
         inherit system;
         inherit inputs;
         inherit username;
@@ -96,6 +100,10 @@
               home-manager.nixosModules.home-manager
               inputs.minegrub-theme.nixosModules.default
               agenix.nixosModules.default
+              # nixpkgs.nixosModules.readOnlyPkgs
+              {
+                nixpkgs.pkgs = stable-pkgs;
+              }
             ];
           }
         ) (import ./hosts))

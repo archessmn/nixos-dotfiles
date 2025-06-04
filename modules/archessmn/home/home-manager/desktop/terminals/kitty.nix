@@ -25,8 +25,8 @@ in
   config.home-manager.users.${username} = mkIf cfg.enable {
     programs.kitty = {
       enable = true;
-      font.package = (pkgs.nerdfonts.override { fonts = [ "FiraMono" ]; });
-      font.name = "FiraMono Nerd Font";
+      font.package = pkgs.nerd-fonts.fira-mono;
+      font.name = "FiraMono Nerd Font Mono";
       extraConfig = "linux_display_server X11";
 
       shellIntegration = {

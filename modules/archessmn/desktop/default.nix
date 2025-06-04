@@ -37,10 +37,6 @@ in
   };
 
   config = mkIf cfg.enable {
-    nixpkgs.config.permittedInsecurePackages = [
-      "electron-25.9.0"
-    ];
-
     programs.firefox.enable = true;
     programs.steam.enable = true;
 

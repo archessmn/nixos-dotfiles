@@ -57,7 +57,9 @@ in
         "flakes"
       ];
 
-      nixpkgs.config.allowUnfree = true;
+      # nixpkgs.config.allowUnfree = true;
+
+      # nixpkgs.pkgs = pkgs;
 
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;

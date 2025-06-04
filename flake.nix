@@ -48,13 +48,17 @@
       username = "archessmn";
       flakeDir = "/home/archessmn/nixos-dotfiles/";
 
-      pkgs = import nixpkgs {
+      stable-pkgs = import nixpkgs {
         inherit system;
         config = {
           allowUnfree = true;
         };
         overlays = [
-          (import ./config/libfprint.nix libfprint)
+          (import ./config/libfprint.nix {
+            inherit nixpkgs;
+            inherit libfprint;
+            system = system;
+          })
           fsh.overlays.default
         ];
       };
@@ -67,7 +71,7 @@
       };
 
       sharedArgs = {
-        inherit pkgs;
+        inherit stable-pkgs;
         inherit system;
         inherit inputs;
         inherit username;
@@ -96,6 +100,10 @@
               home-manager.nixosModules.home-manager
               inputs.minegrub-theme.nixosModules.default
               agenix.nixosModules.default
+              # nixpkgs.nixosModules.readOnlyPkgs
+              {
+                nixpkgs.pkgs = stable-pkgs;
+              }
             ];
           }
         ) (import ./hosts))

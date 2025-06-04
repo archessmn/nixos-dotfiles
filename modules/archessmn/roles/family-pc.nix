@@ -45,7 +45,7 @@ in
         fonts.fontconfig.enable = true;
 
         home.packages = [
-          (pkgs.nerdfonts.override { fonts = [ "FiraMono" ]; })
+          pkgs.nerd-fonts.fira-mono
         ];
 
         programs.fish = {

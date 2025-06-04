@@ -20,7 +20,7 @@ in
   };
 
   config = mkIf cfg.enable {
-    environment.variables.FLAKE = "${flakeDir}";
+    environment.variables.NH_FLAKE = "${flakeDir}";
 
     programs.nh = {
       enable = true;

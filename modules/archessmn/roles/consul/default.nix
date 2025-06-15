@@ -26,7 +26,7 @@ in
 
         [Resolve]
         DNSStubListener=yes
-        DNSStubListenerExtra=172.31.0.1
+        DNSStubListenerExtra=172.30.0.1
       '';
     };
   };

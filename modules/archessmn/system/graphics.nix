@@ -108,10 +108,10 @@ in
     })
 
     (mkIf (cfg.graphics.brand == "intel") {
-      hardware.opengl = {
+      hardware.graphics = {
         enable = true;
         extraPackages = [
-          pkgs.onevpl-intel-gpu
+          pkgs.vpl-gpu-rt
         ];
       };
     })

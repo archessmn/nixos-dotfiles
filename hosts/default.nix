@@ -24,6 +24,11 @@
     system = "x86_64-linux";
   };
 
+  polaris = rec {
+    name = "polaris";
+    system = "x86_64-linux";
+  };
+
   slowpoke = rec {
     name = "slowpoke";
     system = "x86_64-linux";

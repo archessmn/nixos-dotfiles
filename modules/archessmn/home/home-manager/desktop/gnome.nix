@@ -44,6 +44,7 @@ in
           # Gnome stuff
           appindicator
           blur-my-shell
+          caffeine
           color-picker
           gsconnect
           home-assistant-extension
@@ -71,25 +72,26 @@ in
           # Enabled extensions
           settings."org/gnome/shell" = {
             disabled-extensions = [
-              "screenshot-window-sizer@gnome-shell-extensions.gcampax.github.com"
-              "native-window-placement@gnome-shell-extensions.gcampax.github.com"
+              "apps-menu@gnome-shell-extensions.gcampax.github.com"
               "drive-menu@gnome-shell-extensions.gcampax.github.com"
               "light-style@gnome-shell-extensions.gcampax.github.com"
-              "window-list@gnome-shell-extensions.gcampax.github.com"
+              "native-window-placement@gnome-shell-extensions.gcampax.github.com"
               "places-menu@gnome-shell-extensions.gcampax.github.com"
-              "apps-menu@gnome-shell-extensions.gcampax.github.com"
+              "screenshot-window-sizer@gnome-shell-extensions.gcampax.github.com"
+              "window-list@gnome-shell-extensions.gcampax.github.com"
               "workspace-indicator@gnome-shell-extensions.gcampax.github.com"
             ];
             enabled-extensions = [
-              "launch-new-instance@gnome-shell-extensions.gcampax.github.com"
               "appindicatorsupport@rgcjonas.gmail.com"
               "Battery-Health-Charging@maniacx.github.com"
               "blur-my-shell@aunetx"
+              "caffeine@patapon.info"
               "color-picker@tuberry"
+              "launch-new-instance@gnome-shell-extensions.gcampax.github.com"
               "mediacontrols@cliffniff.github.com"
+              "tailscale@joaophi.github.com"
               "Vitals@CoreCoding.com"
               "windowsNavigator@gnome-shell-extensions.gcampax.github.com"
-              "tailscale@joaophi.github.com"
             ];
             favorite-apps = [
               "firefox.desktop"

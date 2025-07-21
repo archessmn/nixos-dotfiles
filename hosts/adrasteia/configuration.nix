@@ -18,10 +18,16 @@
 
   networking.firewall.allowedUDPPorts = [ 8004 ];
 
+  virtualisation.libvirtd.enable = true;
+
+  programs.virt-manager.enable = true;
+
+  users.extraGroups.libvirtd.members = [ "archessmn" ];
+
   archessmn = {
     desktop = {
       enable = true;
-      virtualBox = true;
+      # virtualBox = true;
       isDevMachine = true;
       isCommsMachine = true;
     };
@@ -49,6 +55,7 @@
   home-manager.users.${username}.home.packages = with pkgs; [
     obs-studio
     globalprotect-openconnect
+    gnome-boxes
   ];
 
   services.globalprotect = {
@@ -61,6 +68,31 @@
   #   mongodbPackage = pkgs.mongodb-ce;
   #   unifiPackage = unstable-pkgs.unifi;
   # };
+
+  services.samba = {
+    enable = true;
+
+    settings = {
+      global = {
+        "map to guest" = "Bad User";
+        "guest account" = "nobody";
+        "security" = "user";
+        "server min protocol" = "NT1"; # For better Windows compatibility
+      };
+
+      vmshare = {
+        path = "/home/archessmn/vmshare";
+        browseable = true;
+        writable = true;
+        "guest ok" = true;
+      };
+    };
+  };
+
+  networking.firewall.interfaces."virbr0".allowedTCPPorts = [
+    139
+    445
+  ];
 
   programs.winbox = {
     enable = true;

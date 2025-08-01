@@ -65,7 +65,7 @@ in
       };
       x32edit = {
         name = "X32 Edit";
-        exec = "${pkgs.x32edit}";
+        exec = "${unstable-pkgs.x32edit}";
         categories = [
           "Application"
         ];
@@ -103,7 +103,7 @@ in
           spotify
           via
           obsidian
-          x32edit
+          unstable-pkgs.x32edit
           vlc
           helvum
 

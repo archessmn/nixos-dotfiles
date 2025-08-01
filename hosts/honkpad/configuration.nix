@@ -22,15 +22,19 @@
     };
 
     system = {
-      battery.tlp.enable = true;
+      # battery.tlp.enable = true;
       bootloader = "grub";
       efiPath = "/boot/efi";
       fprintd = {
         enable = true;
-        tod = {
-          enable = true;
-          driver = pkgs.libfprint-2-tod1-vfs0090;
-        };
+        # tod = {
+        #   enable = true;
+        #   driver = (
+        #     pkgs.libfprint-2-tod1-vfs0090.overrideAttrs (old: rec {
+        #       meta.broken = false;
+        #     })
+        #   );
+        # };
       };
       graphics.brand = "nvidia-special";
     };

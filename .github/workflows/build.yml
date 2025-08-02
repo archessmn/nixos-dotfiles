@@ -1,0 +1,36 @@
+on:
+  push:
+jobs:
+  get-hosts:
+    runs-on: ubuntu-22.04
+    outputs:
+      hosts: ${{ steps.hosts.outputs.hosts }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v25
+
+      - name: Show flake hosts
+        id: hosts
+        run: |
+          nix flake show --json > /tmp/configurations.json
+          jq -r '.nixosConfigurations | keys | @json' /tmp/configurations.json > /tmp/hosts.json
+          echo "hosts=$(cat /tmp/hosts.json)" >> $GITHUB_OUTPUT
+
+  build-host:
+    needs: get-hosts
+    runs-on: ubuntu-22.04
+    strategy:
+      matrix:
+        host: ${{ fromJSON(needs.get-hosts.outputs.hosts) }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v25
+
+      - name: Build host
+        run: nixos-rebuild build --flake .#${{ matrix.host }}

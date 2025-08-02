@@ -34,24 +34,19 @@ jobs:
         uses: cachix/install-nix-action@v25
 
       # yoinked from https://github.com/ashhhleyyy/forest/blob/main/.github/workflows/cache.yml
-      - name: Remove unneccessary packages
-        run: 'echo "=== Before pruning ==="
-
+      - name: Remove unnecessary packages
+        run: |
+          echo "=== Before pruning ==="
           df -h
-
-          sudo rm -rf /usr/bin/buildah /usr/bin/containerd* /usr/bin/ctr /usr/bin/docker*
-          /usr/bin/gpg /usr/bin/grub* /usr/bin/mono-sgen
-          /usr/bin/myisam* /usr/bin/mysql* /usr/bin/openssl /usr/bin/pedump /usr/bin/php*
-          /usr/bin/podman /usr/bin/python3.10 /usr/bin/shellcheck /usr/bin/skopeo
-          /usr/bin/snap /usr/bin/tcpdump /usr/bin/tmux /usr/bin/x86_64-linux-gnu-*
-          /usr/bin/yq /opt /usr/local /usr/share /var/lib /var/log || true
-
+          sudo rm -rf /usr/bin/buildah /usr/bin/containerd* /usr/bin/ctr /usr/bin/docker* \
+            /usr/bin/gpg /usr/bin/grub* /usr/bin/mono-sgen \
+            /usr/bin/myisam* /usr/bin/mysql* /usr/bin/openssl /usr/bin/pedump /usr/bin/php* \
+            /usr/bin/podman /usr/bin/python3.10 /usr/bin/shellcheck /usr/bin/skopeo \
+            /usr/bin/snap /usr/bin/tcpdump /usr/bin/tmux /usr/bin/x86_64-linux-gnu-* \
+            /usr/bin/yq || true
           echo
-
           echo "=== After pruning ==="
-
           df -h
-          '
 
       - name: Build host
         run: nix build .#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel

@@ -65,7 +65,7 @@ in
       };
       x32edit = {
         name = "X32 Edit";
-        exec = "${unstable-pkgs.x32edit}";
+        exec = "${unstable-pkgs.x32edit}/bin/x32-edit";
         categories = [
           "Application"
         ];

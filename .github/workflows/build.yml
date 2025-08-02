@@ -40,7 +40,7 @@ jobs:
           df -h
 
           sudo rm -rf /usr/bin/buildah /usr/bin/containerd* /usr/bin/ctr /usr/bin/docker*
-          /usr/bin/gh /usr/bin/git /usr/bin/gpg /usr/bin/grub* /usr/bin/mono-sgen
+          /usr/bin/gpg /usr/bin/grub* /usr/bin/mono-sgen
           /usr/bin/myisam* /usr/bin/mysql* /usr/bin/openssl /usr/bin/pedump /usr/bin/php*
           /usr/bin/podman /usr/bin/python3.10 /usr/bin/shellcheck /usr/bin/skopeo
           /usr/bin/snap /usr/bin/tcpdump /usr/bin/tmux /usr/bin/x86_64-linux-gnu-*

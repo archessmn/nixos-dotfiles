@@ -22,6 +22,7 @@ jobs:
   build-host:
     needs: get-hosts
     runs-on: ubuntu-22.04
+    continue-on-error: true
     strategy:
       matrix:
         host: ${{ fromJSON(needs.get-hosts.outputs.hosts) }}

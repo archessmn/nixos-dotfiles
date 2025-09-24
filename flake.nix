@@ -5,9 +5,19 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    nix-darwin = {
+      url = "github:nix-darwin/nix-darwin/master";
+      inputs.nixpkgs.follows = "unstable";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    darwin-home-manager = {
+      url = "github:nix-community/home-manager/master";
+      inputs.nixpkgs.follows = "unstable";
     };
 
     libfprint = {
@@ -32,7 +42,9 @@
     inputs@{
       nixpkgs,
       unstable,
+      nix-darwin,
       home-manager,
+      darwin-home-manager,
       libfprint,
       fsh,
       minegrub-theme,
@@ -70,15 +82,32 @@
         };
       };
 
+      darwin-pkgs = import unstable {
+        system = "aarch64-darwin";
+        config = {
+          allowUnfree = true;
+        };
+        overlays = [
+          fsh.overlays.default
+        ];
+      };
+
       sharedArgs = {
-        inherit stable-pkgs;
-        inherit system;
         inherit inputs;
         inherit username;
-        inherit unstable-pkgs;
         inherit fsh;
         inherit flakeDir;
         inherit agenix;
+      };
+
+      linuxArgs = {
+        inherit stable-pkgs;
+        inherit unstable-pkgs;
+      };
+
+      darwinArgs = {
+        inherit darwin-pkgs;
+        flakeDir = "/Users/archessmn/nixos-dotfiles/";
       };
 
       commonModules = [
@@ -87,26 +116,56 @@
         inputs.minegrub-theme.nixosModules.default
         agenix.nixosModules.default
       ];
+
+      hosts = import ./hosts;
+
+      linuxHosts = nixpkgs.lib.filterAttrs (_: host: host.system == "x86_64-linux") hosts;
+      darwinHosts = nixpkgs.lib.filterAttrs (_: host: host.system == "aarch64-darwin") hosts;
     in
     rec {
+      # darwinConfigurations."helios" = nix-darwin.lib.darwinSystem {
+      #   specialArgs = sharedArgs;
+      #   modules = [
+      #     darwin-home-manager.darwinModules.home-manager
+      #     ./hosts/helios/configuration.nix
+      #     {
+      #       nixpkgs.pkgs = darwin-pkgs;
+      #     }
+      #   ];
+      # };
+
+      darwinConfigurations = mapAttrs (
+        hostname: host:
+        nix-darwin.lib.darwinSystem {
+          specialArgs = sharedArgs // darwinArgs // { system = host.system; };
+          modules = [
+            darwin-home-manager.darwinModules.home-manager
+            ./hosts/${hostname}/configuration.nix
+            agenix.nixosModules.default
+            {
+              nixpkgs.pkgs = darwin-pkgs;
+            }
+          ];
+        }
+      ) darwinHosts;
+
       nixosConfigurations =
-        (mapAttrs (
+        mapAttrs (
           hostname: host:
           nixosSystem {
-            specialArgs = sharedArgs;
+            specialArgs = sharedArgs // linuxArgs // { system = host.system; };
             modules = [
               ./hosts/${hostname}/configuration.nix
               ./modules/archessmn
               home-manager.nixosModules.home-manager
               inputs.minegrub-theme.nixosModules.default
               agenix.nixosModules.default
-              # nixpkgs.nixosModules.readOnlyPkgs
               {
                 nixpkgs.pkgs = stable-pkgs;
               }
             ];
           }
-        ) (import ./hosts))
+        ) linuxHosts
         // ({
           exampleIso = nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";

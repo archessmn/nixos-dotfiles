@@ -69,6 +69,27 @@
         "type": "github"
       }
     },
+    "darwin-home-manager": {
+      "inputs": {
+        "nixpkgs": [
+          "unstable"
+        ]
+      },
+      "locked": {
+        "lastModified": 1755121891,
+        "narHash": "sha256-UtYkukiGnPRJ5rpd4W/wFVrLMh8fqtNkqHTPgHEtrqU=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "279ca5addcdcfa31ac852b3ecb39fc372684f426",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "ref": "master",
+        "repo": "home-manager",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -124,11 +145,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1724894310,
-        "narHash": "sha256-yH3RpMyyShdhh5EgBnMp+g5rXka30Uz5RA6Xa46JRvE=",
+        "lastModified": 1755205778,
+        "narHash": "sha256-gKhh2W0o96iQfqQ3NM4kgxMuJ/tu84TO0XXh09tWMX0=",
         "owner": "archessmn",
         "repo": "fsh",
-        "rev": "8a3e3bf33c24add7e93760e237d20583ceb7effe",
+        "rev": "cdb60f1049acf32ddbf85f38f0052b31319056c0",
         "type": "github"
       },
       "original": {
@@ -215,6 +236,27 @@
         "type": "github"
       }
     },
+    "nix-darwin": {
+      "inputs": {
+        "nixpkgs": [
+          "unstable"
+        ]
+      },
+      "locked": {
+        "lastModified": 1751313918,
+        "narHash": "sha256-HsJM3XLa43WpG+665aGEh8iS8AfEwOIQWk3Mke3e7nk=",
+        "owner": "nix-darwin",
+        "repo": "nix-darwin",
+        "rev": "e04a388232d9a6ba56967ce5b53a8a6f713cdfcf",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-darwin",
+        "ref": "master",
+        "repo": "nix-darwin",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1689850295,
@@ -250,10 +292,12 @@
     "root": {
       "inputs": {
         "agenix": "agenix",
+        "darwin-home-manager": "darwin-home-manager",
         "fsh": "fsh",
         "home-manager": "home-manager_2",
         "libfprint": "libfprint",
         "minegrub-theme": "minegrub-theme",
+        "nix-darwin": "nix-darwin",
         "nixpkgs": "nixpkgs_2",
         "unstable": "unstable"
       }

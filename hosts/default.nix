@@ -14,6 +14,12 @@
     system = "x86_64-linux";
   };
 
+  helios = rec {
+    name = "helios";
+    system = "aarch64-darwin";
+    isDarwin = true;
+  };
+
   honkpad = rec {
     name = "honkpad";
     system = "x86_64-linux";

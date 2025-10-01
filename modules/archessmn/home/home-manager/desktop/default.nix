@@ -98,6 +98,7 @@ in
 
           # Terminal emulators
           kitty
+          ghostty
 
           # Desktop stuff
           spotify

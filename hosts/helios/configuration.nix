@@ -1,4 +1,7 @@
 { pkgs, fsh, ... }:
+let
+  user = (import ../../users.nix).archessmn;
+in
 {
   nix.settings.experimental-features = [
     "nix-command"
@@ -39,6 +42,7 @@
         atuin
         nixfmt
         kitty
+        kanidm
         obsidian
         tailscale
       ];
@@ -58,6 +62,23 @@
         };
         enableZshIntegration = true;
         enableFishIntegration = true;
+      };
+
+      programs.git = {
+        enable = true;
+
+        userEmail = user.email;
+        userName = user.fullName;
+
+        extraConfig = {
+          init.defaultBranch = "main";
+          push.autoSetupRemote = "true";
+          pull.rebase = true;
+          commit.gpgsign = true;
+          gpg.format = "ssh";
+          gpg.ssh.allowedSignersFile = "~/.ssh/allowed_signers";
+          user.signingkey = "~/.ssh/id_ed25519";
+        };
       };
 
       home.stateVersion = "25.05";

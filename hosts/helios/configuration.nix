@@ -1,6 +1,11 @@
-{ pkgs, fsh, ... }:
+{
+  pkgs,
+  fsh,
+  username,
+  ...
+}:
 let
-  user = (import ../../users.nix).archessmn;
+  user = (import ../../users.nix).${username};
 in
 {
   nix.settings.experimental-features = [
@@ -22,8 +27,8 @@ in
     enable = true;
   };
 
-  users.users.archessmn = {
-    home = "/Users/archessmn";
+  users.users.${username} = {
+    home = "/Users/${username}";
 
     shell = pkgs.fish;
     ignoreShellProgramCheck = true;
@@ -33,7 +38,7 @@ in
 
   home-manager.backupFileExtension = "backup";
 
-  home-manager.users.archessmn =
+  home-manager.users.${username} =
     { pkgs, ... }:
     {
       imports = [ fsh.homeModules.fsh ];

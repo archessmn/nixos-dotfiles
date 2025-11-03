@@ -86,6 +86,11 @@ in
         };
       };
 
+      programs.helix = {
+        enable = true;
+        defaultEditor = true;
+      };
+
       home.stateVersion = "25.05";
     };
 

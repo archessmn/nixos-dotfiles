@@ -68,9 +68,21 @@
           prefixLength = 8;
         }
       ];
+      ipv6.addresses = [
+        {
+          address = "2a02:6b67:e841:4900::10";
+          prefixLength = 64;
+        }
+      ];
     };
 
+    # "2a02:6b67:e841:4900::10/64"
+
     defaultGateway = "10.0.0.1";
+    defaultGateway6 = {
+      address = "2a02:6b67:e841:4900::1";
+      interface = "br0";
+    };
   };
 
   virtualisation.libvirtd = {

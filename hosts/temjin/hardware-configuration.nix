@@ -41,6 +41,11 @@
     fsType = "ext4";
   };
 
+  fileSystems."/deep-storage-pool" = {
+    device = "deep-storage-pool";
+    fsType = "zfs";
+  };
+
   swapDevices = [
     { device = "/dev/disk/by-uuid/d3402499-62fb-4fdb-9fc8-925ad1743e28"; }
   ];

@@ -71,7 +71,9 @@ in
         };
 
         providers = {
-          docker = { };
+          docker = {
+            exposedByDefault = false;
+          };
           consul = {
             endpoints = [
               "127.0.0.1:8500"

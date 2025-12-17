@@ -147,11 +147,10 @@ in
           interface = [
             "0.0.0.0"
           ];
-          interface-automatic = "yes";
           access-control = [
             "127.0.0.0/8 allow"
             "::1 allow"
-            "0.0.0.0/0 allow"
+            "172.30.0.0/15 allow"
           ];
           do-not-query-localhost = "no";
           val-permissive-mode = "yes";
@@ -160,7 +159,7 @@ in
 
         forward-zone = [
           {
-            name = "consul";
+            name = "consul.";
             forward-addr = "127.0.0.1@8600";
           }
           {

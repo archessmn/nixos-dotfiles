@@ -30,15 +30,11 @@ in
         enable = true;
 
         daemon.settings = {
-          bip = "172.30.0.1/16";
+          bip = "172.30.0.1/15";
 
           default-address-pools = [
             {
-              base = "172.30.0.0/16";
-              size = 29;
-            }
-            {
-              base = "172.31.0.0/16";
+              base = "172.30.0.0/15";
               size = 29;
             }
           ];

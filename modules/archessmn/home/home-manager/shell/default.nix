@@ -18,7 +18,7 @@ in
     ./fzf.nix
     ./helix.nix
     ./neovim.nix
-    ./thefuck.nix
+    ./pay-respects.nix
     ./yazi.nix
     ./zoxide.nix
   ];
@@ -57,12 +57,6 @@ in
     };
 
     programs.fsh.enable = mkDefault true;
-
-    programs.thefuck = {
-      enable = true;
-      enableZshIntegration = true;
-      enableFishIntegration = true;
-    };
 
     programs.navi = {
       enable = true;

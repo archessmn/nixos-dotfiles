@@ -9,11 +9,11 @@
 with lib;
 let
   shellEnabled = config.archessmn.home.home-manager.shell.enable;
-  cfg = config.archessmn.home.home-manager.shell.thefuck;
+  cfg = config.archessmn.home.home-manager.shell.pay-respects;
 in
 
 {
-  options.archessmn.home.home-manager.shell.thefuck = {
+  options.archessmn.home.home-manager.shell.pay-respects = {
     enable = mkOption {
       type = types.bool;
       default = shellEnabled;
@@ -21,7 +21,7 @@ in
   };
 
   config.home-manager.users.${username} = mkIf cfg.enable {
-    programs.thefuck = {
+    programs.pay-respects = {
       enable = true;
       enableZshIntegration = true;
       enableFishIntegration = true;

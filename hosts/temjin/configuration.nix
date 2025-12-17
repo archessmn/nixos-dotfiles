@@ -69,6 +69,11 @@
     };
   };
 
+  networking.firewall.allowedTCPPorts = [
+    80
+    443
+  ];
+
   programs.virt-manager.enable = true;
 
   users.users.archessmn.extraGroups = [
@@ -80,6 +85,5 @@
     zfs
   ];
 
-  system.stateVersion = "25.11"; # Did you read the comment?
-
+  system.stateVersion = "25.11";
 }

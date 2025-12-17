@@ -145,15 +145,13 @@ in
       settings = {
         server = {
           interface = [
-            "127.0.0.1"
-            "172.30.0.1"
-            "172.31.0.1"
+            "0.0.0.0"
           ];
           interface-automatic = "yes";
           access-control = [
             "127.0.0.0/8 allow"
-            "172.30.0.0/16 allow"
-            "172.31.0.0/16 allow"
+            "::1 allow"
+            "0.0.0.0/0 allow"
           ];
           do-not-query-localhost = "no";
           val-permissive-mode = "yes";

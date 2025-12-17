@@ -77,7 +77,7 @@ in
           consul = {
             rootKey = "traefik/${hostname}";
             endpoints = [
-              "127.0.0.1:8500"
+              "consul.service.consul:8500"
             ];
           };
           consulCatalog = {

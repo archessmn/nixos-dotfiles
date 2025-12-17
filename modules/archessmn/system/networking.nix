@@ -136,6 +136,10 @@ in
       "127.0.0.1"
     ];
 
+    networking.search = [
+      "wahoo-monster.ts.net"
+    ];
+
     services.unbound = {
       enable = true;
       settings = {
@@ -159,6 +163,10 @@ in
           {
             name = "consul";
             forward-addr = "127.0.0.1@8600";
+          }
+          {
+            name = "ts.net";
+            forward-addr = "100.100.100.100"
           }
           {
             name = ".";

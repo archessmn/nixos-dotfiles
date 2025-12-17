@@ -28,9 +28,15 @@ in
   config = mkIf cfg.enable {
     age.secrets.immich_env.file = ../../../secrets/${hostname}_immich.env.age;
 
-    system.activationScripts.mkImmichNetwork = ''
-      ${pkgs.docker}/bin/docker network create immich
-    '';
+    # https://discourse.nixos.org/t/how-to-create-docker-network-in-nixos-configuration-correctly/16945/3
+    system.activationScripts.mkImmichNetwork =
+      let
+        docker = config.virtualisation.oci-containers.backend;
+        dockerBin = "${pkgs.${docker}}/bin/${docker}";
+      in
+      ''
+        ${dockerBin} network inspect immich >/dev/null 2>&1 || ${dockerBin} network create immich
+      '';
 
     virtualisation.oci-containers = {
       backend = "docker";

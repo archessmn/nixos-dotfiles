@@ -19,6 +19,8 @@
   boot.kernelModules = [ "zfs" ];
   boot.extraModulePackages = [ config.boot.kernelPackages.zfs_unstable ];
 
+  boot.zfs.extraPools = [ "deep-storage-pool" ];
+
   nixpkgs.hostPlatform = system;
 
   networking.hostName = "temjin";

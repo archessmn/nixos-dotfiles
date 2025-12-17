@@ -75,12 +75,12 @@ in
             exposedByDefault = false;
           };
           consul = {
+            rootKey = "traefik/${hostname}";
             endpoints = [
               "127.0.0.1:8500"
             ];
           };
           consulCatalog = {
-            rootKey = "traefik/${hostname}";
             exposedByDefault = false;
           };
         };

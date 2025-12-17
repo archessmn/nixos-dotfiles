@@ -17,6 +17,7 @@ in
     ./consul
     ./nomad
     ./family-pc.nix
+    ./frigate.nix
     ./kanidm.nix
     ./keycloak.nix
     ./patroni.nix

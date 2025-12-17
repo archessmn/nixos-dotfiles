@@ -34,6 +34,10 @@
       bootloader = "systemd";
       docker = true;
     };
+
+    roles = {
+      frigate.enable = true;
+    };
   };
 
   networking = {

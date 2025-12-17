@@ -147,6 +147,7 @@ in
           interface = [
             "127.0.0.1"
             "172.30.0.1"
+            "172.31.0.1"
           ];
           interface-automatic = "yes";
           access-control = [

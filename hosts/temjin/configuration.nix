@@ -36,6 +36,32 @@
     };
   };
 
+  networking = {
+    useDHCP = false;
+
+    interfaces.enp0s31f6.useDHCP = false;
+
+    bridges = {
+      br0 = {
+        interfaces = [
+          "enp0s31f6"
+        ];
+      };
+    };
+
+    interfaces.br0 = {
+      ipv4.addresses = [
+        {
+          address = "10.0.0.10";
+          prefixLength = 8;
+        }
+      ];
+    };
+
+    defaultGateway = "10.0.0.1";
+
+  };
+
   environment.systemPackages = with pkgs; [
     zfs
   ];

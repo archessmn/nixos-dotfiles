@@ -12,36 +12,44 @@ let
 
   temjin = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA3TSB/Hx9BYN+UeGpVXQFtetVyuZ72MNcg0ADHGrxNP";
   tsuro = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFJW1+M6OciB/nTfRTuTUUECmRqZ+J0deoMfNCfv0pRI";
-  systems = [ temjin tsuro ];
+  systems = [
+    temjin
+    tsuro
+  ];
 in
 {
-  "traefik_cloudflare.env.age".publicKeys = [
+  # Tsuro
+  "tsuro_traefik_cloudflare.env.age".publicKeys = [
     archessmn-adrasteia
-    archessmn-zenith
+    archessmn-helios
+    archessmn-temjin
     tsuro
   ];
-  "traefik_kanidm.env.age".publicKeys = [
+  "tsuro_traefik_kanidm.env.age".publicKeys = [
     archessmn-adrasteia
-    archessmn-zenith
+    archessmn-helios
+    archessmn-temjin
     tsuro
   ];
-  "vaultwarden.env.age".publicKeys = [
+  "tsuro_vaultwarden.env.age".publicKeys = [
     archessmn-adrasteia
-    archessmn-zenith
+    archessmn-helios
+    archessmn-temjin
     tsuro
   ];
-  "keycloak_postgres_password.age".publicKeys = [
+  "tsuro_keycloak_postgres_password.age".publicKeys = [
     archessmn-adrasteia
-    archessmn-zenith
+    archessmn-helios
+    archessmn-temjin
     tsuro
   ];
 
+  # Temjin
   "temjin_traefik_cloudflare.env.age".publicKeys = [
     archessmn-helios
     archessmn-temjin
     temjin
   ];
-
   "temjin_traefik_kanidm.env.age".publicKeys = [
     archessmn-helios
     archessmn-temjin

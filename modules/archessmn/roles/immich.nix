@@ -37,9 +37,14 @@ in
           ];
 
           volumes = [
-            "\${UPLOAD_LOCATION}:/usr/src/app/upload"
+            # "\${UPLOAD_LOCATION}:/usr/src/app/upload"
             "/etc/localtime:/etc/localtime:ro"
             # "/stuff:/stuff:ro"
+          ];
+
+          extraOptions = [
+            "--mount"
+            "type=bind,src=$UPLOAD_LOCATION,dst=/usr/src/app/upload"
           ];
 
           environmentFiles = [

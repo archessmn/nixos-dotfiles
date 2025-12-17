@@ -45,7 +45,10 @@
 
       jellyfin.enable = true;
 
-      immich.enable = true;
+      immich = {
+        enable = true;
+        uploadLocation = "/deep-storage-pool/immich"
+      };
     };
   };
 

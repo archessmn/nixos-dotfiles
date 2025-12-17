@@ -19,6 +19,10 @@ in
       type = types.bool;
       default = false;
     };
+
+    uploadLocation = mkOption {
+      type = types.str;
+    };
   };
 
   config = mkIf cfg.enable {
@@ -37,14 +41,9 @@ in
           ];
 
           volumes = [
-            # "\${UPLOAD_LOCATION}:/usr/src/app/upload"
+            "${cfg.uploadLocation}:/usr/src/app/upload"
             "/etc/localtime:/etc/localtime:ro"
             # "/stuff:/stuff:ro"
-          ];
-
-          extraOptions = [
-            "--mount"
-            "type=bind,src=$UPLOAD_LOCATION,dst=/usr/src/app/upload"
           ];
 
           environmentFiles = [

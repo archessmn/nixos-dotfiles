@@ -166,7 +166,7 @@ in
           }
           {
             name = "ts.net";
-            forward-addr = "100.100.100.100"
+            forward-addr = "100.100.100.100";
           }
           {
             name = ".";

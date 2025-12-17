@@ -59,8 +59,22 @@
     };
 
     defaultGateway = "10.0.0.1";
-
   };
+
+  virtualisation.libvirtd = {
+    enable = true;
+    qemu = {
+      package = pkgs.qemu_kvm;
+      runAsRoot = true;
+    };
+  };
+
+  programs.virt-manager.enable = true;
+
+  users.users.archessmn.extraGroups = [
+    "libvirtd"
+    "kvm"
+  ];
 
   environment.systemPackages = with pkgs; [
     zfs

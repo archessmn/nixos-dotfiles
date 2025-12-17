@@ -57,6 +57,11 @@ in
           environmentFiles = [
             config.age.secrets.immich_env.path
           ];
+
+          labels = {
+            "traefik.enable" = "true";
+            "traefik.http.routers.immich.rule" = "Host(`immich.moir.xyz`)";
+          };
         };
 
         immich-machine-learning = {

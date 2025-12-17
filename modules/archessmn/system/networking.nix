@@ -165,7 +165,7 @@ in
             forward-addr = "127.0.0.1@8600";
           }
           {
-            name = "ts.net";
+            name = "ts.net.";
             forward-addr = "100.100.100.100";
           }
           {

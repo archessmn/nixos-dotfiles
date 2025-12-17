@@ -30,7 +30,7 @@ in
 
     system.activationScripts.mkImmichNetwork = ''
       ${pkgs.docker}/bin/docker network create immich
-    ''
+    '';
 
     virtualisation.oci-containers = {
       backend = "docker";

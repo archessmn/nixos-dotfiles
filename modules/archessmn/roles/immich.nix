@@ -28,6 +28,10 @@ in
   config = mkIf cfg.enable {
     age.secrets.immich_env.file = ../../../secrets/${hostname}_immich.env.age;
 
+    system.activationScripts.mkImmichNetwork = ''
+      ${pkgs.docker}/bin/docker network create immich
+    ''
+
     virtualisation.oci-containers = {
       backend = "docker";
 
@@ -46,6 +50,10 @@ in
             # "/stuff:/stuff:ro"
           ];
 
+          networks = [
+            "immich"
+          ];
+
           environmentFiles = [
             config.age.secrets.immich_env.path
           ];
@@ -59,6 +67,10 @@ in
             "/var/lib/immich/model-cache:/cache"
           ];
 
+          networks = [
+            "immich"
+          ];
+
           environmentFiles = [
             config.age.secrets.immich_env.path
           ];
@@ -67,14 +79,26 @@ in
         redis = {
           image = "redis:6.2-alpine@sha256:51d6c56749a4243096327e3fb964a48ed92254357108449cb6e23999c37773c5";
           autoStart = true;
+
+          hostname = "immich_redis";
+
+          networks = [
+            "immich"
+          ];
         };
 
         database = {
           image = "ghcr.io/immich-app/postgres:14-vectorchord0.3.0-pgvectors0.2.0";
           autoStart = true;
 
-          ports = [
-            "5434:5432"
+          hostname = "immich_postgres";
+
+          # ports = [
+          #   "5434:5432"
+          # ];
+
+          networks = [
+            "immich"
           ];
 
           volumes = [

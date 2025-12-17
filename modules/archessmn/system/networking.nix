@@ -132,7 +132,41 @@ in
       })
     ];
 
-    services.resolved.enable = true;
+    networking.nameservers = [
+      "127.0.0.1"
+    ];
+
+    services.unbound = {
+      enable = true;
+      settings = {
+        server = {
+          interface = [
+            "127.0.0.1"
+            "172.30.0.1"
+          ];
+          interface-automatic = "yes";
+          access-control = [
+            "127.0.0.0/8 allow"
+            "172.30.0.0/16 allow"
+            "172.31.0.0/16 allow"
+          ];
+          do-not-query-localhost = "no";
+          val-permissive-mode = "yes";
+          module-config = "iterator";
+        };
+
+        forward-zone = [
+          {
+            name = "consul";
+            forward-addr = "127.0.0.1@8600";
+          }
+          {
+            name = ".";
+            forward-addr = "1.1.1.1";
+          }
+        ];
+      };
+    };
 
     services.avahi.publish.enable = true;
     services.avahi.publish.userServices = true;

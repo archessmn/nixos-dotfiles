@@ -44,6 +44,8 @@
       };
 
       jellyfin.enable = true;
+
+      immich.enable = true;
     };
   };
 

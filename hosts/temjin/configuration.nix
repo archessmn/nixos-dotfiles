@@ -17,7 +17,6 @@
   ];
 
   boot.kernelModules = [ "zfs" ];
-  boot.extraModulePackages = [ config.boot.kernelPackages.zfs_unstable ];
 
   # boot.zfs.extraPools = [ "deep-storage-pool" ];
 

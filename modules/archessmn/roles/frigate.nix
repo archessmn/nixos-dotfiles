@@ -19,11 +19,6 @@ in
   };
 
   config = mkIf cfg.server.enable {
-
-    systemd.tmpfiles.rules = [
-      "d /opt/frigate 1600 root root"
-    ];
-
     virtualisation.oci-containers.backend = "docker";
 
     virtualisation.oci-containers.containers.frigate = {

@@ -153,7 +153,13 @@
         mapAttrs (
           hostname: host:
           nixosSystem {
-            specialArgs = sharedArgs // linuxArgs // { system = host.system; };
+            specialArgs =
+              sharedArgs
+              // linuxArgs
+              // {
+                inherit hostname;
+                system = host.system;
+              };
             modules = [
               ./hosts/${hostname}/configuration.nix
               ./modules/archessmn

@@ -1,9 +1,6 @@
-# Edit this configuration file to define what should be installed on
-# your system. Help is available in the configuration.nix(5) man page, on
-# https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-
 {
   config,
+  hostname,
   lib,
   pkgs,
   system,
@@ -38,9 +35,14 @@
     };
 
     roles = {
+      traefik.enable = true;
+
       frigate.enable = true;
     };
   };
+
+  age.secrets.traefik_cloudflare_env.file = ../../secrets/${hostname}_traefik_cloudflare.env.age;
+  age.secrets.traefik_kanidm_env.file = ../../secrets/${hostname}_traefik_kanidm.env.age;
 
   networking = {
     useDHCP = false;

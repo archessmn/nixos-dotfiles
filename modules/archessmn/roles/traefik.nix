@@ -117,7 +117,7 @@ in
         http = {
           routers = {
             dashboard = {
-              rule = "Host(`traefik.tsuro.infra.archess.mn`)";
+              rule = "Host(`traefik.${hostname}.infra.archess.mn`)";
               service = "api@internal";
               middlewares = [ "oidc-auth" ];
             };
@@ -128,7 +128,7 @@ in
               plugin = {
                 traefik-oidc-auth = {
                   Provider = {
-                    Url = "https://idm.archess.mn/oauth2/openid/tsuro-traefik";
+                    Url = "https://idm.archess.mn/oauth2/openid/${hostname}-traefik";
                     ClientIdEnv = "OIDC_KANIDM_CLIENT_ID";
                     ClientSecretEnv = "OIDC_KANIDM_CLIENT_SECRET";
                     # UsePkce = true;

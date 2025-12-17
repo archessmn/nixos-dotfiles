@@ -18,7 +18,7 @@ in
     };
   };
 
-  config = mkIf cfg.server.enable {
+  config = mkIf cfg.enable {
     virtualisation.oci-containers.backend = "docker";
 
     virtualisation.oci-containers.containers.frigate = {

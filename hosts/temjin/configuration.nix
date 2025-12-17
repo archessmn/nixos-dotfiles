@@ -41,7 +41,6 @@
 
       consul = {
         client.enable = true;
-        server.enable = true;
       };
     };
   };

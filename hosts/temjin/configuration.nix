@@ -24,6 +24,7 @@
   nixpkgs.hostPlatform = system;
 
   networking.hostName = "temjin";
+  networking.hostId = "12854296";
 
   archessmn = {
     desktop = {

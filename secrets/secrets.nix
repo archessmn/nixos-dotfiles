@@ -55,4 +55,9 @@ in
     archessmn-temjin
     temjin
   ];
+  "temjin_immich.env.age".publicKeys = [
+    archessmn-helios
+    archessmn-temjin
+    temjin
+  ];
 }

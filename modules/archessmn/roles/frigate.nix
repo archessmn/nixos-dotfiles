@@ -39,7 +39,13 @@ in
         "/etc/localtime:/etc/localtime:ro"
         "/deep-storage-pool/frigate/config:/config"
         "/deep-storage-pool/frigate/new-media:/media/frigate"
-        "tmpfs:/tmp/cache:rw,size=1G,exec"
+      ];
+
+      extraOptions = [
+        "--shm-size"
+        "128mb"
+        "--mount"
+        "type=tmpfs,dst=/tmp/cache,tmpfs-size=1000000000"
       ];
 
       # labels = {

@@ -19,7 +19,7 @@ in
   };
 
   config = mkIf cfg.enable {
-    age.secrets.keycloak_postgres_password.file = ../../../secrets/keycloak_postgres_password.age;
+    age.secrets.keycloak_postgres_password.file = ../../../secrets/tsuro_keycloak_postgres_password.age;
 
     services.keycloak = {
       enable = true;

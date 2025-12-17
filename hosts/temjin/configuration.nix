@@ -38,6 +38,11 @@
       traefik.enable = true;
 
       frigate.enable = true;
+
+      consul = {
+        client.enable = true;
+        server.enable = true;
+      };
     };
   };
 

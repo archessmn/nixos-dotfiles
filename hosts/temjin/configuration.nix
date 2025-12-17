@@ -47,7 +47,7 @@
 
       immich = {
         enable = true;
-        uploadLocation = "/deep-storage-pool/immich"
+        uploadLocation = "/deep-storage-pool/immich";
       };
     };
   };

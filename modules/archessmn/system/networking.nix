@@ -172,6 +172,7 @@ in
           {
             name = ".";
             forward-addr = "1.1.1.1";
+            forward-first = "yes";
           }
         ];
       };

@@ -9,12 +9,12 @@
 }:
 with lib;
 let
-  cfg = config.archessmn.roles.frigate;
+  cfg = config.archessmn.roles.immich;
 
   immich-release = "v2.3.1";
 in
 {
-  options.archessmn.roles.frigate = {
+  options.archessmn.roles.immich = {
     enable = mkOption {
       type = types.bool;
       default = false;

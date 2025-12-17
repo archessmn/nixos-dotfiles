@@ -33,6 +33,8 @@
     system = {
       bootloader = "systemd";
       docker = true;
+
+      security.agenix.enable = true;
     };
 
     roles = {

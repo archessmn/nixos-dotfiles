@@ -42,6 +42,8 @@
       consul = {
         client.enable = true;
       };
+
+      jellyfin.enable = true;
     };
   };
 

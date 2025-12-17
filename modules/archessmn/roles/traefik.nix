@@ -80,6 +80,7 @@ in
             ];
           };
           consulCatalog = {
+            rootKey = "traefik/${hostname}";
             exposedByDefault = false;
           };
         };

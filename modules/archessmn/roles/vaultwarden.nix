@@ -44,6 +44,7 @@ in
       ];
 
       labels = {
+        "traefik.enable" = "true";
         "traefik.http.routers.vaultwarden.rule" = "Host(`vault.moir.xyz`)";
       };
     };

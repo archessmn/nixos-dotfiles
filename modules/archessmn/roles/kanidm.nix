@@ -44,6 +44,7 @@ in
       # ];
 
       labels = {
+        "traefik.enable" = "true";
         "traefik.http.routers.kanidm.rule" = "Host(`idm.archess.mn`)";
         "traefik.http.services.kanidm.loadbalancer.server.port" = "8443";
         "traefik.http.services.kanidm.loadbalancer.server.scheme" = "https";

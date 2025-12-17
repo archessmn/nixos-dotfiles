@@ -41,6 +41,7 @@ in
       ];
 
       labels = {
+        "traefik.enable" = "true";
         "traefik.http.routers.uptime-kuma.rule" = "Host(`uptime.archess.mn`) || Host(`status.archess.mn`)";
       };
     };

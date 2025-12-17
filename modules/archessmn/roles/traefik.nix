@@ -111,7 +111,7 @@ in
           plugins = {
             traefik-oidc-auth = {
               moduleName = "github.com/sevensolutions/traefik-oidc-auth";
-              version = "v0.3.2";
+              version = "v0.17.0";
             };
           };
         };

@@ -82,6 +82,8 @@
     "kvm"
   ];
 
+  hardware.coral.pcie.enable = true;
+
   environment.systemPackages = with pkgs; [
     zfs
   ];

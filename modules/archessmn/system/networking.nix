@@ -144,7 +144,7 @@ in
       nameserver ::1
       nameserver 127.0.0.1
       search wahoo-monster.ts.net
-    ''
+    '';
 
     services.unbound = {
       enable = true;

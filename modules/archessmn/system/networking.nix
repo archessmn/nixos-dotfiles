@@ -113,6 +113,12 @@ in
     };
 
     networking.firewall = mkMerge [
+      {
+        interfaces = {
+          docker0.allowedUDPPorts = [ 53 ];
+          docker0.allowedTCPPorts = [ 53 ];
+        };
+      }
       (mkIf cfg.openFirewall.wireguard {
         logReversePathDrops = true;
         extraCommands = ''
@@ -137,11 +143,6 @@ in
       nameserver 127.0.0.1
       search wahoo-monster.ts.net
     '';
-
-    networking.firewall.interfaces = {
-      docker0.allowedUDPPorts = [ 53 ];
-      docker0.allowedTCPPorts = [ 53 ];
-    };
 
     services.unbound = {
       enable = true;

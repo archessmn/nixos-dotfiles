@@ -114,10 +114,8 @@ in
 
     networking.firewall = mkMerge [
       {
-        interfaces = {
-          docker0.allowedUDPPorts = [ 53 ];
-          docker0.allowedTCPPorts = [ 53 ];
-        };
+        allowedUDPPorts = [ 53 ];
+        allowedTCPPorts = [ 53 ];
       }
       (mkIf cfg.openFirewall.wireguard {
         logReversePathDrops = true;

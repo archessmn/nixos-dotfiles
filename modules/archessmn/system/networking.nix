@@ -154,6 +154,15 @@ in
             "172.28.0.0/16 allow"
             "172.29.0.0/16 allow"
           ];
+
+          verbosity = 2;
+          log-queries = "yes";
+
+          # Log to journal
+          use-syslog = "yes";
+          log-time-ascii = "yes";
+          log-local-actions = "yes"; # REQUIRED for deny logs
+
           do-not-query-localhost = "no";
           val-permissive-mode = "yes";
           module-config = "iterator";

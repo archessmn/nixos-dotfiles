@@ -138,6 +138,11 @@ in
       search wahoo-monster.ts.net
     '';
 
+    networking.firewall.interfaces = {
+      docker0.allowedUDPPorts = [ 53 ];
+      docker0.allowedTCPPorts = [ 53 ];
+    };
+
     services.unbound = {
       enable = true;
       settings = {

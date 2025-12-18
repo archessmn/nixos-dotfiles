@@ -5,6 +5,7 @@
   pkgs,
   system,
   username,
+  hostname,
   unstable-pkgs,
   ...
 }:
@@ -92,12 +93,10 @@
     };
   };
 
-  services.resolved.enable = true;
-
   # Include Agenix Secrets
-  age.secrets.traefik_cloudflare_env.file = ../../secrets/traefik_cloudflare.env.age;
-  age.secrets.traefik_kanidm_env.file = ../../secrets/traefik_kanidm.env.age;
-  age.secrets.vaultwarden_env.file = ../../secrets/vaultwarden.env.age;
+  age.secrets.traefik_cloudflare_env.file = ../../secrets/${hostname}_traefik_cloudflare.env.age;
+  age.secrets.traefik_kanidm_env.file = ../../secrets/${hostname}_traefik_kanidm.env.age;
+  age.secrets.vaultwarden_env.file = ../../secrets/${hostname}_vaultwarden.env.age;
 
   services.murmur = {
     enable = true;

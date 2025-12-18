@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  hostname,
   pkgs,
   unstable-pkgs,
   username,
@@ -70,10 +71,13 @@ in
         };
 
         providers = {
-          docker = { };
+          docker = {
+            exposedByDefault = false;
+          };
           consul = {
+            rootKey = "traefik/${hostname}";
             endpoints = [
-              "127.0.0.1:8500"
+              "consul.service.consul:8500"
             ];
           };
           consulCatalog = {
@@ -107,7 +111,7 @@ in
           plugins = {
             traefik-oidc-auth = {
               moduleName = "github.com/sevensolutions/traefik-oidc-auth";
-              version = "v0.3.2";
+              version = "v0.17.0";
             };
           };
         };
@@ -117,7 +121,7 @@ in
         http = {
           routers = {
             dashboard = {
-              rule = "Host(`traefik.tsuro.infra.archess.mn`)";
+              rule = "Host(`traefik.${hostname}.infra.archess.mn`)";
               service = "api@internal";
               middlewares = [ "oidc-auth" ];
             };
@@ -128,7 +132,7 @@ in
               plugin = {
                 traefik-oidc-auth = {
                   Provider = {
-                    Url = "https://idm.archess.mn/oauth2/openid/tsuro-traefik";
+                    Url = "https://idm.archess.mn/oauth2/openid/${hostname}-traefik";
                     ClientIdEnv = "OIDC_KANIDM_CLIENT_ID";
                     ClientSecretEnv = "OIDC_KANIDM_CLIENT_SECRET";
                     # UsePkce = true;

@@ -40,6 +40,11 @@
     system = "x86_64-linux";
   };
 
+  temjin = rec {
+    name = "tsuro";
+    system = "x86_64-linux";
+  };
+
   tsuro = rec {
     name = "tsuro";
     system = "x86_64-linux";

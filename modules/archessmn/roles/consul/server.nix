@@ -35,7 +35,7 @@ in
           dns = "127.0.0.1";
         };
 
-        bootstrap_expect = 3;
+        bootstrap_expect = 1;
 
         advertise_addr = "{{ GetInterfaceIP \"tailscale0\" }}";
 

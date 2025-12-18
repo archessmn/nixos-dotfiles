@@ -113,6 +113,10 @@ in
     };
 
     networking.firewall = mkMerge [
+      {
+        allowedUDPPorts = [ 53 ];
+        allowedTCPPorts = [ 53 ];
+      }
       (mkIf cfg.openFirewall.wireguard {
         logReversePathDrops = true;
         extraCommands = ''
@@ -132,7 +136,58 @@ in
       })
     ];
 
-    services.resolved.enable = true;
+    environment.etc."resolv.conf".text = ''
+      nameserver ::1
+      nameserver 127.0.0.1
+      search wahoo-monster.ts.net
+    '';
+
+    services.unbound = {
+      enable = true;
+      settings = {
+        server = {
+          interface = [
+            "127.0.0.1"
+            "::1"
+            "172.28.0.1"
+          ];
+          interface-automatic = "yes";
+          access-control = [
+            "127.0.0.0/8 allow"
+            "::1 allow"
+            "172.28.0.0/16 allow"
+            "172.29.0.0/16 allow"
+          ];
+
+          do-not-query-localhost = "no";
+          val-permissive-mode = "yes";
+          module-config = "iterator";
+
+          hide-identity = "yes";
+          hide-version = "yes";
+          qname-minimisation = "yes";
+          prefetch = "yes";
+          rrset-roundrobin = "yes";
+        };
+
+        forward-zone = [
+          {
+            name = ".";
+            forward-addr = "1.1.1.1";
+            forward-first = "yes";
+          }
+
+          {
+            name = "consul.";
+            forward-addr = "127.0.0.1@8600";
+          }
+          {
+            name = "ts.net.";
+            forward-addr = "100.100.100.100";
+          }
+        ];
+      };
+    };
 
     services.avahi.publish.enable = true;
     services.avahi.publish.userServices = true;

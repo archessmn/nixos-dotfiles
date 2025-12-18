@@ -132,13 +132,19 @@ in
       })
     ];
 
-    networking.nameservers = [
-      "127.0.0.1"
-    ];
+    # networking.nameservers = [
+    #   "127.0.0.1"
+    # ];
 
-    networking.search = [
-      "wahoo-monster.ts.net"
-    ];
+    # networking.search = [
+    #   "wahoo-monster.ts.net"
+    # ];
+
+    environment.etc."resolv.conf".text = ''
+      nameserver ::1
+      nameserver 127.0.0.1
+      search wahoo-monster.ts.net
+    ''
 
     services.unbound = {
       enable = true;

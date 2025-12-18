@@ -132,14 +132,6 @@ in
       })
     ];
 
-    # networking.nameservers = [
-    #   "127.0.0.1"
-    # ];
-
-    # networking.search = [
-    #   "wahoo-monster.ts.net"
-    # ];
-
     environment.etc."resolv.conf".text = ''
       nameserver ::1
       nameserver 127.0.0.1
@@ -151,8 +143,11 @@ in
       settings = {
         server = {
           interface = [
+            "127.0.0.1"
+            "::1"
             "0.0.0.0"
           ];
+          interface-automatic = "yes";
           access-control = [
             "127.0.0.0/8 allow"
             "::1 allow"
@@ -162,9 +157,21 @@ in
           do-not-query-localhost = "no";
           val-permissive-mode = "yes";
           module-config = "iterator";
+
+          hide-identity = "yes";
+          hide-version = "yes";
+          qname-minimisation = "yes";
+          prefetch = "yes";
+          rrset-roundrobin = "yes";
         };
 
         forward-zone = [
+          {
+            name = ".";
+            forward-addr = "1.1.1.1";
+            forward-first = "yes";
+          }
+
           {
             name = "consul.";
             forward-addr = "127.0.0.1@8600";
@@ -172,11 +179,6 @@ in
           {
             name = "ts.net.";
             forward-addr = "100.100.100.100";
-          }
-          {
-            name = ".";
-            forward-addr = "1.1.1.1";
-            forward-first = "yes";
           }
         ];
       };

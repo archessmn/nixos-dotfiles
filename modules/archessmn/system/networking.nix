@@ -150,7 +150,8 @@ in
           access-control = [
             "127.0.0.0/8 allow"
             "::1 allow"
-            "172.30.0.0/15 allow"
+            "172.28.0.0/16 allow"
+            "172.29.0.0/16 allow"
           ];
           do-not-query-localhost = "no";
           val-permissive-mode = "yes";

@@ -117,9 +117,9 @@ in
           ];
 
           environment = {
-            POSTGRES_PASSWORD = "\${DB_PASSWORD}";
-            POSTGRES_USER = "\${DB_USERNAME}";
-            POSTGRES_DB = "\${DB_DATABASE_NAME}";
+            POSTGRES_PASSWORD = "$DB_PASSWORD";
+            POSTGRES_USER = "$DB_USERNAME";
+            POSTGRES_DB = "$DB_DATABASE_NAME";
           };
         };
       };

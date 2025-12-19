@@ -2,9 +2,7 @@
   lib,
   config,
   pkgs,
-  unstable-pkgs,
-  username,
-  flakeDir,
+  isDarwin,
   ...
 }:
 with lib;
@@ -15,6 +13,9 @@ in
 
   imports = [
     ./security
+    ./ssh.nix
+  ]
+  ++ optionals (!isDarwin) [
     ./bluetooth.nix
     ./fprintd.nix
     ./graphics.nix
@@ -50,7 +51,7 @@ in
 
   };
 
-  config = mkMerge [
+  config = optionalAttrs (!isDarwin) (mkMerge [
     (mkIf cfg.enable {
       nix.settings.experimental-features = [
         "nix-command"
@@ -95,5 +96,5 @@ in
         };
       };
     })
-  ];
+  ]);
 }

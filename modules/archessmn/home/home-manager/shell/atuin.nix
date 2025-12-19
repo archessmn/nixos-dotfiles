@@ -27,6 +27,8 @@ in
         auto_sync = true;
         sync_frequency = "1m";
         sync_address = "https://atuin.archess.mn";
+        ctrl_n_shortcuts = true;
+        style = "auto";
       };
       enableZshIntegration = true;
       enableFishIntegration = true;

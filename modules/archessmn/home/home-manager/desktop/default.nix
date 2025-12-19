@@ -4,6 +4,7 @@
   pkgs,
   unstable-pkgs,
   username,
+  isDarwin,
   ...
 }:
 with lib;
@@ -14,6 +15,9 @@ in
 
 {
   imports = [
+    ./git.nix
+  ]
+  ++ optionals (!isDarwin) [
     ./terminals
     ./activate-linux.nix
     ./gaming.nix

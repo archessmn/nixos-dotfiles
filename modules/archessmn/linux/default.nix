@@ -14,10 +14,10 @@ let
 in
 {
   imports = [
-    ./desktop
-    ./home
-    ./roles
-    ./system
+    ../desktop
+    ../home
+    ../roles
+    ../system
   ];
 
   config = {

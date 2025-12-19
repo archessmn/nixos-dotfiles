@@ -31,10 +31,9 @@ in
     programs.git = {
       enable = true;
 
-      userEmail = user.email;
-      userName = user.fullName;
-
-      extraConfig = {
+      settings = {
+        user.email = user.email;
+        user.name = user.fullName;
         init.defaultBranch = "main";
         push.autoSetupRemote = "true";
         pull.rebase = true;

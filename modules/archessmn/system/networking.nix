@@ -39,18 +39,6 @@ in
       };
     };
 
-    ssh = {
-      enable = mkOption {
-        type = types.bool;
-        default = true;
-      };
-
-      yubikeyRootAuth = mkOption {
-        type = types.bool;
-        default = true;
-      };
-    };
-
     wakeonlan = {
       enable = mkOption {
         type = types.bool;
@@ -80,16 +68,6 @@ in
     # Networking stuff
 
     networking.networkmanager.enable = true;
-
-    services.openssh = mkIf cfg.ssh.enable {
-      enable = true;
-      settings.PasswordAuthentication = false;
-      settings.KbdInteractiveAuthentication = false;
-    };
-
-    users.users.root.openssh.authorizedKeys.keys = mkIf (cfg.ssh.enable && cfg.ssh.yubikeyRootAuth) [
-      ''sk-ecdsa-sha2-nistp256@openssh.com AAAAInNrLWVjZHNhLXNoYTItbmlzdHAyNTZAb3BlbnNzaC5jb20AAAAIbmlzdHAyNTYAAABBBB252zkVQgeI4NPUSqt0UzIxicmUspZr2SzPeb18IktFzeqsL/X6+g8AF4lBymuuiJPpMVMmDR9ux10YgW41HFMAAAAEc3NoOg==''
-    ];
 
     services.tailscale = mkIf cfg.tailscale.enable {
       enable = true;

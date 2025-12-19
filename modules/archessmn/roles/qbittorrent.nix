@@ -41,8 +41,8 @@ in
 
       labels = {
         "traefik.enable" = "true";
-        "traefik.http.routers.kanidm.rule" = "Host(`qbt.moir.xyz`)";
-        "traefik.http.services.kanidm.loadbalancer.server.port" = "49893";
+        "traefik.http.routers.qbittorrent.rule" = "Host(`qbt.moir.xyz`)";
+        "traefik.http.services.qbittorrent.loadbalancer.server.port" = "49893";
       };
     };
 

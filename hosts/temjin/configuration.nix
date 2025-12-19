@@ -42,6 +42,7 @@
       frigate.enable = true;
 
       gluetun.enable = true;
+      qbittorrent.enable = true;
 
       consul = {
         client.enable = true;

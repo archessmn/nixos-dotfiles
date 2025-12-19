@@ -1,18 +1,14 @@
 {
   lib,
-  config,
-  pkgs,
-  unstable-pkgs,
-  username,
+  isDarwin,
   ...
 }:
 with lib;
-let
-  cfg = config.archessmn;
-in
 {
   imports = [
     ./agenix.nix
+  ]
+  ++ optionals (!isDarwin) [
     ./kanidm.nix
     ./ops.nix
     ./sudo.nix

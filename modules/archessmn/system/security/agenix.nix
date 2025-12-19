@@ -1,9 +1,7 @@
 {
   lib,
   config,
-  pkgs,
-  unstable-pkgs,
-  username,
+  system,
   agenix,
   ...
 }:
@@ -20,6 +18,6 @@ in
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = [ agenix.packages.x86_64-linux.default ];
+    environment.systemPackages = [ agenix.packages.${system}.default ];
   };
 }

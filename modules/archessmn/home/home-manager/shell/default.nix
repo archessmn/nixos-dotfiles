@@ -4,6 +4,7 @@
   pkgs,
   unstable-pkgs,
   username,
+  isDarwin,
   ...
 }:
 with lib;
@@ -17,7 +18,6 @@ in
     ./eza.nix
     ./fzf.nix
     ./helix.nix
-    ./neovim.nix
     ./pay-respects.nix
     ./yazi.nix
     ./zoxide.nix
@@ -33,6 +33,10 @@ in
   config.home-manager.users.${username} = mkIf cfg.enable {
     programs.fish = {
       enable = true;
+
+      functions = {
+        fish_greeting = "";
+      };
 
       shellAliases = {
         y = "yazi";
@@ -74,15 +78,12 @@ in
       # Terminal shit
       pkgs.git
       pkgs.gh
-      pkgs.vimPlugins.nvim-treesitter
-      pkgs.vimPlugins.nvim-treesitter-parsers.nix
       pkgs.walk
       pkgs.bat
       pkgs.neofetch
       pkgs.htop
       pkgs.btop
       pkgs.sl
-      pkgs.dysk
       pkgs.dig
       pkgs.minicom
 
@@ -92,6 +93,9 @@ in
       unstable-pkgs.rustlings
       # pkgs.gccgo13
       pkgs.jdk21
+    ]
+    ++ optionals (!isDarwin) [
+      pkgs.dysk
     ];
   };
 }

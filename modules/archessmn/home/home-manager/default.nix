@@ -5,6 +5,7 @@
   unstable-pkgs,
   username,
   fsh,
+  isDarwin,
   ...
 }:
 with lib;
@@ -25,26 +26,29 @@ in
       type = types.bool;
       default = true;
     };
+
+    stateVersion = mkOption {
+      type = types.str;
+      default = "23.11";
+    };
   };
 
   config.home-manager = mkIf cfg.enable {
-    # extraSpecialArgs = {
-    #   inherit pkgs;
-    #   inherit username;
-    #   inherit unstable-pkgs;
-    #   inherit fsh;
-    # };
     useGlobalPkgs = true;
     useUserPackages = true;
 
-    users.${username} = {
-      home.username = "${username}";
-      home.homeDirectory = "/home/${username}";
-      home.stateVersion = "23.11";
+    users.${username} = mkMerge [
+      {
+        home.username = "${username}";
+        home.stateVersion = cfg.stateVersion;
 
-      imports = [
-        fsh.homeModules.fsh
-      ];
-    };
+        imports = [
+          fsh.homeModules.fsh
+        ];
+      }
+      (mkIf (!isDarwin) {
+        home.homeDirectory = "/home/${username}";
+      })
+    ];
   };
 }

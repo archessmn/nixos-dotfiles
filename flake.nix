@@ -58,7 +58,6 @@
 
       # User Variables
       username = "archessmn";
-      flakeDir = "/home/archessmn/nixos-dotfiles/";
 
       stable-pkgs = import nixpkgs {
         inherit system;
@@ -96,26 +95,45 @@
         inherit inputs;
         inherit username;
         inherit fsh;
-        inherit flakeDir;
         inherit agenix;
       };
 
       linuxArgs = {
         inherit stable-pkgs;
         inherit unstable-pkgs;
+        flakeDir = "/home/archessmn/nixos-dotfiles/";
+        isDarwin = false;
       };
 
       darwinArgs = {
         inherit darwin-pkgs;
+        unstable-pkgs = darwin-pkgs;
         flakeDir = "/Users/archessmn/nixos-dotfiles/";
+        isDarwin = true;
       };
 
       commonModules = [
-        ./modules/archessmn
-        home-manager.nixosModules.home-manager
-        inputs.minegrub-theme.nixosModules.default
         agenix.nixosModules.default
       ];
+
+      linuxModules = [
+        ./modules/archessmn/linux
+        home-manager.nixosModules.home-manager
+        inputs.minegrub-theme.nixosModules.default
+        {
+          nixpkgs.pkgs = stable-pkgs;
+        }
+      ]
+      ++ commonModules;
+
+      darwinModules = [
+        ./modules/archessmn/darwin
+        darwin-home-manager.darwinModules.home-manager
+        {
+          nixpkgs.pkgs = darwin-pkgs;
+        }
+      ]
+      ++ commonModules;
 
       hosts = import ./hosts;
 
@@ -123,29 +141,19 @@
       darwinHosts = nixpkgs.lib.filterAttrs (_: host: host.system == "aarch64-darwin") hosts;
     in
     rec {
-      # darwinConfigurations."helios" = nix-darwin.lib.darwinSystem {
-      #   specialArgs = sharedArgs;
-      #   modules = [
-      #     darwin-home-manager.darwinModules.home-manager
-      #     ./hosts/helios/configuration.nix
-      #     {
-      #       nixpkgs.pkgs = darwin-pkgs;
-      #     }
-      #   ];
-      # };
-
       darwinConfigurations = mapAttrs (
         hostname: host:
         nix-darwin.lib.darwinSystem {
-          specialArgs = sharedArgs // darwinArgs // { system = host.system; };
+          specialArgs =
+            sharedArgs
+            // darwinArgs
+            // {
+              system = host.system;
+            };
           modules = [
-            darwin-home-manager.darwinModules.home-manager
             ./hosts/${hostname}/configuration.nix
-            agenix.nixosModules.default
-            {
-              nixpkgs.pkgs = darwin-pkgs;
-            }
-          ];
+          ]
+          ++ darwinModules;
         }
       ) darwinHosts;
 
@@ -162,14 +170,8 @@
               };
             modules = [
               ./hosts/${hostname}/configuration.nix
-              ./modules/archessmn
-              home-manager.nixosModules.home-manager
-              inputs.minegrub-theme.nixosModules.default
-              agenix.nixosModules.default
-              {
-                nixpkgs.pkgs = stable-pkgs;
-              }
-            ];
+            ]
+            ++ linuxModules;
           }
         ) linuxHosts
         // ({

@@ -2,9 +2,6 @@
   lib,
   config,
   hostname,
-  pkgs,
-  unstable-pkgs,
-  username,
   ...
 }:
 with lib;

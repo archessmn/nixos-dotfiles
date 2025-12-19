@@ -4,6 +4,7 @@
 {
 
   imports = [
+    ./arr
     ./beszel
     ./consul
     ./nomad

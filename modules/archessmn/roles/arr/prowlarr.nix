@@ -44,5 +44,12 @@ in
         "traefik.http.services.prowlarr.loadbalancer.server.port" = "9696";
       };
     };
+
+    systemd.services."docker-prowlarr" = {
+      after = [ "docker-gluetun.service" ];
+      requires = [ "docker-gluetun.service" ];
+      bindsTo = [ "docker-gluetun.service" ];
+      partOf = [ "docker-gluetun.service" ];
+    };
   };
 }

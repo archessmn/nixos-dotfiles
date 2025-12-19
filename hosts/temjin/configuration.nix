@@ -46,13 +46,13 @@
         client.enable = true;
       };
 
-      jellyfin.enable = true;
-
       immich = {
         enable = true;
         uploadLocation = "/deep-storage-pool/immich";
       };
 
+      jellyfin.enable = true;
+      jellyseer.enable = true;
       arr = {
         prowlarr.enable = true;
         radarr.enable = true;

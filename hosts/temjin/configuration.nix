@@ -54,6 +54,7 @@
       };
 
       arr = {
+        prowlarr.enable = true;
         radarr.enable = true;
       };
     };

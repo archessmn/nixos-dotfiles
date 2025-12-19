@@ -13,6 +13,7 @@
     ./gluetun.nix
     ./immich.nix
     ./jellyfin.nix
+    ./jellyseer.nix
     ./kanidm.nix
     ./keycloak.nix
     ./patroni.nix

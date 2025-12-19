@@ -31,6 +31,7 @@ in
       };
 
       ports = [
+        "49893:49893"
       ];
 
       environmentFiles = [

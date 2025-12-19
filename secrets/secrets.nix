@@ -55,6 +55,11 @@ in
     archessmn-temjin
     temjin
   ];
+  "temjin_qbittorrent.env.age".publicKeys = [
+    archessmn-helios
+    archessmn-temjin
+    temjin
+  ];
   "temjin_traefik_cloudflare.env.age".publicKeys = [
     archessmn-helios
     archessmn-temjin

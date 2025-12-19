@@ -58,6 +58,7 @@
   };
 
   age.secrets.gluetun_env.file = ../../secrets/${hostname}_gluetun.env.age;
+  age.secrets.qbittorrent_env.file = ../../secrets/${hostname}_qbittorrent.env.age;
   age.secrets.traefik_cloudflare_env.file = ../../secrets/${hostname}_traefik_cloudflare.env.age;
   age.secrets.traefik_kanidm_env.file = ../../secrets/${hostname}_traefik_kanidm.env.age;
 

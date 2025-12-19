@@ -21,7 +21,7 @@ in
     virtualisation.oci-containers.containers.prowlarr = {
       autoStart = true;
 
-      image = "ghcr.io/hotio/prowlarr:release-2.3.0.5326";
+      image = "ghcr.io/hotio/prowlarr:release-2.3.0.5236";
 
       volumes = [
         "/opt/prowlarr/config:/config"

@@ -136,7 +136,7 @@ in
                     Url = "https://idm.archess.mn/oauth2/openid/${hostname}-traefik";
                     ClientId = "\${OIDC_KANIDM_CLIENT_ID}";
                     ClientSecret = "\${OIDC_KANIDM_CLIENT_SECRET}";
-                    # UsePkce = true;
+                    UsePkce = true;
                   };
                   Scopes = [
                     "openid"

@@ -121,7 +121,7 @@ in
         http = {
           routers = {
             dashboard = {
-              rule = "Host(`traefik.${hostname}.infra.archess.mn`)";
+              rule = "Host(`traefik.${hostname}.infra.archess.mn`) && (PathPrefix(`/api`) || PathPrefix(`/dashboard`))";
               service = "dashboard@internal";
               middlewares = [ "oidc-auth" ];
             };

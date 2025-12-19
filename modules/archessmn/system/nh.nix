@@ -2,7 +2,7 @@
   lib,
   config,
   pkgs,
-  unstable-pkgs,
+  isDarwin,
   username,
   flakeDir,
   ...
@@ -19,16 +19,22 @@ in
     };
   };
 
-  config = mkIf cfg.enable {
-    environment.variables.NH_FLAKE = "${flakeDir}";
-
-    programs.nh = {
-      enable = true;
-      clean = {
+  config = mkIf cfg.enable (mkMerge [
+    {
+      environment.variables.NH_FLAKE = "${flakeDir}";
+    }
+    (optionalAttrs (!isDarwin) {
+      programs.nh = {
         enable = true;
-        extraArgs = "--keep-since 4d --keep 5";
+        clean = {
+          enable = true;
+          extraArgs = "--keep-since 4d --keep 5";
+        };
+        flake = flakeDir;
       };
-      flake = flakeDir;
-    };
-  };
+    })
+    (optionalAttrs isDarwin {
+      home-manager.users.${username}.home.packages = with pkgs; [ nh ];
+    })
+  ]);
 }

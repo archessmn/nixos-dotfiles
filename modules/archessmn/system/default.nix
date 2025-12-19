@@ -13,6 +13,7 @@ in
 
   imports = [
     ./security
+    ./nh.nix
     ./ssh.nix
   ]
   ++ optionals (!isDarwin) [
@@ -21,7 +22,6 @@ in
     ./graphics.nix
     ./locale.nix
     ./networking.nix
-    ./nh.nix
     ./power.nix
     ./thinkpad.nix
     ./virtualisation.nix

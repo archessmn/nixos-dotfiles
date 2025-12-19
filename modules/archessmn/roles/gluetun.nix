@@ -6,6 +6,7 @@
 with lib;
 let
   cfg = config.archessmn.roles.gluetun;
+  roles = config.archessmn.roles;
 in
 {
   options.archessmn.roles.gluetun = {
@@ -27,9 +28,12 @@ in
         NET_ADMIN = true;
       };
 
-      ports = [
-        "49893:49893"
-      ];
+      ports = (
+        mkMerge [
+          (mkIf roles.arr.prowlarr.enable [ "9696:9696" ])
+          (mkIf roles.qbittorrent.enable [ "49893:49893" ])
+        ]
+      );
 
       environmentFiles = [
         config.age.secrets.gluetun_env.path

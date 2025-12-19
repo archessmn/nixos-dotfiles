@@ -170,14 +170,8 @@
               };
             modules = [
               ./hosts/${hostname}/configuration.nix
-              ./modules/archessmn
-              home-manager.nixosModules.home-manager
-              inputs.minegrub-theme.nixosModules.default
-              agenix.nixosModules.default
-              {
-                nixpkgs.pkgs = stable-pkgs;
-              }
-            ];
+            ]
+            ++ linuxModules;
           }
         ) linuxHosts
         // ({

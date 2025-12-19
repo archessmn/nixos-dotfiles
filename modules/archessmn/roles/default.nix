@@ -24,6 +24,7 @@ in
     ./kanidm.nix
     ./keycloak.nix
     ./patroni.nix
+    ./qbittorrent.nix
     ./traefik.nix
     ./uptime-kuma.nix
     ./vaultwarden.nix

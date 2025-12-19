@@ -131,10 +131,11 @@ in
             oidc-auth = {
               plugin = {
                 traefik-oidc-auth = {
+                  Secret = "\${OIDC_SECRET}";
                   Provider = {
                     Url = "https://idm.archess.mn/oauth2/openid/${hostname}-traefik";
-                    ClientIdEnv = "OIDC_KANIDM_CLIENT_ID";
-                    ClientSecretEnv = "OIDC_KANIDM_CLIENT_SECRET";
+                    ClientId = "\${OIDC_KANIDM_CLIENT_ID}";
+                    ClientSecret = "\${OIDC_KANIDM_CLIENT_SECRET}";
                     # UsePkce = true;
                   };
                   Scopes = [

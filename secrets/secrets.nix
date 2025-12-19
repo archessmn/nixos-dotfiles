@@ -45,17 +45,22 @@ in
   ];
 
   # Temjin
+  "temjin_gluetun.env.age".publicKeys = [
+    archessmn-helios
+    archessmn-temjin
+    temjin
+  ];
+  "temjin_immich.env.age".publicKeys = [
+    archessmn-helios
+    archessmn-temjin
+    temjin
+  ];
   "temjin_traefik_cloudflare.env.age".publicKeys = [
     archessmn-helios
     archessmn-temjin
     temjin
   ];
   "temjin_traefik_kanidm.env.age".publicKeys = [
-    archessmn-helios
-    archessmn-temjin
-    temjin
-  ];
-  "temjin_immich.env.age".publicKeys = [
     archessmn-helios
     archessmn-temjin
     temjin

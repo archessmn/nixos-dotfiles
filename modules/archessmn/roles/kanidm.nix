@@ -29,7 +29,7 @@ in
     virtualisation.oci-containers.containers.kanidm = {
       autoStart = true;
 
-      image = "kanidm/server:1.7.3";
+      image = "kanidm/server:1.8.5";
 
       ports = [
         "7004:8443"
@@ -38,10 +38,6 @@ in
       volumes = [
         "/opt/kanidm:/data"
       ];
-
-      # environmentFiles = [
-      #   config.age.secrets.vaultwarden_env.path
-      # ];
 
       labels = {
         "traefik.enable" = "true";

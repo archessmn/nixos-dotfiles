@@ -18,6 +18,7 @@ in
     ./nomad
     ./family-pc.nix
     ./frigate.nix
+    ./gluetun.nix
     ./immich.nix
     ./jellyfin.nix
     ./kanidm.nix

@@ -52,6 +52,10 @@
         enable = true;
         uploadLocation = "/deep-storage-pool/immich";
       };
+
+      arr = {
+        radarr.enable = true;
+      };
     };
   };
 

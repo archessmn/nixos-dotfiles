@@ -34,6 +34,8 @@
       security.agenix.enable = true;
     };
 
+    home.home-manager.desktop.git.enable = true;
+
     roles = {
       traefik.enable = true;
 

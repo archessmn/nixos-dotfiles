@@ -56,6 +56,7 @@
       arr = {
         prowlarr.enable = true;
         radarr.enable = true;
+        sonarr.enable = true;
       };
     };
   };

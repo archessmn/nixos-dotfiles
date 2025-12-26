@@ -2,8 +2,6 @@
   lib,
   config,
   pkgs,
-  unstable-pkgs,
-  username,
   ...
 }:
 with lib;
@@ -64,6 +62,9 @@ in
             "host replication patronirep 100.64.0.0/10 trust"
             "host replication patronirep 127.0.0.1/32 trust"
             "host all all 100.64.0.0/10 trust"
+            "host all all 172.28.0.0/16 md5"
+            "host all all 172.29.0.0/16 md5"
+            "host all all 172.30.0.0/16 md5"
             "host all all 172.31.0.0/16 md5"
             "host all all 127.0.0.1/32 trust"
           ];

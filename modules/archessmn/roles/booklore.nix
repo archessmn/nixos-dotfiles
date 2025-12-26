@@ -56,8 +56,6 @@ in
             USER_ID = "1000";
             GROUP_ID = "1";
             TZ = "Etc/UTC";
-            DATABASE_USERNAME = "$DB_USER";
-            DATABASE_PASSWORD = "$DB_PASSWORD";
           };
 
           environmentFiles = [
@@ -89,8 +87,6 @@ in
             PGID = "1";
             UMASK = "002";
             TZ = "Etc/UTC";
-            MYSQL_USER = "$DB_USER";
-            MYSQL_PASSWORD = "$DB_PASSWORD";
           };
 
           environmentFiles = [

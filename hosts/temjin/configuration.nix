@@ -56,6 +56,8 @@
 
       patroni.enable = true;
 
+      booklore.enable = true;
+
       arr = {
         prowlarr.enable = true;
         radarr.enable = true;

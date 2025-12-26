@@ -53,6 +53,9 @@
 
       jellyfin.enable = true;
       jellyseer.enable = true;
+
+      patroni.enable = true;
+
       arr = {
         prowlarr.enable = true;
         radarr.enable = true;

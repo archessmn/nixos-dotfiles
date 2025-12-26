@@ -94,9 +94,9 @@
   };
 
   # Include Agenix Secrets
-  age.secrets.traefik_cloudflare_env.file = ../../secrets/${hostname}_traefik_cloudflare.env.age;
-  age.secrets.traefik_kanidm_env.file = ../../secrets/${hostname}_traefik_kanidm.env.age;
-  age.secrets.vaultwarden_env.file = ../../secrets/${hostname}_vaultwarden.env.age;
+  age.secrets.traefik_cloudflare_env.file = ../../secrets/${hostname}/traefik_cloudflare.env.age;
+  age.secrets.traefik_kanidm_env.file = ../../secrets/${hostname}/traefik_kanidm.env.age;
+  age.secrets.vaultwarden_env.file = ../../secrets/${hostname}/vaultwarden.env.age;
 
   services.murmur = {
     enable = true;

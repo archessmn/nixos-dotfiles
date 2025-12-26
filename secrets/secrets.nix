@@ -19,25 +19,25 @@ let
 in
 {
   # Tsuro
-  "tsuro_traefik_cloudflare.env.age".publicKeys = [
+  "tsuro/traefik_cloudflare.env.age".publicKeys = [
     archessmn-adrasteia
     archessmn-helios
     archessmn-temjin
     tsuro
   ];
-  "tsuro_traefik_kanidm.env.age".publicKeys = [
+  "tsuro/traefik_kanidm.env.age".publicKeys = [
     archessmn-adrasteia
     archessmn-helios
     archessmn-temjin
     tsuro
   ];
-  "tsuro_vaultwarden.env.age".publicKeys = [
+  "tsuro/vaultwarden.env.age".publicKeys = [
     archessmn-adrasteia
     archessmn-helios
     archessmn-temjin
     tsuro
   ];
-  "tsuro_keycloak_postgres_password.age".publicKeys = [
+  "tsuro/keycloak_postgres_password.age".publicKeys = [
     archessmn-adrasteia
     archessmn-helios
     archessmn-temjin
@@ -45,27 +45,32 @@ in
   ];
 
   # Temjin
-  "temjin_gluetun.env.age".publicKeys = [
+  "temjin/gluetun.env.age".publicKeys = [
     archessmn-helios
     archessmn-temjin
     temjin
   ];
-  "temjin_immich.env.age".publicKeys = [
+  "temjin/immich.env.age".publicKeys = [
     archessmn-helios
     archessmn-temjin
     temjin
   ];
-  "temjin_qbittorrent.env.age".publicKeys = [
+  "temjin/qbittorrent.env.age".publicKeys = [
     archessmn-helios
     archessmn-temjin
     temjin
   ];
-  "temjin_traefik_cloudflare.env.age".publicKeys = [
+  "temjin/traefik_cloudflare.env.age".publicKeys = [
     archessmn-helios
     archessmn-temjin
     temjin
   ];
-  "temjin_traefik_kanidm.env.age".publicKeys = [
+  "temjin/traefik_kanidm.env.age".publicKeys = [
+    archessmn-helios
+    archessmn-temjin
+    temjin
+  ];
+  "temjin/booklore.env.age".publicKeys = [
     archessmn-helios
     archessmn-temjin
     temjin

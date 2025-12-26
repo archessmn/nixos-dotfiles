@@ -26,7 +26,7 @@ in
   };
 
   config = mkIf cfg.enable {
-    age.secrets.immich_env.file = ../../../secrets/${hostname}_immich.env.age;
+    age.secrets.immich_env.file = ../../../secrets/${hostname}/immich.env.age;
 
     # https://discourse.nixos.org/t/how-to-create-docker-network-in-nixos-configuration-correctly/16945/3
     system.activationScripts.mkImmichNetwork =

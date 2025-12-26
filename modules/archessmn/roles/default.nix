@@ -8,6 +8,7 @@
     ./beszel
     ./consul
     ./nomad
+    ./booklore.nix
     ./family-pc.nix
     ./frigate.nix
     ./gluetun.nix

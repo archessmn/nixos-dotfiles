@@ -67,6 +67,10 @@ in
 
         image = "ghcr.io/onedr0p/exportarr:v2.3.0";
 
+        ports = [
+          "9697:9697"
+        ];
+
         environment = {
           PORT = "9697";
           URL = "http://10.0.0.10:9696";

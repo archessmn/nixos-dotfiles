@@ -85,6 +85,7 @@ in
       pkgs.btop
       pkgs.sl
       pkgs.dig
+      pkgs.lsof
       pkgs.minicom
 
       # Programming things

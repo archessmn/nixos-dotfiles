@@ -40,7 +40,10 @@
 
       keycloak.enable = true;
 
-      beszel.hub.enable = true;
+      beszel = {
+        agent.enable = true;
+        hub.enable = true;
+      };
     };
   };
 

@@ -13,6 +13,11 @@ in
       type = types.bool;
       default = false;
     };
+
+    extraFileSystems = mkOption {
+      type = types.listOf str;
+      default = [ ];
+    };
   };
 
   config = mkIf cfg.enable {
@@ -28,6 +33,7 @@ in
 
       environment = {
         KEY_FILE = config.age.secrets.beszel_key.path;
+        EXTRA_FILESYSTEMS = strings.concatStrings strings.intersperse "," cfg.extraFileSystems;
       };
     };
   };

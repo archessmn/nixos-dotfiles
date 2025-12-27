@@ -1,19 +1,8 @@
 {
   lib,
-  config,
-  pkgs,
-  unstable-pkgs,
-  username,
-  fsh,
   ...
 }:
 with lib;
-let
-  keys = import ../../../config/ssh/keys.nix;
-  cfg = config.archessmn.home;
-  users = import ../../../users.nix;
-in
-
 {
   imports = [
     ../desktop

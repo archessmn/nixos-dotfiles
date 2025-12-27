@@ -1,8 +1,6 @@
 {
   lib,
   config,
-  pkgs,
-  unstable-pkgs,
   ...
 }:
 with lib;

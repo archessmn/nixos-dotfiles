@@ -1,11 +1,6 @@
 {
   lib,
   config,
-  pkgs,
-  unstable-pkgs,
-  username,
-  fsh,
-  flakeDir,
   ...
 }:
 with lib;

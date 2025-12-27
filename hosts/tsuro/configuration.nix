@@ -1,12 +1,6 @@
 {
-  inputs,
-  config,
-  lib,
-  pkgs,
   system,
-  username,
   hostname,
-  unstable-pkgs,
   ...
 }:
 

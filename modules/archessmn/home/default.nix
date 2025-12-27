@@ -2,9 +2,7 @@
   lib,
   config,
   pkgs,
-  unstable-pkgs,
   username,
-  fsh,
   isDarwin,
   ...
 }:

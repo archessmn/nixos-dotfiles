@@ -2,9 +2,6 @@
   lib,
   config,
   pkgs,
-  unstable-pkgs,
-  theLocale,
-  theTimezone,
   ...
 }:
 with lib;

@@ -1,10 +1,6 @@
 {
   lib,
   config,
-  pkgs,
-  unstable-pkgs,
-  theLocale,
-  theTimezone,
   username,
   ...
 }:

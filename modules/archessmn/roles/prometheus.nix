@@ -15,7 +15,7 @@ in
     };
   };
 
-  config = mkIf cfg.server.enable {
+  config = mkIf cfg.enable {
     services.prometheus = {
       enable = true;
     };

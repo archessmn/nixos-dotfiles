@@ -56,6 +56,7 @@
 
       patroni.enable = true;
 
+      book-downloader.enable = true;
       booklore.enable = true;
 
       arr = {

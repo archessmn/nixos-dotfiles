@@ -37,6 +37,7 @@ in
             UID = "1000";
             GID = "1";
             TZ = "Etc/UTC";
+            SEARCH_MODE = "universal";
           };
 
           # labels = {

@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  hostname,
   ...
 }:
 with lib;

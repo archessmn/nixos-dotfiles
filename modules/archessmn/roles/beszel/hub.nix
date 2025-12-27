@@ -25,7 +25,7 @@ in
     virtualisation.oci-containers.containers.beszel-hub = {
       autoStart = true;
 
-      image = "henrygd/beszel:0.9.1";
+      image = "henrygd/beszel:0.15.4";
 
       ports = [
         "8090:8090"

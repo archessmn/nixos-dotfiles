@@ -34,7 +34,7 @@ in
       environment = {
         KEY_FILE = config.age.secrets.beszel_key.path;
         EXTRA_FILESYSTEMS = strings.concatStringsSep "," cfg.extraFileSystems;
-        SERVICE_PATTERNS = "jellyfin";
+        SERVICE_PATTERNS = "jellyfin*";
       };
     };
   };

@@ -13,12 +13,14 @@
     ./family-pc.nix
     ./frigate.nix
     ./gluetun.nix
+    ./grafana.nix
     ./immich.nix
     ./jellyfin.nix
     ./jellyseer.nix
     ./kanidm.nix
     ./keycloak.nix
     ./patroni.nix
+    ./prometheus.nix
     ./qbittorrent.nix
     ./traefik.nix
     ./uptime-kuma.nix

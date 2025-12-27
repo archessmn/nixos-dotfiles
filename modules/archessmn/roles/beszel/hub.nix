@@ -36,6 +36,7 @@ in
       ];
 
       labels = {
+        "traefik.enable" = "true";
         "traefik.http.routers.beszel-hub.rule" = "Host(`beszel.archess.mn`)";
       };
     };

@@ -22,6 +22,7 @@ in
       settings = {
         server = {
           root_url = "https://grafana.moir.xyz";
+          http_addr = "0.0.0.0";
           http_port = 7000;
         };
       };

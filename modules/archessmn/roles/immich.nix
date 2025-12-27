@@ -9,7 +9,7 @@ with lib;
 let
   cfg = config.archessmn.roles.immich;
 
-  immich-release = "v2.3.1";
+  immich-release = "v2.4.1";
 in
 {
   options.archessmn.roles.immich = {

@@ -114,11 +114,9 @@ in
             "/var/lib/immich/pgdata:/var/lib/postgresql/data"
           ];
 
-          environment = {
-            POSTGRES_PASSWORD = "$DB_PASSWORD";
-            POSTGRES_USER = "$DB_USERNAME";
-            POSTGRES_DB = "$DB_DATABASE_NAME";
-          };
+          environmentFiles = [
+            config.age.secrets.immich_env.path
+          ];
         };
       };
     };

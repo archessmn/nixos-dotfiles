@@ -83,4 +83,9 @@ in
     archessmn-temjin
     temjin
   ];
+  "temjin/arr/prowlarr_api_key.env.age".publicKeys = [
+    archessmn-helios
+    archessmn-temjin
+    temjin
+  ];
 }

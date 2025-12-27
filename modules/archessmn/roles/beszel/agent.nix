@@ -17,7 +17,11 @@ in
 
   config = mkIf cfg.enable {
 
-    age.secrets.beszel_key.file = ../../../../secrets/beszel_key.age;
+    age.secrets.beszel_key = {
+      file = ../../../../secrets/beszel_key.age;
+
+      owner = "beszel-agent";
+    };
 
     services.beszel.agent = {
       enable = true;

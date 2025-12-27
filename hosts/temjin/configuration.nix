@@ -59,6 +59,8 @@
       book-downloader.enable = true;
       booklore.enable = true;
 
+      beszel.agent.enable = true;
+
       arr = {
         prowlarr.enable = true;
         radarr.enable = true;

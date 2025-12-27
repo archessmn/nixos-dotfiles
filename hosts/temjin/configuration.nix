@@ -71,6 +71,9 @@
         radarr.enable = true;
         sonarr.enable = true;
       };
+
+      grafana.enable = true;
+      prometheus.enable = true;
     };
   };
 

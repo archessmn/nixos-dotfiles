@@ -65,6 +65,7 @@ in
           labels = {
             "traefik.enable" = "true";
             "traefik.http.routers.booklore.rule" = "Host(`books.moir.xyz`)";
+            "traefik.http.services.booklore.loadbalancer.server.port" = "6060";
           };
         };
 

@@ -31,6 +31,10 @@ in
         "8090:8090"
       ];
 
+      environment = {
+        APP_URL = "https://beszel.archess.mn";
+      };
+
       volumes = [
         "/opt/beszel-hub:/beszel_data"
       ];

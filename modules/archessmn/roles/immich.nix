@@ -85,7 +85,7 @@ in
           ];
         };
 
-        redis = {
+        immich-redis = {
           image = "redis:6.2-alpine@sha256:51d6c56749a4243096327e3fb964a48ed92254357108449cb6e23999c37773c5";
           autoStart = true;
 
@@ -96,7 +96,7 @@ in
           ];
         };
 
-        database = {
+        immich-database = {
           image = "ghcr.io/immich-app/postgres:14-vectorchord0.3.0-pgvectors0.2.0";
           autoStart = true;
 

@@ -18,6 +18,14 @@ let
   ];
 in
 {
+  # Shared
+  "beszel_key.age".publicKeys = [
+    archessmn-adrasteia
+    archessmn-helios
+    archessmn-temjin
+  ]
+  ++ systems;
+
   # Tsuro
   "tsuro/traefik_cloudflare.env.age".publicKeys = [
     archessmn-adrasteia

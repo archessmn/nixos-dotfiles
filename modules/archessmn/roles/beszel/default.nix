@@ -9,6 +9,7 @@ let
 in
 {
   imports = [
+    ./agent.nix
     ./hub.nix
   ];
 

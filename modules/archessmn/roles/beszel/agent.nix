@@ -20,7 +20,7 @@ in
     age.secrets.beszel_key = {
       file = ../../../../secrets/beszel_key.age;
 
-      owner = "beszel-agent";
+      mode = "644";
     };
 
     services.beszel.agent = {

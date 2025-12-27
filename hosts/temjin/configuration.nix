@@ -59,7 +59,12 @@
       book-downloader.enable = true;
       booklore.enable = true;
 
-      beszel.agent.enable = true;
+      beszel.agent = {
+        enable = true;
+        extraFileSystems = [
+          "/deep-storage-pool"
+        ];
+      };
 
       arr = {
         prowlarr.enable = true;

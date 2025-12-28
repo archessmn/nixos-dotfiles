@@ -29,6 +29,7 @@ in
       openssh.authorizedKeys.keys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKGslDZkmwJa0h8LC8v8A+XRRcwK3MqY72pFUQqeHAXX archessmn@ops-user"
       ];
+      packages = with pkgs; [ jdk21 ];
     };
 
     security.sudo.extraRules = [

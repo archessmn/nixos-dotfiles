@@ -11,7 +11,7 @@ pipeline {
     }
     stage('Deploy') {
       steps {
-        sh 'nixos-rebuild switch --flake .#temjin'
+        sh 'nixos-rebuild switch --flake .#temjin --target-host ops@localhost --use-remote-sudo'
       }
     }
   }

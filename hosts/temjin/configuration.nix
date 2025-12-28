@@ -75,7 +75,7 @@
       grafana.enable = true;
       prometheus.enable = true;
 
-      hydra.enable = true;
+      jenkins.enable = true;
     };
   };
 

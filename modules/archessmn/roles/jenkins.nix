@@ -5,10 +5,10 @@
 }:
 with lib;
 let
-  cfg = config.archessmn.roles.hydra;
+  cfg = config.archessmn.roles.jenkins;
 in
 {
-  options.archessmn.roles.hydra = {
+  options.archessmn.roles.jenkins = {
     enable = mkOption {
       type = types.bool;
       default = false;
@@ -16,11 +16,9 @@ in
   };
 
   config = mkIf cfg.enable {
-    services.hydra = {
+    services.jenkins = {
       enable = true;
-
       port = 6000;
-      hydraURL = "http://temjin.wahoo-monster.ts.net:6000";
     };
   };
 }

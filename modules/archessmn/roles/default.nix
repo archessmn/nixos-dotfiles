@@ -14,10 +14,10 @@
     ./frigate.nix
     ./gluetun.nix
     ./grafana.nix
-    ./hydra.nix
     ./immich.nix
     ./jellyfin.nix
     ./jellyseer.nix
+    ./jenkins.nix
     ./kanidm.nix
     ./keycloak.nix
     ./patroni.nix

@@ -6,7 +6,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'nixos-rebuild build --flake .#temjin'
+        sh 'nix build .#nixosConfigurations.temjin.config.system.build.toplevel'
       }
     }
     stage('Deploy') {

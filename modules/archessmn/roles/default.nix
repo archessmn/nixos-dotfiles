@@ -14,6 +14,7 @@
     ./frigate.nix
     ./gluetun.nix
     ./grafana.nix
+    ./hydra.nix
     ./immich.nix
     ./jellyfin.nix
     ./jellyseer.nix

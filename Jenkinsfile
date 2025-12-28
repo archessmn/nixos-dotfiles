@@ -9,5 +9,10 @@ pipeline {
         sh 'nixos-rebuild build --flake .#temjin'
       }
     }
+    stage('Deploy') {
+      steps {
+        sh 'nixos-rebuild switch --flake .#temjin'
+      }
+    }
   }
 }

@@ -21,9 +21,9 @@ pipeline {
       steps {
         script {
           def temjinStatus = sh script: 'nixos-rebuild switch --flake .#temjin --target-host ops@localhost --sudo', returnStatus: true
-          nixosHostStatus.set host: 'temjin', status: 'SUCCESS'
+          setNixosHostStatus host: 'temjin', status: 'SUCCESS'
           def tsuroStatus = sh script: 'nixos-rebuild switch --flake .#tsuro --target-host ops@tsuro --sudo', returnStatus: true
-          nixosHostStatus.set host: 'tsuro', status: 'SUCCESS'
+          setNixosHostStatus host: 'tsuro', status: 'SUCCESS'
         }
       }
     }

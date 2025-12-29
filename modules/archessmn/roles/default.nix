@@ -17,6 +17,7 @@
     ./immich.nix
     ./jellyfin.nix
     ./jellyseer.nix
+    ./jenkins.nix
     ./kanidm.nix
     ./keycloak.nix
     ./patroni.nix

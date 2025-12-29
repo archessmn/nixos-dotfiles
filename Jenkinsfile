@@ -1,12 +1,13 @@
 pipeline {
   agent any
   environment {
-      PATH="/run/current-system/sw/bin"
+    PATH="/run/current-system/sw/bin"
   }
   stages {
     stage('Build') {
       steps {
         sh 'nix build .#nixosConfigurations.temjin.config.system.build.toplevel'
+        sh 'nix build .#nixosConfigurations.tsuro.config.system.build.toplevel'
       }
     }
     stage('Deploy') {

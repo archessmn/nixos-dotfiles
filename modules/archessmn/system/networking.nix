@@ -148,7 +148,7 @@ in
         };
 
         remote-control = {
-          control-enable = "yes";
+          control-enable = true;
           control-interface = "/run/unbound.ctl";
         };
 

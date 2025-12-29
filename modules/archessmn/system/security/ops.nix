@@ -18,7 +18,10 @@ in
 
   config = mkIf cfg.system.security.opsUser {
 
-    nix.settings.trusted-users = [ "ops" ];
+    nix.settings.trusted-users = [
+      "@wheel"
+      "ops"
+    ];
 
     users.users.ops = {
       isNormalUser = true;

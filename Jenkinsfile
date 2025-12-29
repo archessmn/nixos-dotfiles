@@ -1,4 +1,4 @@
-library 'github.com/archessmn/jenkins-library'
+library 'github.com/archessmn/jenkins-library@main'
 
 pipeline {
   agent any

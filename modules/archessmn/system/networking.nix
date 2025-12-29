@@ -147,6 +147,11 @@ in
           rrset-roundrobin = "yes";
         };
 
+        remote-control = {
+          control-enable = "yes";
+          control-interface = "/run/unbound.ctl";
+        };
+
         forward-zone = [
           {
             name = ".";
@@ -164,6 +169,11 @@ in
           }
         ];
       };
+    };
+
+    services.prometheus.exporters.unbound = {
+      enable = true;
+      unbound.host = "unix:///run/unbound.ctl";
     };
 
     services.avahi.publish.enable = true;

@@ -99,6 +99,8 @@ in
           };
         };
 
+        metrics.prometheus = mkIf config.archessmn.roles.prometheus.enable { };
+
         experimental = {
           plugins = {
             traefik-oidc-auth = {
@@ -157,6 +159,17 @@ in
       environmentFiles = [
         config.age.secrets.traefik_cloudflare_env.path
         config.age.secrets.traefik_kanidm_env.path
+      ];
+    };
+
+    services.prometheus = mkIf config.archessmn.roles.prometheus.enable {
+      scrapeConfigs = [
+        {
+          job_name = "traefik";
+          static_configs = [
+            { targets = [ "localhost:8080" ]; }
+          ];
+        }
       ];
     };
 

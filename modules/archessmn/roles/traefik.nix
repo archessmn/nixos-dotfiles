@@ -99,7 +99,9 @@ in
           };
         };
 
-        metrics.prometheus = mkIf config.archessmn.roles.prometheus.enable { };
+        metrics = mkIf config.archessmn.roles.prometheus.enable {
+          prometheus = { };
+        };
 
         experimental = {
           plugins = {

@@ -175,11 +175,21 @@ in
       };
     };
 
-    services.prometheus.exporters.unbound = {
-      enable = true;
-      user = "unbound";
-      group = "unbound";
-      unbound.host = "unix:///run/unbound/unbound.ctl";
+    services.prometheus = mkIf config.archessmn.roles.prometheus.enable {
+      exporters.unbound = {
+        enable = true;
+        user = "unbound";
+        group = "unbound";
+        unbound.host = "unix:///run/unbound/unbound.ctl";
+      };
+      scrapeConfigs = [
+        {
+          job_name = "unbound";
+          static_configs = [
+            { targets = [ "localhost:${config.services.prometheus.exporters.unbound.port}" ]; }
+          ];
+        }
+      ];
     };
 
     services.avahi.publish.enable = true;

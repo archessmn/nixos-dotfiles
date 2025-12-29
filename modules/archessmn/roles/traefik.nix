@@ -40,11 +40,6 @@ in
           insecure = true;
         };
 
-        log = {
-          filePath = "/opt/traefik/traefik.log";
-          # level = "DEBUG";
-        };
-
         serversTransport = {
           insecureSkipVerify = true;
         };

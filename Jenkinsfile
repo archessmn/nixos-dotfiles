@@ -17,8 +17,8 @@ pipeline {
         }
       }
       steps {
-        sh 'nixos-rebuild switch --flake .#temjin --target-host ops@localhost --use-remote-sudo'
-        sh 'nixos-rebuild switch --flake .#tsuro --target-host ops@tsuro --use-remote-sudo'
+        sh 'nixos-rebuild switch --flake .#temjin --target-host ops@localhost --sudo'
+        sh 'nixos-rebuild switch --flake .#tsuro --target-host ops@tsuro --sudo'
       }
     }
   }

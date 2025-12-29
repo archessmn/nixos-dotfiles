@@ -186,7 +186,7 @@ in
         {
           job_name = "unbound";
           static_configs = [
-            { targets = [ "localhost:${config.services.prometheus.exporters.unbound.port}" ]; }
+            { targets = [ "localhost:${toString config.services.prometheus.exporters.unbound.port}" ]; }
           ];
         }
       ];

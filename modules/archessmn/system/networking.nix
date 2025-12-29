@@ -119,6 +119,10 @@ in
       search wahoo-monster.ts.net
     '';
 
+    systemd.tmpfiles.rules = [
+      "d /run/unbound 1600 unbound unbound"
+    ];
+
     services.unbound = {
       enable = true;
       settings = {
@@ -149,7 +153,7 @@ in
 
         remote-control = {
           control-enable = true;
-          control-interface = "/run/unbound.ctl";
+          control-interface = "/run/unbound/unbound.ctl";
         };
 
         forward-zone = [
@@ -173,7 +177,9 @@ in
 
     services.prometheus.exporters.unbound = {
       enable = true;
-      unbound.host = "unix:///run/unbound.ctl";
+      user = "unbound";
+      group = "unbound";
+      unbound.host = "unix:///run/unbound/unbound.ctl";
     };
 
     services.avahi.publish.enable = true;

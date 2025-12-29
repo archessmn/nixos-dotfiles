@@ -1,3 +1,5 @@
+@Library('github.com/archessmn/jenkins-library')
+
 pipeline {
   agent any
   environment {
@@ -17,8 +19,10 @@ pipeline {
         }
       }
       steps {
-        sh 'nixos-rebuild switch --flake .#temjin --target-host ops@localhost --sudo'
-        sh 'nixos-rebuild switch --flake .#tsuro --target-host ops@tsuro --sudo'
+        def temjinStatus = sh script: 'nixos-rebuild switch --flake .#temjin --target-host ops@localhost --sudo', returnStatus: true
+        nixosHostStatus.set('temjin', 'SUCCESS')
+        def tsuroStatus = sh script: 'nixos-rebuild switch --flake .#tsuro --target-host ops@tsuro --sudo', returnStatus: true
+        nixosHostStatus.set('tsuro', 'SUCCESS')
       }
     }
   }

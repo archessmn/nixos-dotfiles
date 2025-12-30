@@ -46,6 +46,11 @@
       };
 
       acme.enable = true;
+
+      soju = {
+        enable = true;
+        openFirewall = true;
+      };
     };
   };
 

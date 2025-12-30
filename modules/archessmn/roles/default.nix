@@ -8,6 +8,7 @@
     ./beszel
     ./consul
     ./nomad
+    ./acme.nix
     ./book-downloader.nix
     ./booklore.nix
     ./family-pc.nix

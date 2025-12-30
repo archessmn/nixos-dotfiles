@@ -24,7 +24,7 @@ in
       defaults = {
         email = "archessmn@gmail.com";
       };
-      certs."${config.networking.hostname}.infra.archess.mn" = {
+      certs."${config.networking.hostName}.infra.archess.mn" = {
         dnsProvider = "cloudflare";
         environmentFile = config.age.secrets.cloudflare_dns_env.path;
       };

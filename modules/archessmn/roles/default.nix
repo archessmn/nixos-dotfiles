@@ -24,6 +24,7 @@
     ./patroni.nix
     ./prometheus.nix
     ./qbittorrent.nix
+    ./soju.nix
     ./traefik.nix
     ./uptime-kuma.nix
     ./vaultwarden.nix

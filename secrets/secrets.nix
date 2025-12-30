@@ -27,7 +27,7 @@ in
   ++ systems;
 
   # Tsuro
-  "tsuro/traefik_cloudflare.env.age".publicKeys = [
+  "tsuro/cloudflare_dns.env.age".publicKeys = [
     archessmn-adrasteia
     archessmn-helios
     archessmn-temjin
@@ -68,7 +68,7 @@ in
     archessmn-temjin
     temjin
   ];
-  "temjin/traefik_cloudflare.env.age".publicKeys = [
+  "temjin/cloudflare_dns.env.age".publicKeys = [
     archessmn-helios
     archessmn-temjin
     temjin

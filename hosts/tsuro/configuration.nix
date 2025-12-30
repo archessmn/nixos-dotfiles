@@ -91,7 +91,7 @@
   };
 
   # Include Agenix Secrets
-  age.secrets.traefik_cloudflare_env.file = ../../secrets/${hostname}/traefik_cloudflare.env.age;
+  age.secrets.cloudflare_dns_env.file = ../../secrets/${hostname}/cloudflare_dns.env.age;
   age.secrets.traefik_kanidm_env.file = ../../secrets/${hostname}/traefik_kanidm.env.age;
   age.secrets.vaultwarden_env.file = ../../secrets/${hostname}/vaultwarden.env.age;
 

@@ -148,6 +148,7 @@
             sharedArgs
             // darwinArgs
             // {
+              inherit hostname;
               system = host.system;
             };
           modules = [

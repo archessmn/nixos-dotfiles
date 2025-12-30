@@ -12,6 +12,7 @@ in
     home = {
       home-manager = {
         desktop.git.enable = true;
+        desktop.senpai.enable = true;
         stateVersion = "25.05";
       };
     };

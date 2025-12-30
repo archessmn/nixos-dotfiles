@@ -159,7 +159,7 @@ in
       };
 
       environmentFiles = [
-        config.age.secrets.traefik_cloudflare_env.path
+        config.age.secrets.cloudflare_dns_env.path
         config.age.secrets.traefik_kanidm_env.path
       ];
     };

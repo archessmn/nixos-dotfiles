@@ -4,6 +4,7 @@
   pkgs,
   username,
   hostname,
+  isDarwin,
   ...
 }:
 with lib;
@@ -37,6 +38,10 @@ in
             config.age.secrets.senpai_password.path
           ];
         };
+      };
+
+      xdg.configFile."senpai/senpai.scfg" = mkIf isDarwin {
+        target = "../Library/Application Support/senpai/senpai.scfg";
       };
     };
   };

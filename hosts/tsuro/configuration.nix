@@ -44,6 +44,8 @@
         agent.enable = true;
         hub.enable = true;
       };
+
+      acme.enable = true;
     };
   };
 

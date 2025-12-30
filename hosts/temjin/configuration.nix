@@ -76,6 +76,8 @@
       prometheus.enable = true;
 
       jenkins.enable = true;
+
+      acme.enable = true;
     };
   };
 

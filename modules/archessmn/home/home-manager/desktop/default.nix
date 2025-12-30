@@ -16,6 +16,7 @@ in
 {
   imports = [
     ./git.nix
+    ./senpai.nix
   ]
   ++ optionals (!isDarwin) [
     ./terminals

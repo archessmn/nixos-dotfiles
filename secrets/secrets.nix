@@ -10,9 +10,11 @@ let
     archessmn-zenith
   ];
 
+  helios = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH3+p1UoT9vEJh1ostrJX0r6tFZ+JiwZQM0Uoh8ZqklM";
   temjin = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA3TSB/Hx9BYN+UeGpVXQFtetVyuZ72MNcg0ADHGrxNP";
   tsuro = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFJW1+M6OciB/nTfRTuTUUECmRqZ+J0deoMfNCfv0pRI";
   systems = [
+    helios
     temjin
     tsuro
   ];
@@ -25,6 +27,12 @@ in
     archessmn-temjin
   ]
   ++ systems;
+
+  # Helios
+  "helios/senpai_password.age".publicKeys = [
+    archessmn-helios
+    helios
+  ];
 
   # Tsuro
   "tsuro/cloudflare_dns.env.age".publicKeys = [

@@ -1,12 +1,7 @@
 {
-  pkgs,
-  fsh,
   username,
   ...
 }:
-let
-  user = (import ../../users.nix).${username};
-in
 {
   archessmn = {
     home = {

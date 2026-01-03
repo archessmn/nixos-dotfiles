@@ -9,7 +9,7 @@
 }:
 with lib;
 let
-  cfg = config.archessmn.home.home-manager.desktop.git;
+  cfg = config.archessmn.home.home-manager.desktop.senpai;
 in
 
 {

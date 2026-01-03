@@ -108,15 +108,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1767461907,
-        "narHash": "sha256-c5EMrvlmxE8MLDeoKcVIs7av1fx50mQ6VTaGGxJj9b0=",
+        "lastModified": 1767463263,
+        "narHash": "sha256-HmFwk2jSn4uxpJvJd8RPVd1ZN0d7lzuyzEI32ywvTMg=",
         "owner": "archessmn",
         "repo": "fsh",
-        "rev": "3babbe8620dbee08b4916fa6d191163bb1f71bbb",
+        "rev": "d9fe236a895d937c4c629c37c57292a7ae7a4bdd",
         "type": "github"
       },
       "original": {
         "owner": "archessmn",
+        "ref": "fix-system-warning",
         "repo": "fsh",
         "type": "github"
       }

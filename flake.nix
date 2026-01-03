@@ -26,7 +26,7 @@
     };
 
     fsh = {
-      url = "github:archessmn/fsh";
+      url = "github:archessmn/fsh?ref=fix-system-warning";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

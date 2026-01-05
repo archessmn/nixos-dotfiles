@@ -53,6 +53,7 @@
         nil
         kanidm_1_8
         tailscale
+        shellcheck
       ];
     };
 

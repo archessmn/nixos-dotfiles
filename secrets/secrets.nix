@@ -10,6 +10,7 @@ let
     archessmn-zenith
   ];
 
+  adrasteia = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIABB/PMoz+XA2awYlfPEeFSeP/jM5aCZnsNKfBtsqm/x";
   helios = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH3+p1UoT9vEJh1ostrJX0r6tFZ+JiwZQM0Uoh8ZqklM";
   temjin = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA3TSB/Hx9BYN+UeGpVXQFtetVyuZ72MNcg0ADHGrxNP";
   tsuro = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFJW1+M6OciB/nTfRTuTUUECmRqZ+J0deoMfNCfv0pRI";
@@ -27,10 +28,10 @@ in
     archessmn-temjin
   ]
   ++ systems;
-
-  # Helios
-  "helios/senpai_password.age".publicKeys = [
+  "senpai_password.age".publicKeys = [
+    archessmn-adrasteia
     archessmn-helios
+    adrasteia
     helios
   ];
 

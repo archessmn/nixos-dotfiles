@@ -89,13 +89,11 @@ in
         ])
         (mkIf config.archessmn.desktop.isCommsMachine [
           # Communications
-          beeper
           discord
           element-desktop
           mumble
           signal-desktop
           slack
-          vesktop
         ])
         [
           # Assorted shite

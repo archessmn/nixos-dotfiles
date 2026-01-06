@@ -54,13 +54,12 @@
 
   home-manager.users.${username}.home.packages = with pkgs; [
     obs-studio
-    globalprotect-openconnect
     gnome-boxes
   ];
 
-  services.globalprotect = {
-    enable = true;
-  };
+  # services.globalprotect = {
+  #   enable = true;
+  # };
 
   # services.unifi = {
   #   enable = true;

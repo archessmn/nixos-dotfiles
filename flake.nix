@@ -21,7 +21,7 @@
     };
 
     libfprint = {
-      url = "git+https://gitlab.freedesktop.org/depau/libfprint?ref=elanmoc2";
+      url = "git+https://gitlab.freedesktop.org/depau/libfprint?ref=elanmoc2-working";
       flake = false;
     };
 
@@ -47,8 +47,8 @@
       darwin-home-manager,
       libfprint,
       fsh,
-      minegrub-theme,
       agenix,
+      minegrub-theme,
       ...
     }:
     let
@@ -123,8 +123,7 @@
         {
           nixpkgs.pkgs = stable-pkgs;
         }
-      ]
-      ++ commonModules;
+      ] ++ commonModules;
 
       darwinModules = [
         ./modules/archessmn/darwin
@@ -132,8 +131,7 @@
         {
           nixpkgs.pkgs = darwin-pkgs;
         }
-      ]
-      ++ commonModules;
+      ] ++ commonModules;
 
       hosts = import ./hosts;
 
@@ -153,8 +151,7 @@
             };
           modules = [
             ./hosts/${hostname}/configuration.nix
-          ]
-          ++ darwinModules;
+          ] ++ darwinModules;
         }
       ) darwinHosts;
 
@@ -171,8 +168,7 @@
               };
             modules = [
               ./hosts/${hostname}/configuration.nix
-            ]
-            ++ linuxModules;
+            ] ++ linuxModules;
           }
         ) linuxHosts
         // ({

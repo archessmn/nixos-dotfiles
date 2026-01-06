@@ -76,6 +76,7 @@ in
         mkMerge [
           ([
             "--operator=${username}"
+            "--accept-dns=false"
           ])
           (mkIf cfg.tailscale.advertiseExitNode [
             "--advertise-exit-node"

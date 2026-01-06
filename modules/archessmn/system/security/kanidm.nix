@@ -18,7 +18,7 @@ in
 
   config = mkIf cfg.client.enable {
     services.kanidm = {
-      package = unstable-pkgs.kanidm;
+      package = unstable-pkgs.kanidm_1_8;
 
       enableClient = true;
 

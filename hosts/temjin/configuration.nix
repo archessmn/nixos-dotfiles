@@ -30,6 +30,7 @@
       docker = true;
 
       security.agenix.enable = true;
+      tailscale.advertiseExitNode = true;
     };
 
     home.home-manager.desktop.git.enable = true;

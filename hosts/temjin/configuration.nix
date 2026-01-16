@@ -79,6 +79,8 @@
       jenkins.enable = true;
 
       acme.enable = true;
+
+      snowflake-proxy.enable = true;
     };
   };
 

@@ -37,7 +37,7 @@ in
             "/var/run/docker.sock:/var/run/docker.sock"
           ];
 
-          command = [
+          cmd = [
             "snowflake-proxy"
           ];
         };

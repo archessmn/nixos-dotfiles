@@ -148,6 +148,8 @@
 
   hardware.coral.pcie.enable = true;
 
+  services.vscode-server.enable = true;
+
   environment.systemPackages = with pkgs; [
     zfs
   ];

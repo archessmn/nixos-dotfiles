@@ -36,6 +36,8 @@
     };
 
     minegrub-theme.url = "github:Lxtharia/minegrub-theme";
+
+    vscode-server.url = "github:nix-community/nixos-vscode-server";
   };
 
   outputs =
@@ -49,6 +51,7 @@
       fsh,
       agenix,
       minegrub-theme,
+      vscode-server,
       ...
     }:
     let
@@ -120,10 +123,12 @@
         ./modules/archessmn/linux
         home-manager.nixosModules.home-manager
         inputs.minegrub-theme.nixosModules.default
+        vscode-server.nixosModules.default
         {
           nixpkgs.pkgs = stable-pkgs;
         }
-      ] ++ commonModules;
+      ]
+      ++ commonModules;
 
       darwinModules = [
         ./modules/archessmn/darwin
@@ -131,7 +136,8 @@
         {
           nixpkgs.pkgs = darwin-pkgs;
         }
-      ] ++ commonModules;
+      ]
+      ++ commonModules;
 
       hosts = import ./hosts;
 
@@ -151,7 +157,8 @@
             };
           modules = [
             ./hosts/${hostname}/configuration.nix
-          ] ++ darwinModules;
+          ]
+          ++ darwinModules;
         }
       ) darwinHosts;
 
@@ -168,7 +175,8 @@
               };
             modules = [
               ./hosts/${hostname}/configuration.nix
-            ] ++ linuxModules;
+            ]
+            ++ linuxModules;
           }
         ) linuxHosts
         // ({

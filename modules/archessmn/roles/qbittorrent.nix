@@ -39,6 +39,7 @@ in
       labels = {
         "traefik.enable" = "true";
         "traefik.http.routers.qbittorrent.rule" = "Host(`qbt.moir.xyz`)";
+        "traefik.http.routers.qbittorrent.middlewares" = "oidc-auth@file";
         "traefik.http.services.qbittorrent.loadbalancer.server.port" = "49893";
       };
     };

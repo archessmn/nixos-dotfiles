@@ -121,6 +121,12 @@ in
               service = "api@internal";
               middlewares = [ "oidc-auth" ];
             };
+
+            auth = {
+              rule = "Host(`auth.${hostname}.infra.archess.mn`)";
+              service = "noop@internal";
+              middlewares = [ "oidc-auth" ];
+            };
           };
 
           middlewares = {
@@ -139,6 +145,10 @@ in
                     "profile"
                     "email"
                   ];
+                  CallbackUri = "https://auth.${hostname}.infra.archess.mn/oidc/callback";
+                  SessionCookie = {
+                    Domain = ".${hostname}.infra.archess.mn";
+                  };
                   Headers = {
                     MapClaims = [
                       {

@@ -22,7 +22,7 @@ in
     virtualisation.oci-containers.containers.gluetun = {
       autoStart = true;
 
-      image = "qmcgaw/gluetun:v3.40.3";
+      image = "qmcgaw/gluetun:v3.41.0";
 
       capabilities = {
         NET_ADMIN = true;

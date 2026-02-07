@@ -19,6 +19,10 @@ in
   config = mkIf cfg.enable {
     virtualisation.oci-containers.backend = "docker";
 
+    systemd.tmpfiles.rules = [
+      "d /opt/gluetun 1600 root root"
+    ];
+
     virtualisation.oci-containers.containers.gluetun = {
       autoStart = true;
 
@@ -27,6 +31,10 @@ in
       capabilities = {
         NET_ADMIN = true;
       };
+
+      volumes = [
+        "/opt/gluetun:/gluetun"
+      ];
 
       ports = (
         mkMerge [

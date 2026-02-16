@@ -97,7 +97,7 @@ in
               "thunderbird.desktop"
               "spotify.desktop"
               "org.gnome.Nautilus.desktop"
-              "kitty.desktop"
+              "com.mitchellh.ghostty.desktop"
               "org.prismlauncher.PrismLauncher.desktop"
               "code.desktop"
               "slack.desktop"

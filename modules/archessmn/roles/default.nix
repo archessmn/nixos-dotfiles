@@ -13,6 +13,7 @@
     ./booklore.nix
     ./family-pc.nix
     ./frigate.nix
+    ./gluetun-protonvpn.nix
     ./gluetun.nix
     ./grafana.nix
     ./immich.nix

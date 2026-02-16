@@ -67,6 +67,11 @@ in
     archessmn-temjin
     temjin
   ];
+  "temjin/gluetun-protonvpn.env.age".publicKeys = [
+    archessmn-helios
+    archessmn-temjin
+    temjin
+  ];
   "temjin/immich.env.age".publicKeys = [
     archessmn-helios
     archessmn-temjin

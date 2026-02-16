@@ -36,6 +36,10 @@ in
         "/opt/gluetun:/gluetun"
       ];
 
+      devices = [
+        "/dev/net/tun:/dev/net/tun"
+      ];
+
       ports = (
         mkMerge [
           (mkIf roles.arr.prowlarr.enable [ "9696:9696" ])

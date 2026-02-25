@@ -23,6 +23,10 @@ in
       443
     ];
 
+    networking.firewall.allowedUDPPorts = [
+      443
+    ];
+
     systemd.tmpfiles.rules = [
       "d /opt/traefik 1700 traefik traefik"
     ];
@@ -59,6 +63,7 @@ in
             http = {
               tls.certresolver = "acmeresolver";
             };
+            http3 = { };
           };
         };
 

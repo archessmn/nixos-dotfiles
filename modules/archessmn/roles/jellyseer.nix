@@ -21,7 +21,7 @@ in
     virtualisation.oci-containers.containers.jellyseer = {
       autoStart = true;
 
-      image = "fallenbagel/jellyseerr:2.7.3";
+      image = "fallenbagel/jellyseerr:3.1.0";
 
       volumes = [
         "/opt/jellyseer/config:/app/config"

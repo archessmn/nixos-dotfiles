@@ -18,7 +18,7 @@
     ./grafana.nix
     ./immich.nix
     ./jellyfin.nix
-    ./jellyseer.nix
+    ./seerr.nix
     ./jenkins.nix
     ./kanidm.nix
     ./keycloak.nix

@@ -5,10 +5,10 @@
 }:
 with lib;
 let
-  cfg = config.archessmn.roles.jellyseer;
+  cfg = config.archessmn.roles.seerr;
 in
 {
-  options.archessmn.roles.jellyseer = {
+  options.archessmn.roles.seerr = {
     enable = mkOption {
       type = types.bool;
       default = false;
@@ -18,13 +18,13 @@ in
   config = mkIf cfg.enable {
     virtualisation.oci-containers.backend = "docker";
 
-    virtualisation.oci-containers.containers.jellyseer = {
+    virtualisation.oci-containers.containers.seerr = {
       autoStart = true;
 
-      image = "fallenbagel/jellyseerr:3.1.0";
+      image = "ghcr.io/seerr-team/seerr:v3.1.0";
 
       volumes = [
-        "/opt/jellyseer/config:/app/config"
+        "/opt/seerr/config:/app/config"
       ];
 
       ports = [
@@ -37,7 +37,7 @@ in
 
       labels = {
         "traefik.enable" = "true";
-        "traefik.http.routers.jellyseer.rule" = "Host(`request.moir.xyz`)";
+        "traefik.http.routers.seerr.rule" = "Host(`request.moir.xyz`)";
       };
     };
   };

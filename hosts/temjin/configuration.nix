@@ -53,7 +53,7 @@
       };
 
       jellyfin.enable = true;
-      jellyseer.enable = true;
+      seerr.enable = true;
 
       patroni.enable = true;
 

@@ -46,8 +46,8 @@ in
           "Application"
         ];
       };
-      jellyseerr = {
-        name = "Jellyseerr";
+      seerrr = {
+        name = "Seerrr";
         genericName = "Request";
         exec = "firefox https://request.moir.xyz";
         categories = [

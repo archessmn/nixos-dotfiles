@@ -6,6 +6,8 @@
 with lib;
 let
   cfg = config.archessmn.roles.qbittorrent;
+
+  gluetunContainerName = "gluetun-protonvpn";
 in
 {
   options.archessmn.roles.qbittorrent = {
@@ -29,7 +31,7 @@ in
       ];
 
       networks = [
-        "container:gluetun"
+        "container:${gluetunContainerName}"
       ];
 
       environmentFiles = [
@@ -44,11 +46,15 @@ in
       };
     };
 
+    virtualisation.oci-containers.containers.${gluetunContainerName}.ports = [
+      "49893:49893"
+    ];
+
     systemd.services."docker-qbittorrent" = {
-      after = [ "docker-gluetun.service" ];
-      requires = [ "docker-gluetun.service" ];
-      bindsTo = [ "docker-gluetun.service" ];
-      partOf = [ "docker-gluetun.service" ];
+      after = [ "docker-${gluetunContainerName}.service" ];
+      requires = [ "docker-${gluetunContainerName}.service" ];
+      bindsTo = [ "docker-${gluetunContainerName}.service" ];
+      partOf = [ "docker-${gluetunContainerName}.service" ];
     };
 
     # TODO: qbittorrent-exporter

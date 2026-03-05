@@ -43,7 +43,6 @@ in
       ports = (
         mkMerge [
           (mkIf roles.arr.prowlarr.enable [ "9696:9696" ])
-          (mkIf roles.qbittorrent.enable [ "49893:49893" ])
         ]
       );
 

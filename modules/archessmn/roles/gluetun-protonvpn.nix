@@ -25,7 +25,7 @@ in
     virtualisation.oci-containers.containers.gluetun-protonvpn = {
       autoStart = true;
 
-      image = "qmcgaw/gluetun:v3.41.0";
+      image = "qmcgaw/gluetun:v3.41.1";
 
       capabilities = {
         NET_ADMIN = true;

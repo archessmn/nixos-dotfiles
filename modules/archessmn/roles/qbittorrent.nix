@@ -7,7 +7,7 @@ with lib;
 let
   cfg = config.archessmn.roles.qbittorrent;
 
-  gluetunContainerName = "gluetun-protonvpn";
+  gluetunContainerName = "gluetun";
 in
 {
   options.archessmn.roles.qbittorrent = {

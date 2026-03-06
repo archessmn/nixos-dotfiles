@@ -35,6 +35,10 @@ in
         "/opt/gluetun-protonvpn:/gluetun"
       ];
 
+      devices = [
+        "/dev/net/tun:/dev/net/tun"
+      ];
+
       environmentFiles = [
         config.age.secrets.gluetun-protonvpn_env.path
       ];

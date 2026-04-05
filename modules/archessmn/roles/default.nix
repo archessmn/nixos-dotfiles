@@ -9,6 +9,7 @@
     ./consul
     ./nomad
     ./acme.nix
+    ./assets.nix
     ./book-downloader.nix
     ./booklore.nix
     ./family-pc.nix

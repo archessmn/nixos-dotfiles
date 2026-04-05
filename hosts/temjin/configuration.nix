@@ -80,6 +80,8 @@
 
       acme.enable = true;
 
+      assets.enable = true;
+
       snowflake-proxy.enable = true;
       gluetun-protonvpn.enable = true;
     };

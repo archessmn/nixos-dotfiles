@@ -38,6 +38,11 @@
     minegrub-theme.url = "github:Lxtharia/minegrub-theme";
 
     vscode-server.url = "github:nix-community/nixos-vscode-server";
+
+    zen-browser = {
+      url = "github:youwen5/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -52,6 +57,7 @@
       agenix,
       minegrub-theme,
       vscode-server,
+      zen-browser,
       ...
     }:
     let

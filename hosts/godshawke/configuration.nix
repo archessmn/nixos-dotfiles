@@ -14,6 +14,7 @@
   archessmn.desktop = {
     enable = true;
     virtualBox = true;
+    isCommsMachine = true;
   };
 
   archessmn.system = {

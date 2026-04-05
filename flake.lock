@@ -295,7 +295,8 @@
         "nix-darwin": "nix-darwin",
         "nixpkgs": "nixpkgs_2",
         "unstable": "unstable",
-        "vscode-server": "vscode-server"
+        "vscode-server": "vscode-server",
+        "zen-browser": "zen-browser"
       }
     },
     "systems": {
@@ -375,6 +376,26 @@
       "original": {
         "owner": "nix-community",
         "repo": "nixos-vscode-server",
+        "type": "github"
+      }
+    },
+    "zen-browser": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1775277437,
+        "narHash": "sha256-zCi04nIBNwTMt8n35w9cBgNUqnyhbjivsGlx6/Qhqug=",
+        "owner": "youwen5",
+        "repo": "zen-browser-flake",
+        "rev": "de6d9094822a8f87fc380d1638f34d6cc6fa68ca",
+        "type": "github"
+      },
+      "original": {
+        "owner": "youwen5",
+        "repo": "zen-browser-flake",
         "type": "github"
       }
     }

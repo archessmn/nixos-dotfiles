@@ -5,6 +5,7 @@
   unstable-pkgs,
   username,
   isDarwin,
+  inputs,
   ...
 }:
 with lib;
@@ -96,6 +97,8 @@ in
           slack
         ])
         [
+          inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
+
           # Assorted shite
           nixfmt-rfc-style
 

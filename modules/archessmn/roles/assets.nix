@@ -1,4 +1,5 @@
 {
+  hostname,
   lib,
   config,
   ...

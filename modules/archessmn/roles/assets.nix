@@ -24,7 +24,7 @@ in
     virtualisation.oci-containers.containers.assets = {
       autoStart = true;
 
-      image = "ghcr.io/archessmn/assets:17";
+      image = "ghcr.io/archessmn/assets:18";
 
       environmentFiles = [
         config.age.secrets.assets_env.path

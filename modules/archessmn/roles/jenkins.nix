@@ -20,5 +20,7 @@ in
       enable = true;
       port = 6000;
     };
+
+    users.users.jenkins.extraGroups = [ "docker" ];
   };
 }

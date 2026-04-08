@@ -114,7 +114,6 @@ in
           obsidian
           unstable-pkgs.x32edit
           vlc
-          helvum
 
           # Remote stuff
           moonlight-qt

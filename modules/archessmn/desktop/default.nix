@@ -46,8 +46,14 @@ in
 
       services.xserver = {
         enable = true;
-        displayManager.gdm.enable = true;
-        desktopManager.gnome.enable = true;
+      };
+
+      services.desktopManager = {
+        gnome.enable = true;
+      };
+
+      services.displayManager = {
+        gdm.enable = true;
       };
 
       programs.ssh.askPassword = pkgs.lib.mkForce "${pkgs.seahorse.out}/libexec/seahorse/ssh-askpass";

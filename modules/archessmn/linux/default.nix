@@ -1,17 +1,13 @@
 {
   lib,
-  config,
   ...
 }:
 with lib;
-let
-  cfg = config.archessmn;
-in
 {
   imports = [
     ../desktop
     ../home
-    ../roles
+    ../roles/_default.nix
     ../system
   ];
 

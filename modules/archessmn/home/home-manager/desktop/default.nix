@@ -101,6 +101,8 @@ in
 
           # Assorted shite
           nixfmt-rfc-style
+          nixfmt
+          nil
 
           # Terminal emulators
           kitty

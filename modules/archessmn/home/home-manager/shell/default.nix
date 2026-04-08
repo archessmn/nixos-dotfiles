@@ -93,7 +93,7 @@ in
       unstable-pkgs.cargo
       unstable-pkgs.rustlings
       # pkgs.gccgo13
-      pkgs.jdk21
+      pkgs.jdk25
     ]
     ++ optionals (!isDarwin) [
       pkgs.dysk

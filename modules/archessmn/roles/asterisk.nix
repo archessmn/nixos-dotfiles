@@ -54,6 +54,24 @@ in
           [6001]
           type=aor
           max_contacts=1
+
+          [6002]
+          type=endpoint
+          context=from-internal
+          disallow=all
+          allow=ulaw
+          auth=6002
+          aors=6002
+
+          [6002]
+          type=auth
+          auth_type=userpass
+          password=unsecurepassword
+          username=6002
+
+          [6002]
+          type=aor
+          max_contacts=1
         '';
       };
     };

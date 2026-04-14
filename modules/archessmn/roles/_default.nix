@@ -10,6 +10,7 @@
     ./nomad
     ./acme.nix
     ./assets.nix
+    ./asterisk.nix
     ./book-downloader.nix
     ./booklore.nix
     ./family-pc.nix

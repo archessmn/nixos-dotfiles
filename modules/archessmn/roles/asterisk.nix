@@ -29,6 +29,8 @@ in
           same = n,Wait(1)
           same = n,Playback(hello-world)
           same = n,Hangup()
+          exten => 6001,1,Dial(PJSIP/6001,20)
+          exten => 6002,1,Dial(PJSIP/6002,20)
         '';
 
         "pjsip.conf" = ''

@@ -6,6 +6,8 @@
 with lib;
 let
   cfg = config.archessmn.roles.book-downloader;
+
+  gluetunContainerName = "gluetun";
 in
 {
   options.archessmn.roles.book-downloader = {
@@ -24,8 +26,8 @@ in
           image = "ghcr.io/calibrain/calibre-web-automated-book-downloader:v0.4.0";
           autoStart = true;
 
-          ports = [
-            "8084:8084"
+          networks = [
+            "container:${gluetunContainerName}"
           ];
 
           volumes = [
@@ -39,15 +41,20 @@ in
             TZ = "Etc/UTC";
             SEARCH_MODE = "universal";
           };
-
-          # labels = {
-          #   "traefik.enable" = "true";
-          #   "traefik.http.routers.book-downloader.rule" = "Host(`books.moir.xyz`)";
-          #   "traefik.http.services.book-downloader.loadbalancer.server.port" = "6060";
-          # };
         };
+
       };
     };
 
+    virtualisation.oci-containers.containers.${gluetunContainerName}.ports = [
+      "8084:8084"
+    ];
+
+    systemd.services."docker-book-downloader" = {
+      after = [ "docker-${gluetunContainerName}.service" ];
+      requires = [ "docker-${gluetunContainerName}.service" ];
+      bindsTo = [ "docker-${gluetunContainerName}.service" ];
+      partOf = [ "docker-${gluetunContainerName}.service" ];
+    };
   };
 }

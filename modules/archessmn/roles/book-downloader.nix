@@ -23,7 +23,7 @@ in
 
       containers = {
         book-downloader = {
-          image = "ghcr.io/calibrain/calibre-web-automated-book-downloader:v0.4.0";
+          image = "ghcr.io/calibrain/shelfmark:v1.2.3";
           autoStart = true;
 
           networks = [
@@ -31,7 +31,7 @@ in
           ];
 
           volumes = [
-            "/deep-storage-pool/bookdrop:/cwa-book-ingest"
+            "/deep-storage-pool/bookdrop:/books"
             "/opt/book-downloader/config:/config"
           ];
 

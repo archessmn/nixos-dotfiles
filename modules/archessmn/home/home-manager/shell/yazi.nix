@@ -23,6 +23,7 @@ in
       enable = true;
       enableZshIntegration = true;
       enableFishIntegration = true;
+      shellWrapperName = "y";
     };
   };
 }

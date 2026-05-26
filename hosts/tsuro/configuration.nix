@@ -30,9 +30,9 @@
         client.enable = true;
         server.enable = true;
       };
-      nomad = {
-        server.enable = true;
-      };
+      # nomad = {
+      #   server.enable = true;
+      # };
 
       patroni.enable = true;
 

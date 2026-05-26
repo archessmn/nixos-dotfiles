@@ -39,7 +39,6 @@ in
       };
 
       shellAliases = {
-        y = "yazi";
         # cd = "z";
         # cdi = "zi";
         cat = "bat";
@@ -80,7 +79,7 @@ in
       pkgs.gh
       pkgs.walk
       pkgs.bat
-      pkgs.neofetch
+      pkgs.fastfetch
       pkgs.htop
       pkgs.btop
       pkgs.sl

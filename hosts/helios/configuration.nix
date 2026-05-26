@@ -1,5 +1,6 @@
 {
   username,
+  pkgs,
   ...
 }:
 {
@@ -51,11 +52,22 @@
       home.packages = with pkgs; [
         nixfmt
         nil
-        kanidm_1_8
+        kanidm_1_10
         tailscale
         shellcheck
       ];
     };
+
+  homebrew = {
+    enable = true;
+    enableFishIntegration = true;
+  };
+
+  fonts.packages = [
+    pkgs.nerd-fonts.fira-mono
+  ];
+
+  system.primaryUser = "archessmn";
 
   system.stateVersion = 6;
 }

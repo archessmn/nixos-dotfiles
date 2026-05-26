@@ -22,7 +22,7 @@ in
 
   config = mkIf cfg.enable {
     age.secrets.senpai_password = {
-      file = ../../../../../secrets/${hostname}/senpai_password.age;
+      file = ../../../../../secrets/senpai_password.age;
       mode = "600";
       owner = "${username}";
     };

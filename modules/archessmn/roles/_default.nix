@@ -18,6 +18,7 @@
     ./gluetun-protonvpn.nix
     ./gluetun.nix
     ./grafana.nix
+    ./hummer.nix
     ./immich.nix
     ./jellyfin.nix
     ./seerr.nix

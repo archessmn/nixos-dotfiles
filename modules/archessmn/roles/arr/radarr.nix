@@ -28,7 +28,7 @@ in
       virtualisation.oci-containers.containers.radarr = {
         autoStart = true;
 
-        image = "ghcr.io/hotio/radarr:release-6.0.4.10291";
+        image = "ghcr.io/hotio/radarr:release-6.1.1.10360";
 
         volumes = [
           "/opt/radarr/config:/config"

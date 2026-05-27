@@ -85,6 +85,8 @@
 
       snowflake-proxy.enable = true;
       gluetun-protonvpn.enable = true;
+
+      hummer.enable = true;
     };
   };
 

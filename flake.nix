@@ -110,6 +110,7 @@
       linuxArgs = {
         inherit stable-pkgs;
         inherit unstable-pkgs;
+        inherit zen-browser;
         flakeDir = "/home/archessmn/nixos-dotfiles/";
         isDarwin = false;
       };

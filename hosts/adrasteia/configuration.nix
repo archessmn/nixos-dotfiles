@@ -55,11 +55,8 @@
   home-manager.users.${username}.home.packages = with pkgs; [
     obs-studio
     gnome-boxes
+    inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
-
-  # services.globalprotect = {
-  #   enable = true;
-  # };
 
   # services.unifi = {
   #   enable = true;

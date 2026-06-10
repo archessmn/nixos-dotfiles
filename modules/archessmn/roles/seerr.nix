@@ -21,7 +21,7 @@ in
     virtualisation.oci-containers.containers.seerr = {
       autoStart = true;
 
-      image = "ghcr.io/seerr-team/seerr:v3.1.0";
+      image = "ghcr.io/seerr-team/seerr:v3.3.0";
 
       volumes = [
         "/opt/seerr/config:/app/config"

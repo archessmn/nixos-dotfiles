@@ -261,11 +261,11 @@
         "systems": "systems_3"
       },
       "locked": {
-        "lastModified": 1782079242,
-        "narHash": "sha256-yxvxVZ+joEgvOa3i1WnOjXEBDa6sfBDZ7gD53dmXRug=",
+        "lastModified": 1782079576,
+        "narHash": "sha256-zA6XbzPNaFK5bHMzPaD4/iQAh8BIQkOXzSNp1GDanoo=",
         "owner": "archessmn",
         "repo": "nix-minecraft",
-        "rev": "d88e3c04d8bff0e8ca3dab905618bed86b583557",
+        "rev": "d09bdbf906784e60bb017a871c8a2d9a2c53f747",
         "type": "github"
       },
       "original": {

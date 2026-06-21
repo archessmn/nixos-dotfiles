@@ -44,7 +44,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-minecraft.url = "github:Infinidoge/nix-minecraft";
+    nix-minecraft.url = "github:archessmn/nix-minecraft";
   };
 
   outputs =

@@ -261,15 +261,15 @@
         "systems": "systems_3"
       },
       "locked": {
-        "lastModified": 1780375694,
-        "narHash": "sha256-TznzgYVONg28KiSFB2rVdf/eLVIMtEQOxKt13Kzyrp8=",
-        "owner": "Infinidoge",
+        "lastModified": 1782076364,
+        "narHash": "sha256-UXfJeb2srJHzFJG9GPa6Ehmf6jRNN/29eKc/SBiYKAk=",
+        "owner": "archessmn",
         "repo": "nix-minecraft",
-        "rev": "e6f8bec35104ca5955efe73742da58d2823684f7",
+        "rev": "c75dc7af659f0cb72bf08cd0c3551e8e9cde0461",
         "type": "github"
       },
       "original": {
-        "owner": "Infinidoge",
+        "owner": "archessmn",
         "repo": "nix-minecraft",
         "type": "github"
       }

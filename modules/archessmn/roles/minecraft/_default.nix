@@ -43,7 +43,6 @@ in
 
       extraOptions = [
         "-i"
-        "-t"
       ];
 
       environment = {

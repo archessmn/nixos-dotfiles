@@ -70,6 +70,7 @@ in
         pkgs.wget
         pkgs.curl
         pkgs.git
+        pkgs.tmux
       ];
 
       environment.enableAllTerminfo = true;

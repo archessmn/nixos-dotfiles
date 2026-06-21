@@ -17,51 +17,22 @@ in
   };
 
   config = mkIf cfg.enable {
-    networking.firewall.allowedTCPPorts = [
-      25565
-    ];
-
-    services.traefik = {
-      staticConfigOptions = {
-        entryPoints = {
-          minecraft = {
-            address = ":25565";
-          };
+    services.minecraft-servers = {
+      enable = true;
+      eula = true;
+      openFirewall = true;
+      servers.gay = {
+        enable = true;
+        serverProperties = {
+          max-players = 2;
+          motd = "Meow";
+          white-list = true;
         };
-      };
-    };
-
-    systemd.tmpfiles.rules = [
-      "d /opt/minecraft 1777 root root"
-      "d /opt/minecraft/gay 1777 root root"
-    ];
-
-    virtualisation.oci-containers.containers.minecraft-gay = {
-      autoStart = true;
-
-      image = "itzg/minecraft-server";
-
-      extraOptions = [
-        "-i"
-      ];
-
-      environment = {
-        EULA = "TRUE";
-        TYPE = "FABRIC";
-      };
-
-      ports = [
-        "127.0.0.1::25565"
-      ];
-
-      volumes = [
-        "/opt/minecraft/gay:/data"
-      ];
-
-      labels = {
-        "traefik.enable" = "true";
-        "traefik.tcp.routers.minecraft-gay.rule" = "HostSNI(`gay.eduwoem.org`)";
-        "traefik.tcp.routers.minecraft-gay.entrypoints" = "minecraft";
+        whitelist = {
+          archessmn = "a2bb6157-d5e7-4d2a-9a6e-e534b0b17235";
+          Empleon = "7362abdc-61bb-465a-8c4e-9744520d5bb4";
+        };
+        package = pkgs.fabricServers.fabric-1_21_1;
       };
     };
   };

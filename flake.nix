@@ -43,6 +43,8 @@
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nix-minecraft.url = "github:Infinidoge/nix-minecraft";
   };
 
   outputs =
@@ -58,6 +60,7 @@
       minegrub-theme,
       vscode-server,
       zen-browser,
+      nix-minecraft,
       ...
     }:
     let
@@ -80,6 +83,7 @@
             system = system;
           })
           fsh.overlays.default
+          nix-minecraft.overlay
         ];
       };
 
@@ -134,6 +138,7 @@
         {
           nixpkgs.pkgs = stable-pkgs;
         }
+        nix-minecraft.nixosModules.minecraft-servers
       ]
       ++ commonModules;
 

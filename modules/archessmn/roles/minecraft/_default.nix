@@ -60,7 +60,7 @@ in
 
       labels = {
         "traefik.enable" = "true";
-        "traefik.tcp.routers.minecraft-gay.rule" = "Host(`gay.eduwoem.org`)";
+        "traefik.tcp.routers.minecraft-gay.rule" = "HostSNI(`gay.eduwoem.org`)";
         "traefik.tcp.routers.minecraft-gay.entrypoints" = "minecraft";
       };
     };

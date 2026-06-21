@@ -87,6 +87,8 @@
       gluetun-protonvpn.enable = true;
 
       hummer.enable = true;
+
+      minecraft.enable = true;
     };
   };
 

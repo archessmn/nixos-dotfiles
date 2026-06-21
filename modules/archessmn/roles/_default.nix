@@ -7,6 +7,7 @@
     ./arr
     ./beszel
     ./consul
+    ./minecraft
     ./nomad
     ./acme.nix
     ./assets.nix

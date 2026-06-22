@@ -25,7 +25,7 @@ in
     age.secrets.firefly_db_password.mode = "644";
 
     systemd.tmpfiles.rules = [
-      "d /opt/firefly 1600 root root"
+      "d /opt/firefly 1666 root root"
     ];
 
     # https://discourse.nixos.org/t/how-to-create-docker-network-in-nixos-configuration-correctly/16945/3

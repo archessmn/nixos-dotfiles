@@ -72,6 +72,7 @@ in
             DB_USERNAME = "firefly";
             DB_PASSWORD_FILE = config.age.secrets.firefly_db_password.path;
             TZ = "Europe/London";
+            TRUSTED_PROXIES = "**";
           };
 
           environmentFiles = [

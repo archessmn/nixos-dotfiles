@@ -50,6 +50,8 @@ in
 
           volumes = [
             "/opt/firefly:/var/www/html/storage/upload"
+            "${config.age.secrets.firefly_app_key.path}:${config.age.secrets.firefly_app_key.path}:ro"
+            "${config.age.secrets.firefly_db_password.path}:${config.age.secrets.firefly_db_password.path}:ro"
           ];
 
           networks = [

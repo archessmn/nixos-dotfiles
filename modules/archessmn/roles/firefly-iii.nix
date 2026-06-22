@@ -85,6 +85,31 @@ in
           };
         };
 
+        fireflyiii-importer = {
+          image = "fireflyiii/data-importer:latest";
+          autoStart = true;
+
+          networks = [
+            "firefly"
+          ];
+
+          ports = [
+            "127.0.0.1::8080"
+          ];
+
+          environment = {
+            FIREFLY_III_URL = "https://firefly.archess.mn";
+            FIREFLY_III_CLIENT_ID = "019ef158-9676-7207-bd37-03b56825a1d4";
+          };
+
+          dependsOn = [ "fireflyiii" ];
+
+          labels = {
+            "traefik.enable" = "true";
+            "traefik.http.routers.firefly-import.rule" = "Host(`firefly-import.archess.mn`)";
+          };
+        };
+
         fireflyiii-cron = {
           image = "alpine";
           autoStart = true;

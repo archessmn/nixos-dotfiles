@@ -63,6 +63,7 @@ in
           environment = {
             APP_ENV = "production";
             APP_KEY_FILE = config.age.secrets.firefly_app_key.path;
+            APP_URL = "https://firefly.archess.mn";
             SITE_OWNER = "firefly@archess.mn";
             DB_CONNECTION = "pgsql";
             DB_HOST = "master.postgres.service.consul";

@@ -89,6 +89,8 @@
       hummer.enable = true;
 
       minecraft.enable = true;
+
+      firefly-iii.enable = true;
     };
   };
 

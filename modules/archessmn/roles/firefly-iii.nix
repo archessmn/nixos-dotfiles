@@ -98,6 +98,8 @@ in
           ];
 
           environment = {
+            APP_URL = "https://firefly-import.archess.mn";
+            TRUSTED_PROXIES = "**";
             FIREFLY_III_URL = "https://firefly.archess.mn";
             FIREFLY_III_CLIENT_ID = "019ef158-9676-7207-bd37-03b56825a1d4";
           };

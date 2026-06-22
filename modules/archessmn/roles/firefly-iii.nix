@@ -61,7 +61,7 @@ in
             SITE_OWNER = "firefly@archess.mn";
             DB_CONNECTION = "pgsql";
             DB_HOST = "master.postgres.service.consul";
-            DB_PORT = 5432;
+            DB_PORT = "5432";
             DB_DATABASE = "firefly";
             DB_USERNAME = "firefly";
             DB_PASSWORD_FILE = config.age.secrets.firefly_db_password.path;

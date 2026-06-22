@@ -15,6 +15,7 @@
     ./book-downloader.nix
     ./booklore.nix
     ./family-pc.nix
+    ./firefly-iii.nix
     ./frigate.nix
     ./gluetun-protonvpn.nix
     ./gluetun.nix

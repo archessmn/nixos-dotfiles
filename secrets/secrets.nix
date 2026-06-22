@@ -112,4 +112,19 @@ in
     archessmn-temjin
     temjin
   ];
+  "temjin/firefly_db_password.age".publicKeys = [
+    archessmn-helios
+    archessmn-temjin
+    temjin
+  ];
+  "temjin/firefly_app_key.age".publicKeys = [
+    archessmn-helios
+    archessmn-temjin
+    temjin
+  ];
+  "temjin/firefly_cron_token.env.age".publicKeys = [
+    archessmn-helios
+    archessmn-temjin
+    temjin
+  ];
 }

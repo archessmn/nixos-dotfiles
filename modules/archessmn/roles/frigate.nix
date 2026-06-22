@@ -21,7 +21,7 @@ in
     virtualisation.oci-containers.containers.frigate = {
       autoStart = true;
 
-      image = "ghcr.io/blakeblackshear/frigate:0.16.3";
+      image = "ghcr.io/blakeblackshear/frigate:0.17.1";
 
       ports = [
         "5000:5000"

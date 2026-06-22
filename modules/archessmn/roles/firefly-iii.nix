@@ -19,8 +19,10 @@ in
 
   config = mkIf cfg.enable {
     age.secrets.firefly_app_key.file = ../../../secrets/${hostname}/firefly_app_key.age;
+    age.secrets.firefly_app_key.mode = "644";
     age.secrets.firefly_cron_token_env.file = ../../../secrets/${hostname}/firefly_cron_token.env.age;
     age.secrets.firefly_db_password.file = ../../../secrets/${hostname}/firefly_db_password.age;
+    age.secrets.firefly_db_password.mode = "644";
 
     systemd.tmpfiles.rules = [
       "d /opt/firefly 1600 root root"

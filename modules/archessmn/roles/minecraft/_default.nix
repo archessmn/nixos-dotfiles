@@ -37,6 +37,32 @@ in
       };
     };
 
+    services.traefik = {
+      dynamicConfigOptions = {
+        http = {
+          routers = {
+            minecraft-server-gay-map = {
+              rule = "Host(`gay.eduwoem.org`)";
+              service = "minecraft-server-gay-map";
+            };
+          };
+
+          services = {
+            minecraft-server-gay-map = {
+              loadBalancer = {
+                servers = [
+                  {
+                    url = "http://localhost:8100";
+                  }
+                ];
+              };
+            };
+
+          };
+        };
+      };
+    };
+
     users.users.archessmn.extraGroups = [
       "minecraft"
     ];

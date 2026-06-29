@@ -36,5 +36,9 @@ in
         package = pkgs.fabricServers.fabric-26_2;
       };
     };
+
+    users.users.archessmn.extraGroups = [
+      "minecraft"
+    ];
   };
 }

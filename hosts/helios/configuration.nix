@@ -55,6 +55,7 @@
         kanidm_1_10
         tailscale
         shellcheck
+        switchaudio-osx
       ];
     };
 

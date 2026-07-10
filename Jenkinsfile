@@ -2,6 +2,9 @@ library 'github.com/archessmn/jenkins-library@main'
 
 pipeline {
   agent any
+  options {
+    disableResume()
+  }
   environment {
     PATH="/run/current-system/sw/bin"
   }

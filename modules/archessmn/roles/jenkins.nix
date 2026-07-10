@@ -21,6 +21,8 @@ in
       port = 6000;
     };
 
+    systemd.services.jenkins.restartIfChanged = false;
+
     users.users.jenkins.extraGroups = [ "docker" ];
   };
 }

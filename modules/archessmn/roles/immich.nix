@@ -9,7 +9,7 @@ with lib;
 let
   cfg = config.archessmn.roles.immich;
 
-  immich-release = "v2.4.1";
+  immich-release = "v3.0.2";
 in
 {
   options.archessmn.roles.immich = {
@@ -86,7 +86,7 @@ in
         };
 
         immich-redis = {
-          image = "redis:6.2-alpine@sha256:51d6c56749a4243096327e3fb964a48ed92254357108449cb6e23999c37773c5";
+          image = "docker.io/valkey/valkey:9@sha256:4963247afc4cd33c7d3b2d2816b9f7f8eeebab148d29056c2ca4d7cbc966f2d9";
           autoStart = true;
 
           hostname = "immich_redis";

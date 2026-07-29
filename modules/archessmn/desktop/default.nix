@@ -69,8 +69,8 @@ in
 
       environment.systemPackages = [
         pkgs.libimobiledevice
-        pkgs.wineWowPackages.full
-        unstable-pkgs.kanidm_1_8
+        pkgs.wineWow64Packages.full
+        pkgs.kanidm_1_10
       ];
 
       services.udev.packages = with pkgs; [

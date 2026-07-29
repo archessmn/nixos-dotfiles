@@ -83,7 +83,7 @@ in
       (mkMerge [
         (mkIf config.archessmn.desktop.isDevMachine [
           # Editors
-          jetbrains.idea-ultimate
+          jetbrains.idea
           chromium
           wireshark
           libresprite
@@ -100,7 +100,7 @@ in
           inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
 
           # Assorted shite
-          nixfmt-rfc-style
+          nixfmt
           nixfmt
           nil
 

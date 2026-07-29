@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   unstable-pkgs,
   ...
 }:
@@ -18,15 +19,18 @@ in
 
   config = mkIf cfg.client.enable {
     services.kanidm = {
-      package = unstable-pkgs.kanidm_1_9;
+      package = pkgs.kanidm_1_10;
 
-      enableClient = true;
+      client = {
+        enable = true;
 
-      clientSettings = {
-        uri = "https://idm.archess.mn";
-        verify_ca = true;
-        verify_hostnames = true;
+        settings = {
+          uri = "https://idm.archess.mn";
+          verify_ca = true;
+          verify_hostnames = true;
+        };
       };
+
     };
   };
 }

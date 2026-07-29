@@ -120,6 +120,8 @@ in
       search wahoo-monster.ts.net
     '';
 
+    networking.resolvconf.enable = false;
+
     systemd.tmpfiles.rules = [
       "d /run/unbound 1600 unbound unbound"
     ];

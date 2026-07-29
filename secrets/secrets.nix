@@ -127,4 +127,9 @@ in
     archessmn-temjin
     temjin
   ];
+  "temjin/grafana_secret_key.age".publicKeys = [
+    archessmn-helios
+    archessmn-temjin
+    temjin
+  ];
 }

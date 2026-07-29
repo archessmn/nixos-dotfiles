@@ -87,10 +87,10 @@ in
       pkgs.lsof
       pkgs.minicom
 
-      # Programming things
-      unstable-pkgs.rustc
-      unstable-pkgs.cargo
-      unstable-pkgs.rustlings
+      # # Programming things
+      # unstable-pkgs.rustc
+      # unstable-pkgs.cargo
+      # unstable-pkgs.rustlings
       # pkgs.gccgo13
       pkgs.jdk25
     ]

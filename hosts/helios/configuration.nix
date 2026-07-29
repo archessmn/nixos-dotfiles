@@ -64,6 +64,8 @@
     enableFishIntegration = true;
   };
 
+  security.pam.services.sudo_local.touchIdAuth = true;
+
   fonts.packages = [
     pkgs.nerd-fonts.fira-mono
   ];

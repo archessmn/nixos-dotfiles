@@ -60,6 +60,12 @@ in
     archessmn-temjin
     tsuro
   ];
+  "tsuro/matterbridge.toml.age".publicKeys = [
+    archessmn-adrasteia
+    archessmn-helios
+    archessmn-temjin
+    tsuro
+  ];
 
   # Temjin
   "temjin/gluetun.env.age".publicKeys = [

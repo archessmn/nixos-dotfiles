@@ -1,6 +1,7 @@
 {
   system,
   hostname,
+  config,
   ...
 }:
 
@@ -108,6 +109,13 @@
     welcometext = "Roses Media Mumble Server";
     registerName = "rosesmedia";
     registerHostname = "mumble.roses.media";
+  };
+
+  age.secrets.matterbridge_toml.file = ../../secrets/${hostname}/matterbridge.toml.age;
+
+  services.matterbridge = {
+    enable = true;
+    configPath = config.age.secrets.matterbridge_toml.path;
   };
 
   networking.hostName = "tsuro";

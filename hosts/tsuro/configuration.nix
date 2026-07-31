@@ -113,9 +113,14 @@
 
   age.secrets.matterbridge_toml.file = ../../secrets/${hostname}/matterbridge.toml.age;
 
-  services.matterbridge = {
-    enable = true;
-    configPath = config.age.secrets.matterbridge_toml.path;
+  virtualisation.oci-containers.containers.matterbridge = {
+    autoStart = true;
+
+    image = "ghcr.io/matterbridge-org/matterbridge:latest";
+
+    volumes = [
+      "${config.age.secrets.matterbridge_toml.path}:/etc/matterbridge/matterbridge.toml"
+    ];
   };
 
   networking.hostName = "tsuro";

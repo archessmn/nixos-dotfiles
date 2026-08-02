@@ -94,6 +94,15 @@
     };
   };
 
+  networking.firewall.interfaces.br0.allowedTCPPorts = [
+    5060
+    5061
+  ];
+  networking.firewall.interfaces.br0.allowedUDPPorts = [
+    5060
+    5061
+  ];
+
   age.secrets.gluetun_env.file = ../../secrets/${hostname}/gluetun.env.age;
   age.secrets.gluetun-protonvpn_env.file = ../../secrets/${hostname}/gluetun-protonvpn.env.age;
   age.secrets.qbittorrent_env.file = ../../secrets/${hostname}/qbittorrent.env.age;

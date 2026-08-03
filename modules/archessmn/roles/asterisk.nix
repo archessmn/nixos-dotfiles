@@ -19,6 +19,17 @@ in
   };
 
   config = mkIf cfg.enable {
+    age.secrets.asterisk_extensions_sipcord = {
+      file = ../../../secrets/${hostname}/asterisk/extensions_sipcord.conf.age;
+      owner = "asterisk";
+    };
+    age.secrets.asterisk_pjsip_sipcord = {
+      file = ../../../secrets/${hostname}/asterisk/pjsip_sipcord.conf.age;
+      owner = "asterisk";
+    };
+
+    systemd.services.asterisk.serviceConfig.Restart = "always";
+
     services.asterisk = {
       enable = true;
 
@@ -31,6 +42,8 @@ in
           same = n,Hangup()
           exten => 6001,1,Dial(PJSIP/6001,20)
           exten => 6002,1,Dial(PJSIP/6002,20)
+
+          #include ${config.age.secrets.asterisk_extensions_sipcord.path}
         '';
 
         "pjsip.conf" = ''
@@ -74,6 +87,8 @@ in
           [6002]
           type=aor
           max_contacts=1
+
+          #include ${config.age.secrets.asterisk_pjsip_sipcord.path}
         '';
       };
     };

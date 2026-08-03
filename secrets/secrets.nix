@@ -138,4 +138,14 @@ in
     archessmn-temjin
     temjin
   ];
+  "temjin/asterisk/extensions_sipcord.conf.age".publicKeys = [
+    archessmn-helios
+    archessmn-temjin
+    temjin
+  ];
+  "temjin/asterisk/pjsip_sipcord.conf.age".publicKeys = [
+    archessmn-helios
+    archessmn-temjin
+    temjin
+  ];
 }

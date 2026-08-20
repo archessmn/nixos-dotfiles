@@ -23,9 +23,9 @@ in
 
       image = "ghcr.io/blakeblackshear/frigate:0.17.1";
 
-      ports = [
-        "5000:5000"
-      ];
+      # ports = [
+      #   "5000:5000"
+      # ];
 
       devices = [
         "/dev/apex_0:/dev/apex_0"
@@ -43,6 +43,7 @@ in
         "128mb"
         "--mount"
         "type=tmpfs,dst=/tmp/cache,tmpfs-size=1000000000"
+        "--network=host"
       ];
 
       # labels = {

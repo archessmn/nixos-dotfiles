@@ -89,6 +89,9 @@ in
               storage = "/opt/traefik/acme.json";
               dnsChallenge = {
                 provider = "cloudflare";
+                propogation = {
+                  delayBeforeChecks = "15s";
+                };
               };
             };
           };

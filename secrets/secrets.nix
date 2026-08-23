@@ -118,6 +118,16 @@ in
     archessmn-temjin
     temjin
   ];
+  "temjin/chdrms/env.age".publicKeys = [
+    archessmn-helios
+    archessmn-temjin
+    temjin
+  ];
+  "temjin/chdrms/config.toml.age".publicKeys = [
+    archessmn-helios
+    archessmn-temjin
+    temjin
+  ];
   "temjin/firefly_db_password.age".publicKeys = [
     archessmn-helios
     archessmn-temjin

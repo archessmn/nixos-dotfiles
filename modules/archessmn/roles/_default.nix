@@ -14,6 +14,7 @@
     ./asterisk.nix
     ./book-downloader.nix
     ./booklore.nix
+    ./chdrms.nix
     ./family-pc.nix
     ./firefly-iii.nix
     ./frigate.nix

@@ -21,7 +21,7 @@ in
       enable = true;
       scope = "postgres";
       name = config.networking.hostName;
-      postgresqlPackage = pkgs.postgresql_17;
+      postgresqlPackage = pkgs.postgresql_18;
       nodeIp = "${config.networking.hostName}.wahoo-monster.ts.net";
       # otherNodesIps = [
       #   ""

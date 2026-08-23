@@ -81,6 +81,8 @@
       acme.enable = true;
 
       assets.enable = true;
+      chdrms.enable = true;
+
       asterisk.enable = true;
 
       snowflake-proxy.enable = true;

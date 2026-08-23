@@ -95,8 +95,9 @@
   };
 
   networking.firewall.interfaces.br0.allowedTCPPorts = [
-    5060
-    5061
+    5060 # SIP
+    5061 # SIP
+    5000 # frigate
   ];
   networking.firewall.interfaces.br0.allowedUDPPorts = [
     5060

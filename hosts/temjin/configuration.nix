@@ -80,7 +80,7 @@
 
       acme.enable = true;
 
-      assets.enable = true;
+      # assets.enable = true;
       chdrms.enable = true;
 
       asterisk.enable = true;

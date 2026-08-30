@@ -41,7 +41,7 @@ in
 
       labels = {
         "traefik.enable" = "true";
-        "traefik.http.routers.chdrms.rule" = "Host(`rms.archess.mn`)";
+        "traefik.http.routers.chdrms.rule" = "Host(`assets.archess.mn`)";
       };
     };
   };

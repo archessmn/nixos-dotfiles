@@ -41,8 +41,37 @@ in
       labels = {
         "traefik.enable" = "true";
         "traefik.http.routers.qbittorrent.rule" = "Host(`qbt.moir.xyz`)";
-        "traefik.http.routers.qbittorrent.middlewares" = "oidc-auth@file";
+        "traefik.http.routers.qbittorrent.middlewares" = "oidc-qbt-moir-xyz@file";
         "traefik.http.services.qbittorrent.loadbalancer.server.port" = "49893";
+      };
+    };
+
+    services.traefik = {
+      dynamicConfigOptions = {
+        http = {
+          middlewares = {
+            oidc-qbt-moir-xyz = {
+              plugin = {
+                traefik-oidc-auth = {
+                  providerURL = "https://idm.archess.mn/oauth2/openid/qbittorrent";
+                  clientID = "qbittorrent";
+                  audience = "traefik-oidc";
+                  scopes = [
+                    "openid"
+                    "profile"
+                    "email"
+                  ];
+                  clientSecret = "\${OIDC_QBT_MOIR_XYZ_SECRET}";
+                  sessionEncryptionKey = "\${OIDC_QBT_MOIR_XYZ_SESSION_KEY}";
+                  callbackURL = "/oauth2/callback";
+                  cookieDomain = "qbt.moir.xyz";
+                  cookiePrefix = "_oidc_qbt_moir_xyz_";
+                  enablePkce = true;
+                };
+              };
+            };
+          };
+        };
       };
     };
 

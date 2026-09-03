@@ -114,8 +114,8 @@ in
         experimental = {
           plugins = {
             traefik-oidc-auth = {
-              moduleName = "github.com/sevensolutions/traefik-oidc-auth";
-              version = "v0.17.0";
+              moduleName = "github.com/lukaszraczylo/traefikoidc";
+              version = "v0.8.24";
             };
           };
         };

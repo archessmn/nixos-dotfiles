@@ -23,7 +23,7 @@ in
     virtualisation.oci-containers.containers.qbittorrent = {
       autoStart = true;
 
-      image = "lscr.io/linuxserver/qbittorrent:5.1.4";
+      image = "lscr.io/linuxserver/qbittorrent:5.2.3";
 
       volumes = [
         "/opt/qbittorrent/config:/config"

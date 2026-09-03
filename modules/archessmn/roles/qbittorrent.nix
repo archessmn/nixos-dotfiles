@@ -60,6 +60,7 @@ in
                     "openid"
                     "profile"
                     "email"
+                    "offline_access"
                   ];
                   clientSecret = "\${OIDC_QBT_MOIR_XYZ_SECRET}";
                   sessionEncryptionKey = "\${OIDC_QBT_MOIR_XYZ_SESSION_KEY}";

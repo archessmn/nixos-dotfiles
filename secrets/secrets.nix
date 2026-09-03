@@ -113,6 +113,11 @@ in
     archessmn-temjin
     temjin
   ];
+  "temjin/arr/swur.env.age".publicKeys = [
+    archessmn-helios
+    archessmn-temjin
+    temjin
+  ];
   "temjin/assets.env.age".publicKeys = [
     archessmn-helios
     archessmn-temjin

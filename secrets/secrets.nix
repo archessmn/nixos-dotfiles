@@ -118,6 +118,11 @@ in
     archessmn-temjin
     temjin
   ];
+  "temjin/arr/qbittorrent-labels.age".publicKeys = [
+    archessmn-helios
+    archessmn-temjin
+    temjin
+  ];
   "temjin/assets.env.age".publicKeys = [
     archessmn-helios
     archessmn-temjin

@@ -53,7 +53,7 @@ in
             oidc-qbt-moir-xyz = {
               plugin = {
                 traefik-oidc-auth = {
-                  providerURL = "https://idm.archess.mn/oauth2/openid/qbittorrent";
+                  providerURL = "\${TEST_ENV_VAR}";
                   clientID = "qbittorrent";
                   audience = "traefik-oidc";
                   scopes = [

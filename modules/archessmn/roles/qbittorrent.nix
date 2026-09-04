@@ -42,7 +42,7 @@ in
       ];
 
       extraOptions = [
-        "--label-file ${config.age.secrets.qbittorrent-labels.path}"
+        "--label-file=${config.age.secrets.qbittorrent-labels.path}"
       ];
 
       # labels = {

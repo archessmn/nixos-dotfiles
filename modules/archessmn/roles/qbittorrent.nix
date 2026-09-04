@@ -19,7 +19,7 @@ in
   };
 
   config = mkIf cfg.enable {
-    age.secrets.qbittorrent-labels.file = ../../../secrets/${hostname}/qbittorrent-labels.age;
+    age.secrets.qbittorrent-labels.file = ../../../secrets/${hostname}/arr/qbittorrent-labels.age;
 
     virtualisation.oci-containers.backend = "docker";
 

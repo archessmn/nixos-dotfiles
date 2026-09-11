@@ -93,11 +93,6 @@ in
     archessmn-temjin
     temjin
   ];
-  "temjin/traefik_kanidm.env.age".publicKeys = [
-    archessmn-helios
-    archessmn-temjin
-    temjin
-  ];
   "temjin/booklore.env.age".publicKeys = [
     archessmn-helios
     archessmn-temjin

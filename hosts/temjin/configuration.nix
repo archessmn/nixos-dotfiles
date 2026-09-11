@@ -80,7 +80,6 @@
 
       acme.enable = true;
 
-      # assets.enable = true;
       chdrms.enable = true;
 
       asterisk.enable = true;
@@ -110,7 +109,6 @@
   age.secrets.gluetun-protonvpn_env.file = ../../secrets/${hostname}/gluetun-protonvpn.env.age;
   age.secrets.qbittorrent_env.file = ../../secrets/${hostname}/qbittorrent.env.age;
   age.secrets.cloudflare_dns_env.file = ../../secrets/${hostname}/cloudflare_dns.env.age;
-  age.secrets.traefik_kanidm_env.file = ../../secrets/${hostname}/traefik_kanidm.env.age;
 
   networking = {
     useDHCP = false;

@@ -39,10 +39,6 @@ in
           ];
         };
       };
-
-      xdg.configFile."senpai/senpai.scfg" = mkIf isDarwin {
-        target = "../Library/Application Support/senpai/senpai.scfg";
-      };
     };
   };
 }

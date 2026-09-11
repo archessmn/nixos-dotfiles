@@ -35,5 +35,31 @@ in
         passwordFile = config.age.secrets.keycloak_postgres_password.path;
       };
     };
+
+    services.traefik = {
+      dynamicConfigOptions = {
+        http = {
+          routers = {
+            keycloak = {
+              rule = "Host(`sso.archess.mn`)";
+              service = "keycloak";
+            };
+          };
+
+          services = {
+            keycloak = {
+              loadBalancer = {
+                servers = [
+                  {
+                    url = "http://localhost:7007";
+                  }
+                ];
+              };
+            };
+
+          };
+        };
+      };
+    };
   };
 }

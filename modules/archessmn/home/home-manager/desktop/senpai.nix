@@ -3,8 +3,6 @@
   config,
   pkgs,
   username,
-  hostname,
-  isDarwin,
   ...
 }:
 with lib;

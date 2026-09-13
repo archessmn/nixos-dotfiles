@@ -8,7 +8,6 @@
 }:
 with lib;
 let
-  keys = import ../../../config/ssh/keys.nix;
   cfg = config.archessmn.home;
   users = import ../../../users.nix;
 in
@@ -32,7 +31,9 @@ in
       {
         shell = pkgs.fish;
         ignoreShellProgramCheck = true;
-        openssh.authorizedKeys.keys = (map (key: getAttr key keys) (attrNames keys));
+        openssh.authorizedKeys.keys = (
+          map (key: getAttr key users.${username}.sshKeys) (attrNames users.${username}.sshKeys)
+        );
       }
       (mkIf (!isDarwin) {
         isNormalUser = true;

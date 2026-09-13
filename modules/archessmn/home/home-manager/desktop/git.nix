@@ -8,9 +8,7 @@ with lib;
 let
   desktopEnabled = config.archessmn.desktop.enable;
   cfg = config.archessmn.home.home-manager.desktop.git;
-  keys = import ../../../../../config/ssh/keys.nix;
   user = (import ../../../../../users.nix).${username};
-
 in
 
 {
@@ -23,7 +21,7 @@ in
 
   config.home-manager.users.${username} = mkIf cfg.enable {
     home.file.".ssh/allowed_signers".text = concatMapStrings (key: "${user.email} ${key}\n") (
-      map (key: getAttr key keys) (attrNames keys)
+      map (key: getAttr key user.sshKeys) (attrNames user.sshKeys)
     );
 
     programs.git = {

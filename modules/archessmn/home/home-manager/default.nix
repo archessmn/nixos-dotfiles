@@ -8,9 +8,7 @@
 }:
 with lib;
 let
-  keys = import ../../../config/ssh/keys.nix;
   cfg = config.archessmn.home.home-manager;
-  users = import ../../../users.nix;
 in
 
 {

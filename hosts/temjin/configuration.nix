@@ -132,7 +132,7 @@
       ];
       ipv6.addresses = [
         {
-          address = "2a02:6b67:e841:4900::10";
+          address = "2a02:6b67:e840:500::10";
           prefixLength = 64;
         }
       ];
@@ -142,7 +142,7 @@
 
     defaultGateway = "10.0.0.1";
     defaultGateway6 = {
-      address = "2a02:6b67:e841:4900::1";
+      address = "2a02:6b67:e840:500::1";
       interface = "br0";
     };
   };

@@ -46,7 +46,7 @@ in
         http = {
           routers = {
             minecraft-server-gay-map = {
-              rule = "Host(`gay.eduwoem.org`)";
+              rule = "Host(`gay.archess.mn`)";
               service = "minecraft-server-gay-map";
             };
           };

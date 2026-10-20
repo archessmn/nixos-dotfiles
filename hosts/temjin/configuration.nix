@@ -176,6 +176,7 @@
   age.secrets.forgejo-actions_codeberg.file = ../../secrets/${hostname}/forgejo-actions/codeberg.age;
 
   services.gitea-actions-runner.instances.codeberg = {
+    enable = true;
     url = "https://codeberg.org";
     name = "temjin";
     tokenFile = config.age.secrets.forgejo-actions_codeberg.path;

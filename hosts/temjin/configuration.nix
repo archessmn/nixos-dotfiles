@@ -2,6 +2,7 @@
   hostname,
   pkgs,
   system,
+  config,
   ...
 }:
 
@@ -170,6 +171,15 @@
   hardware.coral.pcie.enable = true;
 
   services.vscode-server.enable = true;
+
+
+  age.secrets.forgejo-actions_codeberg.file = ../../secrets/${hostname}/forgejo-actions/codeberg.age;
+
+  services.gitea-actions-runner.instances.codeberg = {
+    url = "https://codeberg.org";
+    name = "temjin";
+    tokenFile = config.age.secrets.forgejo-actions_codeberg.path;
+  };
 
   environment.systemPackages = with pkgs; [
     zfs

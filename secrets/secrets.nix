@@ -163,4 +163,9 @@ in
     archessmn-temjin
     temjin
   ];
+  "temjin/forgejo-actions/codeberg.age".publicKeys = [
+    archessmn-helios
+    archessmn-temjin
+    temjin
+  ];
 }

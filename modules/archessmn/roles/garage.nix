@@ -64,5 +64,50 @@ in
         "admin-token:${config.age.secrets."garage-admin-token".path}"
       ];
     };
+
+    users.users.archessmn.extraGroups = [ "garage" ];
+
+    services.traefik = {
+      dynamicConfigOptions = {
+        http = {
+          routers = {
+            garage-s3 = {
+              rule = "Host(`cdn.temjin.infra.archess.mn`)";
+              service = "garage-s3";
+            };
+            garage-web = {
+              rule = "Host(`static.temjin.infra.archess.mn`)";
+              service = "garage-web";
+            };
+
+            archess-mn = {
+              rule = "Host(`archess.mn`) || Host(`www.archess.mn`)";
+              service = "garage-web";
+            };
+          };
+
+          services = {
+            garage-s3 = {
+              loadBalancer = {
+                servers = [
+                  {
+                    url = "http://localhost:3900";
+                  }
+                ];
+              };
+            };
+            garage-web = {
+              loadBalancer = {
+                servers = [
+                  {
+                    url = "http://localhost:3902";
+                  }
+                ];
+              };
+            };
+          };
+        };
+      };
+    };
   };
 }

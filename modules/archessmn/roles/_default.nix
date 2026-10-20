@@ -18,6 +18,7 @@
     ./family-pc.nix
     ./firefly-iii.nix
     ./frigate.nix
+    ./garage.nix
     ./gluetun-protonvpn.nix
     ./gluetun.nix
     ./grafana.nix

@@ -163,7 +163,12 @@ in
     archessmn-temjin
     temjin
   ];
-  "temjin/forgejo-actions/codeberg.age".publicKeys = [
+  "temjin/garage/rpc-secret.age".publicKeys = [
+    archessmn-helios
+    archessmn-temjin
+    temjin
+  ];
+  "temjin/garage/admin-token.age".publicKeys = [
     archessmn-helios
     archessmn-temjin
     temjin

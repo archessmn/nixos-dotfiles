@@ -64,7 +64,5 @@ in
         "admin-token:${config.age.secrets."garage-admin-token".path}"
       ];
     };
-
-    forest.backups.paths = [ "/var/lib/garage" ];
   };
 }

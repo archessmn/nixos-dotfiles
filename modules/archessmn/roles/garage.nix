@@ -46,7 +46,7 @@ in
         replication_factor = 1;
         rpc_bind_addr = "[::]:3901";
         rpc_public_addr = "127.0.0.1:3901";
-        rpc_secret_file = "/run/credentials/garage.service/rpc-secret";
+        rpc_secret_file = config.age.secrets."garage-rpc-secret".path;
         s3_api = {
           s3_region = "garage";
           api_bind_addr = "[::]:3900";
@@ -59,16 +59,9 @@ in
         };
         admin = {
           api_bind_addr = "[::]:3903";
-          admin_token_file = "/run/credentials/garage.service/admin-token";
+          admin_token_file = config.age.secrets."garage-admin-token".path;
         };
       };
-    };
-
-    systemd.services.garage.serviceConfig = {
-      LoadCredential = [
-        "rpc-secret:${config.age.secrets."garage-rpc-secret".path}"
-        "admin-token:${config.age.secrets."garage-admin-token".path}"
-      ];
     };
 
     users.users.archessmn.extraGroups = [ "garage" ];

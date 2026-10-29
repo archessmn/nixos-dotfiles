@@ -45,6 +45,8 @@
     };
 
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
+
+    flake-utils.url = "github:numtide/flake-utils";
   };
 
   outputs =
@@ -61,6 +63,7 @@
       vscode-server,
       zen-browser,
       nix-minecraft,
+      flake-utils,
       ...
     }:
     let
@@ -156,7 +159,7 @@
       linuxHosts = nixpkgs.lib.filterAttrs (_: host: host.system == "x86_64-linux") hosts;
       darwinHosts = nixpkgs.lib.filterAttrs (_: host: host.system == "aarch64-darwin") hosts;
     in
-    rec {
+    {
       darwinConfigurations = mapAttrs (
         hostname: host:
         nix-darwin.lib.darwinSystem {
@@ -206,5 +209,21 @@
             ];
           };
         });
-    };
+    }
+    // flake-utils.lib.eachDefaultSystem (
+      system:
+      let
+        shell-pkgs = import nixpkgs {
+          inherit system;
+        };
+      in
+      {
+        devShells.default = shell-pkgs.mkShell {
+          packages = with shell-pkgs; [
+            python314
+            python314Packages.requests
+          ];
+        };
+      }
+    );
 }

@@ -5,3 +5,5 @@ bishop-shared/.ssl
 # secrets/
 
 fix-git-commits.sh
+
+.direnv/

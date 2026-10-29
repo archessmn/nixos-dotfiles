@@ -30,10 +30,12 @@ in
     age.secrets."garage-rpc-secret" = {
       file = ../../../secrets/${hostname}/garage/rpc-secret.age;
       group = "garage";
+      mode = "440";
     };
     age.secrets."garage-admin-token" = {
       file = ../../../secrets/${hostname}/garage/rpc-secret.age;
       group = "garage";
+      mode = "440";
     };
 
     services.garage = {

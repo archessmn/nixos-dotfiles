@@ -27,16 +27,8 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    age.secrets."garage-rpc-secret" = {
-      file = ../../../secrets/${hostname}/garage/rpc-secret.age;
-      group = "garage-users";
-      mode = "440";
-    };
-    age.secrets."garage-admin-token" = {
-      file = ../../../secrets/${hostname}/garage/rpc-secret.age;
-      group = "garage-users";
-      mode = "440";
-    };
+    age.secrets."garage-rpc-secret".file = ../../../secrets/${hostname}/garage/rpc-secret.age;
+    age.secrets."garage-admin-token".file = ../../../secrets/${hostname}/garage/rpc-secret.age;
 
     services.garage = {
       enable = true;
@@ -48,7 +40,7 @@ in
         replication_factor = 1;
         rpc_bind_addr = "[::]:3901";
         rpc_public_addr = "127.0.0.1:3901";
-        rpc_secret_file = config.age.secrets."garage-rpc-secret".path;
+        rpc_secret_file = "/run/credentials/garage.service/rpc-secret";
         s3_api = {
           s3_region = "garage";
           api_bind_addr = "[::]:3900";
@@ -61,20 +53,19 @@ in
         };
         admin = {
           api_bind_addr = "[::]:3903";
-          admin_token_file = config.age.secrets."garage-admin-token".path;
+          admin_token_file = "/run/credentials/garage.service/admin-token";
         };
       };
     };
 
     systemd.services.garage.serviceConfig = {
-      SupplementaryGroups = "garage-users";
+      LoadCredential = [
+        "rpc-secret:${config.age.secrets."garage-rpc-secret".path}"
+        "admin-token:${config.age.secrets."garage-admin-token".path}"
+      ];
     };
 
-    users.groups = {
-      garage-users = { };
-    };
-
-    users.users.archessmn.extraGroups = [ "garage-users" ];
+    users.users.archessmn.extraGroups = [ "garage" ];
 
     services.traefik = {
       dynamicConfigOptions = {

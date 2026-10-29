@@ -67,7 +67,7 @@ in
     };
 
     systemd.services.garage.serviceConfig = {
-      SupplementaryGroups = "garage";
+      SupplementaryGroups = "garage-users";
     };
 
     users.groups = {

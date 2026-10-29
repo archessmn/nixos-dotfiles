@@ -27,8 +27,14 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    age.secrets."garage-rpc-secret".file = ../../../secrets/${hostname}/garage/rpc-secret.age;
-    age.secrets."garage-admin-token".file = ../../../secrets/${hostname}/garage/rpc-secret.age;
+    age.secrets."garage-rpc-secret" = {
+      file = ../../../secrets/${hostname}/garage/rpc-secret.age;
+      group = "garage";
+    };
+    age.secrets."garage-admin-token" = {
+      file = ../../../secrets/${hostname}/garage/rpc-secret.age;
+      group = "garage";
+    };
 
     services.garage = {
       enable = true;

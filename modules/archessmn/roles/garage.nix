@@ -29,12 +29,12 @@ in
   config = lib.mkIf cfg.enable {
     age.secrets."garage-rpc-secret" = {
       file = ../../../secrets/${hostname}/garage/rpc-secret.age;
-      group = "garage";
+      group = "garage-users";
       mode = "440";
     };
     age.secrets."garage-admin-token" = {
       file = ../../../secrets/${hostname}/garage/rpc-secret.age;
-      group = "garage";
+      group = "garage-users";
       mode = "440";
     };
 
@@ -66,11 +66,15 @@ in
       };
     };
 
-    users.groups = {
-      garage = { };
+    systemd.services.garage.serviceConfig = {
+      SupplementaryGroups = "garage";
     };
 
-    users.users.archessmn.extraGroups = [ "garage" ];
+    users.groups = {
+      garage-users = { };
+    };
+
+    users.users.archessmn.extraGroups = [ "garage-users" ];
 
     services.traefik = {
       dynamicConfigOptions = {

@@ -64,6 +64,10 @@ in
       };
     };
 
+    users.groups = {
+      garage = { };
+    };
+
     users.users.archessmn.extraGroups = [ "garage" ];
 
     services.traefik = {

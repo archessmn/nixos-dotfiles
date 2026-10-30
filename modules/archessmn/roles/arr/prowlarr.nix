@@ -65,7 +65,7 @@ in
       virtualisation.oci-containers.containers.prowlarr-exporter = {
         autoStart = true;
 
-        image = "ghcr.io/onedr0p/exportarr:v2.3.0";
+        image = "ghcr.io/onedr0p/exportarr:latest@sha256:89c48c73e5285bfd707afcf02d5d8d6dcfc1d955aa7160d08145654b4bc8dfbc";
 
         ports = [
           "9697:9697"

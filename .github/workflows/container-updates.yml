@@ -18,7 +18,7 @@ jobs:
         run: |
           nix develop .# --command python3 util/check_updates.py
       - run: |
-          echo '${{ steps.check-script.outputs.test }}'
+          echo '${{ steps.check-script.outputs }}'
 
   change:
     runs-on: ubuntu-latest

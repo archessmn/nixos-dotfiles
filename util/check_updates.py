@@ -123,7 +123,7 @@ for image in images:
         if os.getenv("GITHUB_OUTPUT"):
             with open(os.environ["GITHUB_OUTPUT"], "a") as gh:
                 gh.write(
-                    f'test={json.dumps([{"image": image, "update": output_image}]).replace("\"", "\\\"")}')
+                    f'test={json.dumps({"images": [{"image": image, "update": output_image}]}).replace("\"", "\\\"")}')
         else:
             print(
                 f'"test={json.dumps([{"image": image, "update": output_image}]).replace("\"", "\\\"")}"')

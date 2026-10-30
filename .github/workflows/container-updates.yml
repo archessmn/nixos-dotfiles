@@ -17,6 +17,8 @@ jobs:
         name: Check for Updates
         run: |
           nix develop .# --command python3 util/check_updates.py
+      - run: |
+          echo '${{ toJson(steps.check-script.outputs) }}'
 
   change:
     runs-on: ubuntu-latest

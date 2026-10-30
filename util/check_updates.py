@@ -2,6 +2,7 @@ import json
 import subprocess
 import requests
 import os
+import sys
 from colorama import Fore, Style
 
 
@@ -119,7 +120,11 @@ for image in images:
             with open(file, 'w') as open_file:
                 open_file.write(filedata)
 
-        subprocess.run(
-            ["echo", f'"test={json.dumps([{"image": image, "update": output_image}])}"', ">>", '"$GITHUB_OUTPUT"'])
+        if os.getenv("GITHUB_OUTPUT"):
+            subprocess.run(
+                ["echo", f'"test={json.dumps([{"image": image, "update": output_image}]).replace("\"", "\\\"")}"', ">>", os.getenv("GITHUB_OUTPUT", "")])
+        else:
+            subprocess.run(
+                ["echo", f'"test={json.dumps([{"image": image, "update": output_image}]).replace("\"", "\\\"")}"'])
 
         break

@@ -3,7 +3,7 @@ on:
     branches:
       - update-checking
 
-name: Build & Deploy Website
+name: Check for Container Image Updates
 
 jobs:
   checks:

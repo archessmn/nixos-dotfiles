@@ -126,6 +126,6 @@ for image in images:
                     f'test={json.dumps({"images": [{"image": image, "update": output_image}]}).replace("\"", "\\\"")}')
         else:
             print(
-                f'"test={json.dumps([{"image": image, "update": output_image}]).replace("\"", "\\\"")}"')
+                f'"test={json.dumps({"images": [{"image": image, "update": output_image}]}).replace("\"", "\\\"")}"')
 
         break

@@ -222,6 +222,8 @@
           packages = with shell-pkgs; [
             python314
             python314Packages.requests
+            python314Packages.colorama
+            ripgrep
           ];
         };
       }

@@ -120,6 +120,6 @@ for image in images:
                 open_file.write(filedata)
 
         subprocess.run(
-            ["echo", f"test={json.dumps([{"image": image, "update": output_image}])}", ">>", '"$GITHUB_OUTPUT"'])
+            ["echo", f'"test={json.dumps([{"image": image, "update": output_image}])}"', ">>", '"$GITHUB_OUTPUT"'])
 
         break

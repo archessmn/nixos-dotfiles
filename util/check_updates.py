@@ -121,10 +121,11 @@ for image in images:
                 open_file.write(filedata)
 
         if os.getenv("GITHUB_OUTPUT"):
-            subprocess.run(
-                ["echo", f'"test={json.dumps([{"image": image, "update": output_image}]).replace("\"", "\\\"")}"', ">>", os.getenv("GITHUB_OUTPUT", "")])
+            with open(os.environ["GITHUB_OUTPUT"], "a") as gh:
+                gh.write(
+                    f'test={json.dumps([{"image": image, "update": output_image}]).replace("\"", "\\\"")}')
         else:
-            subprocess.run(
-                ["echo", f'"test={json.dumps([{"image": image, "update": output_image}]).replace("\"", "\\\"")}"'])
+            print(
+                f'"test={json.dumps([{"image": image, "update": output_image}]).replace("\"", "\\\"")}"')
 
         break

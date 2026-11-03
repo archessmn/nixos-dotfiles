@@ -24,7 +24,7 @@ in
     virtualisation.oci-containers.containers.monster-tracker = {
       autoStart = true;
 
-      image = "ghcr.io/archessmn/monster-tracker:main@sha256:2963b67fb68381e8e3d64a8acd54d8967cc5232223c4ee998a3203e96148208b";
+      image = "ghcr.io/archessmn/monster-tracker:main@sha256:8909deb433ddb53d172affc3fc93035ce154747d9cecb2616ba8a67517ffe445";
 
       environmentFiles = [
         config.age.secrets.monster-tracker_env.path

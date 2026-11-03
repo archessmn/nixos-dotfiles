@@ -173,4 +173,9 @@ in
     archessmn-temjin
     temjin
   ];
+  "temjin/monster-tracker/env.age".publicKeys = [
+    archessmn-helios
+    archessmn-temjin
+    temjin
+  ];
 }

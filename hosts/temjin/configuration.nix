@@ -101,6 +101,8 @@
           web = "static.temjin.infra.archess.mn";
         };
       };
+
+      monster-tracker.enable = true;
     };
   };
 

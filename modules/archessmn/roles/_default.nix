@@ -29,6 +29,7 @@
     ./jenkins.nix
     ./kanidm.nix
     ./keycloak.nix
+    ./monster-tracker.nix
     ./patroni.nix
     ./prometheus.nix
     ./qbittorrent.nix

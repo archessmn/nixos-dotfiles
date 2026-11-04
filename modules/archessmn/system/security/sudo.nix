@@ -1,7 +1,6 @@
 {
   lib,
   config,
-  username,
   ...
 }:
 with lib;
@@ -12,23 +11,11 @@ in
   options.archessmn.system.security = {
     sudoNoPasswd = mkOption {
       type = types.bool;
-      default = false;
+      default = true;
     };
   };
 
   config = mkIf cfg.system.security.sudoNoPasswd {
-    security.sudo.extraRules = [
-      {
-        users = [ "${username}" ];
-        runAs = "ALL:ALL";
-        commands = [
-          {
-            command = "ALL";
-            options = [ "NOPASSWD" ];
-          }
-        ];
-      }
-    ];
-
+    security.sudo.wheelNeedsPassword = false;
   };
 }

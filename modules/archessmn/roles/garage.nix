@@ -84,6 +84,11 @@ in
               rule = "Host(`archess.mn`) || Host(`www.archess.mn`)";
               service = "garage-web";
             };
+
+            crap = {
+              rule = "Host(`crap.archess.mn`)";
+              service = "garage-web";
+            };
           };
 
           services = {

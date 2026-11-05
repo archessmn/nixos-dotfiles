@@ -52,7 +52,7 @@
       home.packages = with pkgs; [
         nixfmt
         nil
-        kanidm_1_10
+        kanidm_1_12
         tailscale
         shellcheck
         switchaudio-osx

@@ -111,7 +111,15 @@ in
           prometheus = { };
         };
 
-        accessLog = { };
+        accessLog = {
+          fields = {
+            headers = {
+              names = {
+                "User-Agent" = "keep";
+              };
+            };
+          };
+        };
 
         experimental = {
           plugins = {

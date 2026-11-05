@@ -111,6 +111,8 @@ in
           prometheus = { };
         };
 
+        accessLog = { };
+
         experimental = {
           plugins = {
             traefik-oidc-auth = {

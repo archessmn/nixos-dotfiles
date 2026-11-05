@@ -132,6 +132,19 @@ in
       };
 
       dynamicConfigOptions = {
+        tls.stores.default.defaultGeneratedCert = {
+          resolver = "acmeresolver";
+          domain = {
+            main = "archess.mn";
+            sans = [
+              "*.archess.mn"
+              "*.temjin.infra.archess.mn"
+              "*.cdn.temjin.infra.archess.mn"
+              "*.static.temjin.infra.archess.mn"
+            ];
+          };
+        };
+
         http = {
           routers = {
             dashboard = {

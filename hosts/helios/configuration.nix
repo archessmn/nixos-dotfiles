@@ -56,6 +56,7 @@
         tailscale
         shellcheck
         switchaudio-osx
+        minio-client
       ];
     };
 

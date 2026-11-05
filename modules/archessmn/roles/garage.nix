@@ -65,6 +65,15 @@ in
       ];
     };
 
+    services.prometheus.scrapeConfigs = [
+      {
+        job_name = "garage";
+        static_configs = [
+          { targets = [ "localhost:3903" ]; }
+        ];
+      }
+    ];
+
     users.users.archessmn.extraGroups = [ "garage" ];
 
     services.traefik = {

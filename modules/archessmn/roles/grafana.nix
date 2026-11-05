@@ -41,7 +41,7 @@ in
       dynamicConfigOptions = {
         http = {
           routers = {
-            minecraft-server-gay-map = {
+            grafana = {
               rule = "Host(`grafana.archess.mn`)";
               service = "grafana";
             };

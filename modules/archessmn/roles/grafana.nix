@@ -27,12 +27,38 @@ in
 
       settings = {
         server = {
-          root_url = "https://grafana.moir.xyz";
+          root_url = "https://grafana.archess.mn";
           http_addr = "0.0.0.0";
           http_port = 7000;
         };
         security = {
           secret_key = "$__file{${config.age.secrets.grafana_secret_key.path}}";
+        };
+      };
+    };
+
+    services.traefik = {
+      dynamicConfigOptions = {
+        http = {
+          routers = {
+            minecraft-server-gay-map = {
+              rule = "Host(`grafana.archess.mn`)";
+              service = "grafana";
+            };
+          };
+
+          services = {
+            grafana = {
+              loadBalancer = {
+                servers = [
+                  {
+                    url = "http://localhost:7000";
+                  }
+                ];
+              };
+            };
+
+          };
         };
       };
     };

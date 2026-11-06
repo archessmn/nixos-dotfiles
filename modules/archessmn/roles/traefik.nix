@@ -209,7 +209,12 @@ in
         {
           job_name = "traefik";
           static_configs = [
-            { targets = [ "localhost:8080" ]; }
+            {
+              targets = [
+                "localhost:8080"
+                "tsuro.infra.archess.mn:8080"
+              ];
+            }
           ];
         }
       ];

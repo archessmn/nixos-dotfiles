@@ -1,6 +1,6 @@
 {
   lib,
-  pkgs,
+  # pkgs,
   config,
   hostname,
   ...
@@ -9,44 +9,44 @@ with lib;
 let
   cfg = config.archessmn.roles.traefik;
 
-  traefik-iocaine-middleware-plugin = pkgs.stdenv.mkDerivation {
-    pname = "traefik-iocaine-middleware-plugin";
-    version = "e27e08746b3f607a388605a6e646cc366c37b2f6";
+  # traefik-iocaine-middleware-plugin = pkgs.stdenv.mkDerivation {
+  #   pname = "traefik-iocaine-middleware-plugin";
+  #   version = "e27e08746b3f607a388605a6e646cc366c37b2f6";
 
-    src = pkgs.fetchgit {
-      url = "https://git.mstar.dev/mstar/traefik-iocaine-middleware";
-      rev = "e27e08746b3f607a388605a6e646cc366c37b2f6";
-      hash = "sha256-YqaC9Rgmrss1cRkmIT0aixc4uG9YxAuirFOmg4hsvS0=";
-    };
+  #   src = pkgs.fetchgit {
+  #     url = "https://git.mstar.dev/mstar/traefik-iocaine-middleware";
+  #     rev = "e27e08746b3f607a388605a6e646cc366c37b2f6";
+  #     hash = "sha256-YqaC9Rgmrss1cRkmIT0aixc4uG9YxAuirFOmg4hsvS0=";
+  #   };
 
-    nativeBuildInputs = [
-      pkgs.go
-    ];
+  #   nativeBuildInputs = [
+  #     pkgs.go
+  #   ];
 
-    buildPhase = ''
-      runHook preBuild
+  #   buildPhase = ''
+  #     runHook preBuild
 
-      export GOCACHE="$TMPDIR/go-cache"
-      export GOPATH="$TMPDIR/go"
-      export GOMODCACHE="$GOPATH/pkg/mod"
-      export GOTOOLCHAIN=local
+  #     export GOCACHE="$TMPDIR/go-cache"
+  #     export GOPATH="$TMPDIR/go"
+  #     export GOMODCACHE="$GOPATH/pkg/mod"
+  #     export GOTOOLCHAIN=local
 
-      go mod vendor
+  #     go mod vendor
 
-      runHook postBuild
-    '';
+  #     runHook postBuild
+  #   '';
 
-    installPhase = ''
-      runHook preInstall
+  #   installPhase = ''
+  #     runHook preInstall
 
-      mkdir -p $out
-      cp -a . $out/
+  #     mkdir -p $out
+  #     cp -a . $out/
 
-      runHook postInstall
-    '';
+  #     runHook postInstall
+  #   '';
 
-    dontFixup = true;
-  };
+  #   dontFixup = true;
+  # };
 in
 {
   options.archessmn.roles.traefik = {
@@ -73,7 +73,7 @@ in
       "d /opt/traefik/plugins-local/src 1700 traefik traefik"
       "d /opt/traefik/plugins-local/src/git.mstar.dev 1700 traefik traefik"
       "d /opt/traefik/plugins-local/src/git.mstar.dev/mstar 1700 traefik traefik"
-      "L+ /opt/traefik/plugins-local/src/git.mstar.dev/mstar/traefik-iocaine-middleware - - - - ${traefik-iocaine-middleware-plugin}"
+      # "L+ /opt/traefik/plugins-local/src/git.mstar.dev/mstar/traefik-iocaine-middleware - - - - ${traefik-iocaine-middleware-plugin}"
     ];
 
     # https://github.com/NixOS/nixpkgs/issues/265496

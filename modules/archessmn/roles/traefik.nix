@@ -26,11 +26,10 @@ let
     buildPhase = ''
       runHook preBuild
 
-      mkdir -p $out
-      cp -a . $out/
-
+      export GOCACHE="$TMPDIR/go-cache"
+      export GOPATH="$TMPDIR/go"
+      export GOMODCACHE="$GOPATH/pkg/mod"
       export GOTOOLCHAIN=local
-      export GOPROXY=off
 
       go mod vendor
 

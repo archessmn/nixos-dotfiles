@@ -173,11 +173,6 @@ in
               version = "v0.8.24";
             };
           };
-          localPlugins = {
-            traefik-iocaine-middleware = {
-              moduleName = "git.mstar.dev/mstar/traefik-iocaine-middleware";
-            };
-          };
         };
       };
 
@@ -211,14 +206,6 @@ in
           };
 
           middlewares = {
-            iocaine = mkIf config.archessmn.roles.iocaine.enable {
-              plugin = {
-                traefik-iocaine-middleware = {
-                  iocaineHttpUrl = "http://localhost:42069";
-                  methods = "GET,HEAD";
-                };
-              };
-            };
             oidc-auth = {
               plugin = {
                 traefik-oidc-auth = {

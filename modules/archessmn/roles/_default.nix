@@ -24,6 +24,7 @@
     ./grafana.nix
     ./hummer.nix
     ./immich.nix
+    ./iocaine.nix
     ./jellyfin.nix
     ./seerr.nix
     ./jenkins.nix

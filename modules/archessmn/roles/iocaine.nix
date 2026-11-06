@@ -38,5 +38,32 @@ in
         "[::1]:42069:42069"
       ];
     };
+
+    services.traefik = {
+      enable = true;
+
+      dataDir = "/opt/traefik";
+
+      staticConfigOptions.experimental.localPlugins = {
+        traefik-iocaine-middleware = {
+          moduleName = "git.mstar.dev/mstar/traefik-iocaine-middleware";
+        };
+      };
+
+      dynamicConfigOptions = {
+        http = {
+          middlewares = {
+            iocaine = mkIf config.archessmn.roles.iocaine.enable {
+              plugin = {
+                traefik-iocaine-middleware = {
+                  iocaineHttpUrl = "http://localhost:42069";
+                  methods = "GET,HEAD";
+                };
+              };
+            };
+          };
+        };
+      };
+    };
   };
 }

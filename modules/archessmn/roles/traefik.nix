@@ -26,6 +26,9 @@ let
     buildPhase = ''
       runHook preBuild
 
+      mkdir -p $out
+      cp -a . $out/
+
       export GOTOOLCHAIN=local
       export GOPROXY=off
 

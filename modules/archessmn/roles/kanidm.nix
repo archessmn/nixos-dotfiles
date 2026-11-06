@@ -26,7 +26,7 @@ in
     virtualisation.oci-containers.containers.kanidm = {
       autoStart = true;
 
-      image = "kanidm/server:1.12.0";
+      image = "kanidm/server:1.11.2";
 
       ports = [
         "7004:8443"

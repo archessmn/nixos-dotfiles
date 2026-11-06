@@ -92,6 +92,7 @@ in
             archess-mn = {
               rule = "Host(`archess.mn`) || Host(`www.archess.mn`)";
               service = "garage-web";
+              middlewares = [ "iocaine@file" ];
             };
 
             crap = {

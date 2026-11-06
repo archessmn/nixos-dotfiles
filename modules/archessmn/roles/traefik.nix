@@ -211,7 +211,7 @@ in
           };
 
           middlewares = {
-            iocaine = mkIf config.archessmn.roles.iocaine {
+            iocaine = mkIf config.archessmn.roles.iocaine.enable {
               plugin = {
                 traefik-iocaine-middleware = {
                   iocaineHttpUrl = "http://localhost:42069";

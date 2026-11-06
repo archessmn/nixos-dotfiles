@@ -36,6 +36,8 @@ in
 
     systemd.tmpfiles.rules = [
       "d /opt/traefik 1700 traefik traefik"
+      "d /opt/traefik/plugins-local 1700 traefik traefik"
+      "d /opt/traefik/plugins-local/git.mstar.dev 1700 traefik traefik"
       "d /opt/traefik/plugins-local/git.mstar.dev/mstar 1700 traefik traefik"
       "L+ /opt/traefik/plugins-local/git.mstar.dev/mstar/traefik-iocaine-middleware - - - - ${traefik-iocaine-middleware-plugin}"
     ];

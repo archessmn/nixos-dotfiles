@@ -9,10 +9,41 @@ with lib;
 let
   cfg = config.archessmn.roles.traefik;
 
-  traefik-iocaine-middleware-plugin = pkgs.fetchgit {
-    url = "https://git.mstar.dev/mstar/traefik-iocaine-middleware";
-    rev = "e27e08746b3f607a388605a6e646cc366c37b2f6";
-    hash = "sha256-YqaC9Rgmrss1cRkmIT0aixc4uG9YxAuirFOmg4hsvS0=";
+  traefik-iocaine-middleware-plugin = pkgs.stdenv.mkDerivation {
+    pname = "traefik-iocaine-middleware-plugin";
+    version = "e27e08746b3f607a388605a6e646cc366c37b2f6";
+
+    src = pkgs.fetchgit {
+      url = "https://git.mstar.dev/mstar/traefik-iocaine-middleware";
+      rev = "e27e08746b3f607a388605a6e646cc366c37b2f6";
+      hash = "sha256-YqaC9Rgmrss1cRkmIT0aixc4uG9YxAuirFOmg4hsvS0=";
+    };
+
+    nativeBuildInputs = [
+      pkgs.go
+    ];
+
+    buildPhase = ''
+      runHook preBuild
+
+      export GOTOOLCHAIN=local
+      export GOPROXY=off
+
+      go mod vendor
+
+      runHook postBuild
+    '';
+
+    installPhase = ''
+      runHook preInstall
+
+      mkdir -p $out
+      cp -a . $out/
+
+      runHook postInstall
+    '';
+
+    dontFixup = true;
   };
 in
 {

@@ -35,12 +35,8 @@ in
 
       ports = [
         "127.0.0.1:42069:42069"
+        "[::1]:42069:42069"
       ];
-
-      labels = {
-        "traefik.http.middlewares.iocaine.plugin.iocaine.iocaineHttpUrl" = "http://iocaine:42069";
-        "traefik.http.middlewares.iocaine.plugin.iocaine.methods" = "GET,HEAD";
-      };
     };
   };
 }

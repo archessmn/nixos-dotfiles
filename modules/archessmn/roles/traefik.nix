@@ -211,6 +211,14 @@ in
           };
 
           middlewares = {
+            iocaine = mkIf config.archessmn.roles.iocaine {
+              plugin = {
+                traefik-iocaine-middleware = {
+                  iocaineHttpUrl = "http://localhost:42069";
+                  methods = "GET,HEAD";
+                };
+              };
+            };
             oidc-auth = {
               plugin = {
                 traefik-oidc-auth = {

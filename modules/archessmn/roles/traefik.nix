@@ -7,6 +7,12 @@
 with lib;
 let
   cfg = config.archessmn.roles.traefik;
+
+  traefik-iocaine-middleware-plugin = pkgs.fetchgit {
+    url = "https://git.mstar.dev/mstar/traefik-iocaine-middleware";
+    rev = "e27e08746b3f607a388605a6e646cc366c37b2f6";
+    hash = "sha256-REPLACE_WITH_HASH";
+  };
 in
 {
   options.archessmn.roles.traefik = {
@@ -29,6 +35,8 @@ in
 
     systemd.tmpfiles.rules = [
       "d /opt/traefik 1700 traefik traefik"
+      "d /opt/traefik/plugins-local/git.mstar.dev/mstar 1700 traefik traefik"
+      "L+ /opt/traefik/plugins-local/git.mstar.dev/mstar/traefik-iocaine-middleware - - - - ${traefik-iocaine-middleware-plugin}"
     ];
 
     # https://github.com/NixOS/nixpkgs/issues/265496

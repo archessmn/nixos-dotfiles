@@ -12,7 +12,7 @@ let
   traefik-iocaine-middleware-plugin = pkgs.fetchgit {
     url = "https://git.mstar.dev/mstar/traefik-iocaine-middleware";
     rev = "e27e08746b3f607a388605a6e646cc366c37b2f6";
-    hash = "sha256-B2g2d29jSER30OUqCkdk3+Hv5T3DA4SUKoyiqHb8FeU=";
+    hash = "sha256-YqaC9Rgmrss1cRkmIT0aixc4uG9YxAuirFOmg4hsvS0=";
   };
 in
 {

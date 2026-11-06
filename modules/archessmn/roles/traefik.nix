@@ -36,11 +36,11 @@ in
 
     systemd.tmpfiles.rules = [
       "d /opt/traefik 1700 traefik traefik"
-      "d /opt/traefik/src 1700 traefik traefik"
-      "d /opt/traefik/src/plugins-local 1700 traefik traefik"
-      "d /opt/traefik/src/plugins-local/git.mstar.dev 1700 traefik traefik"
-      "d /opt/traefik/src/plugins-local/git.mstar.dev/mstar 1700 traefik traefik"
-      "L+ /opt/traefik/src/plugins-local/git.mstar.dev/mstar/traefik-iocaine-middleware - - - - ${traefik-iocaine-middleware-plugin}"
+      "d /opt/traefik/plugins-local 1700 traefik traefik"
+      "d /opt/traefik/plugins-local/src 1700 traefik traefik"
+      "d /opt/traefik/plugins-local/src/git.mstar.dev 1700 traefik traefik"
+      "d /opt/traefik/plugins-local/src/git.mstar.dev/mstar 1700 traefik traefik"
+      "L+ /opt/traefik/plugins-local/src/git.mstar.dev/mstar/traefik-iocaine-middleware - - - - ${traefik-iocaine-middleware-plugin}"
     ];
 
     # https://github.com/NixOS/nixpkgs/issues/265496

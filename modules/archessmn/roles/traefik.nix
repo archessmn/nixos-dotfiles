@@ -139,6 +139,11 @@ in
               version = "v0.8.24";
             };
           };
+          localPlugins = {
+            traefik-iocaine-middleware = {
+              moduleName = "git.mstar.dev/mstar/traefik-iocaine-middleware";
+            };
+          };
         };
       };
 

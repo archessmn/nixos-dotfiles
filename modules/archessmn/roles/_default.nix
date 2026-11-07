@@ -7,6 +7,7 @@
     ./arr
     ./beszel
     ./consul
+    ./iocaine
     ./minecraft/_default.nix
     ./nomad
     ./acme.nix
@@ -24,7 +25,6 @@
     ./grafana.nix
     ./hummer.nix
     ./immich.nix
-    ./iocaine.nix
     ./jellyfin.nix
     ./seerr.nix
     ./jenkins.nix

@@ -46,6 +46,10 @@
 
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
 
+    nixocaine = {
+      url = "https://git.madhouse-project.org/iocaine/nixocaine/archive/stable.tar.gz";
+    };
+
     flake-utils.url = "github:numtide/flake-utils";
   };
 
@@ -63,6 +67,7 @@
       vscode-server,
       zen-browser,
       nix-minecraft,
+      nixocaine,
       flake-utils,
       ...
     }:
@@ -87,6 +92,7 @@
           })
           fsh.overlays.default
           nix-minecraft.overlay
+          nixocaine.overlays.default
         ];
       };
 
@@ -138,6 +144,7 @@
         home-manager.nixosModules.home-manager
         inputs.minegrub-theme.nixosModules.default
         vscode-server.nixosModules.default
+        nixocaine.nixosModules.default
         {
           nixpkgs.pkgs = stable-pkgs;
         }

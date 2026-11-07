@@ -34,6 +34,11 @@ in
     adrasteia
     helios
   ];
+  "maxmind_credentials.age".publicKeys = [
+    archessmn-adrasteia
+    archessmn-helios
+  ]
+  ++ systems;
 
   # Tsuro
   "tsuro/cloudflare_dns.env.age".publicKeys = [

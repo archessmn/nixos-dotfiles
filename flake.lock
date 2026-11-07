@@ -364,7 +364,9 @@
       "inputs": {
         "iocaine-stable": "iocaine-stable",
         "nam-shub-of-enki": "nam-shub-of-enki",
-        "nixpkgs": "nixpkgs_3",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
         "pre-commit-hooks": "pre-commit-hooks",
         "systems": "systems_7",
         "treefmt-nix": "treefmt-nix"
@@ -445,22 +447,6 @@
       }
     },
     "nixpkgs_3": {
-      "locked": {
-        "lastModified": 1786943417,
-        "narHash": "sha256-b4qgjdFtlz5TAZ1Hi7DFJeqX3sjaDUnrwr9OO+O1rM0=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "0dd31db7e6dbf9ce05697c4545f6fe01accec994",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-26.05",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_4": {
       "locked": {
         "lastModified": 1793183032,
         "narHash": "sha256-56mFMf8heLNfYhcgbrh4GpN5x+G9JOfTFXZC3n6w0qM=",
@@ -543,7 +529,7 @@
         "nix-darwin": "nix-darwin",
         "nix-minecraft": "nix-minecraft",
         "nixocaine": "nixocaine",
-        "nixpkgs": "nixpkgs_4",
+        "nixpkgs": "nixpkgs_3",
         "unstable": "unstable",
         "vscode-server": "vscode-server",
         "zen-browser": "zen-browser"

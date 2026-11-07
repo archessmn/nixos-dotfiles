@@ -48,6 +48,7 @@
 
     nixocaine = {
       url = "https://git.madhouse-project.org/iocaine/nixocaine/archive/stable.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     flake-utils.url = "github:numtide/flake-utils";

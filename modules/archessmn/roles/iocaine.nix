@@ -62,6 +62,25 @@ in
               };
             };
           };
+
+          routers = {
+            iocaine = {
+              rule = "PathPrefix(`/`)";
+              service = "iocaine";
+            };
+          };
+
+          services = {
+            iocaine = {
+              loadBalancer = {
+                servers = [
+                  {
+                    url = "http://localhost:42069";
+                  }
+                ];
+              };
+            };
+          };
         };
       };
     };

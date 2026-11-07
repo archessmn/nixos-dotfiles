@@ -118,5 +118,14 @@ in
         };
       };
     };
+
+    services.prometheus.scrapeConfigs = mkIf config.archessmn.roles.prometheus.enable [
+      {
+        job_name = "iocaine";
+        static_configs = [
+          { targets = [ "127.0.0.1:42042" ]; }
+        ];
+      }
+    ];
   };
 }

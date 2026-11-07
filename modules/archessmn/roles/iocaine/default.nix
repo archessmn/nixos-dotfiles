@@ -27,50 +27,50 @@ in
       attachTo = "iocaine";
     };
 
-    services.iocaine = {
-      enable = true;
-      config = {
-        initial-seed-file = "/run/current-system/boot.json";
-        server.default = {
-          bind = "127.0.0.1:42069";
-          mode = "http";
-          use.handler-from = "nsoe";
-          use.metrics = "metrics";
-        };
-        server.metrics = {
-          bind = "0.0.0.0:42042";
-          mode = "prometheus";
-          persist-path = "qmk-metrics.json";
-          persist-interval = "1h";
-        };
-        handler.nsoe = {
-          path = "${pkgs.nam-shub-of-enki}";
-          config = {
-            inherits = "default";
+    # services.iocaine = {
+    #   enable = true;
+    #   config = {
+    #     initial-seed-file = "/run/current-system/boot.json";
+    #     server.default = {
+    #       bind = "127.0.0.1:42069";
+    #       mode = "http";
+    #       use.handler-from = "nsoe";
+    #       use.metrics = "metrics";
+    #     };
+    #     server.metrics = {
+    #       bind = "0.0.0.0:42042";
+    #       mode = "prometheus";
+    #       persist-path = "qmk-metrics.json";
+    #       persist-interval = "1h";
+    #     };
+    #     handler.nsoe = {
+    #       path = "${pkgs.nam-shub-of-enki}";
+    #       config = {
+    #         inherits = "default";
 
-            ai-robots-txt-path = pkgs.fetchurl {
-              url = "https://github.com/ai-robots-txt/ai.robots.txt/raw/425d1a6207992e5ead73e2dd71fd98283dc7d9b6/robots.json";
-              hash = "sha256-3dUfNo8B8w4uPcbwgeSgeGI4qqsI/TWl9w7Fdthu/hc=";
-            };
-            checks.asn.database-path = "GeoLite2-ASN.mmdb";
-            checks.custom-agents.allow = [
-              "forgejo-cli/0.6.0 (https://codeberg.org/forgejo-contrib/forgejo-cli/)"
-              "WhatsApp/2" # signal uses this UA for link previews
-            ];
+    #         ai-robots-txt-path = pkgs.fetchurl {
+    #           url = "https://github.com/ai-robots-txt/ai.robots.txt/raw/425d1a6207992e5ead73e2dd71fd98283dc7d9b6/robots.json";
+    #           hash = "sha256-3dUfNo8B8w4uPcbwgeSgeGI4qqsI/TWl9w7Fdthu/hc=";
+    #         };
+    #         checks.asn.database-path = "GeoLite2-ASN.mmdb";
+    #         checks.custom-agents.allow = [
+    #           "forgejo-cli/0.6.0 (https://codeberg.org/forgejo-contrib/forgejo-cli/)"
+    #           "WhatsApp/2" # signal uses this UA for link previews
+    #         ];
 
-            sources = {
-              training-corpus = [
-                "${pkgs.callPackage ./1984.nix { }}"
-                # TODO: more input material
-              ];
-              wordlists = [
-                "${pkgs.miscfiles}/share/web2"
-              ];
-            };
-          };
-        };
-      };
-    };
+    #         sources = {
+    #           training-corpus = [
+    #             "${pkgs.callPackage ./1984.nix { }}"
+    #             # TODO: more input material
+    #           ];
+    #           wordlists = [
+    #             "${pkgs.miscfiles}/share/web2"
+    #           ];
+    #         };
+    #       };
+    #     };
+    #   };
+    # };
 
     services.traefik = {
       enable = true;

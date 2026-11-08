@@ -78,9 +78,18 @@ in
 
       dataDir = "/opt/traefik";
 
-      staticConfigOptions.experimental.localPlugins = {
-        traefik-iocaine-middleware = {
-          moduleName = "git.mstar.dev/mstar/traefik-iocaine-middleware";
+      staticConfigOptions = {
+        entryPoints = {
+          websecure = {
+            http = {
+              middlewares = [ "iocaine@file" ];
+            };
+          };
+        };
+        experimental.localPlugins = {
+          traefik-iocaine-middleware = {
+            moduleName = "git.mstar.dev/mstar/traefik-iocaine-middleware";
+          };
         };
       };
 

@@ -74,17 +74,9 @@ in
     };
 
     services.traefik = {
-      enable = true;
-
-      dataDir = "/opt/traefik";
-
       staticConfigOptions = {
-        entryPoints = {
-          websecure = {
-            http = {
-              middlewares = [ "iocaine@file" ];
-            };
-          };
+        entryPoints.websecure.http = {
+          middlewares = [ "iocaine@file" ];
         };
         experimental.localPlugins = {
           traefik-iocaine-middleware = {
@@ -97,11 +89,9 @@ in
         http = {
           middlewares = {
             iocaine = mkIf config.archessmn.roles.iocaine.enable {
-              plugin = {
-                traefik-iocaine-middleware = {
-                  iocaineHttpUrl = "http://127.0.0.1:42069";
-                  methods = "GET,HEAD";
-                };
+              plugin.traefik-iocaine-middleware = {
+                iocaineHttpUrl = "http://127.0.0.1:42069";
+                methods = "GET,HEAD";
               };
             };
           };
@@ -132,7 +122,12 @@ in
       {
         job_name = "iocaine";
         static_configs = [
-          { targets = [ "127.0.0.1:42042" ]; }
+          {
+            targets = [
+              "127.0.0.1:42042"
+              "tsuro.wahoo-monster.ts.net:42042"
+            ];
+          }
         ];
       }
     ];

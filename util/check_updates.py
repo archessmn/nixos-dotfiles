@@ -124,4 +124,4 @@ for image in images:
             print(
                 f'image-mappings={json.dumps({f"ghcr.io/{owner}/{repo}": output_image})}')
 
-        break
+        # break

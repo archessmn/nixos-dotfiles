@@ -1,7 +1,7 @@
 on:
-  push:
-    branches:
-      - update-checking
+  workflow_dispatch:
+  schedule:
+    - cron: 0 0 * * *
 
 name: Check for Container Image Updates
 
@@ -53,13 +53,13 @@ jobs:
       - uses: peter-evans/create-pull-request@v8
         with:
           commit-message: |
-            [automated] chore: Automated update of image ${{matrix.image-name}}
+            [automated] chore: Automated update of image `${{matrix.image-name}}`
 
-            Update ${{matrix.image-name}} to ${{fromJson(needs.checks.outputs.image-mappings)[matrix.image-name]}}
+            Update `${{matrix.image-name}}` to `${{fromJson(needs.checks.outputs.image-mappings)[matrix.image-name]}}`
           branch: automated-updates/${{steps.date.outputs.date}}/${{matrix.image-name}}
           title: |
-            [automated] chore: ${{steps.date.outputs.date}} update of ${{matrix.image-name}}
+            [automated] chore: ${{steps.date.outputs.date}} update of `${{matrix.image-name}}`
           body: |
-            Update ${{matrix.image-name}} to ${{fromJson(needs.checks.outputs.image-mappings)[matrix.image-name]}}
+            Update `${{matrix.image-name}}` to `${{fromJson(needs.checks.outputs.image-mappings)[matrix.image-name]}}`
           reviewers: |
             archessmn

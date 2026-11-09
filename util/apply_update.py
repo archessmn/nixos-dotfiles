@@ -1,5 +1,6 @@
 import subprocess
 import argparse
+import re
 from colorama import Fore, Style
 
 
@@ -39,19 +40,25 @@ def update_image(image: str, updated_image: str):
     print(f"Updating image: {image} to {updated_image}")
     # print("  ghcr detected")
     # print(f"  {image.replace('ghcr.io/', '', 1)}")
-    owner = image.replace('ghcr.io/', '', 1).split('/')[0]
+    registry = image.split('/')[0]
+    owner = image.replace(f'{registry}/', '', 1).split('/')[0]
     repo = image.replace(
-        'ghcr.io/', '', 1).split('/')[1].split(':')[0].split('@')[0]
+        f'{registry}/', '', 1).split('/')[1].split(':')[0].split('@')[0]
 
     files_with_image = list(filter(lambda f: f != '', subprocess.run(["nix", "develop", ".#", "--command",
-                                                                      "rg", f"ghcr.io/{owner}/{repo}", ".", "-l"], capture_output=True).stdout.decode().split("\n")))
+                                                                      "rg", f"{registry}/{owner}/{repo}", ".", "-l"], capture_output=True).stdout.decode().split("\n")))
     # print(files_with_image)
 
     for file in files_with_image:
+
+        regex = re.compile(
+            fr"({registry}/{owner}/{repo}).*?(?=\")", re.MULTILINE)
+
         with open(file, "r") as open_file:
             filedata = open_file.read()
 
-        filedata = filedata.replace(image, updated_image)
+        filedata = regex.sub(updated_image, filedata)
+        # filedata.replace(image, updated_image)
 
         with open(file, 'w') as open_file:
             open_file.write(filedata)

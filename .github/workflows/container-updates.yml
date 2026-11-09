@@ -31,7 +31,7 @@ jobs:
     needs: checks
     strategy:
       matrix:
-        image-name: ${{ needs.checks.outputs.image-names }}
+        image-name: ${{ fromJson(needs.checks.outputs.image-names) }}
 
     steps:
       - run: |

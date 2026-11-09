@@ -25,7 +25,7 @@ in
     virtualisation.oci-containers.containers.chdrms = {
       autoStart = true;
 
-      image = "ghcr.io/ystv/chdrms:pr-67";
+      image = "ghcr.io/ystv/chdrms:pr-67@sha256:2b6ebebc97b73b5fdb82eacf51d0540c7463c800ec4d237c882f2cb4b3e50e17";
 
       environmentFiles = [
         config.age.secrets.chdrms_env.path

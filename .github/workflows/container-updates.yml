@@ -35,4 +35,4 @@ jobs:
 
     steps:
       - run: |
-          echo '${{ matrix.image-name }}''
+          echo '${{ fromJson(needs.checks.outputs.image-mappings)[matrix.image-name] }}'

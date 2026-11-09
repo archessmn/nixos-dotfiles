@@ -4,6 +4,7 @@ pipeline {
   agent any
   options {
     disableResume()
+    disableConcurrentBuilds()
   }
   environment {
     PATH="/run/current-system/sw/bin"

@@ -28,7 +28,7 @@ in
       virtualisation.oci-containers.containers.prowlarr = {
         autoStart = true;
 
-        image = "ghcr.io/hotio/prowlarr:release-2.5.2.5491";
+        image = "ghcr.io/hotio/prowlarr:latest@sha256:8d3f29a7d774650c550ede493f164aee20e4baa735a16643065d068806c33699";
 
         volumes = [
           "/opt/prowlarr/config:/config"
@@ -65,7 +65,7 @@ in
       virtualisation.oci-containers.containers.prowlarr-exporter = {
         autoStart = true;
 
-        image = "ghcr.io/onedr0p/exportarr:v2.3.0";
+        image = "ghcr.io/onedr0p/exportarr:latest@sha256:89c48c73e5285bfd707afcf02d5d8d6dcfc1d955aa7160d08145654b4bc8dfbc";
 
         ports = [
           "9697:9697"

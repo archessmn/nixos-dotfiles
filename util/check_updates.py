@@ -43,6 +43,9 @@ ociContainers = json.loads(subprocess.run(["nix", "eval", "--json",
 
 images = list(set(map(lambda kv: str(kv[1]["image"]), ociContainers.items())))
 
+image_names = []
+image_mappings = {}
+
 for image in images:
     if image.startswith("ghcr.io"):
         print(f"Image: {image}")
@@ -112,16 +115,19 @@ for image in images:
                   Fore.RESET, sep="")
             continue
 
-        if os.getenv("GITHUB_OUTPUT"):
-            with open(os.environ["GITHUB_OUTPUT"], "a") as gh:
-                gh.write(
-                    f'image-names={json.dumps([f"ghcr.io/{owner}/{repo}"])}\r\n')
-                gh.write(
-                    f'image-mappings={json.dumps({f"ghcr.io/{owner}/{repo}": output_image})}\r\n')
-        else:
-            print(
-                f'image-names={json.dumps([f"ghcr.io/{owner}/{repo}"])}')
-            print(
-                f'image-mappings={json.dumps({f"ghcr.io/{owner}/{repo}": output_image})}')
+        image_names.append(f"ghcr.io/{owner}/{repo}")
+        image_mappings.setdefault(f"ghcr.io/{owner}/{repo}", output_image)
 
-        # break
+if os.getenv("GITHUB_OUTPUT"):
+    with open(os.environ["GITHUB_OUTPUT"], "a") as gh:
+        gh.write(
+            f'image-names={json.dumps(image_names)}\r\n')
+        gh.write(
+            f'image-mappings={json.dumps(image_mappings)}\r\n')
+else:
+    print(
+        f'image-names={json.dumps(image_names)}')
+    print(
+        f'image-mappings={json.dumps(image_mappings)}')
+
+    # break

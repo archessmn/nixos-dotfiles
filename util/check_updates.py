@@ -125,9 +125,9 @@ for image in images:
                 # gh.write(
                 #     f'test={json.dumps({"images": [{"image": image, "update": output_image}]})}')
                 gh.write(
-                    f'image-names={json.dumps([f"ghcr.io/{owner}/{repo}"])}')
+                    f'image-names={json.dumps([f"ghcr.io/{owner}/{repo}"])}\r\n')
                 gh.write(
-                    f'image-mappings={json.dumps({f"ghcr.io/{owner}/{repo}": output_image})}')
+                    f'image-mappings={json.dumps({f"ghcr.io/{owner}/{repo}": output_image})}\r\n')
         else:
             # print(
             #     f'"test={json.dumps({"images": [{"image": image, "update": output_image}]})}"')

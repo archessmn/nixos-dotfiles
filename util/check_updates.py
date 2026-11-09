@@ -122,10 +122,18 @@ for image in images:
 
         if os.getenv("GITHUB_OUTPUT"):
             with open(os.environ["GITHUB_OUTPUT"], "a") as gh:
+                # gh.write(
+                #     f'test={json.dumps({"images": [{"image": image, "update": output_image}]})}')
                 gh.write(
-                    f'test={json.dumps({"images": [{"image": image, "update": output_image}]})}')
+                    f'image-names={json.dumps([f"ghcr.io/{owner}/{repo}"])}')
+                gh.write(
+                    f'image-mappings={json.dumps({f"ghcr.io/{owner}/{repo}": output_image})}')
         else:
+            # print(
+            #     f'"test={json.dumps({"images": [{"image": image, "update": output_image}]})}"')
             print(
-                f'"test={json.dumps({"images": [{"image": image, "update": output_image}]})}"')
+                f'image-names={json.dumps([f"ghcr.io/{owner}/{repo}"])}')
+            print(
+                f'image-mappings={json.dumps({f"ghcr.io/{owner}/{repo}": output_image})}')
 
         break

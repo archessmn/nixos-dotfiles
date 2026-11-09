@@ -107,30 +107,18 @@ for image in images:
                   Fore.RESET, sep="")
             continue
 
-        files_with_image = list(filter(lambda f: f != '', subprocess.run(["nix", "develop", ".#", "--command",
-                                                                          "rg", f"ghcr.io/{owner}/{repo}", ".", "-l"], capture_output=True).stdout.decode().split("\n")))
-        print(files_with_image)
-
-        for file in files_with_image:
-            with open(file, "r") as open_file:
-                filedata = open_file.read()
-
-            filedata = filedata.replace(image, output_image)
-
-            with open(file, 'w') as open_file:
-                open_file.write(filedata)
+        if output_image == image:
+            print(Fore.YELLOW, "  Image up to date, continuing",
+                  Fore.RESET, sep="")
+            continue
 
         if os.getenv("GITHUB_OUTPUT"):
             with open(os.environ["GITHUB_OUTPUT"], "a") as gh:
-                # gh.write(
-                #     f'test={json.dumps({"images": [{"image": image, "update": output_image}]})}')
                 gh.write(
                     f'image-names={json.dumps([f"ghcr.io/{owner}/{repo}"])}\r\n')
                 gh.write(
                     f'image-mappings={json.dumps({f"ghcr.io/{owner}/{repo}": output_image})}\r\n')
         else:
-            # print(
-            #     f'"test={json.dumps({"images": [{"image": image, "update": output_image}]})}"')
             print(
                 f'image-names={json.dumps([f"ghcr.io/{owner}/{repo}"])}')
             print(

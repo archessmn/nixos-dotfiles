@@ -5,6 +5,10 @@ on:
 
 name: Check for Container Image Updates
 
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   checks:
     runs-on: ubuntu-latest
@@ -34,5 +38,28 @@ jobs:
         image-name: ${{ fromJson(needs.checks.outputs.image-names) }}
 
     steps:
-      - run: |
-          echo '${{ fromJson(needs.checks.outputs.image-mappings)[matrix.image-name] }}'
+      - uses: actions/checkout@v7
+      - uses: cachix/install-nix-action@v31
+        with:
+          extra_nix_config: |
+            experimental-features = nix-command flakes pipe-operators
+      - name: Get current date
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+      - id: update-script
+        name: Check for Updates
+        run: |
+          nix develop .# --command python3 util/apply_update.py -i ${{matrix.image-name}} -u ${{fromJson(needs.checks.outputs.image-mappings)[matrix.image-name]}}
+      - uses: peter-evans/create-pull-request@v8
+        with:
+          commit-message: |
+            [automated] chore: Automated update of image ${{matrix.image-name}}
+
+            Update ${{matrix.image-name}} to ${{fromJson(needs.checks.outputs.image-mappings)[matrix.image-name]}}
+          branch: automated-updates/${{steps.date.outputs.date}}/${{matrix.image-name}}
+          title: |
+            [automated] chore: ${{steps.date.outputs.date}} update of ${{matrix.image-name}}
+          body: |
+            Update ${{matrix.image-name}} to ${{fromJson(needs.checks.outputs.image-mappings)[matrix.image-name]}}
+          reviewers: |
+            archessmn

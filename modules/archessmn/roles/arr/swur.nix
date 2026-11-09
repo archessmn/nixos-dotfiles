@@ -24,7 +24,7 @@ in
     virtualisation.oci-containers.containers.swur = {
       autoStart = true;
 
-      image = "ghcr.io/archessmn/swurapp@sha256:4ad5e2dcf47b007cccf7b44fc013c51e0dc82f9b30a809d49d5202a4a77d070d";
+      image = "ghcr.io/archessmn/swurapp:main@sha256:cbd00b54f4c2883b6ca7f0e1d8b4fb334430c3e3ee31664144920d61d3287d92";
 
       environmentFiles = [
         config.age.secrets.swur_env.path

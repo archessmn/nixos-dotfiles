@@ -14,7 +14,10 @@ ignore_list = {
     ],
     "ashhhleyyy": [
         "ury-buzz"
-    ]
+    ],
+    "linuxserver": [
+        "mariadb"
+    ],
 }
 
 ghcr_rewrites = {
@@ -47,13 +50,12 @@ image_names = []
 image_mappings = {}
 
 for image in images:
-    if image.startswith("ghcr.io"):
+    if image.startswith(("ghcr.io", "lscr.io")):
         print(f"Image: {image}")
-        # print("  ghcr detected")
-        # print(f"  {image.replace('ghcr.io/', '', 1)}")
-        owner = image.replace('ghcr.io/', '', 1).split('/')[0]
+        registry = image.split('/')[0]
+        owner = image.replace(f'{registry}/', '', 1).split('/')[0]
         repo = image.replace(
-            'ghcr.io/', '', 1).split('/')[1].split(':')[0].split('@')[0]
+            f'{registry}/', '', 1).split('/')[1].split(':')[0].split('@')[0]
 
         if ignore_list.get(owner, False) and repo in ignore_list[owner]:
             print(Fore.YELLOW, "  Ignoring", Fore.RESET, sep="")
@@ -101,8 +103,6 @@ for image in images:
         for os_manifest in release["manifests"]:
             if os_manifest["platform"]["os"] == "linux" and os_manifest["platform"]["architecture"] == "amd64":
                 output_image = f'ghcr.io/{owner}/{repo}:{manifest}@{os_manifest["digest"]}'
-                print(Style.BRIGHT, "  Updated image: ", Style.RESET_ALL, Fore.GREEN,
-                      output_image, Fore.RESET, sep="")
                 break
 
         if output_image == "":
@@ -114,8 +114,11 @@ for image in images:
             print(Fore.YELLOW, "  Image up to date, continuing",
                   Fore.RESET, sep="")
             continue
+        else:
+            print(Style.BRIGHT, "  Updated image: ", Style.RESET_ALL, Fore.GREEN,
+                  output_image, Fore.RESET, sep="")
 
-        image_names.append(f"ghcr.io/{owner}/{repo}")
+        image_names.append(f"{registry}/{owner}/{repo}")
         image_mappings.setdefault(f"ghcr.io/{owner}/{repo}", output_image)
 
 if os.getenv("GITHUB_OUTPUT"):

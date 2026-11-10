@@ -36,6 +36,7 @@ jobs:
     strategy:
       matrix:
         image-name: ${{ fromJson(needs.checks.outputs.image-names) }}
+    if: ${{ !contains(needs.checks.outputs.image-names, '[]') }}
 
     steps:
       - uses: actions/checkout@v7

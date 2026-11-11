@@ -58,7 +58,7 @@ def update_image(image: str, updated_image: str):
     for file in files_with_image:
 
         regex = re.compile(
-            fr"({registry}/{owner}/{repo}).*?(?=\")", re.MULTILINE)
+            fr"({image}).*?(?=\")", re.MULTILINE)
 
         with open(file, "r") as open_file:
             filedata = open_file.read()

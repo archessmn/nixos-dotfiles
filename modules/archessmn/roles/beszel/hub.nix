@@ -25,7 +25,7 @@ in
     virtualisation.oci-containers.containers.beszel-hub = {
       autoStart = true;
 
-      image = "henrygd/beszel:0.15.4";
+      image = "docker.io/henrygd/beszel:latest@sha256:dd149010e30f4ba5876b6a65eb7ba3026f8c10d14dc07808d6324b02d477d93d";
 
       ports = [
         "8090:8090"

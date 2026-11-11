@@ -86,7 +86,7 @@ in
         };
 
         fireflyiii-importer = {
-          image = "fireflyiii/data-importer:latest";
+          image = "docker.io/fireflyiii/data-importer:latest@sha256:4e1eebb065196a2d464636dfa388c698ca4ed3fb188619910acb35ff55238d8c";
           autoStart = true;
 
           networks = [

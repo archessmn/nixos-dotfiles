@@ -119,7 +119,7 @@ for image in images:
                   output_image, Fore.RESET, sep="")
 
         image_names.append(f"{registry}/{owner}/{repo}")
-        image_mappings.setdefault(f"ghcr.io/{owner}/{repo}", output_image)
+        image_mappings.setdefault(f"{registry}/{owner}/{repo}", output_image)
 
 if os.getenv("GITHUB_OUTPUT"):
     with open(os.environ["GITHUB_OUTPUT"], "a") as gh:

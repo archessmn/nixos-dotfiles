@@ -52,7 +52,7 @@ def update_image(image: str, updated_image: str):
             f'{registry}/', '', 1).split('/')[1].split(':')[0].split('@')[0]
 
     files_with_image = list(filter(lambda f: f != '', subprocess.run(["nix", "develop", ".#", "--command",
-                                                                      "rg", f"{registry}/{owner}/{repo}", ".", "-l"], capture_output=True).stdout.decode().split("\n")))
+                                                                      "rg", f"{image}", ".", "-l"], capture_output=True).stdout.decode().split("\n")))
     # print(files_with_image)
 
     for file in files_with_image:

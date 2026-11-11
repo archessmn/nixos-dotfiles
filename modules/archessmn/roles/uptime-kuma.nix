@@ -26,7 +26,7 @@ in
     virtualisation.oci-containers.containers.uptime-kuma = {
       autoStart = true;
 
-      image = "louislam/uptime-kuma:2.0.2";
+      image = "docker.io/louislam/uptime-kuma:latest@sha256:88f41c2fcf67b4801aa80cd05c27c02c771e0cc8c667c7be5e4fc2251bf44728";
 
       ports = [
         "3001:3001"

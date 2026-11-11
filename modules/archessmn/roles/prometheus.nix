@@ -18,6 +18,7 @@ in
   config = mkIf cfg.enable {
     services.prometheus = {
       enable = true;
+      retentionTime = "1y";
     };
   };
 }

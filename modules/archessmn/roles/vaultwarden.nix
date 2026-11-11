@@ -26,7 +26,7 @@ in
     virtualisation.oci-containers.containers.vaultwarden = {
       autoStart = true;
 
-      image = "vaultwarden/server:1.37.0";
+      image = "docker.io/vaultwarden/server:latest@sha256:f8863ab2519364bfc657144006682a830784e0bb501606d5e34516ee76b60b5c";
 
       ports = [
         "7003:80"

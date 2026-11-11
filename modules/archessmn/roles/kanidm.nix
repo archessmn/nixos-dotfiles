@@ -26,7 +26,7 @@ in
     virtualisation.oci-containers.containers.kanidm = {
       autoStart = true;
 
-      image = "kanidm/server:1.12.0@sha256:71b6ff5a9c9c32b632894d8acef5a2afc77941b35a0aa95dcee959fe688d5ce9";
+      image = "docker.io/kanidm/server:1.12.0@sha256:d996d51ee91b8694123654911d662fd7787e74b04d8b4b13a1c27d2a5aa4f225";
 
       ports = [
         "7004:8443"

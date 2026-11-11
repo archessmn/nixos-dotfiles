@@ -30,7 +30,7 @@ in
         };
 
         snowflake-proxy-watchtower = {
-          image = "containrrr/watchtower";
+          image = "docker.io/containrrr/watchtower:latest@sha256:f9086bfda061100361fc2bacf069585678d760d705cf390918ccdbda8a00980b";
           autoStart = true;
 
           volumes = [

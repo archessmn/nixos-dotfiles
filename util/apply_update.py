@@ -38,12 +38,18 @@ manifest_rewrites = {
 
 def update_image(image: str, updated_image: str):
     print(f"Updating image: {image} to {updated_image}")
-    # print("  ghcr detected")
-    # print(f"  {image.replace('ghcr.io/', '', 1)}")
-    registry = image.split('/')[0]
+
+    if image.split('/')[0].find("/") == -1:
+        registry = "docker.io"
+    else:
+        registry = image.split('/')[0]
     owner = image.replace(f'{registry}/', '', 1).split('/')[0]
-    repo = image.replace(
-        f'{registry}/', '', 1).split('/')[1].split(':')[0].split('@')[0]
+    if len(image.replace(f'{registry}/', '', 1).split('/')) == 1:
+        repo = owner
+        owner = "library"
+    else:
+        repo = image.replace(
+            f'{registry}/', '', 1).split('/')[1].split(':')[0].split('@')[0]
 
     files_with_image = list(filter(lambda f: f != '', subprocess.run(["nix", "develop", ".#", "--command",
                                                                       "rg", f"{registry}/{owner}/{repo}", ".", "-l"], capture_output=True).stdout.decode().split("\n")))

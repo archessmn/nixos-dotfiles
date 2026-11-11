@@ -38,18 +38,20 @@ manifest_rewrites = {
             "chdrms": "pr-67"
         }
     },
-    "docker.io": {
-        "valkey": {
-            "valkey": "9"
-        }
-    }
+    # "docker.io": {
+    #     "valkey": {
+    #         "valkey": "9"
+    #     }
+    # }
 }
 
+nixeval = subprocess.Popen(["nix", "eval", "--json",
+                            ".#nixosConfigurations", "--apply", "attrs: let names = builtins.filter (n: builtins.match \"temjin|tsuro\" n != null) (builtins.attrNames attrs); in builtins.listToAttrs (map (name: {inherit name;value = attrs.${name}.config.virtualisation.oci-containers.containers;}) names)"], stdout=subprocess.PIPE)
 
-ociContainers = json.loads(subprocess.run(["nix", "eval", "--json",
-                                           ".#nixosConfigurations.temjin.config.virtualisation.oci-containers.containers"], capture_output=True).stdout)
+ociContainers = json.loads(subprocess.check_output(
+    ["jq", "[.[].[].image]"], stdin=nixeval.stdout))
 
-images = list(set(map(lambda kv: str(kv[1]["image"]), ociContainers.items())))
+images: list[str] = list(set(ociContainers))
 
 image_names = []
 image_mappings = {}
@@ -96,6 +98,14 @@ for image in images:
             if owner in manifest_rewrites["docker.io"]:
                 if repo in manifest_rewrites["docker.io"][owner]:
                     manifest = manifest_rewrites["docker.io"][owner][repo]
+                    print(
+                        Fore.YELLOW, f"  Setting manifest to override {manifest}", Fore.RESET, sep="")
+
+        if manifest == "latest":
+            if image.find("@") != -1 and image.split("@")[0].find(":") != -1:
+                manifest = image.split("@")[0].split(":")[1]
+                print(
+                    Fore.YELLOW, f"  Setting manifest to found {manifest}", Fore.RESET, sep="")
 
         latest_res = requests.get(
             f"https://registry-1.docker.io/v2/{owner}%2F{repo}/manifests/{manifest}",
@@ -168,6 +178,14 @@ for image in images:
             if owner in manifest_rewrites["ghcr.io"]:
                 if repo in manifest_rewrites["ghcr.io"][owner]:
                     manifest = manifest_rewrites["ghcr.io"][owner][repo]
+                    print(
+                        Fore.YELLOW, f"  Setting manifest to override {manifest}", Fore.RESET, sep="")
+
+        if manifest == "latest":
+            if image.find("@") != -1 and image.split("@")[0].find(":") != -1:
+                manifest = image.split("@")[0].split(":")[1]
+                print(
+                    Fore.YELLOW, f"  Setting manifest to found {manifest}", Fore.RESET, sep="")
 
         latest_res = requests.get(
             f"https://ghcr.io/v2/{owner}%2F{repo}/manifests/{manifest}",

@@ -116,7 +116,7 @@
   virtualisation.oci-containers.containers.matterbridge = {
     autoStart = true;
 
-    image = "ghcr.io/matterbridge-org/matterbridge:latest";
+    image = "ghcr.io/matterbridge-org/matterbridge:latest@sha256:25bd373e524ac43ccb2ab41d51210a6199783ad4964c966d686c07da0241187c";
 
     volumes = [
       "${config.age.secrets.matterbridge_toml.path}:/etc/matterbridge/matterbridge.toml"

@@ -257,7 +257,6 @@ in
             {
               targets = [
                 "localhost:8080"
-                "tsuro.infra.archess.mn:8080"
               ];
             }
           ];

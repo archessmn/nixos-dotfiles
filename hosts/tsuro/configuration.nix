@@ -52,6 +52,8 @@
         enable = true;
         openFirewall = true;
       };
+
+      prometheus.enable = true;
     };
   };
 

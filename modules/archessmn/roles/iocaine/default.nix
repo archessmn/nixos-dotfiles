@@ -125,7 +125,6 @@ in
           {
             targets = [
               "127.0.0.1:42042"
-              "tsuro.wahoo-monster.ts.net:42042"
             ];
           }
         ];

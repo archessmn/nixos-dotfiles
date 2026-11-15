@@ -26,7 +26,7 @@ in
     virtualisation.oci-containers.containers.gluetun = {
       autoStart = true;
 
-      image = "docker.io/qmcgaw/gluetun:latest@sha256:11a313e60be654ca6b2b08b74814ebeb85c07b030b1a61ae94dfb3ec29b500a5";
+      image = "docker.io/qmcgaw/gluetun:latest@sha256:e1e80f4f80cb1180e647eadb6ffd57c3687930d886d1daac5a7555861846ff9e";
 
       capabilities = {
         NET_ADMIN = true;

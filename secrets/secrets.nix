@@ -93,6 +93,11 @@ in
     archessmn-temjin
     temjin
   ];
+  "temjin/qbittorrent-exporter.env.age".publicKeys = [
+    archessmn-helios
+    archessmn-temjin
+    temjin
+  ];
   "temjin/cloudflare_dns.env.age".publicKeys = [
     archessmn-helios
     archessmn-temjin

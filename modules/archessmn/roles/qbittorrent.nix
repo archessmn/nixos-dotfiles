@@ -46,8 +46,14 @@ in
       ];
     };
 
-    virtualisation.oci-containers.containers.${gluetunContainerName}.ports = [
-      "49893:49893"
+    virtualisation.oci-containers.containers.${gluetunContainerName}.ports = mkMerge [
+      [
+        "49893:49893"
+      ]
+      (mkIf config.archessmn.roles.prometheus.enable [
+        "127.0.0.1:8090:8090"
+        "[::1]:8090:8090"
+      ])
     ];
 
     systemd.services."docker-qbittorrent" = {
@@ -76,11 +82,6 @@ in
             config.age.secrets.qbittorrent_exporter_env.path
           ];
         };
-
-    virtualisation.oci-containers.containers.${gluetunContainerName}.ports = [
-      "127.0.0.1:8090:8090"
-      "[::1]:8090:8090"
-    ];
 
     systemd.services."docker-qbittorrent-exporter" = {
       after = [ "docker-${gluetunContainerName}.service" ];

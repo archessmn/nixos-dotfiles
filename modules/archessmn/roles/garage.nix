@@ -99,6 +99,11 @@ in
               rule = "Host(`crap.archess.mn`)";
               service = "garage-web";
             };
+
+            tower-archess-mn = {
+              rule = "Host(`tower.archess.mn`)";
+              service = "garage-web";
+            };
           };
 
           services = {

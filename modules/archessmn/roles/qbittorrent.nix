@@ -72,7 +72,7 @@ in
         {
           autoStart = true;
 
-          image = "ghcr.io/martabal/qbittorrent-exporter:latest@sha256:9289fc5ad5cef7af6af5af5ab5ed7b8d609827490ba374df858905d66da7ec5f";
+          image = "ghcr.io/martabal/qbittorrent-exporter:latest@sha256:f6c4422faa9b2035432d2fe86c410a3e3d441040fb983d515b2c4cf5cdfa9877";
 
           networks = [
             "container:${gluetunContainerName}"

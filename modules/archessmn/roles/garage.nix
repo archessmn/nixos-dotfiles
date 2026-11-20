@@ -103,6 +103,18 @@ in
             tower-archess-mn = {
               rule = "Host(`tower.archess.mn`)";
               service = "garage-web";
+              middlewares = [ "cross-origin-isolated@file" ];
+            };
+          };
+
+          middlewares = {
+            cross-origin-isolated = {
+              headers = {
+                customResponseHeaders = {
+                  Cross-Origin-Opener-Policy = "same-origin";
+                  Cross-Origin-Embedder-Policy = "require-corp";
+                };
+              };
             };
           };
 

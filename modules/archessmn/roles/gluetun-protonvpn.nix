@@ -25,7 +25,7 @@ in
     virtualisation.oci-containers.containers.gluetun-protonvpn = {
       autoStart = true;
 
-      image = "docker.io/qmcgaw/gluetun:latest@sha256:e1e80f4f80cb1180e647eadb6ffd57c3687930d886d1daac5a7555861846ff9e";
+      image = "docker.io/qmcgaw/gluetun:latest@sha256:2345a452b6a1ed841c1d09e2865f919b3e1ad24d02b7e0b078bdb1214082c053";
 
       capabilities = {
         NET_ADMIN = true;

@@ -43,7 +43,7 @@ in
 
       containers = {
         fireflyiii = {
-          image = "docker.io/fireflyiii/core:latest@sha256:321dc39c1d956aaf67d8adbfa48485190361d6d51640bafb9c029c48f296374d";
+          image = "docker.io/fireflyiii/core:latest@sha256:63471e14fa4fe2a2de81e59b0c616c75a99309ea40be8dfc07a846092e147e12";
           autoStart = true;
 
           ports = [

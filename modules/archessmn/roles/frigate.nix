@@ -21,7 +21,7 @@ in
     virtualisation.oci-containers.containers.frigate = {
       autoStart = true;
 
-      image = "ghcr.io/blakeblackshear/frigate:stable@sha256:9ebab4801be69ab4ebc7f6ab1d582c859ff7412d457a3fa550056894e8444dad";
+      image = "ghcr.io/blakeblackshear/frigate:stable@sha256:52ee4a7b4aa403347c1f31974d4faafc7157f97933c08c905c08ec6599f4f27a";
 
       # ports = [
       #   "5000:5000"

@@ -92,7 +92,7 @@
 
       minecraft.enable = true;
 
-      firefly-iii.enable = true;
+      # firefly-iii.enable = true;
 
       garage = {
         enable = true;

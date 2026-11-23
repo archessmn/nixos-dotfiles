@@ -35,6 +35,11 @@
     system = "x86_64-linux";
   };
 
+  rialto = rec {
+    name = "rialto";
+    system = "x86_64-linux";
+  };
+
   slowpoke = rec {
     name = "slowpoke";
     system = "x86_64-linux";

@@ -14,10 +14,12 @@ let
   helios = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH3+p1UoT9vEJh1ostrJX0r6tFZ+JiwZQM0Uoh8ZqklM";
   temjin = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA3TSB/Hx9BYN+UeGpVXQFtetVyuZ72MNcg0ADHGrxNP";
   tsuro = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFJW1+M6OciB/nTfRTuTUUECmRqZ+J0deoMfNCfv0pRI";
+  rialto = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHmy1iZRvhJCQjWn2J3Nqi4NMtztvwLb3mCAe5Cs1ZkM";
   systems = [
     helios
     temjin
     tsuro
+    rialto
   ];
 in
 {

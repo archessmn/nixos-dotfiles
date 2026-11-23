@@ -21,7 +21,7 @@ in
     virtualisation.oci-containers.containers.hummer = {
       autoStart = true;
 
-      image = "ury-buzz:latest@sha256:73dcc7667e5e146a86707d21e7f86726b632138d88101eb5d1ee750c810ae234";
+      image = "ury-buzz:latest";
 
       ports = [
         "127.0.0.1::8000"

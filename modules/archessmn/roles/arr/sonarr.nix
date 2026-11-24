@@ -21,7 +21,7 @@ in
     virtualisation.oci-containers.containers.sonarr = {
       autoStart = true;
 
-      image = "ghcr.io/hotio/sonarr:latest@sha256:c4403173486543980a43653065c24dfe5067a3bd45ee2ec4c1126b69d77eadc0";
+      image = "ghcr.io/hotio/sonarr:latest@sha256:385688ce3a08474846aae3bf3fdb03d3fa6179307a34ff4645f99393baafbc8f";
 
       volumes = [
         "/opt/sonarr/config:/config"

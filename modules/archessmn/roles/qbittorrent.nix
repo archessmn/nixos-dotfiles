@@ -26,7 +26,7 @@ in
     virtualisation.oci-containers.containers.qbittorrent = {
       autoStart = true;
 
-      image = "ghcr.io/linuxserver/qbittorrent:latest@sha256:a2bf05fd92e30a35095c9fd3701228a794c83f78dee9bc832ca2568b2af2f994";
+      image = "ghcr.io/linuxserver/qbittorrent:latest@sha256:5ef07bffd6eb6214a2cff5fef629fabb1660ba2e94cfb34226330cfa65e39fa1";
 
       volumes = [
         "/opt/qbittorrent/config:/config"

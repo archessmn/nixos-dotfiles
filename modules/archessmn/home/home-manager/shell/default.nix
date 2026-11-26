@@ -41,7 +41,7 @@ in
       shellAliases = {
         # cd = "z";
         # cdi = "zi";
-        cat = "bat";
+        cat = "bat -pp";
         bonk = "clear";
         nixconfig = "cd ~/nixos-dotfiles/";
         rebuild = "cd ~/nixos-dotfiles/ && ./deploy";

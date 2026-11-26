@@ -23,7 +23,7 @@ in
 
       containers = {
         book-downloader = {
-          image = "ghcr.io/calibrain/shelfmark:latest@sha256:94217011ca1b743ba4ad2923fe8c435b932840dc4e4a227114c83b677b52e51c";
+          image = "ghcr.io/calibrain/shelfmark:latest@sha256:cb1690b01f2ffb808efc30a6f822a46117633111efc654c9938e7d564bdcadcc";
           autoStart = true;
 
           networks = [

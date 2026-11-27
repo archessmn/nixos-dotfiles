@@ -86,7 +86,7 @@ in
         };
 
         immich-redis = {
-          image = "docker.io/valkey/valkey:9@sha256:084a129b7e05269af288ddc9bc1a57eb9d1e3c879fd8cf2a28566187234f2693";
+          image = "docker.io/valkey/valkey:9@sha256:67aae9a63c6e53f0defaf77ffd65038f8b29035019054c2d8a929f467017569f";
           autoStart = true;
 
           hostname = "immich_redis";
